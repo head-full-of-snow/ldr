@@ -1744,9 +1744,11 @@ class LibraryRAGService:
                 self.username, self.db_password
             ) as session:
                 # Get all chunk IDs for this collection
+                # Use yield_per to avoid loading all chunks into memory at once
                 chunks = (
                     session.query(DocumentChunk)
                     .filter_by(collection_name=collection_name)
+                    .yield_per(1000)
                     .all()
                 )
 

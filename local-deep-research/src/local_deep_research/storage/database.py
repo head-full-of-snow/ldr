@@ -128,17 +128,25 @@ class DatabaseReportStorage(ReportStorage):
     ) -> List[Dict[str, Any]]:
         """List reports from database."""
         try:
-            query = self.session.query(ResearchHistory).filter(
+            # NOTE: Query only needed scalar columns to avoid loading
+            # report_content (large Text field) into memory.
+            query = self.session.query(
+                ResearchHistory.id,
+                ResearchHistory.query,
+                ResearchHistory.mode,
+                ResearchHistory.created_at,
+                ResearchHistory.completed_at,
+            ).filter(
                 ResearchHistory.report_content.isnot(None)
             )
-            results = query.all()
+            results = query.limit(500).all()
             return [
                 {
-                    "id": r.id,
-                    "query": r.query,
-                    "mode": r.mode,
-                    "created_at": r.created_at,
-                    "completed_at": r.completed_at,
+                    "id": r[0],
+                    "query": r[1],
+                    "mode": r[2],
+                    "created_at": r[3],
+                    "completed_at": r[4],
                 }
                 for r in results
             ]

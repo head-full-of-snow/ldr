@@ -51,9 +51,20 @@ def get_history():
 
         with get_user_db_session(username) as db_session:
             # Single query with JOIN to get history + document counts
+            # NOTE: Query only needed scalar columns to avoid loading
+            # report_content (large Text field) into memory.
             results = (
                 db_session.query(
-                    ResearchHistory,
+                    ResearchHistory.id,
+                    ResearchHistory.title,
+                    ResearchHistory.query,
+                    ResearchHistory.mode,
+                    ResearchHistory.status,
+                    ResearchHistory.created_at,
+                    ResearchHistory.completed_at,
+                    ResearchHistory.duration_seconds,
+                    ResearchHistory.research_meta,
+                    ResearchHistory.chat_session_id,
                     func.count(Document.id).label("document_count"),
                 )
                 .outerjoin(Document, Document.research_id == ResearchHistory.id)
@@ -66,27 +77,37 @@ def get_history():
 
             logger.debug(f"All research count: {len(results)}")
 
-            # Convert to list of dicts
+            # Convert to list of dicts (results are now tuples, not ORM objects)
             history = []
-            for research, doc_count in results:
+            for (
+                r_id,
+                r_title,
+                r_query,
+                r_mode,
+                r_status,
+                r_created_at,
+                r_completed_at,
+                r_duration_seconds,
+                r_research_meta,
+                r_chat_session_id,
+                doc_count,
+            ) in results:
                 item = {
-                    "id": research.id,
-                    "title": research.title,
-                    "query": research.query,
-                    "mode": research.mode,
-                    "status": research.status,
-                    "created_at": research.created_at,
-                    "completed_at": research.completed_at,
-                    "duration_seconds": research.duration_seconds,
+                    "id": r_id,
+                    "title": r_title,
+                    "query": r_query,
+                    "mode": r_mode,
+                    "status": r_status,
+                    "created_at": r_created_at,
+                    "completed_at": r_completed_at,
+                    "duration_seconds": r_duration_seconds,
                     "document_count": doc_count,
                 }
 
-                item["metadata"] = filter_research_metadata(
-                    research.research_meta
-                )
-                if research.chat_session_id is not None:
+                item["metadata"] = filter_research_metadata(r_research_meta)
+                if r_chat_session_id is not None:
                     item["metadata"]["chat_session_id"] = (
-                        research.chat_session_id
+                        r_chat_session_id
                     )
 
                 # Recalculate duration if null but both timestamps exist

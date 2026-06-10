@@ -387,8 +387,8 @@ class LibraryService:
                 )
             )
 
-            # Execute query
-            results = query.all()
+            # Execute query with limit to avoid loading too many rows
+            results = query.limit(500).all()
             logger.info(
                 f"[LibraryService] Found {len(results)} documents in collection {collection_id}"
             )
@@ -566,7 +566,7 @@ class LibraryService:
                     ResearchHistory.query,
                 )
                 .order_by(ResearchHistory.created_at.desc())
-                .all()
+                .limit(100)
             )
             return [
                 {"id": r.id, "title": r.title, "query": r.query}
