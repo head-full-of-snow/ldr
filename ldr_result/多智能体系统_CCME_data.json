@@ -1,0 +1,329 @@
+{
+  "metadata": {
+    "query_topic": "多智能体系统最新科研进展 (Multi-Agent System Latest Research)",
+    "collected_at": "2026-05-30T12:00:00+08:00",
+    "time_range_days": 540,
+    "total_results": 29
+  },
+  "results": [
+    {
+      "类": "多智能体-医疗决策",
+      "标题": "An intention-oriented multi-agent dialogue system for patient-centered decision-making",
+      "DOI": "10.1186/s12911-026-03498-x",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42192358",
+      "因": "现有医疗决策支持系统缺乏以患者为中心的交互能力，难以处理患者依从性和医患冲突等复杂问题，亟需提升决策过程的可解释性和可扩展性。",
+      "法": "提出意图导向的多智能体对话系统架构，通过多个专用智能体分别负责意图识别、信息检索和决策建议生成，采用自然语言处理技术实现患者与系统之间的深度交互。",
+      "果": "系统在患者中心决策场景中展现了更高的可解释性和用户满意度，有效改善了医患沟通质量和决策透明度。",
+      "来源": "PubMed - BMC Medical Informatics and Decision Making",
+      "发布日期": "2026-05-26"
+    },
+    {
+      "类": "多智能体-科学发现",
+      "标题": "A multi-agent system for automating scientific discovery",
+      "DOI": "10.1038/s41586-026-10652-y",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42156546",
+      "因": "科学发现流程中假设生成和数据分析严重依赖人工，效率低下且易受偏见影响，需要自动化系统来加速端到端的科学发现过程。",
+      "法": "开发名为Robin的多智能体系统，集成文献搜索智能体、假设生成智能体和数据分析智能体，采用迭代式推理和实验验证闭环。",
+      "果": "Robin是首个能全自动完成假设生成和数据分析的多智能体系统，在实验生物学中成功实现了端到端的科学发现自动化，发表于Nature。",
+      "来源": "PubMed - Nature",
+      "发布日期": "2026-05-19"
+    },
+    {
+      "类": "多智能体-生物信息学",
+      "标题": "The next paradigm in bioinformatics: a review of multi-agent systems and foundational models for end-to-end scientific discovery",
+      "DOI": "10.1093/bib/bbag245",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42160738",
+      "因": "生物信息学正从传统的预测模型和生成式AI向'智能体AI'范式转变，需要系统梳理通用生物模型与多智能体系统集成的最新进展与未来方向。",
+      "法": "对多智能体系统在生物信息学中的应用进行全面综述，分析基础模型与智能体框架的集成方式，评估其在端到端科学发现中的能力与局限。",
+      "果": "揭示了多智能体系统正推动生物信息学从简单预测向迭代式自主发现转变的新范式，但端到端自动化仍需人类监督以确保可靠性和伦理合规。",
+      "来源": "PubMed - Briefings in Bioinformatics",
+      "发布日期": "2026-05-04"
+    },
+    {
+      "类": "多智能体-控制理论",
+      "标题": "Containment control for stochastic multiagent systems with multiple dynamic leaders and compound noises",
+      "DOI": "10.1016/j.isatra.2026.05.005",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42142982",
+      "因": "随机多智能体系统在存在多个动态领导者和复合噪声的情况下，传统包容控制方法难以保证系统稳定性和收敛性。",
+      "法": "提出针对含复合噪声和多个动态领导者的随机多智能体系统的包容控制方案，采用随机分析和Lyapunov稳定性理论进行控制器设计。",
+      "果": "在复合噪声和不确定动态领导者条件下实现了多智能体系统的渐近包容控制，为智能交通和无人机集群等应用提供了理论保障。",
+      "来源": "PubMed - ISA Transactions",
+      "发布日期": "2026-05-12"
+    },
+    {
+      "类": "多智能体-医疗AI",
+      "标题": "A comprehensive survey of AI agents in healthcare",
+      "DOI": "10.1016/j.jbi.2026.105045",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42009269",
+      "因": "AI智能体在医疗保健领域的应用快速扩展，但通用智能体框架与医疗安全关键需求之间存在显著差距，需要全面调研现状与挑战。",
+      "法": "对AI智能体在医疗保健领域的应用进行系统性综述，分析不同应用场景（诊断、治疗、管理）中的智能体架构、安全约束和采用障碍。",
+      "果": "揭示了通用智能体框架在适应医疗高风险环境方面的关键不足，强调临床转化需要严格的安全性和可靠性验证，提出了未来研究方向。",
+      "来源": "PubMed - Journal of Biomedical Informatics",
+      "发布日期": "2026-04-18"
+    },
+    {
+      "类": "多智能体-LLM安全",
+      "标题": "When collaboration fails: persuasion driven adversarial influence in multi agent large language model debate",
+      "DOI": "10.1038/s41598-026-42705-7",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41951693",
+      "因": "LLM智能体协作辩论被广泛认为能提升推理深度，但其隐含的'诚实参与者'假设可能存在安全漏洞，对抗性影响可能破坏系统稳健性。",
+      "法": "设计实验研究说服驱动的对抗性攻击策略在多智能体LLM辩论中的影响，分析对抗者如何通过精心设计的论点操纵辩论结果。",
+      "果": "发现'说服驱动对抗影响'是一种严重漏洞，对抗者可以显著降低多智能体辩论系统的性能，挑战了协作辩论提升推理质量的普遍假设。",
+      "来源": "PubMed - Scientific Reports",
+      "发布日期": "2026-04-08"
+    },
+    {
+      "类": "多智能体-水务基础设施",
+      "标题": "EPANET-Agentic: A multi-agent system for natural language-controlled simulations of water distribution networks",
+      "DOI": "10.1016/j.watres.2026.125433",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41579609",
+      "因": "传统水分配网络仿真软件操作复杂，需要专业技术人员，限制了城市基础设施规划的可达性和效率。",
+      "法": "开发EPANET-Agentic系统，利用LLM驱动的多智能体架构实现自然语言控制的EPANET仿真，用户可通过自然语言指令进行水网络建模和模拟。",
+      "果": "实现了自然语言到水分配网络仿真的端到端映射，大幅降低了技术门槛，提高了城市基础设施规划的可达性和效率。",
+      "来源": "PubMed - Water Research",
+      "发布日期": "2026-04-01"
+    },
+    {
+      "类": "多智能体-精准医疗",
+      "标题": "Precision oncology: from large language models to multi-agent systems",
+      "DOI": "10.3389/fonc.2026.1828507",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42158433",
+      "因": "单一LLM在精准肿瘤学中难以有效整合电子病历、影像和组学数据等多模态信息，无法满足复杂临床决策的需求。",
+      "法": "提出从单一LLM到多智能体系统的精准肿瘤学框架，设计多个专用智能体分别处理不同模态数据，实现跨模态信息融合和协同决策。",
+      "果": "多智能体系统在精准肿瘤学中克服了单一LLM的局限性，实现了更准确的跨模态临床决策支持。",
+      "来源": "PubMed - Frontiers in Oncology",
+      "发布日期": "2026-01-01"
+    },
+    {
+      "类": "多智能体-罕见病诊断",
+      "标题": "An agentic system for rare disease diagnosis with traceable reasoning",
+      "DOI": "10.1038/s41586-025-10097-9",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41708847",
+      "因": "全球约3亿人受罕见病影响，诊断过程漫长且复杂，需要可追踪推理的智能系统来提高诊断准确率和效率。",
+      "法": "开发具有可追踪推理能力的智能体系统，通过链式推理和多源知识检索支持罕见病诊断，确保诊断过程可解释和可验证。",
+      "果": "系统在罕见病诊断中实现了可追踪的推理链条，提高了诊断准确率，发表于Nature，为全球3亿罕见病患者提供了更好的诊断工具。",
+      "来源": "PubMed - Nature",
+      "发布日期": "2026-03-01"
+    },
+    {
+      "类": "多智能体-强化学习",
+      "标题": "Bi-level graph attention paradigm with differential strategy integration for heterogeneous multi-agent reinforcement learning",
+      "DOI": "10.1038/s41598-026-41722-w",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41786913",
+      "因": "异构多智能体系统中不同类型的智能体之间通信和协调困难，传统方法难以有效处理智能体能力的差异性。",
+      "法": "提出双层图注意力范式(Bi-GAP)，通过差异化策略集成机制处理异构智能体群体中的通信和协调挑战，上层管理全局协调，下层处理局部交互。",
+      "果": "Bi-GAP在异构多智能体协作任务中显著优于传统方法，有效解决了不同类型智能体间的通信瓶颈和协调效率问题。",
+      "来源": "PubMed - Scientific Reports",
+      "发布日期": "2026-03-05"
+    },
+    {
+      "类": "多智能体-组织决策",
+      "标题": "Deep neural network-based coupling model of inter-organizational knowledge flow and agent collaborative decision-making",
+      "DOI": "10.1038/s41598-026-37838-8",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41629601",
+      "因": "组织间知识流动和协同决策的耦合机制尚不明确，影响跨组织合作效率，需要计算模型来理解和优化这一过程。",
+      "法": "构建基于深度神经网络的组织间知识流与智能体协同决策耦合模型，模拟知识在组织间的传播和决策过程中的交互作用。",
+      "果": "模型成功刻画了知识流动与协同决策之间的非线性耦合关系，为优化跨组织协作提供了理论指导和计算框架。",
+      "来源": "PubMed - Scientific Reports",
+      "发布日期": "2026-02-02"
+    },
+    {
+      "类": "多智能体-农业智能",
+      "标题": "Chat Demeter: a multi-agent system for plant disease diagnosis integrating CNN-transformer models",
+      "DOI": "10.3389/fpls.2025.1695227",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41635695",
+      "因": "农作物病害诊断依赖专家经验，效率低且覆盖范围有限，需要智能化系统来减少因病害造成的农作物损失。",
+      "法": "开发Chat Demeter多智能体系统，集成CNN和Transformer模型实现植物病害的多模态诊断，通过智能体协作完成图像分析和诊断报告生成。",
+      "果": "系统在植物病害诊断中展现了高准确率，通过智能化的多智能体协作有效减少了农作物因病害造成的损失。",
+      "来源": "PubMed - Frontiers in Plant Science",
+      "发布日期": "2026-01-19"
+    },
+    {
+      "类": "多智能体-显微技术",
+      "标题": "From observation to understanding: A multi-agent framework for smart microscopy",
+      "DOI": "10.1111/jmi.70063",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41537686",
+      "因": "智能显微技术中从图像采集到生物学理解的转化过程复杂，单一模型难以完成从观察到认知的完整链路。",
+      "法": "提出面向智能显微技术的多智能体框架，设计多个专用智能体分别负责图像采集、特征提取、模式识别和生物学解释，实现端到端的观察理解。",
+      "果": "实现了从显微观察到生物学理解的自动化链路，多智能体框架有效提升了智能显微系统的分析能力和解释深度。",
+      "来源": "PubMed - Journal of Microscopy",
+      "发布日期": "2026-01-15"
+    },
+    {
+      "类": "多智能体-临床推理",
+      "标题": "How do dialysis nurses and AI reason clinically? A scenario-based comparative study",
+      "DOI": "10.1186/s12912-026-04348-x",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41620749",
+      "因": "AI智能体在临床场景中的推理方式与人类临床医生的差异尚不明确，需要实证研究来理解AI如何支持而非替代临床判断。",
+      "法": "采用基于场景的比较研究方法，对比透析护士和AI智能体在不确定条件下进行临床推理的过程和决策差异。",
+      "果": "揭示了AI智能体与人类临床护士在推理模式上的关键差异，AI在支持情境化判断方面具有潜力但不应完全替代人类决策。",
+      "来源": "PubMed - BMC Nursing",
+      "发布日期": "2026-01-31"
+    },
+    {
+      "类": "多智能体-生物医学分析",
+      "标题": "A Review of Multi-Agent AI Systems for Biological and Clinical Data Analysis",
+      "DOI": "10.3390/mps9020033",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41874150",
+      "因": "单一LLM在生物和临床数据分析中面临推理和可靠性问题，需要多智能体框架来分工协作和交叉验证。",
+      "法": "综述LangGraph和CrewAI等多智能体框架在生物和临床数据分析中的应用，分析专用智能体团队的分工策略和交叉验证机制。",
+      "果": "多智能体框架通过分工协作和交叉验证有效解决了单一模型的推理和可靠性问题，为生物医学数据分析提供了更稳健的解决方案。",
+      "来源": "PubMed - Methods and Protocols",
+      "发布日期": "2026-02-28"
+    },
+    {
+      "类": "多智能体-软件工程",
+      "标题": "Blueprint2Code: a multi-agent pipeline for reliable code generation via blueprint planning and repair",
+      "DOI": "10.3389/frai.2025.1660912",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41180821",
+      "因": "LLM在复杂多步推理的代码生成任务中表现不佳，经常产生不完整或错误的代码，缺乏系统性的规划和修复机制。",
+      "法": "提出Blueprint2Code多智能体管线，通过蓝图规划智能体和修复智能体协作，先制定代码蓝图再逐步实现和修复，克服LLM的多步推理瓶颈。",
+      "果": "多智能体管线在可靠代码生成方面显著优于单一LLM方法，通过蓝图规划和修复机制有效提升了代码生成的完整性和正确性。",
+      "来源": "PubMed - Frontiers in Artificial Intelligence",
+      "发布日期": "2025-10-17"
+    },
+    {
+      "类": "多智能体-控制理论",
+      "标题": "Distributed formation control for port-Hamiltonian multi-agent systems by average state estimation",
+      "DOI": "10.1016/j.isatra.2025.05.039",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/40483185",
+      "因": "port-Hamiltonian多智能体系统的分布式编队控制面临状态估计困难，传统方法在能量守恒约束下的编队性能不佳。",
+      "法": "提出基于平均状态估计的port-Hamiltonian多智能体系统分布式编队控制方案，利用能量守恒特性设计编队控制器。",
+      "果": "在保证能量守恒的前提下实现了高效的多智能体编队控制，为物理系统的协调运动提供了新方法。",
+      "来源": "PubMed - ISA Transactions",
+      "发布日期": "2025-05-30"
+    },
+    {
+      "类": "多智能体-博弈论",
+      "标题": "Network Analysis on the Symmetric Coordination in a Reinforcement-Learning-Based Minority Game",
+      "DOI": "10.3390/e27070676",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/40724393",
+      "因": "少数博弈中的协调机制传统上认为需要策略专业化（角色分化），但这是否为必要条件尚存争议。",
+      "法": "采用基于策略的强化学习方法研究少数博弈中的对称协调，通过网络分析工具分析智能体的策略演化和协调模式。",
+      "果": "发现策略强化学习可以在少数博弈中实现无需角色分化的对称协调，挑战了策略专业化是协调必要条件的传统认知。",
+      "来源": "PubMed - Entropy",
+      "发布日期": "2025-06-25"
+    },
+    {
+      "类": "多智能体-医学NER",
+      "标题": "Advancing named entity recognition in interprofessional collaboration and education",
+      "DOI": "10.3389/fmed.2025.1578769",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/40641965",
+      "因": "跨专业医疗协作和教育中通信效率低下，缺乏有效的知识共享工具，需要先进的NER技术来增强专业间信息交流。",
+      "法": "开发面向跨专业协作和教育的命名实体识别(NER)技术，集成到多智能体通信框架中增强信息提取和知识共享能力。",
+      "果": "先进的NER技术有效提升了跨专业协作中的通信质量和知识共享效率，为多智能体医疗系统的信息交互提供了技术支持。",
+      "来源": "PubMed - Frontiers in Medicine",
+      "发布日期": "2025-06-26"
+    },
+    {
+      "类": "多智能体-推荐系统",
+      "标题": "Accurate POI recommendation for random groups with improved graph neural networks and a multi-negotiation model",
+      "DOI": "10.1038/s41598-025-91805-3",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/40032961",
+      "因": "随机群体的兴趣点(POI)推荐面临成员偏好多样性和动态协商的挑战，传统方法难以处理群体决策的复杂性。",
+      "法": "结合改进的图神经网络和多谈判模型，设计多智能体POI推荐框架，通过智能体间的多轮协商整合群体成员的异构偏好。",
+      "果": "在随机群体POI推荐任务中取得了更高的推荐准确度，多谈判模型有效处理了群体偏好的多样性和动态协商问题。",
+      "来源": "PubMed - Scientific Reports",
+      "发布日期": "2025-03-04"
+    },
+    {
+      "类": "多智能体-推荐系统",
+      "标题": "A multi-agent reinforcement learning framework for cross-domain sequential recommendation",
+      "DOI": "10.1016/j.neunet.2025.107192",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/39879867",
+      "因": "跨域顺序推荐面临用户偏好在不同领域间的迁移和建模困难，单一模型难以捕捉跨域行为的多维特征。",
+      "法": "提出多智能体强化学习框架，每个智能体负责一个领域的推荐决策，通过跨域信息共享和协作学习实现顺序推荐。",
+      "果": "跨域多智能体框架有效解决了用户偏好的跨域迁移问题，在顺序推荐任务中优于单一域和传统跨域方法。",
+      "来源": "PubMed - Neural Networks",
+      "发布日期": "2025-05-01"
+    },
+    {
+      "类": "多智能体-肿瘤免疫",
+      "标题": "Modeling and simulation of genotypic Tumor Mutational Burden and Phenotypic Immunogenicity biomarkers in cancer immunoediting with Ising-Hamiltonian characterization",
+      "DOI": "10.1016/j.compbiomed.2025.109717",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/39894008",
+      "因": "癌症免疫编辑过程中基因型肿瘤突变负荷(TMB)和表型免疫原性生物标志物之间的动态关系缺乏有效的计算模型描述。",
+      "法": "采用Ising-Hamiltonian表征方法建模和仿真基因型TMB和表型免疫原性在癌症免疫编辑中的动态变化，结合多智能体模拟肿瘤-免疫交互。",
+      "果": "成功构建了肿瘤免疫编辑的Ising-Hamiltonian计算框架，为理解基因型和表型生物标志物的动态关系提供了新工具。",
+      "来源": "PubMed - Computers in Biology and Medicine",
+      "发布日期": "2025-02-01"
+    },
+    {
+      "类": "多智能体-机器人",
+      "标题": "A Review of Multi-Robot Systems and Soft Robotics: Challenges and Opportunities",
+      "DOI": "10.3390/s25051353",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/40096190",
+      "因": "多机器人系统在非结构化环境中的适应能力不足，软体机器人的仿生设计为提升适应能力提供了新机遇，但两者集成面临挑战。",
+      "法": "对多机器人系统与软体机器人集成的最新进展进行全面综述，分析仿生设计在导航和物体操作中的应用现状。",
+      "果": "揭示了软体机器人与多机器人系统集成的关键挑战和机遇，仿生设计显著提升了系统在非结构化环境中的适应能力。",
+      "来源": "PubMed - Sensors",
+      "发布日期": "2025-02-22"
+    },
+    {
+      "类": "多智能体-强化学习",
+      "标题": "A fully value distributional deep reinforcement learning framework for multi-agent cooperation",
+      "DOI": "10.1016/j.neunet.2024.107035",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/39693677",
+      "因": "传统多智能体强化学习仅建模未来回报的期望值，忽略了回报分布的完整信息，限制了合作决策的深度洞察。",
+      "法": "提出全值分布深度强化学习框架，建模多智能体合作中未来回报的完整分布而非仅期望值，捕捉更深层的协作信息。",
+      "果": "通过对回报分布的完整建模获得了比传统期望值方法更丰富的协作信息，在多智能体合作任务中展现了更优性能。",
+      "来源": "PubMed - Neural Networks",
+      "发布日期": "2025-04-01"
+    },
+    {
+      "类": "多智能体-控制理论",
+      "标题": "Reinforcement learning-based optimal tracking control for uncertain multi-agent systems with uncertain topological networks",
+      "DOI": "10.1016/j.isatra.2024.11.043",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/39638669",
+      "因": "不确定拓扑网络下多智能体系统（如智能网联汽车和无人机）的最优跟踪控制面临网络拓扑不确定性和动态变化的挑战。",
+      "法": "结合强化学习方法设计不确定拓扑网络下多智能体系统的最优跟踪控制器，自适应处理网络拓扑的不确定性和时变特性。",
+      "果": "在不确定拓扑网络条件下实现了多智能体系统的最优跟踪控制，为智能网联汽车和无人机集群的协调控制提供了有效方案。",
+      "来源": "PubMed - ISA Transactions",
+      "发布日期": "2024-11-29"
+    },
+    {
+      "类": "多智能体-系统建模",
+      "标题": "Multilevel modeling and control of dynamic systems",
+      "DOI": "10.1038/s41598-024-79279-1",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/39537740",
+      "因": "复杂动态系统的多层级建模和控制缺乏统一的理论框架，不同抽象层级之间的协调控制机制尚不完善。",
+      "法": "提出多层次动态系统建模和控制方法，通过分层抽象和多智能体协调实现从微观到宏观的系统级控制。",
+      "果": "建立了多层次动态系统建模与控制的统一框架，为复杂系统的分层智能控制提供了理论基础。",
+      "来源": "PubMed - Scientific Reports",
+      "发布日期": "2024-11-13"
+    },
+    {
+      "类": "多智能体-服务组合",
+      "标题": "An innovative approach for QoS-aware web service composition using whale optimization algorithm",
+      "DOI": "10.1038/s41598-024-73414-8",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/39349932",
+      "因": "感知QoS的Web服务组合优化是NP难问题，传统方法在大规模服务空间中搜索效率低，难以满足实时性要求。",
+      "法": "采用鲸鱼优化算法(WOA)进行QoS感知的Web服务组合优化，将服务选择建模为多智能体优化问题进行协同搜索。",
+      "果": "鲸鱼优化算法在大规模服务空间中展现了更高的搜索效率和服务组合质量，为QoS感知的Web服务组合提供了高效解决方案。",
+      "来源": "PubMed - Scientific Reports",
+      "发布日期": "2024-09-30"
+    },
+    {
+      "类": "多智能体-强化学习",
+      "标题": "Collaborative hunting in artificial agents with deep reinforcement learning",
+      "DOI": "10.7554/eLife.85694",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/38711355",
+      "因": "理解多智能体系统中协作狩猎行为的涌现机制是集体智能研究的核心问题，但现有模型难以捕捉真实捕食者-猎物动态的复杂性。",
+      "法": "采用深度强化学习方法训练人工智能体进行协作狩猎任务，研究多智能体协作策略的自组织涌现过程。",
+      "果": "观察到协作狩猎策略的涌现行为，智能体自组织形成有效的围捕和协作策略，为理解集体智能提供了计算模型。",
+      "来源": "PubMed - eLife",
+      "发布日期": "2024-05-07"
+    },
+    {
+      "类": "多智能体-边缘计算",
+      "标题": "Task Offloading with LLM-Enhanced Multi-Agent Reinforcement Learning in UAV-Assisted Edge Computing",
+      "DOI": "10.3390/s25010175",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/39796966",
+      "因": "无人机辅助边缘计算中资源约束严重，传统任务卸载方法难以动态适应复杂多变的网络环境和计算需求。",
+      "法": "提出LLM增强的多智能体强化学习任务卸载框架，利用LLM理解任务特征并结合MARL进行分布式资源分配和任务调度决策。",
+      "果": "LLM增强的MARL框架在UAV辅助边缘计算中显著提升了任务卸载效率和资源利用率，有效解决了动态环境下的资源约束问题。",
+      "来源": "PubMed - Sensors",
+      "发布日期": "2024-12-31"
+    }
+  ]
+}

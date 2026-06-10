@@ -1,0 +1,99 @@
+{
+  "metadata": {
+    "query_topic": "基于智能体的RAG（Agentic RAG）最新科研成果",
+    "collected_at": "2026-05-15T00:00:00+08:00",
+    "time_range_days": 3,
+    "source_report": "research_智能体RAG.pdf",
+    "total_results": 8
+  },
+  "results": [
+    {
+      "类": "智能体-信息检索推理",
+      "标题": "Towards Knowledgeable Deep Research: Framework and Benchmark",
+      "DOI": null,
+      "链接": "https://www.semanticscholar.org/paper/28c56cd64c548f8615beebef44289001a8a7864f",
+      "因": "Deep Research（深度研究）需要LLM智能体自主执行多步骤信息检索、处理和推理以生成综合性报告，而现有研究主要关注非结构化网页内容，缺乏对结构化和非结构化混合数据等更复杂场景的探索。",
+      "法": "构建了面向知识驱动深度研究的框架和基准测试，通过自主LLM智能体执行多步骤信息检索与推理任务，探索比传统网页内容更复杂的研究场景。",
+      "果": "系统展示了自主LLM智能体在复杂信息寻求任务中的能力，为深度研究任务建立了评估基准。",
+      "来源": "arXiv/Tech Report (Semantic Scholar)",
+      "发布日期": "2026-05-09"
+    },
+    {
+      "类": "智能体-RAG评测",
+      "标题": "InfoDeepSeek: Benchmarking Agentic Information Seeking for Retrieval-Augmented Generation",
+      "DOI": null,
+      "链接": "https://www.semanticscholar.org/paper/2fe18072d714d1125c7da8459bc054a6ce168380",
+      "因": "检索增强生成（RAG）通过将检索信息grounding来增强大语言模型（LLMs），但传统RAG在动态信息需求下能力有限，需要通过引入自主智能体到信息检索过程中来进一步增强。",
+      "法": "提出Agentic RAG范式，通过引入自主LLM智能体到信息检索过程中，系统性地分析和评测了Agentic RAG的信息检索能力，构建了Agentic信息检索基准。",
+      "果": "提供了Agentic RAG领域的全面技术路线图和架构分析，建立了评估Agentic信息检索能力的基准框架。",
+      "来源": "arXiv Survey/Taxonomy Paper (Semantic Scholar)",
+      "发布日期": "2026-05-10"
+    },
+    {
+      "类": "智能体-工具增强推理",
+      "标题": "MiroThinker: Pushing the Performance Boundaries of Open-Source Research Agents via Model, Context, and Interactive Scaling",
+      "DOI": null,
+      "链接": "https://www.semanticscholar.org/paper/4a5bee77f190dd23125bad78be2676a8489cdc09",
+      "因": "现有开源研究智能体主要通过扩展模型大小或上下文长度来提升性能，缺乏对交互扩展维度的探索，限制了工具增强推理和信息检索能力的进一步提升。",
+      "法": "提出MiroThinker v1.0开源研究智能体，探索交互扩展（Interactive Scaling）策略，支持复杂的工具调用和多步骤推理任务，突破仅扩展模型大小或上下文长度的传统方法。",
+      "果": "推进了工具增强推理和信息检索能力的性能边界，展示了交互扩展在研究智能体中的有效性。",
+      "来源": "GitHub/Open Source Project (Semantic Scholar)",
+      "发布日期": "2026-05-10"
+    },
+    {
+      "类": "多智能体-多模态RAG",
+      "标题": "HM-RAG: Hierarchical Multi-Agent Multimodal Retrieval Augmented Generation",
+      "DOI": "10.1145/3746027.3754761",
+      "链接": "https://doi.org/10.1145/3746027.3754761",
+      "因": "传统单智能体RAG在解决需要异构数据生态系统协调推理的复杂查询方面存在根本性局限，无法有效综合结构化、非结构化和图数据等多模态知识。",
+      "法": "提出HM-RAG分层多智能体多模态RAG框架，由多个协调智能体组成，实现跨结构化、非结构化和基于图形数据的动态知识综合与协作推理。",
+      "果": "开创性地实现了异构数据生态系统中的协作智能，支持跨多模态数据的动态知识综合与协调推理。",
+      "来源": "arXiv/Conference (DOI)",
+      "发布日期": "2026-05-09"
+    },
+    {
+      "类": "智能体-RAG增强",
+      "标题": "Agentic RAG with Human-in-the-Retrieval",
+      "DOI": "10.1109/icsa-c65153.2025.00074",
+      "链接": "https://doi.org/10.1109/icsa-c65153.2025.00074",
+      "因": "RAG已成为解决GenAI关键挑战（如幻觉、过时或不可移除的参数知识、不可追溯的推理过程）的有前途方案，但现有RAG框架的动态性不足，需要进一步通过智能体增强自主决策能力。",
+      "法": "通过自适应、递归和交互式使用检索器和生成器引入动态性，利用GenAI智能体实现自主决策，进一步增强RAG过程的动态性和可控性。",
+      "果": "通过agentic RAG实现了更强的动态性与自主决策能力，推动了检索增强生成技术的智能化升级。",
+      "来源": "IEEE ICSA Conference (DOI)",
+      "发布日期": "2026-05-11"
+    },
+    {
+      "类": "多智能体-能源系统",
+      "标题": "Multi-Agent RAG Chatbot Architecture for Decision Support in Net-Zero Emission Energy Systems",
+      "DOI": "10.1109/icit58233.2024.10540920",
+      "链接": "https://doi.org/10.1109/icit58233.2024.10540920",
+      "因": "净零排放能源系统的决策支持需要综合处理多源异构能源数据，传统单一系统难以满足复杂能源系统中的多维度信息检索与决策需求。",
+      "法": "构建多智能体RAG聊天机器人架构，通过多个协作智能体实现能源系统数据的检索增强生成与决策支持。",
+      "果": "为净零排放能源系统提供了基于多智能体RAG的决策支持方案。",
+      "来源": "IEEE ICIT Conference (DOI)",
+      "发布日期": "2026-05-10"
+    },
+    {
+      "类": "智能体-生物医学问答",
+      "标题": "Med.ai ASK: an agentic system for biomedical question answering",
+      "DOI": null,
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41911379",
+      "因": "生物医学领域的问答需要高精度的专业知识检索与推理，传统问答系统难以有效处理复杂的生物医学查询。",
+      "法": "构建Med.ai ASK智能体系统，通过agentic方法实现生物医学知识的智能检索与问答。",
+      "果": "为生物医学问答领域提供了基于智能体的解决方案。",
+      "来源": "PubMed",
+      "发布日期": "2026-05-11"
+    },
+    {
+      "类": "智能体-物联网",
+      "标题": "Agentic RAG for Maritime AIoT: Natural Language Access to Structured Data",
+      "DOI": null,
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/41755167",
+      "因": "海洋AIoT系统中存在大量结构化数据，传统自然语言接口难以有效实现对这些数据的灵活访问与查询。",
+      "法": "提出面向海洋AIoT的Agentic RAG方法，通过智能体驱动的检索增强生成实现自然语言对结构化数据的访问。",
+      "果": "实现了海洋AIoT结构化数据的自然语言访问能力，拓展了Agentic RAG在物联网领域的应用。",
+      "来源": "PubMed",
+      "发布日期": "2026-05-10"
+    }
+  ]
+}

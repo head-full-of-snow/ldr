@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能体记忆（Agent Memory）最新科研成果汇总</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6; color: #333;
+            background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 1400px; margin: 0 auto;
+            background: white; border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white; padding: 40px; text-align: center;
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .date { font-size: 0.9em; opacity: 0.7; margin-top: 10px; }
+        .summary { padding: 30px 40px; background: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .summary h2 { color: #2c3e50; margin-bottom: 15px; }
+        .stats { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .stat-item {
+            background: white; padding: 15px 25px; border-radius: 10px;
+            border-left: 4px solid #e74c3c; flex: 1; min-width: 180px;
+        }
+        .stat-item .number { font-size: 2em; font-weight: bold; color: #e74c3c; }
+        .stat-item .label { color: #666; font-size: 0.9em; }
+        .trends { padding: 30px 40px; background: white; }
+        .trends h2 {
+            color: #2c3e50; margin-bottom: 20px; padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+        .trend-list { list-style: none; }
+        .trend-list li {
+            padding: 12px 15px; margin: 10px 0;
+            background: #fef0f0; border-radius: 8px;
+            border-left: 3px solid #e74c3c;
+        }
+        .trend-list li strong { color: #2c3e50; }
+        .sections { padding: 30px 40px; }
+        .section-title {
+            color: #2c3e50; font-size: 1.6em; margin: 30px 0 15px 0;
+            padding-bottom: 8px; border-bottom: 2px solid #3498db;
+        }
+        .section-title:first-child { margin-top: 0; }
+        .paper-card {
+            background: #fff; border: 1px solid #e9ecef; border-radius: 10px;
+            padding: 25px; margin: 20px 0; transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+        .paper-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .paper-card .paper-type {
+            display: inline-block; background: #3498db; color: white;
+            padding: 3px 12px; border-radius: 15px; font-size: 0.8em; margin-bottom: 10px;
+        }
+        .paper-card .paper-type.paper-type { background: #2980b9; }
+        .paper-card .paper-type.tool-type { background: #e67e22; }
+        .paper-card .paper-type.survey-type { background: #8e44ad; }
+        .paper-card .paper-type.product-type { background: #27ae60; }
+        .paper-card h3 { color: #2c3e50; font-size: 1.3em; margin: 10px 0; }
+        .paper-card h3 a { color: #2c3e50; text-decoration: none; }
+        .paper-card h3 a:hover { color: #3498db; }
+        .paper-card .meta { color: #666; font-size: 0.9em; margin: 10px 0; }
+        .paper-card .meta span { margin-right: 15px; }
+        .paper-card .abstract { color: #444; line-height: 1.8; margin: 15px 0; }
+        .paper-card .innovation {
+            background: #f0f8ff; padding: 15px; border-radius: 8px;
+            border-left: 3px solid #9b59b6; margin-top: 15px;
+        }
+        .paper-card .innovation strong { color: #9b59b6; }
+        .paper-card .links { margin-top: 15px; }
+        .paper-card .links a { color: #3498db; text-decoration: none; margin-right: 15px; }
+        .paper-card .links a:hover { text-decoration: underline; }
+        .value-badge {
+            display: inline-block; padding: 3px 10px; border-radius: 12px;
+            font-size: 0.75em; margin-left: 10px; color: white;
+        }
+        .value-badge.high { background: #e74c3c; }
+        .value-badge.medium { background: #f39c12; }
+        .value-badge.low { background: #95a5a6; }
+        .footer {
+            background: #2c3e50; color: white; padding: 20px 40px; text-align: center;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .stats { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>智能体记忆（Agent Memory）最新科研成果</h1>
+        <div class="subtitle">Memory for AI Agents — Research Collection</div>
+        <div class="date">收集日期：2026年5月21日 | 覆盖范围：2026年近期最新成果</div>
+    </div>
+
+    <div class="summary">
+        <h2>统计概览</h2>
+        <div class="stats">
+            <div class="stat-item"><div class="number">30+</div><div class="label">总科研成果数</div></div>
+            <div class="stat-item"><div class="number">22</div><div class="label">学术论文</div></div>
+            <div class="stat-item"><div class="number">4</div><div class="label">综述与基准</div></div>
+            <div class="stat-item"><div class="number">4</div><div class="label">工业产品/框架</div></div>
+            <div class="stat-item"><div class="number">8</div><div class="label">高价值成果</div></div>
+        </div>
+    </div>
+
+    <div class="trends">
+        <h2>关键趋势</h2>
+        <ul class="trend-list">
+            <li><strong>层次化架构成为主流：</strong>H-MEM、HiMem、HiGMem、MemoryOS、HyperMem等大量工作表明，多层次（短期/中期/长期）层次化存储是解决长周期记忆的核心方向。</li>
+            <li><strong>图结构超越向量检索：</strong>GAM、Synapse、AriGraph、HyperMem等证明，图结构（普通图→超图）在捕捉复杂关联方面显著优于纯向量检索。</li>
+            <li><strong>从静态记忆到动态自我进化：</strong>ParamMem、Evo-Memory、GAM(DeepResearch)等工作表明，记忆不再是被动存储，而是支持智能体持续自我进化的核心能力。</li>
+            <li><strong>多智能体记忆共享：</strong>G-Memory等研究开启了多智能体间记忆共享与协作的新方向。</li>
+            <li><strong>标准化基准形成：</strong>LoCoMo、MemoryAgentBench、Evo-Memory三大基准已形成行业共识。</li>
+            <li><strong>工业落地加速：</strong>AWS AgentCore、Mem0、Letta等产品和服务推动记忆技术从研究走向生产。</li>
+            <li><strong>认知科学启发：</strong>从"AI meets Brain"到Experience Compression Spectrum，生物启发的记忆架构设计成为重要方向。</li>
+        </ul>
+    </div>
+
+    <div class="sections">
+        <h2 class="section-title">一、新型记忆架构设计</h2>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>1. MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-Horizon Agents</h3>
+            <div class="meta"><span>📅 ICLR 2026 Poster</span><span>🆔 arXiv: 2506.15841</span><span>👥 Zhou Zhou et al.</span></div>
+            <div class="abstract">介绍了MEM1，一个端到端的强化学习框架，使智能体能够在长周期的多轮任务中以恒定内存运行。在每个回合中，LLM推理生成的记忆会整合所有先前的上下文，实现近恒定的上下文窗口。无需手动设计记忆管理机制。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>通过推理驱动的记忆整合实现恒定内存；RL训练使智能体自主学会何时写入、如何压缩记忆。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2506.15841" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>2. Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory</h3>
+            <div class="meta"><span>📅 ECAI 2025</span><span>🆔 arXiv: 2504.19413</span><span>👥 Prateek Chhikara et al.</span></div>
+            <div class="abstract">介绍了Mem0，一个可扩展的记忆中心化架构，通过动态提取、整合和检索持续对话中的关键信息。实现了两个层级的记忆架构（用户记忆和智能体记忆），以及混合存储（向量搜索+图数据库）。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>三层记忆范围架构（用户/会话/智能体）；混合存储结合向量搜索与图数据库；自动去重和增量更新机制。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2504.19413" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>3. A-MEM: Agentic Memory for LLM Agents</h3>
+            <div class="meta"><span>📅 NeurIPS 2025 Poster</span><span>🆔 arXiv: 2502.12110</span><span>👥 Wujiang Xu et al.</span></div>
+            <div class="abstract">提出了一种新颖的代理记忆系统A-MEM，能够通过代理式方法动态组织LLM智能体的记忆。受Zettelkasten（卡片盒笔记法）启发，构建结构化、不断演化的记忆图谱，智能体驱动的主动记忆管理。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>受卡片盒笔记法启发构建结构化记忆图谱；智能体驱动主动记忆管理；动态图谱支持高效检索。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2502.12110" target="_blank">arXiv链接</a><a href="https://github.com/WujiangXu/A-mem" target="_blank">GitHub代码</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>4. MemoryOS: Memory Operating System of AI Agent</h3>
+            <div class="meta"><span>📅 EMNLP 2025 Oral (长文)</span><span>🆔 arXiv: 2506.06326</span><span>👥 BAI-LAB</span></div>
+            <div class="abstract">提出了一种面向AI智能体的记忆操作系统MemoryOS，灵感来源于操作系统的内存管理原则，设计了三层层次化存储架构（短期记忆、中期记忆、长期个人记忆）和四个核心功能模块（存储、更新、检索、优化）。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>层次化存储STM/MTM/LTM三级；动态更新与淘汰机制；类似OS的内存管理思想。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2506.06326" target="_blank">arXiv链接</a><a href="https://github.com/BAI-LAB/MemoryOS" target="_blank">GitHub代码</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>5. HyperMem: Hypergraph Memory for Long-Term Conversations</h3>
+            <div class="meta"><span>📅 ACL 2026</span><span>🆔 arXiv: 2604.08256</span><span>👥 J Yue, C Hu et al. (EverMind)</span></div>
+            <div class="abstract">提出了开创性的超图记忆架构，通过超边显式建模高阶关联（即多个元素之间的联合依赖），解决传统RAG或普通图记忆将相关信息拆分过碎的问题。三层超图记忆架构，有效保留信息间的复杂关系。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>三层超图记忆架构；超边建模高维关联（3+个元素间）；有效保留信息间的复杂关系。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2604.08256" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>6. SYNAPSE: Empowering LLM Agents with Episodic-Semantic Memory via Spreading Activation</h3>
+            <div class="meta"><span>📅 2026-01</span><span>🆔 arXiv: 2601.02744</span><span>👥 Jiang, Chen et al.</span></div>
+            <div class="abstract">引入SYNAPSE，一个统一的记忆架构，超越了传统的场景/语义记忆分类。通过扩散激活机制在知识图谱引导的RAG框架中协同利用场景记忆和语义记忆。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>知识图谱引导的RAG同时利用场景和语义记忆；扩散激活机制实现记忆间关联检索；统一图结构建模两类记忆。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2601.02744" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>7. H-MEM: Hierarchical Memory for High-Efficiency Long-Term Reasoning in LLM Agents</h3>
+            <div class="meta"><span>📅 EACL 2026</span><span>👥 Haoran Sun, Shaoning Zeng, Bob Zhang</span></div>
+            <div class="abstract">提出了H-MEM，一种层次化记忆架构，根据记忆的重要程度将记忆组织为多级结构，并采用基于索引的路由机制来平衡表示容量和检索效率。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>多级层次化记忆组织；基于索引的路由实现高效检索；平衡表示能力和计算效率。</div>
+            <div class="links"><a href="https://aclanthology.org/2026.eacl-long.15/" target="_blank">ACL Anthology</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>8. HiMem: Hierarchical Long-Term Memory for LLM Long-Horizon Agents</h3>
+            <div class="meta"><span>📅 2026-01</span><span>🆔 arXiv: 2601.06377</span><span>👥 jojopdq</span></div>
+            <div class="abstract">受认知理论启发，提出HiMem——一个层次化的长期记忆框架，专为长周期对话设计。采用"片段记忆"和"笔记记忆"两层结构，混合检索与尽力检索策略平衡精度和效率。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>Episode Memory + Note Memory两层层次结构；混合检索与尽力检索策略；冲突感知的记忆更新。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2601.06377" target="_blank">arXiv链接</a><a href="https://github.com/jojopdq/HiMem" target="_blank">GitHub代码</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>9. HiGMem: A Hierarchical and LLM-Guided Memory System for Long-Term Conversational Agents</h3>
+            <div class="meta"><span>📅 2026-04</span><span>🆔 arXiv: 2604.18349</span><span>👥 Shuqi Cao, Jingyi He, Fei Tan</span></div>
+            <div class="abstract">针对长期对话智能体，提出HiGMem——一个层次化且由LLM引导的记忆系统。将长对话组织为Turn（轮次）、Event（事件）和可选Profile（画像）三个层次，LLM增量式引导记忆构建。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>层次化记忆：轮次→事件→画像三层结构；LLM增量式引导记忆构建；结构化事件建模。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2604.18349" target="_blank">arXiv链接</a><a href="https://github.com/ZeroLoss-Lab/HiGMem" target="_blank">GitHub代码</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>10. AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents</h3>
+            <div class="meta"><span>📅 IJCAI 2025</span><span>🆔 arXiv: 2407.04363</span><span>👥 Petr Anokhin, Nikita Semenov et al.</span></div>
+            <div class="abstract">介绍了AriGraph，一种新颖的方法，其中智能体在探索过程中构建和更新记忆图谱，该图谱整合了语义记忆和场景记忆，作为世界模型支持智能体的推理和规划。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>语义和场景记忆统一在知识图谱中；图谱作为世界模型支持推理和规划；在线构建和更新。</div>
+            <div class="links"><a href="https://www.ijcai.org/proceedings/2025/2" target="_blank">IJCAI链接</a></div>
+        </div>
+
+        <h2 class="section-title">二、记忆压缩与Consolidation机制</h2>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>11. Experience Compression Spectrum: Unifying Memory, Skills, and Rules in LLM Agents</h3>
+            <div class="meta"><span>📅 2026-04</span><span>🆔 arXiv: 2604.15877</span><span>👥 Lewis Liu et al.</span></div>
+            <div class="abstract">提出了经验压缩谱（Experience Compression Spectrum），统一框架将记忆、技能和规则定位为同一压缩轴上的不同点。利用互补学习系统（CLS）理论，将场景记忆"向上压缩"为新皮层知识，实现子线性可扩展的知识复用。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>统一框架：记忆→技能→规则的压缩谱；生物启发的"向上压缩"理论；实现子线性可扩展的知识复用。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2604.15877" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>12. Memory Management Impact Study: Empirical Study of Experience-Following Behavior</h3>
+            <div class="meta"><span>📅 2025-05</span><span>🆔 arXiv: 2505.16067</span><span>👥 多个研究者</span></div>
+            <div class="abstract">对记忆管理策略（特别是添加和删除操作）如何影响LLM智能体行为和长期性能的实证研究。发现过度的记忆删除会损害智能体的经验遵循能力，而合理的记忆压缩能提升长期表现。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>首次系统研究记忆管理操作对长期表现的影响；发现记忆删除策略的潜在风险；提供记忆管理的实证指南。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2505.16067" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <h2 class="section-title">三、记忆检索与RAG结合</h2>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>13. Retrieval-Augmented LLM Agents: Learning to Learn from Experience</h3>
+            <div class="meta"><span>📅 2026-03</span><span>🆔 arXiv: 2603.18272</span><span>👥 多个研究者</span></div>
+            <div class="abstract">研究如何训练检索增强型LLM智能体能够从经验中学习并学习，将检索Augmented与经验重用（ExpRAG）相结合，实现"学会如何学习"的能力。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>训练型检索增强智能体；结合经验重用进行元学习；实现"学会如何学习"的能力。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2603.18272" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>14. SGMem: Sentence Graph Memory for Long-Term Conversational Agents</h3>
+            <div class="meta"><span>📅 2025-09</span><span>🆔 arXiv: 2509.21212</span><span>👥 Yaxiong Wu et al.</span></div>
+            <div class="abstract">引入SGMem（句子图记忆），将对话表示为分块单位内的句子级图，捕捉句子间的关联。以细粒度方式管理和检索记忆，解决多会话对话中的"记忆碎片化"问题。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>句子级图表示，细粒度记忆管理；分块单位内捕捉句子关联；有效解决记忆碎片化问题。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2509.21212" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>15. RMM: Reflective Memory Management for Long-term Personalized Dialogue Agents</h3>
+            <div class="meta"><span>📅 ACL 2025</span><span>🆔 arXiv: 2503.08026</span><span>👥 谷歌研究员</span></div>
+            <div class="abstract">提出反思性记忆管理（RMM）机制，整合了前瞻性和回顾性反思：前瞻性反思动态总结不同粒度的互动；回顾性反思从过去的对话中提取教训。在个性化对话场景中提升了长期记忆的一致性和相关性。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>前瞻性+回顾性双重反思机制；多粒度记忆总结；个性化对话优化。</div>
+            <div class="links"><a href="https://aclanthology.org/2025.acl-long.413/" target="_blank">ACL Anthology</a></div>
+        </div>
+
+        <h2 class="section-title">四、多智能体间的记忆共享</h2>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>16. G-Memory: Tracing Hierarchical Memory for Multi-Agent Systems</h3>
+            <div class="meta"><span>📅 NeurIPS 2026</span><span>🆔 arXiv: 2506.07398</span><span>👥 Zhang, Fu et al.</span></div>
+            <div class="abstract">介绍了G-Memory——一个层次化的代理记忆系统，专为多智能体系统（MAS）设计。受组织记忆理论启发，管理长周期的MAS交互过程，支持持续自进化。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>组织记忆理论驱动的多智能体记忆；层次化架构管理团队记忆和个体记忆；支持持续自进化。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2506.07398" target="_blank">arXiv链接</a><a href="https://github.com/bingreeky/GMemory" target="_blank">GitHub代码</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>17. Cost and Accuracy of Long-Term Graph Memory in Distributed LLM-Based Multi-Agent Systems</h3>
+            <div class="meta"><span>📅 2026-01</span><span>🆔 arXiv: 2601.07978</span><span>👥 Weichen Wan et al.</span></div>
+            <div class="abstract">引入了一个灵活的测试平台，比较mem0（基于向量的记忆框架）和Graphiti（基于图的知识图谱）在分布式多智能体系统中的长期记忆成本与准确性。图记忆在准确性上略优但成本更高，向量方法在性价比上更具优势。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>首次系统比较向量记忆与图记忆在分布式MAS中的成本/准确性权衡；提供了可复用的评测框架。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2601.07978" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>18. Trainable Graph Memory for LLM Agents</h3>
+            <div class="meta"><span>🆔 OpenReview</span><span>👥 多个研究者</span></div>
+            <div class="abstract">提出了可训练的图记忆方法，更好地利用先前经验来指导当前决策。通过端到端训练优化图结构的记忆存储和检索。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>可训练/端到端优化的图记忆；经验到决策的显式连接；自适应图结构。</div>
+            <div class="links"><a href="https://openreview.net/forum?id=bvaaydGKYp" target="_blank">OpenReview</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>19. GAM: Hierarchical Graph Memory for LLM-based Agents</h3>
+            <div class="meta"><span>📅 ICLR 2026 Workshop (MemAgents Oral)</span><span>🆔 arXiv: 2604.12285</span><span>👥 多个研究者</span></div>
+            <div class="abstract">提出层次化图记忆方法，将时间、置信度和角色信号整合到自上而下的遍历中，使智能体能够回忆精确的场景细节。在LoCoMo和LongDialQA基准上始终优于最先进基线。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>层次化图结构；多维度信号整合（时间/置信度/角色）；自上而下的遍历检索。</div>
+            <div class="links"><a href="https://openreview.net/forum?id=mmsVZGaYyp" target="_blank">OpenReview</a></div>
+        </div>
+
+        <h2 class="section-title">五、记忆增强的自我改进能力</h2>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>20. ParamMem: Augmenting Language Agents with Parametric Reflective Memory</h3>
+            <div class="meta"><span>📅 2026-02</span><span>🆔 arXiv: 2602.23320</span><span>👥 多个研究者</span></div>
+            <div class="abstract">引入ParamMem——一个参数化记忆模块，将跨样本反思模式编码到模型参数中，实现多样化的自我反思，解决传统LLM自我反思产生重复输出的问题。参数化+情景记忆结合。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>将反思模式编码为参数（而非基于检索）；多样化的自我反思生成；参数化+情景记忆结合。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2602.23320" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge high">高价值</span>
+            <h3>21. Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory</h3>
+            <div class="meta"><span>📅 2025-11</span><span>🆔 arXiv: 2511.20857</span><span>👥 Wei et al. (Google DeepMind, UIUC)</span></div>
+            <div class="abstract">引入了Evo-Memory——一个全面的流式基准和框架，用于评估LLM智能体的自我进化记忆能力。将现有数学、QA、工具使用和交互环境重构为顺序任务流，评估智能体能否从连续任务中积累和重用策略。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>首个系统评估"测试时进化"能力的基准；流式任务设计模拟真实场景；提供基线方法ExpRAG和ReMem框架。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2511.20857" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>22. GAM: General Agentic Memory Via Deep Research</h3>
+            <div class="meta"><span>📅 2025-11</span><span>🆔 arXiv: 2511.18423</span><span>👥 B. Y. Yan</span></div>
+            <div class="abstract">提出了GAM——一种新型记忆系统，通过深度研究实现通用代理记忆。用动态深度研究替代静态压缩，实现"即时"记忆编译，使智能体能够自主搜索和构建所需知识。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>动态"即时"记忆编译替代静态压缩；利用深度研究能力构建记忆；通用性强的记忆框架。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2511.18423" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>23. CAM: A Constructivist View of Agentic Memory for LLM-Based Reading Comprehension</h3>
+            <div class="meta"><span>📅 NeurIPS 2025</span><span>🆔 arXiv: 2510.05520</span><span>👥 rui9812</span></div>
+            <div class="abstract">从建构主义视角提出代理记忆框架，改进基于LLM的阅读理解的长期记忆能力。通过构建式学习而非被动存储来管理长文本记忆。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>建构主义记忆观——主动构建而非被动存储；面向长文档阅读理解的优化；高效的记忆结构。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2510.05520" target="_blank">arXiv链接</a><a href="https://github.com/rui9812/CAM" target="_blank">GitHub代码</a></div>
+        </div>
+
+        <h2 class="section-title">六、综述与基准</h2>
+
+        <div class="paper-card">
+            <span class="paper-type survey-type">综述</span><span class="value-badge high">高价值</span>
+            <h3>24. Memory in the Age of AI Agents: A Survey</h3>
+            <div class="meta"><span>📅 2025-12</span><span>🆔 arXiv: 2512.13564</span><span>👥 Shichun Liu et al. (47位作者)</span></div>
+            <div class="abstract">第一篇关于AI智能体时代记忆的综述。提出了形式/功能/动态三维分类学，从三个互补视角审视智能体记忆：载体形式（什么承载记忆）、功能（为什么需要记忆）、动态（记忆如何形成、演进和检索）。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>47位作者合作的全面综述；形式/功能/动态三维分类学；涵盖从基础理论到实际部署的全景。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2512.13564" target="_blank">arXiv链接</a><a href="https://github.com/Shichun-Liu/Agent-Memory-Paper-List" target="_blank">论文列表</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type survey-type">综述</span><span class="value-badge medium">中价值</span>
+            <h3>25. A Survey on the Evolution of LLM Agent Memory Mechanisms: From Storage to Experience</h3>
+            <div class="meta"><span>📅 2026-05</span><span>🆔 arXiv: 2605.06716</span><span>👥 多个研究者</span></div>
+            <div class="abstract">提出了LLM智能体记忆机制的演进框架，将发展过程形式化为从"存储"到"经验"再到"进化"的三个阶段。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>三阶段演进模型（存储→经验→进化）；系统化梳理记忆机制发展脉络；指出未来研究方向。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2605.06716" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type survey-type">综述</span><span class="value-badge medium">中价值</span>
+            <h3>26. Memory for Autonomous LLM Agents: Mechanisms, Evaluation, and Emerging Frontiers</h3>
+            <div class="meta"><span>📅 2026-03</span><span>🆔 arXiv: 2603.07670</span><span>👥 多个研究者</span></div>
+            <div class="abstract">全面综述了现代LLM驱动代理中的记忆设计与实现，系统地梳理了记忆机制、评估方法和新兴前沿。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>最新综述覆盖2022-2026；系统评估方法梳理；新兴前沿展望。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2603.07670" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type survey-type">综述</span><span class="value-badge medium">中价值</span>
+            <h3>27. AI Meets Brain: A Unified Survey on Memory Systems from Cognitive Neuroscience to Autonomous Agents</h3>
+            <div class="meta"><span>📅 2025-12</span><span>🆔 arXiv: 2512.23343</span><span>👥 Zekun Wang et al.</span></div>
+            <div class="abstract">综合性综述，将认知神经科学的记忆原理与LLM驱动的自主代理架构联系起来。系统地考察了从大脑神经元到AI代理的记忆系统分析。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>认知神经科学与AI的统一视角；详细分析海马体/新皮层理论对AI记忆架构的启发；连接生物学与工程学的桥梁。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2512.23343" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>28. Governing Evolving Memory in LLM Agents: Risks, Mechanisms, and SSGM Framework</h3>
+            <div class="meta"><span>📅 2026-03</span><span>🆔 arXiv: 2603.11768</span><span>👥 多个研究者</span></div>
+            <div class="abstract">探讨了智能体记忆演进过程中的安全风险，提出了稳定性与安全治理记忆（SSGM）框架。研究记忆的结构化如何影响检索有效性和推理能力。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>首个关注记忆安全风险的框架；SSGM治理框架；记忆结构与推理能力关系的深入分析。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2603.11768" target="_blank">arXiv链接</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type paper-type">学术论文</span><span class="value-badge medium">中价值</span>
+            <h3>29. MemoryAgentBench: Evaluating Memory in LLM Agents via Incremental Multi-Turn Interactions</h3>
+            <div class="meta"><span>📅 ICLR 2026</span><span>🆔 arXiv: 2507.05257</span><span>👥 多个研究者</span></div>
+            <div class="abstract">引入MemoryAgentBench——一个专门针对记忆智能体的新基准，评估四项核心能力：准确检索、测试时学习、长程理解和冲突消解。采用增量分块和多轮交互模拟真实用户-代理互动。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>四项核心记忆能力评估；增量分块模拟真实多轮交互；综合评估框架。</div>
+            <div class="links"><a href="https://arxiv.org/abs/2507.05257" target="_blank">arXiv链接</a><a href="https://github.com/HUST-AI-HYZ/MemoryAgentBench" target="_blank">GitHub代码</a></div>
+        </div>
+
+        <h2 class="section-title">七、工业产品与框架</h2>
+
+        <div class="paper-card">
+            <span class="paper-type product-type">工业产品</span><span class="value-badge high">高价值</span>
+            <h3>30. Amazon Bedrock AgentCore Memory: Building Context-Aware Agents</h3>
+            <div class="meta"><span>🏢 AWS</span><span>📅 2026年持续更新</span></div>
+            <div class="abstract">AWS推出Amazon Bedrock AgentCore Memory——一个完全托管的长期记忆服务，实现AI智能体的短期对话上下文和跨会话长期学习。实施研究支持的长期记忆管道，模拟人类记忆过程。2026年3月新增流式通知功能。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>完全托管的短期+长期记忆；可自定义提取和整合算法；最长365天的事件保留期；流式通知支持。</div>
+            <div class="links"><a href="https://aws.amazon.com/blogs/machine-learning/building-smarter-ai-agents-agentcore-long-term-memory-deep-dive/" target="_blank">AWS博客</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type tool-type">开源框架</span><span class="value-badge high">高价值</span>
+            <h3>31. Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory</h3>
+            <div class="meta"><span>🔧 Mem0 AI</span><span>📅 ECAI 2025</span></div>
+            <div class="abstract">可扩展的记忆中心化架构，通过动态提取、整合和检索持续对话中的关键信息。三层记忆范围架构（用户/会话/智能体），混合存储（向量搜索+图数据库），自动去重和增量更新机制。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>三层记忆范围架构；混合存储结合向量搜索与图数据库；自动去重和增量更新。</div>
+            <div class="links"><a href="https://mem0.ai" target="_blank">Mem0官网</a><a href="https://mem0.ai/blog/state-of-ai-agent-memory-2026" target="_blank">2026状态报告</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type tool-type">开源框架</span><span class="value-badge high">高价值</span>
+            <h3>32. Letta (MemGPT): Memory as a First-Class Agent State Component</h3>
+            <div class="meta"><span>🔧 Letta Inc.</span><span>📅 持续开发</span></div>
+            <div class="abstract">Letta（原名MemGPT）将记忆作为智能体状态的第一类显式组件，使智能体能够持久化、演进。支持基于操作的记忆管理系统，类似于操作系统的内存管理。与DeepLearning.AI合作推出课程。</div>
+            <div class="innovation"><strong>💡 创新点：</strong>记忆作为状态的一部分；操作式记忆管理；生态活跃。</div>
+            <div class="links"><a href="https://www.letta.com" target="_blank">Letta官网</a></div>
+        </div>
+
+        <div class="paper-card">
+            <span class="paper-type product-type">行业报告</span><span class="value-badge medium">中价值</span>
+            <h3>33. State of AI Agent Memory 2026: Benchmarks, Architectures, and the Growing Body of Operational Research</h3>
+            <div class="meta"><span>🏢 Mem0</span><span>📅 2026年</span></div>
+            <div class="abstract">对2026年AI智能体记忆领域的全面状态评估，对比了十种记忆方法和21种集成方案，涵盖LoCoMo、LongMemEval和BEAM三大基准的横向比较。</div>
+            <div class="innovation"><strong>💡 关键发现：</strong>向量+图谱混合架构成为主流；工具型记忆操作（memory-as-tools）架构在基准测试中表现优异；标准化基准逐渐形成。</div>
+            <div class="links"><a href="https://mem0.ai/blog/state-of-ai-agent-memory-2026" target="_blank">阅读报告</a></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>智能体记忆（Agent Memory）科研成果汇总 | 生成日期：2026年5月21日</p>
+        <p>共收集30+项科研成果（22篇学术论文 + 4篇综述/基准 + 4项工业产品/框架）</p>
+    </div>
+</div>
+</body>
+</html>

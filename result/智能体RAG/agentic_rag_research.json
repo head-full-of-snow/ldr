@@ -1,0 +1,629 @@
+{
+  "metadata": {
+    "title": "基于智能体的RAG（Agentic RAG）科研成果数据",
+    "collection_date": "2026-05-21",
+    "coverage_period": {
+      "start": "2026-05-18",
+      "end": "2026-05-21"
+    },
+    "total_items": 20,
+    "categories": {
+      "academic_papers": 16,
+      "open_source_tools": 4
+    },
+    "data_format_version": "1.0"
+  },
+  "summary": {
+    "key_trends": [
+      {
+        "trend": "多智能体协作成为主流",
+        "description": "SEMA-RAG、MASS-RAG、MA-IDS等框架均表明，多智能体分工协作（解释、探索、裁决）在复杂RAG任务中显著优于单智能体方法。",
+        "evidence_papers": ["SEMA-RAG", "MASS-RAG", "MA-IDS"]
+      },
+      {
+        "trend": "效率优化是核心挑战",
+        "description": "LatentRAG将推理延迟降低90%，AutoSearch通过RL实现自适应搜索深度，表明agentic RAG的延迟问题是当前最活跃的研究方向。",
+        "evidence_papers": ["LatentRAG", "AutoSearch"]
+      },
+      {
+        "trend": "领域垂直化加速",
+        "description": "FinAgent-RAG（金融）、SEMA-RAG（医疗）、BLAgent（软件工程）等表明agentic RAG正在快速渗透到各个垂直领域。",
+        "evidence_papers": ["FinAgent-RAG", "SEMA-RAG", "BLAgent"]
+      },
+      {
+        "trend": "安全与鲁棒性受到重视",
+        "description": "Architecture Matters论文首次系统比较不同RAG架构在知识库中毒攻击下的表现，Securing the Agent论文解决企业多租户数据隔离问题。",
+        "evidence_papers": ["Architecture Matters", "Securing the Agent"]
+      },
+      {
+        "trend": "基准测试需求迫切",
+        "description": "MTR-Suite、MINTEval、EnterpriseRAG-Bench表明领域需要更专业的agentic RAG评估框架，特别是在长周期记忆、对话检索和企业知识方面。",
+        "evidence_papers": ["MTR-Suite", "MINTEval", "EnterpriseRAG-Bench"]
+      }
+    ]
+  },
+  "research_items": [
+    {
+      "id": 1,
+      "type": "academic_paper",
+      "title_zh": "BLAgent: 用于文件级Bug定位的Agentic RAG",
+      "title_en": "BLAgent: Agentic RAG for File-Level Bug Localization",
+      "arxiv_id": "2605.17965",
+      "submission_date": "2026-05-18",
+      "authors": ["Md Afif Al Mamun", "Gias Uddin"],
+      "status": "在审（ACM Transactions on Software Engineering and Methodology）",
+      "domain": "软件工程",
+      "value_level": "high",
+      "abstract_zh": "提出BLAgent，一种用于文件级bug定位的新型agentic RAG框架，整合三个关键创新：(i) 代码结构感知仓库编码与路径增强AST分块；(ii) 双视角查询转换捕获结构和行为信号；(iii) 两阶段智能体重排序结合符号检查与证据推理。在SWE-bench Lite上，开源模型达到78% Top-1准确率，闭源模型达到86%，且比最强基线便宜18倍。",
+      "innovations": [
+        "首次将agentic RAG应用于软件工程领域的bug定位",
+        "提出代码结构感知的仓库编码方法",
+        "双视角查询转换机制捕获结构和行为信号",
+        "两阶段智能体重排序结合符号检查与证据推理",
+        "成本仅为最强基线的1/18"
+      ],
+      "key_results": {
+        "dataset": "SWE-bench Lite",
+        "open_source_accuracy": "78%",
+        "closed_source_accuracy": "86%",
+        "cost_reduction": "88.9% (比基线便宜18倍)"
+      },
+      "why_high_value": "开创了agentic RAG在软件工程领域的应用，提出低成本高效率的bug定位方案，具有明确的工业应用价值。",
+      "link": "https://arxiv.org/abs/2605.17965"
+    },
+    {
+      "id": 2,
+      "type": "academic_paper",
+      "title_zh": "SEMA-RAG: 用于医疗推理的自我进化多智能体RAG框架",
+      "title_en": "SEMA-RAG: A Self-Evolving Multi-Agent Retrieval-Augmented Generation Framework for Medical Reasoning",
+      "arxiv_id": "2605.17101",
+      "submission_date": "2026-05-16",
+      "authors": ["Yongfeng Huang", "Ruiying Chen", "James Cheng"],
+      "domain": "医疗",
+      "value_level": "high",
+      "abstract_zh": "提出SEMA-RAG，一种用于医疗推理的自我进化多智能体RAG框架。将三个专业智能体分配到不同角色：Interpreter Agent（临床模式解释）、Explorer Agent（充分性驱动的自我进化检索）、Arbiter Agent（证据裁决和答案选择）。在五个基准和五个LLM后端上，SEMA-RAG平均超越最强基线+6.46个准确率点。",
+      "innovations": [
+        "首创自我进化的多智能体RAG架构",
+        "Explorer Agent实现充分性驱动的自适应检索",
+        "提出证据裁决机制（Arbiter Agent）",
+        "三个专业化智能体分工协作（解释、探索、裁决）",
+        "跨五个LLM后端的广泛适用性"
+      ],
+      "key_results": {
+        "benchmarks": "5个基准",
+        "llm_backends": "5种LLM",
+        "accuracy_improvement": "+6.46 points vs strongest baseline"
+      },
+      "why_high_value": "自我进化机制和多智能体协作模式具有普适性，可在多个领域迁移应用；医疗领域的准确性提升显著。",
+      "link": "https://arxiv.org/abs/2605.17101"
+    },
+    {
+      "id": 3,
+      "type": "academic_paper",
+      "title_zh": "MTR-Suite: 对话检索基准评估与综合框架",
+      "title_en": "MTR-Suite: A Framework for Evaluating and Synthesizing Conversational Retrieval Benchmarks",
+      "arxiv_id": "2605.20729",
+      "submission_date": "2026-05-20",
+      "authors": ["Junhao Ruan", "Abudukeyumu Abudula", "Bei Li", "Yongjing Yin", "Xinyu Liu", "Kechen Jiao", "Xin Chen", "Jingang Wang", "Xunliang Cai", "Tong Xiao", "Jingbo Zhu"],
+      "status": "ACL 2026 主会接收",
+      "domain": "基准测试",
+      "value_level": "high",
+      "abstract_zh": "提出MTR-Suite，一个用于审查、综合和基准测试对话检索的统一框架。包含三个核心组件：(1) MTR-Eval，基于LLM的审计器量化先前基准的对齐差距；(2) MTR-Pipeline，一种多智能体系统，使用贪婪遍历聚类以1/400的人类成本生成高保真对话；(3) MTR-Bench，一个严格的一般领域基准。",
+      "innovations": [
+        "多智能体对话基准自动生成方法",
+        "成本仅为人类的1/400",
+        "基于LLM的审计器量化基准对齐差距",
+        "贪婪遍历聚类算法",
+        "统一的基准评估、生成、综合框架"
+      ],
+      "key_results": {
+        "cost_ratio": "1/400 of human cost",
+        "components": ["MTR-Eval", "MTR-Pipeline", "MTR-Bench"]
+      },
+      "why_high_value": "解决基准测试构建成本高昂的痛点，多智能体自动生成方法具有推广价值，已被ACL 2026主会接收。",
+      "link": "https://arxiv.org/abs/2605.20729",
+      "code": "https://github.com/rangehow/mtr-suite"
+    },
+    {
+      "id": 4,
+      "type": "academic_paper",
+      "title_zh": "LatentRAG: 用于高效Agentic RAG的潜在推理与检索",
+      "title_en": "LatentRAG: Latent Reasoning and Retrieval for Efficient Agentic RAG",
+      "arxiv_id": "2605.06285",
+      "submission_date": "2026-05-07",
+      "authors": ["Yijia Zheng", "Marcel Worring"],
+      "domain": "效率优化",
+      "value_level": "high",
+      "abstract_zh": "提出LatentRAG，将推理和检索从离散语言空间转移到连续潜在空间。LLM直接从隐藏状态中一次性生成潜在token作为思维和子查询，而非token-by-token生成自然语言思维。在七个基准数据集上实现与显式agentic RAG方法相当的性能，同时将推理延迟降低约90%。",
+      "innovations": [
+        "从离散语言空间转移到连续潜在空间",
+        "LLM直接从隐藏状态生成潜在token",
+        "一次性生成思维和子查询，避免token级生成",
+        "推理延迟降低约90%",
+        "保持与显式agentic RAG相当的性能"
+      ],
+      "key_results": {
+        "datasets": "7个基准数据集",
+        "latency_reduction": "~90%",
+        "performance": "comparable to explicit agentic RAG"
+      },
+      "why_high_value": "革命性地解决agentic RAG的延迟瓶颈问题，潜在空间推理方法具有理论创新性，可能成为未来研究方向。",
+      "link": "https://arxiv.org/abs/2605.06285"
+    },
+    {
+      "id": 5,
+      "type": "academic_paper",
+      "title_zh": "EngiAI: 面向LLM驱动工程设计的多智能体框架与基准套件",
+      "title_en": "EngiAI: A Multi-Agent Framework and Benchmark Suite for LLM-Driven Engineering Design",
+      "arxiv_id": "2605.19743",
+      "submission_date": "2026-05-19",
+      "authors": ["Gioele Molinari", "Florian Felten", "Soheyl Massoudi", "Mark Fuge"],
+      "status": "待发表到IDETC 2026",
+      "domain": "工程设计",
+      "value_level": "high",
+      "abstract_zh": "提出EngiAI，一个基于LangGraph的多智能体系统（MAS）参考实现，通过监督者架构协调七个专业化智能体，统一拓扑优化、文档检索、HPC作业编排和3D打印控制。提出三维度评估基准：工作流基准、RAG基准和HPC基准。",
+      "innovations": [
+        "基于LangGraph的多智能体参考实现",
+        "监督者架构协调七个专业化智能体",
+        "统一拓扑优化、文档检索、HPC作业和3D打印",
+        "三维度评估基准（工作流、RAG、HPC）",
+        "展示agentic RAG在科学计算中的潜力"
+      ],
+      "key_results": {
+        "proprietary_model_completion": "96-97% on Beams2D",
+        "open_source_4b_completion": "55-78%",
+        "benchmark_dimensions": ["Workflow", "RAG", "HPC"]
+      },
+      "why_high_value": "展示agentic RAG在工程设计和科学计算领域的应用潜力，提出的三维基准具有参考价值。",
+      "link": "https://arxiv.org/abs/2605.19743"
+    },
+    {
+      "id": 6,
+      "type": "academic_paper",
+      "title_zh": "架构至关重要：知识库中毒下RAG系统的架构比较研究",
+      "title_en": "Architecture Matters: Comparing RAG Systems under Knowledge Base Poisoning",
+      "arxiv_id": "2605.05632",
+      "submission_date": "2026-05-07",
+      "authors": ["Samuel Korn"],
+      "domain": "安全与鲁棒性",
+      "value_level": "high",
+      "abstract_zh": "在受控的单文档（N=1）中毒环境下，评估四种RAG架构（vanilla RAG、agentic RAG、MADAM-RAG和Recursive Language Models）。发现架构对抗扰韧性差异显著：在CorruptRAG-AK攻击下，攻击成功率从81.9%（vanilla）到24.4%（RLM），跨度近58个百分点。",
+      "innovations": [
+        "首次系统比较不同RAG架构在知识库中毒攻击下的鲁棒性",
+        "揭示agentic RAG相比传统RAG具有更强抗攻击能力",
+        "提出七类行为分类法捕捉矛盾检测、犹豫和失败模式",
+        "受控实验设计（单文档N=1中毒）",
+        "为安全RAG设计提供指导"
+      ],
+      "key_results": {
+        "attack_success_rate_vanilla": "81.9%",
+        "attack_success_rate_rlm": "24.4%",
+        "improvement": "~58 percentage points",
+        "behavior_categories": 7
+      },
+      "why_high_value": "首次系统性比较RAG架构的鲁棒性，揭示agentic RAG的安全优势，为企业部署提供安全依据。",
+      "link": "https://arxiv.org/abs/2605.05632"
+    },
+    {
+      "id": 7,
+      "type": "academic_paper",
+      "title_zh": "MINTEval: 长周期智能体系统中的多目标干扰记忆评估",
+      "title_en": "MINTEval: Evaluating Memory under Multi-Target Interference in Long-Horizon Agent Systems",
+      "arxiv_id": "2605.18565",
+      "submission_date": "2026-05-18",
+      "authors": ["Hyunji Lee", "Justin Chih-Yao Chen", "Joykirat Singh", "Zaid Khan", "Elias Stengel-Eskin", "Mohit Bansal"],
+      "domain": "基准测试",
+      "value_level": "medium",
+      "abstract_zh": "提出MINTEval（长周期多目标干扰记忆评估）基准，包含15.6k问答对，上下文平均138.8k token，最长1.8M token。评估7种代表性系统（包括vanilla长上下文LLM、RAG和记忆增强智能体框架），发现所有系统平均准确率仅27.9%，检索和记忆构建是主要瓶颈。",
+      "innovations": [
+        "提出长周期多目标干扰下的记忆评估基准",
+        "大规模数据集：15.6k问答对，平均138.8k token上下文",
+        "评估7种代表性系统",
+        "揭示当前RAG和记忆增强智能体的性能瓶颈",
+        "最长上下文达1.8M token"
+      ],
+      "key_results": {
+        "qa_pairs": 15600,
+        "avg_context_tokens": "138,800",
+        "max_context_tokens": "1,800,000",
+        "systems_evaluated": 7,
+        "average_accuracy": "27.9%"
+      },
+      "why_medium_value": "揭示当前系统的性能瓶颈，为后续研究提供明确的改进方向，但本身是评估框架而非解决方案。",
+      "link": "https://arxiv.org/abs/2605.18565"
+    },
+    {
+      "id": 8,
+      "type": "academic_paper",
+      "title_zh": "面向金融文档问答的Agentic RAG",
+      "title_en": "Agentic Retrieval-Augmented Generation for Financial Document Question Answering",
+      "arxiv_id": "2605.05409",
+      "submission_date": "2026-05-06",
+      "authors": ["Yang Shu", "Yingmin Liu", "Zequn Xie"],
+      "status": "已提交至Expert Systems with Applications",
+      "domain": "金融",
+      "value_level": "medium",
+      "abstract_zh": "提出FinAgent-RAG，一种agentic RAG框架，编排迭代检索-推理循环和自我验证。三个领域特定创新：(1) 对比金融检索器，通过困难负样本挖掘训练；(2) 思维编程推理模块，生成可执行Python代码进行精确算术运算；(3) 自适应策略路由器，根据问题复杂度动态分配计算资源，在FinQA上降低API成本41.3%。",
+      "innovations": [
+        "针对金融领域的agentic RAG解决方案",
+        "对比金融检索器（困难负样本挖掘训练）",
+        "思维编程推理模块（生成可执行Python代码）",
+        "自适应策略路由器（动态分配计算资源）",
+        "API成本降低41.3%"
+      ],
+      "key_results": {
+        "datasets": ["FinQA", "ConvFinQA", "TAT-QA"],
+        "execution_accuracy": {
+          "FinQA": "76.81%",
+          "ConvFinQA": "78.46%",
+          "TAT-QA": "74.96%"
+        },
+        "api_cost_reduction": "41.3%"
+      },
+      "why_medium_value": "金融领域的垂直应用具有商业价值，思维编程推理模块可迁移到其他需要精确计算的领域。",
+      "link": "https://arxiv.org/abs/2605.05409"
+    },
+    {
+      "id": 9,
+      "type": "academic_paper",
+      "title_zh": "保护智能体：面向企业的多租户检索与工具使用方案",
+      "title_en": "Securing the Agent: Vendor-Neutral, Multitenant Enterprise Retrieval and Tool Use",
+      "arxiv_id": "2605.05287",
+      "submission_date": "2026-05-06",
+      "authors": ["Francisco Javier Arceo", "Varsha Prasad Narsing"],
+      "status": "发表于ACM AI and Agentic Systems Conference '26",
+      "domain": "企业安全",
+      "value_level": "medium",
+      "abstract_zh": "解决企业RAG系统中多租户数据隔离问题。提出分层隔离架构，结合策略感知摄入、检索时门控和共享推理，通过服务器端智能体编排强制执行。在OGX（开源实现）中验证，ABAC门控消除跨租户数据泄露，同时引入可忽略的开销。",
+      "innovations": [
+        "企业多租户RAG数据隔离架构",
+        "分层隔离设计（策略感知摄入、检索时门控、共享推理）",
+        "ABAC访问控制实现零数据泄露",
+        "可忽略的额外开销",
+        "开源实现OGX"
+      ],
+      "key_results": {
+        "data_leaks": "0 (cross-tenant)",
+        "overhead": "negligible",
+        "implementation": "OGX (open source)"
+      },
+      "why_medium_value": "企业多租户安全是实际部署的关键障碍，该方案为Enterprise RAG提供了可行的安全架构。",
+      "link": "https://arxiv.org/abs/2605.05287"
+    },
+    {
+      "id": 10,
+      "type": "academic_paper",
+      "title_zh": "Experience-RAG Skill: 面向智能体的可插入经验RAG技能",
+      "title_en": "Experience-RAG Skill: An Agent-Oriented Pluggable Experience-RAG Skill",
+      "arxiv_id": "2605.03989",
+      "submission_date": "2026-05-05",
+      "authors": ["Dutao Zhang", "Tian Liao"],
+      "domain": "检索编排",
+      "value_level": "medium",
+      "abstract_zh": "提出Experience-RAG Skill，一种面向智能体的可插入检索编排层，位于智能体和检索器池之间。该技能分析当前场景，查询经验记忆，选择合适的检索策略，并返回结构化证据。在BeIR/nq、BeIR/hotpotqa和BeIR/scifact上实现nDCG@10为0.8924，优于固定单检索器基线。",
+      "innovations": [
+        "可插入的经验RAG技能层",
+        "基于场景自适应选择检索策略",
+        "经验记忆查询机制",
+        "检索编排模块化设计",
+        "nDCG@10达到0.8924"
+      ],
+      "key_results": {
+        "datasets": ["BeIR/nq", "BeIR/hotpotqa", "BeIR/scifact"],
+        "nDCG_at_10": 0.8924
+      },
+      "why_medium_value": "模块化检索编排设计具有通用性，可与其他RAG系统结合使用。",
+      "link": "https://arxiv.org/abs/2605.03989"
+    },
+    {
+      "id": 11,
+      "type": "academic_paper",
+      "title_zh": "EnterpriseRAG-Bench: 面向企业内部知识的企业RAG基准",
+      "title_en": "EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge",
+      "arxiv_id": "2605.05253",
+      "submission_date": "2026-05-05",
+      "authors": ["Yuhong Sun", "Joachim Rahmfeld", "Chris Weaver", "Weijia Chen", "Roshan Desai", "Wenxi Huang", "Mark H. Butler"],
+      "domain": "基准测试",
+      "value_level": "medium",
+      "abstract_zh": "发布EnterpriseRAG-Bench，一个包含约50万文档的企业内部知识基准，覆盖九种企业源类型（Slack、Gmail、Linear、Google Drive、HubSpot、Fireflies、GitHub、Jira和Confluence），以及500个问题，覆盖十个类别。",
+      "innovations": [
+        "首个覆盖9种企业源类型的综合基准",
+        "约50万文档规模",
+        "500个问题覆盖十个类别",
+        "合成企业语料库及其生成框架",
+        "为Enterprise RAG评估提供标准数据集"
+      ],
+      "key_results": {
+        "documents": "~500,000",
+        "source_types": 9,
+        "questions": 500,
+        "categories": 10
+      },
+      "why_medium_value": "为企业RAG系统提供标准化评估平台，促进企业级应用研究。",
+      "link": "https://arxiv.org/abs/2605.05253",
+      "code": "https://github.com/onyx-dot-app/EnterpriseRAG-Bench"
+    },
+    {
+      "id": 12,
+      "type": "academic_paper",
+      "title_zh": "AutoSearch: 通过强化学习实现高效Agentic RAG的自适应搜索深度",
+      "title_en": "AutoSearch: Adaptive Search Depth for Efficient Agentic RAG via Reinforcement Learning",
+      "arxiv_id": "2604.17337",
+      "submission_date": "2026-04-19",
+      "authors": ["Jingbo Sun", "Wenyue Chong", "Songjun Tu", "Qichao Zhang", "Yaocheng Zhang", "Jiajun Chai", "Xiaohan Wang", "Wei Lin", "Guojun Yin", "Dongbin Zhao"],
+      "domain": "效率优化",
+      "value_level": "medium",
+      "abstract_zh": "提出AutoSearch，一种通过强化学习评估每次搜索步骤的RL框架。通过自我回答机制，自动识别最小充分搜索深度，奖励高效搜索并惩罚过度搜索。在多个基准上实现最优的准确率-效率权衡。",
+      "innovations": [
+        "强化学习评估每次搜索步骤",
+        "自我回答机制识别最小充分搜索深度",
+        "奖励高效搜索并惩罚过度搜索",
+        "自适应搜索深度策略",
+        "最优的准确率-效率权衡"
+      ],
+      "key_results": {
+        "metric": "optimal accuracy-efficiency tradeoff",
+        "method": "RL with self-answer mechanism"
+      },
+      "why_medium_value": "RL优化搜索深度是效率优化的重要方向，可与其他agentic RAG系统结合。",
+      "link": "https://arxiv.org/abs/2604.17337"
+    },
+    {
+      "id": 13,
+      "type": "academic_paper",
+      "title_zh": "MASS-RAG: 多智能体综合RAG",
+      "title_en": "MASS-RAG: Multi-Agent Synthesis Retrieval-Augmented Generation",
+      "arxiv_id": "2604.18509",
+      "submission_date": "2026-04-20",
+      "authors": ["Xingchen Xiao", "Heyan Huang", "Runheng Liu", "Jincheng Xie"],
+      "status": "ACL 2026 Findings",
+      "domain": "多智能体协作",
+      "value_level": "medium",
+      "abstract_zh": "提出MASS-RAG，一种多智能体综合方法，将证据处理结构化为多个角色专业化智能体。对证据摘要、证据提取和推理应用不同的智能体，通过专用综合阶段结合其输出生成最终答案。在四个基准上始终优于强RAG基线。",
+      "innovations": [
+        "多智能体证据处理结构化",
+        "角色专业化智能体（摘要、提取、推理）",
+        "专用综合阶段整合多智能体输出",
+        "提升RAG生成质量",
+        "获ACL 2026 Findings接收"
+      ],
+      "key_results": {
+        "benchmarks": 4,
+        "result": "consistently outperforms strong RAG baselines"
+      },
+      "why_medium_value": "证据处理的多智能体分解策略可推广到其他需要复杂推理的RAG任务。",
+      "link": "https://arxiv.org/abs/2604.18509"
+    },
+    {
+      "id": 14,
+      "type": "academic_paper",
+      "title_zh": "NaviRAG: 面向RAG的主动知识导航",
+      "title_en": "NaviRAG: Towards Active Knowledge Navigation for Retrieval-Augmented Generation",
+      "arxiv_id": "2604.12766",
+      "update_date": "2026-05-17",
+      "original_submission": "2026-04-14",
+      "authors": ["Jihao Dai", "Dingjun Wu", "Yuxuan Chen", "Zheni Zeng", "Yukun Yan", "Zhenghao Liu", "Maosong Sun"],
+      "domain": "知识导航",
+      "value_level": "medium",
+      "abstract_zh": "提出NaviRAG，从被动片段检索转向主动知识导航。将知识文档组织为层次结构，LLM智能体主动导航记录，迭代识别信息缺口并从最合适的粒度级别检索相关内容。在长文档QA基准上持续优于传统RAG基线。",
+      "innovations": [
+        "从被动检索转向主动知识导航",
+        "文档层次组织结构",
+        "智能体主动导航记录",
+        "迭代识别信息缺口",
+        "动态选择最佳检索粒度"
+      ],
+      "key_results": {
+        "task": "long-form QA",
+        "result": "consistently outperforms traditional RAG baselines"
+      },
+      "why_medium_value": "主动导航范式转变具有理论意义，特别适合长文档和复杂知识图谱场景。",
+      "link": "https://arxiv.org/abs/2604.12766"
+    },
+    {
+      "id": 15,
+      "type": "academic_paper",
+      "title_zh": "WikiSeeker: 重新思考视觉语言模型在知识驱动视觉问答中的作用",
+      "title_en": "WikiSeeker: Rethinking the Role of Vision-Language Models in Knowledge-Based Visual Question Answering",
+      "arxiv_id": "2604.05818",
+      "submission_date": "2026-04-07",
+      "authors": ["Yingjian Zhu", "Xinming Wang", "Kun Ding", "Ying Wang", "Bin Fan", "Shiming Xiang"],
+      "status": "ACL 2026 Findings",
+      "domain": "多模态",
+      "value_level": "low",
+      "abstract_zh": "提出WikiSeeker，一种多模态RAG框架，重新定义VLM的角色。分配VLM两个专业化智能体：Refiner（根据输入图像重写文本查询）和Inspector（将可靠检索上下文路由到另一个LLM）。在EVQA、InfoSeek和M2KR上达到最先进的性能。",
+      "innovations": [
+        "重新定义VLM在多模态RAG中的角色",
+        "Refiner智能体：根据图像重写文本查询",
+        "Inspector智能体：路由可靠检索上下文",
+        "解耦生成策略",
+        "SOTA性能于EVQA、InfoSeek、M2KR"
+      ],
+      "key_results": {
+        "datasets": ["EVQA", "InfoSeek", "M2KR"],
+        "result": "state-of-the-art performance"
+      },
+      "why_low_value": "多模态方向是重要趋势，但具体方法针对性较强，通用性相对有限。",
+      "link": "https://arxiv.org/abs/2604.05818",
+      "code": "https://github.com/zhuyjan/WikiSeeker"
+    },
+    {
+      "id": 16,
+      "type": "academic_paper",
+      "title_zh": "MA-IDS: 带经验库的多智能体RAG IoT网络入侵检测框架",
+      "title_en": "MA-IDS: Multi-Agent RAG Framework for IoT Network Intrusion Detection with an Experience Library",
+      "arxiv_id": "2604.05458",
+      "submission_date": "2026-04-07",
+      "authors": ["Md Shamimul Islam", "Luis G. Jaimes", "Ayesha S. Dina"],
+      "domain": "网络安全",
+      "value_level": "low",
+      "abstract_zh": "提出MA-IDS，一种将LLM与RAG结合的推理驱动入侵检测系统。通过FAISS向量数据库协作两个专业化智能体：流量分类智能体和错误分析智能体，构建持久化的自我构建经验库。在NF-BoT-IoT和NF-ToN-IoT上分别达到89.75%和85.22%的Macro F1分数。",
+      "innovations": [
+        "多智能体RAG用于IoT入侵检测",
+        "FAISS向量数据库协作",
+        "流量分类和错误分析专业化智能体",
+        "持久化经验库实现持续学习",
+        "高Macro F1分数"
+      ],
+      "key_results": {
+        "datasets": ["NF-BoT-IoT", "NF-ToN-IoT"],
+        "macro_f1": {
+          "NF-BoT-IoT": "89.75%",
+          "NF-ToN-IoT": "85.22%"
+        }
+      },
+      "why_low_value": "网络安全领域的垂直应用，经验库机制可借鉴但领域专用性较强。",
+      "link": "https://arxiv.org/abs/2604.05458"
+    },
+    {
+      "id": 17,
+      "type": "open_source_tool",
+      "title_zh": "LangChain v1.3.0+ Agent架构更新",
+      "title_en": "LangChain v1.3.0+ Agent Architecture Update",
+      "organization": "LangChain AI",
+      "update_period": "2026年持续更新",
+      "value_level": "medium",
+      "description_zh": "引入create_agent架构的可扩展骨干——Agent中间件管道，允许在不修改核心图的情况下注入重试逻辑、PII脱敏、人机协同审批、上下文摘要等横切关注点。v1.3.0为Agent的stream_events引入了version=\"v3\"支持。",
+      "innovations": [
+        "Agent中间件管道架构",
+        "横切关注点模块化注入",
+        "重试逻辑、PII脱敏、人机协同审批、上下文摘要",
+        "stream_events v3支持",
+        "不修改核心图的可扩展设计"
+      ],
+      "key_features": [
+        "create_agent可扩展架构",
+        "Agent中间件管道",
+        "stream_events v3"
+      ],
+      "why_medium_value": "LangChain是最流行的Agent开发框架，其架构更新影响广泛。",
+      "link": "https://github.com/langchain-ai/langchain"
+    },
+    {
+      "id": 18,
+      "type": "open_source_tool",
+      "title_zh": "MTR-Suite（多智能体对话检索基准生成框架）",
+      "title_en": "MTR-Suite: Multi-Agent Conversational Retrieval Benchmark Generator",
+      "organization": "rangehow",
+      "release_date": "2026-05-20",
+      "value_level": "medium",
+      "description_zh": "多智能体系统使用贪婪遍历聚类生成高保真对话，成本仅为人类的1/400。提供审计、综合和基准测试检索的完整框架。",
+      "innovations": [
+        "多智能体对话基准自动生成",
+        "成本仅为人类的1/400",
+        "贪婪遍历聚类算法",
+        "完整的基准评估、生成、综合框架"
+      ],
+      "key_features": [
+        "MTR-Eval",
+        "MTR-Pipeline",
+        "MTR-Bench"
+      ],
+      "why_medium_value": "开源基准生成工具大幅降低研究成本，推动RAG评估发展。",
+      "link": "https://github.com/rangehow/mtr-suite"
+    },
+    {
+      "id": 19,
+      "type": "open_source_tool",
+      "title_zh": "EnterpriseRAG-Bench（企业知识库基准）",
+      "title_en": "EnterpriseRAG-Bench: Enterprise Knowledge Benchmark",
+      "organization": "onyx-dot-app",
+      "release_date": "2026-05-05",
+      "value_level": "medium",
+      "description_zh": "合成企业语料库及其生成框架和排行榜，覆盖9种企业源类型，用于评估面向企业内部知识RAG的智能体系统。",
+      "innovations": [
+        "覆盖9种企业源类型的基准",
+        "约50万文档规模",
+        "合成数据生成框架",
+        "企业级RAG评估平台"
+      ],
+      "key_features": [
+        "9种企业源类型",
+        "~500,000文档",
+        "500个问题",
+        "排行榜系统"
+      ],
+      "why_medium_value": "为企业RAG系统提供标准化评估平台，促进企业级应用研究。",
+      "link": "https://github.com/onyx-dot-app/EnterpriseRAG-Bench"
+    },
+    {
+      "id": 20,
+      "type": "open_source_tool",
+      "title_zh": "WikiSeeker（多模态视觉问答RAG框架）",
+      "title_en": "WikiSeeker: Multimodal Visual QA RAG Framework",
+      "organization": "zhuyjan",
+      "release_date": "2026-04-07",
+      "value_level": "medium",
+      "description_zh": "多模态检索器结合VLM Refiner和Inspector智能体，实现解耦生成策略。在EVQA、InfoSeek和M2KR上达到最先进的性能。",
+      "innovations": [
+        "多模态RAG框架",
+        "VLM Refiner和Inspector智能体",
+        "解耦生成策略",
+        "SOTA性能"
+      ],
+      "key_features": [
+        "VLM Refiner",
+        "VLM Inspector",
+        "多模态检索器"
+      ],
+      "why_medium_value": "开源多模态RAG框架，展示VLM智能体在视觉问答中的能力。",
+      "link": "https://github.com/zhuyjan/WikiSeeker"
+    }
+  ],
+  "new_innovation_suggestions": [
+    {
+      "suggestion_id": 1,
+      "title": "基于联邦学习的跨域Agentic RAG协作框架",
+      "based_on": ["SEMA-RAG", "Securing the Agent", "Experience-RAG Skill"],
+      "description": "结合多智能体协作和联邦学习思想，设计跨域Agentic RAG协作框架。各领域智能体在本地训练检索策略，通过联邦学习共享模型参数而不共享原始数据，解决企业数据隐私和跨域知识迁移问题。",
+      "potential_impact": "解决企业数据孤岛问题，同时保护数据隐私，适用于医疗、金融等敏感领域。",
+      "feasibility": "中高 - 联邦学习和多智能体都是成熟方向，结合RAG是自然延伸。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 2,
+      "title": "潜在空间与显式推理的混合Agentic RAG架构",
+      "based_on": ["LatentRAG", "MASS-RAG"],
+      "description": "结合LatentRAG的潜在空间高效推理和MASS-RAG的显式多智能体协作，设计混合架构：简单查询使用潜在空间快速推理，复杂查询路由到多智能体显式推理。通过分类器自动选择最优推理路径。",
+      "potential_impact": "兼顾效率和准确性，在不同复杂度任务间自适应切换，优化整体系统性能。",
+      "feasibility": "高 - 两种方法相对独立，混合架构设计清晰。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 3,
+      "title": "基于数字孪生的Agentic RAG测试与评估平台",
+      "based_on": ["MTR-Suite", "MINTEval", "EnterpriseRAG-Bench"],
+      "description": "构建企业级Agentic RAG的数字孪生测试平台，模拟各种真实场景（高并发、知识库中毒、多租户隔离等），在虚拟环境中自动评估和比较不同RAG架构的性能和鲁棒性。",
+      "potential_impact": "降低RAG系统评估成本，提供接近真实的测试环境，加速RAG技术迭代。",
+      "feasibility": "中 - 需要较多工程投入，但概念清晰。",
+      "novelty_level": "中高"
+    },
+    {
+      "suggestion_id": 4,
+      "title": "神经符号结合的Agentic RAG代码理解框架",
+      "based_on": ["BLAgent", "FinAgent-RAG"],
+      "description": "结合BLAgent的代码结构感知方法和FinAgent-RAG的思维编程推理，提出神经符号结合的Agentic RAG代码理解框架。使用符号方法保证代码执行的正确性，使用神经网络捕获语义信息。",
+      "potential_impact": "提升代码理解、bug定位、代码生成的准确性和可解释性。",
+      "feasibility": "中高 - 神经符号AI是当前热点，结合RAG有创新空间。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 5,
+      "title": "面向长程任务的Agentic RAG分层记忆架构",
+      "based_on": ["MINTEval", "NaviRAG", "AutoSearch"],
+      "description": "针对MINTEval揭示的长周期任务瓶颈，结合NaviRAG的主动导航和AutoSearch的自适应搜索，提出分层记忆架构：短期记忆处理即时上下文，中期记忆维护任务状态，长期记忆存储领域知识。智能体根据任务需求在层次间导航。",
+      "potential_impact": "显著提升长程任务的准确性和稳定性，解决当前系统1.8M token上下文准确率仅27.9%的问题。",
+      "feasibility": "中 - 分层记忆是经典AI思想，结合RAG需要精心设计。",
+      "novelty_level": "中高"
+    },
+    {
+      "suggestion_id": 6,
+      "title": "多模态神经符号Agentic RAG框架",
+      "based_on": ["WikiSeeker", "Architecture Matters", "MASS-RAG"],
+      "description": "将WikiSeeker的多模态能力、Architecture Matters的安全机制和MASS-RAG的多智能体协作结合，提出多模态神经符号Agentic RAG框架。支持文本、图像、代码等多种模态输入，结合符号推理保证输出可靠性，多智能体协作处理复杂任务。",
+      "potential_impact": "面向真实世界复杂场景，支持多模态输入的同时保证输出的安全性和可靠性。",
+      "feasibility": "中 - 涉及多个方向的融合，工程复杂度高。",
+      "novelty_level": "很高"
+    }
+  ]
+}

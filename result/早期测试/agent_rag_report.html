@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于智能体的RAG最新科研成果报告 (2026-05-13 ~ 2026-05-15)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            color: #fff;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(100, 140, 255, 0.5);
+        }
+        .subtitle {
+            text-align: center;
+            color: #a0a0d0;
+            margin-bottom: 40px;
+            font-size: 0.95em;
+        }
+        .card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(80, 120, 255, 0.15);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .card-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.1em; color: #fff;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 1.2em;
+            color: #c8d6ff;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 0.85em;
+            color: #9090c0;
+        }
+        .meta span { display: flex; align-items: center; gap: 4px; }
+        .tag {
+            display: inline-block;
+            background: rgba(100,140,255,0.15);
+            color: #8eaaff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .section {
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 700;
+            color: #8eaaff;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-content {
+            font-size: 0.93em;
+            line-height: 1.7;
+            color: #ccc;
+            padding-left: 12px;
+            border-left: 3px solid rgba(100,140,255,0.3);
+        }
+        .section-content.cause { border-left-color: #ff6b6b; }
+        .section-content.method { border-left-color: #ffd93d; }
+        .section-content.result { border-left-color: #6bcb77; }
+        .section-title.cause { color: #ff8a8a; }
+        .section-title.method { color: #ffe066; }
+        .section-title.result { color: #7ed88c; }
+        a { color: #8eaaff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .json-section {
+            margin-top: 50px;
+            padding: 28px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .json-section h2 {
+            color: #fff;
+            margin-bottom: 16px;
+            font-size: 1.3em;
+        }
+        pre {
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-size: 0.85em;
+            line-height: 1.6;
+            color: #b0b8d0;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .footer {
+            text-align: center;
+            color: #606080;
+            margin-top: 40px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<h1>基于智能体的RAG (Agentic RAG) 最新科研成果</h1>
+<p class="subtitle">收集时间范围: 2026-05-13 ~ 2026-05-15 | 数据来源: arXiv</p>
+
+<!-- 成果 1 -->
+<div class="card">
+    <div class="card-header">
+        <div class="card-number">1</div>
+        <div class="card-title">Is Grep All You Need? How Agent Harnesses Reshape Agentic Search</div>
+    </div>
+    <div class="meta">
+        <span>📄 arXiv:2605.15184</span>
+        <span>📅 2026-05-14</span>
+        <span>🏷️ <span class="tag">cs.CL</span></span>
+        <span>👤 Sahil Sen, Akhil Kasturi, Elias Lumer, Anmol Gulati, Vamse Kumar Subbiah</span>
+    </div>
+    <div class="section">
+        <div class="section-title cause">因 (问题/动机)</div>
+        <div class="section-content cause">尽管RAG在智能体搜索系统中被广泛采用，但现有文献缺乏对检索策略选择与智能体架构、工具调用范式之间交互关系的系统性比较。工具输出如何呈现给模型、以及当搜索必须应对更多无关文本时性能如何变化，这些实际维度在智能体循环中仍未被充分探索。</div>
+    </div>
+    <div class="section">
+        <div class="section-title method">法 (方法)</div>
+        <div class="section-content method">设计了两阶段实验：(1) 使用自定义智能体框架Chronos和提供商原生CLI工具（Claude Code、Codex、Gemini CLI）在LongMemEval的116个问题上比较grep与向量检索，分别测试内联和基于文件的工具结果呈现方式；(2) 在逐步增加不相关对话历史的情况下比较grep-only和vector-only检索，模拟更多干扰场景。</div>
+    </div>
+    <div class="section">
+        <div class="section-title result">果 (结果)</div>
+        <div class="section-content result">在Chronos和各提供商CLI中，grep通常比向量检索获得更高的准确率；同时整体得分强烈依赖于所使用的智能体框架和工具调用风格，即使底层对话数据完全相同。</div>
+    </div>
+    <div class="meta" style="margin-top:12px;">
+        <span>🔗 <a href="https://arxiv.org/abs/2605.15184" target="_blank">arxiv.org/abs/2605.15184</a></span>
+    </div>
+</div>
+
+<!-- 成果 2 -->
+<div class="card">
+    <div class="card-header">
+        <div class="card-number">2</div>
+        <div class="card-title">Falkor-IRAC: Graph-Constrained Generation for Verified Legal Reasoning in Indian Judicial AI</div>
+    </div>
+    <div class="meta">
+        <span>📄 arXiv:2605.14665</span>
+        <span>📅 2026-05-14</span>
+        <span>🏷️ <span class="tag">cs.AI</span> <span class="tag">cs.CL</span> <span class="tag">cs.IR</span></span>
+        <span>👤 Joy Bose</span>
+    </div>
+    <div class="section">
+        <div class="section-title cause">因 (问题/动机)</div>
+        <div class="section-content cause">法律推理不是语义相似性搜索。传统基于向量的RAG无法忠实表征判例传播、程序状态转换和法规约束推理等符号推理属性。幻觉判例、过时法规引用和不支持的推理链仍然是LLM法律AI的持续性失败模式，在印度等高案件量司法管辖区对司法公正造成真实后果。</div>
+    </div>
+    <div class="section">
+        <div class="section-title method">法 (方法)</div>
+        <div class="section-content method">提出Falkor-IRAC框架，基于IRAC（争议焦点、规则、分析、结论）知识图谱进行图约束生成。将印度最高法院和高等法院判决摄入为IRAC节点结构，存储在FalkorDB中供低延迟智能体遍历。推理时引入验证者智能体（Verifier Agent），仅当可追踪到有效支撑路径时才接受LLM生成答案，同时将教义冲突作为一等输出进行检测。</div>
+    </div>
+    <div class="section">
+        <div class="section-title result">果 (结果)</div>
+        <div class="section-content result">在51个最高法院判决的概念验证语料上，验证者智能体正确验证了已完成查询的引用并正确拒绝了伪造引用。使用图原生指标（引用接地准确率、路径有效性率、幻觉判例率、冲突检测率）进行评估，证明了该框架在法律推理中的可靠性。</div>
+    </div>
+    <div class="meta" style="margin-top:12px;">
+        <span>🔗 <a href="https://arxiv.org/abs/2605.14665" target="_blank">arxiv.org/abs/2605.14665</a></span>
+    </div>
+</div>
+
+<!-- 成果 3 -->
+<div class="card">
+    <div class="card-header">
+        <div class="card-number">3</div>
+        <div class="card-title">RS-Claw: Progressive Active Tool Exploration via Hierarchical Skill Trees for Remote Sensing Agents</div>
+    </div>
+    <div class="meta">
+        <span>📄 arXiv:2605.13391</span>
+        <span>📅 2026-05-13</span>
+        <span>🏷️ <span class="tag">cs.AI</span></span>
+        <span>👤 Liangtian Liu, Zeyuan Wang, Ziyu Li, Kai Ouyang 等</span>
+    </div>
+    <div class="section">
+        <div class="section-title cause">因 (问题/动机)</div>
+        <div class="section-content cause">在多源异构遥感工具生态中，现有遥感智能体采用被动工具选择范式（全量注册或RAG检索），面临内在局限：全量工具注册在长任务中触发上下文空间不足，而RAG检索可能在关键步骤中遗漏重要工具。被动机制无法在整个任务推理过程中动态平衡"上下文负载"和"工具集完整性"。</div>
+    </div>
+    <div class="section">
+        <div class="section-title method">法 (方法)</div>
+        <div class="section-content method">提出RS-Claw架构，重新定义工具选择——智能体应作为工具空间的主动探索者。利用技能封装技术对工具描述进行层次化结构化，使智能体执行按需序贯决策：先通过工具摘要选择相关技能分支，再动态加载详细描述，最终实现精确调用。这种主动范式显著释放了智能体的上下文空间。</div>
+    </div>
+    <div class="section">
+        <div class="section-title result">果 (结果)</div>
+        <div class="section-content result">在Earth-Bench基准上的系统实验表明，RS-Claw的主动探索机制有效过滤语义噪声并大幅释放推理空间，实现高达86%的输入token压缩率，在复杂推理评估中全面超越现有Flat和RAG基线。</div>
+    </div>
+    <div class="meta" style="margin-top:12px;">
+        <span>🔗 <a href="https://arxiv.org/abs/2605.13391" target="_blank">arxiv.org/abs/2605.13391</a></span>
+    </div>
+</div>
+
+<!-- 成果 4 -->
+<div class="card">
+    <div class="card-header">
+        <div class="card-number">4</div>
+        <div class="card-title">OpenAaaS: An Open Agent-as-a-Service Framework for Distributed Materials-Informatics Research</div>
+    </div>
+    <div class="meta">
+        <span>📄 arXiv:2605.13618</span>
+        <span>📅 2026-05-13</span>
+        <span>🏷️ <span class="tag">cs.AI</span> <span class="tag">cond-mat.mtrl-sci</span></span>
+        <span>👤 Peng Kang, Bixuan Li, Xiaoya Huang 等</span>
+    </div>
+    <div class="section">
+        <div class="section-title cause">因 (问题/动机)</div>
+        <div class="section-content cause">材料信息学面临"最后一公里"问题：尽管拥有世界级的LLM模型和海量材料数据仓库，却缺乏跨机构安全组合这些能力的组织基础设施。结构功能材料开发仍以长期迭代、机理复杂和高领域专业需求为特征，超出了单体智能体系统和传统中心化平台的能力。</div>
+    </div>
+    <div class="section">
+        <div class="section-title method">法 (方法)</div>
+        <div class="section-content method">提出OpenAaaS——开源分层分布式Agent-as-a-Service框架，基于"代码流动，数据不动"原则。主智能体在不直接访问子智能体数据的情况下规划和分解研究任务；子智能体作为近数据执行节点保持对本地数据集和专有算法的完全主权。框架集成AlphaAgent（基于RAG的材料文献分析执行器），实现跨尺度跨域安全集成。</div>
+    </div>
+    <div class="section">
+        <div class="section-title result">果 (结果)</div>
+        <div class="section-content result">AlphaAgent在深度分析问题上达到4.66/5.0评分（对比单次RAG基线），超大规模六元高熵合金描述符数据库服务证明了在严格数据主权约束下的安全近数据执行。为下一代材料智能设计平台建立了可扩展的基础。</div>
+    </div>
+    <div class="meta" style="margin-top:12px;">
+        <span>🔗 <a href="https://arxiv.org/abs/2605.13618" target="_blank">arxiv.org/abs/2605.13618</a></span>
+        <span>🔗 <a href="https://github.com/Wolido/OpenAaaS" target="_blank">GitHub</a></span>
+    </div>
+</div>
+
+<!-- 成果 5 -->
+<div class="card">
+    <div class="card-header">
+        <div class="card-number">5</div>
+        <div class="card-title">ProtoMedAgent: Multimodal Clinical Interpretability via Privacy-Aware Agentic Workflows</div>
+    </div>
+    <div class="meta">
+        <span>📄 arXiv:2605.14113</span>
+        <span>📅 2026-05-13</span>
+        <span>🏷️ <span class="tag">cs.CV</span> <span class="tag">cs.AI</span> <span class="tag">cs.LG</span></span>
+        <span>👤 Alvaro Lopez Pellicer, Plamen Angelov, Marwan Bukhari 等</span>
+    </div>
+    <div class="section">
+        <div class="section-title cause">因 (问题/动机)</div>
+        <div class="section-content cause">可解释原型网络虽能为临床诊断提供引人注目的基于案例的推理，但其原始连续输出缺乏医学文档所需的语义结构。通过标准RAG桥接此差距时频繁触发"检索谄媚"（retrieval sycophancy）——LLM会编造事后合理化来对齐视觉预测，导致临床报告不可靠。</div>
+    </div>
+    <div class="section">
+        <div class="section-title method">法 (方法)</div>
+        <div class="section-content method">提出ProtoMedAgent框架，将多模态临床报告形式化为在严格神经符号瓶颈上的迭代、零梯度测试时优化问题。在冻结的原型骨干上，将潜在视觉和表格特征蒸馏为离散语义记忆。在线生成受精确集合论差分和反思性Scribe-Critic循环约束，数学上排除了不支持的叙事声明。引入受k-匿名性和l-多样性控制的语义隐私门。</div>
+    </div>
+    <div class="section">
+        <div class="section-title result">果 (结果)</div>
+        <div class="section-content result">在4,160名患者临床队列上，ProtoMedAgent达到91.2%的比较集忠实度，从根本上超越了标准RAG的46.2%。同时利用绑定l-多样性相变系统性地将伪影级成员推理风险绝对降低了9.8%。</div>
+    </div>
+    <div class="meta" style="margin-top:12px;">
+        <span>🔗 <a href="https://arxiv.org/abs/2605.14113" target="_blank">arxiv.org/abs/2605.14113</a></span>
+    </div>
+</div>
+
+<!-- 类因法果 JSON 数据 -->
+<div class="json-section">
+    <h2>类因法果结构化数据 (JSON)</h2>
+    <pre><code>[
+    {
+        "类": "智能体搜索与检索",
+        "标题": "Is Grep All You Need? How Agent Harnesses Reshape Agentic Search",
+        "DOI": "10.48550/arXiv.2605.15184",
+        "链接": "https://arxiv.org/abs/2605.15184",
+        "因": "RAG在智能体搜索系统中被广泛采用，但检索策略选择与智能体架构、工具调用范式之间的交互关系缺乏系统性比较，工具输出呈现方式和干扰文本下的性能变化等实际维度未被充分探索",
+        "法": "设计两阶段实验，使用自定义智能体框架Chronos和提供商CLI工具（Claude Code、Codex、Gemini CLI）比较grep与向量检索在不同工具结果呈现方式和渐进干扰场景下的表现",
+        "果": "grep在Chronos和各提供商CLI中通常比向量检索获得更高准确率，整体得分强烈依赖于智能体框架和工具调用风格",
+        "来源": "arXiv cs.CL",
+        "发布日期": "2026-05-14"
+    },
+    {
+        "类": "法律AI与知识图谱RAG",
+        "标题": "Falkor-IRAC: Graph-Constrained Generation for Verified Legal Reasoning in Indian Judicial AI",
+        "DOI": "10.48550/arXiv.2605.14665",
+        "链接": "https://arxiv.org/abs/2605.14665",
+        "因": "传统基于向量的RAG无法忠实表征法律推理中的判例传播、程序状态转换和法规约束推理等符号属性，幻觉判例和过时法规引用是LLM法律AI的持续失败模式",
+        "法": "提出Falkor-IRAC框架，基于IRAC知识图谱进行图约束生成，引入验证者智能体确保仅当可追踪到有效支撑路径时才接受LLM答案，同时检测教义冲突",
+        "果": "在51个最高法院判决语料上，验证者智能体正确验证了合法引用并正确拒绝了伪造引用，证明了图约束方法在法律推理中的可靠性",
+        "来源": "arXiv cs.AI/cs.CL/cs.IR",
+        "发布日期": "2026-05-14"
+    },
+    {
+        "类": "遥感智能体与主动工具探索",
+        "标题": "RS-Claw: Progressive Active Tool Exploration via Hierarchical Skill Trees for Remote Sensing Agents",
+        "DOI": "10.48550/arXiv.2605.13391",
+        "链接": "https://arxiv.org/abs/2605.13391",
+        "因": "在多源异构遥感工具生态中，被动工具选择范式面临上下文空间不足（全量注册）或关键工具遗漏（RAG检索）的固有局限，无法动态平衡上下文负载与工具集完整性",
+        "法": "提出RS-Claw架构，将智能体重新定义为工具空间的主动探索者，利用技能封装技术对工具描述进行层次化结构化，实现按需序贯决策选择",
+        "果": "在Earth-Bench上实现高达86%的输入token压缩率，在复杂推理评估中全面超越现有Flat和RAG基线",
+        "来源": "arXiv cs.AI",
+        "发布日期": "2026-05-13"
+    },
+    {
+        "类": "材料信息学与多智能体RAG",
+        "标题": "OpenAaaS: An Open Agent-as-a-Service Framework for Distributed Materials-Informatics Research",
+        "DOI": "10.48550/arXiv.2605.13618",
+        "链接": "https://arxiv.org/abs/2605.13618",
+        "因": "材料信息学面临'最后一公里'问题，缺乏跨机构安全组合LLM能力和材料数据的组织基础设施，结构功能材料开发需求超出单体智能体系统和传统平台的能力",
+        "法": "提出开源分层分布式Agent-as-a-Service框架，基于'代码流动数据不动'原则，主智能体规划分解任务，子智能体作为近数据执行节点保持数据主权，集成AlphaAgent实现RAG增强的文献分析",
+        "果": "AlphaAgent在深度分析问题上达到4.66/5.0评分（超越单次RAG基线），成功演示了超大规模高熵合金数据库的跨域安全集成",
+        "来源": "arXiv cs.AI/cond-mat.mtrl-sci",
+        "发布日期": "2026-05-13"
+    },
+    {
+        "类": "医疗多模态智能体与RAG",
+        "标题": "ProtoMedAgent: Multimodal Clinical Interpretability via Privacy-Aware Agentic Workflows",
+        "DOI": "10.48550/arXiv.2605.14113",
+        "链接": "https://arxiv.org/abs/2605.14113",
+        "因": "标准RAG在连接原型网络与临床语义时频繁触发'检索谄媚'——LLM编造事后合理化来对齐视觉预测，导致临床报告中的幻觉和不支持声明",
+        "法": "提出ProtoMedAgent框架，在严格神经符号瓶颈上进行迭代零梯度测试时优化，通过精确集合论差分和Scribe-Critic循环约束在线生成，数学上排除不支持的叙事声明，并引入k-匿名性和l-多样性语义隐私门",
+        "果": "在4,160名患者临床队列上达到91.2%比较集忠实度（标准RAG仅46.2%），系统性地将成员推理风险绝对降低9.8%",
+        "来源": "arXiv cs.CV/cs.AI/cs.LG",
+        "发布日期": "2026-05-13"
+    }
+]</code></pre>
+</div>
+
+<div class="footer">
+    <p>报告生成时间: 2026-05-15 | 数据来源: arXiv.org | 搜索关键词: agentic RAG</p>
+</div>
+
+</div>
+</body>
+</html>

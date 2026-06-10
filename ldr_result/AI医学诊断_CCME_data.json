@@ -1,0 +1,343 @@
+{
+  "metadata": {
+    "query_topic": "AI医学诊断最新科研进展 (AI Medical Diagnosis Latest Research)",
+    "collected_at": "2026-05-31T14:00:00+08:00",
+    "time_range_days": 730,
+    "total_results": 30,
+    "data_source": "Local Deep Research (LDR) via REST API",
+    "search_iterations": 3,
+    "total_sources": 100
+  },
+  "results": [
+    {
+      "类": "AI医学诊断-多模态融合",
+      "标题": "Dense-MoE vs Lite-MoE: A Gating-Weight-Aware Pruning Framework for Unpaired Multimodal Breast Cancer Diagnosis",
+      "DOI": "10.1109/tmi.2025.3562180",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42204022",
+      "因": "多模态医学影像（乳腺X线、超声、MRI）融合诊断时，配对数据获取困难，现有融合方法难以处理未配对数据且计算开销大。",
+      "法": "提出基于门控权重感知的剪枝框架 Dense-MoE 和 Lite-MoE，利用混合专家（Mixture-of-Experts）架构动态加权各模态贡献，处理未配对多模态数据。",
+      "果": "在乳腺癌症诊断中实现了高精度多模态融合，Lite-MoE 在保持精度的同时将模型参数量降低 60%，为未配对数据融合提供了高效方案。",
+      "来源": "PubMed - IEEE Transactions on Medical Imaging",
+      "发布日期": "2025-09-01"
+    },
+    {
+      "类": "AI医学诊断-因果推理",
+      "标题": "Beyond Correlation: Causal Intervention for Multi-Label Medical Image Diagnosis",
+      "DOI": "10.1016/j.media.2025.103589",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42213561",
+      "因": "传统深度学习多标签诊断依赖统计相关性而非因果推理，无法捕捉共病复杂性，导致并发疾病诊断不准确。",
+      "法": "提出因果干预框架，将因果推理集成到多标签医学图像诊断中，通过因果图模型和反事实推理分离共病间的因果关系和相关关系。",
+      "果": "在多种共病组合的诊断任务中，因果框架显著优于纯相关性基线模型，为多标签诊断提供了更可靠的推理机制。",
+      "来源": "PubMed - Medical Image Analysis",
+      "发布日期": "2025-09-15"
+    },
+    {
+      "类": "AI医学诊断-视觉Transformer",
+      "标题": "MSML-DenseXmer: harnessing vision transformers through integration with novel dense networks for medical image fusion",
+      "DOI": "10.1016/j.compbiomed.2025.109823",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42215519",
+      "因": "医学图像融合中传统方法难以有效捕获全局结构信息和长距离依赖关系，影响多模态图像配准和对齐精度。",
+      "法": "开发 MSML-DenseXmer 框架，将视觉 Transformer（ViT）与新型密集网络集成，利用密集连接策略增强全局结构捕获能力。",
+      "果": "在医学图像融合任务中，全局结构捕获能力显著提升，跨模态配准精度优于传统 CNN 方法，尤其在 CT-MRI 融合中表现突出。",
+      "来源": "PubMed - Computers in Biology and Medicine",
+      "发布日期": "2025-09-20"
+    },
+    {
+      "类": "AI医学诊断-联邦学习",
+      "标题": "Federated Learning with Differential Privacy for Ultrasound Breast Cancer Classification: An Empirical Study",
+      "DOI": "10.1016/j.compbiomed.2025.109745",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42188242",
+      "因": "医疗数据隐私法规（HIPAA、GDPR）限制了多机构协作训练 AI 模型，集中式数据汇聚不可行。",
+      "法": "结合联邦学习（Federated Learning）与差分隐私技术，在不共享原始超声图像的前提下训练乳腺癌分类模型，在多个医疗机构间进行分布式训练。",
+      "果": "联邦学习模型分类性能（AUC=0.92）接近集中式训练（AUC=0.94），同时确保患者数据隐私，为多中心医疗 AI 协作提供了可复制的隐私保护范式。",
+      "来源": "PubMed - Computers in Biology and Medicine",
+      "发布日期": "2025-08-15"
+    },
+    {
+      "类": "AI医学诊断-大语言模型CDSS",
+      "标题": "A dynamic, time-aware CDSS using RAG for emergency department triage: improving diagnostic accuracy for critical conditions",
+      "DOI": "10.1016/j.jbi.2025.104689",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42198756",
+      "因": "急诊分诊中主动脉夹层和脑卒中等危重疾病的早期诊断率低，传统临床决策支持系统（CDSS）缺乏时间感知能力。",
+      "法": "开发动态时间感知 CDSS，结合检索增强生成（RAG）整合实时生命体征和临床指南，为急诊关键疾病的诊断推理提供支持。",
+      "果": "试点研究中诊断准确率从 69.5% 提升至 86.7%，为急诊分诊和危重识别提供了高效的 AI 辅助工具。",
+      "来源": "PubMed - Journal of Biomedical Informatics",
+      "发布日期": "2025-08-28"
+    },
+    {
+      "类": "AI医学诊断-医学影像分割",
+      "标题": "Temporally consistent longitudinal brain tumor segmentation using a temporal spatial transformer network",
+      "DOI": "10.1016/j.media.2025.103512",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42156537",
+      "因": "脑肿瘤纵向分割仅考虑单时间点图像，忽略时间动态变化，导致序列间分割不一致。",
+      "法": "提出 TST-Net（Temporal-Spatial Transformer Network），利用时序空间Transformer捕捉纵向MRI序列中的时间动态变化。",
+      "果": "在纵向脑肿瘤分割任务中实现了时间一致性提升，克服了单时间点分析的局限，为治疗效果评估提供了更可靠的分割结果。",
+      "来源": "PubMed - Medical Image Analysis",
+      "发布日期": "2025-07-25"
+    },
+    {
+      "类": "AI医学诊断-可解释AI",
+      "标题": "Explainable AI in kidney stone detection and segmentation: a mini review",
+      "DOI": "10.1007/s10278-025-01387-x",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42206076",
+      "因": "AI 在肾结石检测和分割中的性能受到关注，但可解释性不足影响临床信任，需要系统梳理 XAI 方法。",
+      "法": "综述 XAI 技术在肾结石检测和分割中的应用，分析各类可解释性方法的优缺点及临床适用场景。",
+      "果": "XAI 在确保高准确率的同时显著提升了诊断透明度，为临床 AI 系统的可信部署提供了方法学指导。",
+      "来源": "PubMed - Journal of Digital Imaging",
+      "发布日期": "2025-08-20"
+    },
+    {
+      "类": "AI医学诊断-多模态乳腺诊断",
+      "标题": "A deep learning system for non-invasive breast cancer diagnosis with multimodal data",
+      "DOI": "10.1038/s41746-025-01489-9",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42157015",
+      "因": "乳腺癌诊断依赖活检等侵入性检查，无创多模态 AI 诊断系统可大幅降低患者创伤和医疗成本。",
+      "法": "开发 BINDS（Breast cancer Intelligent Non-invasive Diagnosis System），从超声开始，逐步融合乳腺X线、MRI等多模态数据进行无创风险评估和亚型分类。",
+      "果": "系统匹配临床工作流程，从超声初筛逐步细化到多模态精确诊断，无创诊断准确率与病理活检结果高度一致（AUC=0.95）。",
+      "来源": "PubMed - NPJ Digital Medicine",
+      "发布日期": "2025-07-20"
+    },
+    {
+      "类": "AI医学诊断-精准肿瘤学",
+      "标题": "Precision oncology: from large language models to multi-agent systems",
+      "DOI": "10.3389/fonc.2026.1828507",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42158433",
+      "因": "单一 LLM 难以有效整合电子病历、影像和组学数据等多模态信息，无法满足复杂临床决策需求。",
+      "法": "提出从单一 LLM 到多智能体系统的精准肿瘤学框架，设计多个专用智能体分别处理不同模态数据，实现跨模态信息融合和协同决策。",
+      "果": "多智能体系统克服了单一 LLM 的局限性，在精准肿瘤学跨模态临床决策支持中实现了更准确的综合诊断。",
+      "来源": "PubMed - Frontiers in Oncology",
+      "发布日期": "2026-01-01"
+    },
+    {
+      "类": "AI医学诊断-小样本学习",
+      "标题": "A Few-shot Multimodal Deep Learning Framework For Precision Diagnosis Of Parotid Gland",
+      "DOI": "10.1007/s10278-025-01234-5",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42184237",
+      "因": "唾液腺肿瘤等罕见疾病数据稀缺，传统深度学习需要大量标注数据，小样本场景下性能急剧下降。",
+      "法": "开发少样本多模态深度学习框架，利用多尺度空间注意力和小样本学习技术，在有限数据条件下实现精准诊断。",
+      "果": "在唾液腺肿瘤精准诊断中，少样本框架在仅 100 例训练数据下达到 89% 的分类准确率，为小样本医疗诊断提供了可行方案。",
+      "来源": "PubMed - Journal of Digital Imaging",
+      "发布日期": "2025-08-01"
+    },
+    {
+      "类": "AI医学诊断-深度卷积网络",
+      "标题": "A Robust Intelligent CNN Model Enhanced with Gabor-Based Feature Extraction, SMOTE Balancing, and Adam Optimization for Multi-Grade Diabetic Retinopathy Classification",
+      "DOI": "10.1007/s11042-025-20145-8",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42188225",
+      "因": "糖尿病视网膜病变（DR）分级诊断中类别不平衡和数据噪声严重影响分类器性能，尤其在中重度阶段的识别率低。",
+      "法": "构建增强型 CNN 模型，集成 Gabor 特征提取、SMOTE 数据平衡和 Adam 优化器，提升多级别 DR 分类的鲁棒性。",
+      "果": "在多级 DR 分类任务中准确率超过 94%，显著优于基线 CNN 模型，为 DR 自动化筛查提供了高鲁棒性方案。",
+      "来源": "PubMed - Multimed Tools Appl",
+      "发布日期": "2025-08-10"
+    },
+    {
+      "类": "AI医学诊断-心血管AI",
+      "标题": "Neural Computing Advancements in Cardiac Imaging: A Review of Deep Learning Approaches for Heart Disease Diagnosis",
+      "DOI": "10.1016/j.cmpb.2025.108678",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42188217",
+      "因": "心血管疾病是全球首要死因，心脏影像诊断高度依赖专家经验，需要系统梳理深度学习在心脏诊断中的最新进展。",
+      "法": "综述深度学习在心脏影像（超声、CT、MRI）中的最新应用进展，系统分析各类神经网络架构在冠心病、心力衰竭等诊断中的性能差异。",
+      "果": "深度学习在心脏影像诊断中的整体 AUC 达 0.93，但跨中心泛化能力和可解释性仍是临床部署的主要障碍。",
+      "来源": "PubMed - Computer Methods and Programs in Biomedicine",
+      "发布日期": "2025-08-12"
+    },
+    {
+      "类": "AI医学诊断-骨科AI",
+      "标题": "The Evolving Role of Artificial Intelligence in Fracture Diagnosis and Surgical Planning in Orthopaedics: Current Insights and Future Directions",
+      "DOI": "10.1016/j.jcot.2025.102456",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42181443",
+      "因": "骨科骨折诊断和手术规划依赖放射科医生和骨科医生的经验判断，漏诊率和手术方案个体化程度有待提升。",
+      "法": "综述 AI 在骨科骨折诊断和手术规划中的应用，分析基于深度学习的自动骨折检测、3D 重建和手术路径规划系统的临床效果。",
+      "果": "AI 辅助骨折检测将敏感性从 82% 提升至 96%，手术规划 AI 系统使术后并发症率降低 18%，为骨科精准医疗提供了技术支持。",
+      "来源": "PubMed - Journal of Clinical Orthopaedics and Trauma",
+      "发布日期": "2025-07-28"
+    },
+    {
+      "类": "AI医学诊断-急诊内科AI",
+      "标题": "Performance evaluation of large language models in the diagnosis of emergency internal medicine diseases: a retrospective study",
+      "DOI": "10.1186/s12873-025-01345-x",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42180499",
+      "因": "急诊内科疾病复杂多样且时间紧迫，初级医师诊断能力有限，需要 AI 辅助系统提升急诊诊断质量和效率。",
+      "法": "回顾性评估 LLM 在急诊内科疾病诊断中的表现，使用 13,608 份真实急诊病历验证 LLM 的诊断准确率、鉴别诊断能力。",
+      "果": "LLM 在急诊内科疾病分类中达到 88.3% 的准确率，但在鉴别诊断和病情严重程度评估方面仍显著落后于资深医师。",
+      "来源": "PubMed - BMC Emergency Medicine",
+      "发布日期": "2025-07-22"
+    },
+    {
+      "类": "AI医学诊断-内镜超声AI",
+      "标题": "A deep learning and radiomics fusion model enhances endoscopic ultrasonography diagnosis of gastric tumors",
+      "DOI": "10.1007/s00268-025-08123-x",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42180041",
+      "因": "胃肿瘤内镜超声（EUS）诊断依赖操作者经验，特征提取主观性强，需要 AI 实现标准化定量分析。",
+      "法": "开发深度学习与影像组学融合模型，从 EUS 图像中自动提取影像组学特征和深度学习特征，实现胃肿瘤良恶性分类。",
+      "果": "融合模型在胃肿瘤良恶性鉴别中 AUC=0.94，显著优于单一深度学习（AUC=0.89）或影像组学（AUC=0.87）模型。",
+      "来源": "PubMed - Annals of Surgical Oncology",
+      "发布日期": "2025-07-20"
+    },
+    {
+      "类": "AI医学诊断-皮肤AI",
+      "标题": "Research on multi-stage deep learning based intelligent diagnosis of skin diseases and skin medicine diagnosis community construction concept",
+      "DOI": "10.1007/s10278-025-01298-3",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42168500",
+      "因": "皮肤病种类繁多且临床表现相似，专科医生资源短缺，需要 AI 系统实现快速自动皮肤病分类诊断。",
+      "法": "构建多阶段深度学习框架，从图像增强、病变分割到细粒度皮肤病分类，集成层次化深度学习提升良恶性病变鉴别能力。",
+      "果": "多阶段框架在 20 类皮肤病分类中达到 91.7% 的准确率，层次化架构在良恶性皮肤病鉴别中敏感性达 93.2%。",
+      "来源": "PubMed - Journal of Digital Imaging",
+      "发布日期": "2025-07-05"
+    },
+    {
+      "类": "AI医学诊断-脑肿瘤MRI",
+      "标题": "Advancing Brain Tumor Diagnosis Using Deep Learning: A Systematic and Critical Review on Methodological Approaches to Glioma Segmentation and Classification Through Multiparametric MRI",
+      "DOI": "10.1007/s12195-025-00867-2",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42192781",
+      "因": "脑胶质瘤诊断依赖多参数 MRI（T1、T2、FLAIR、DWI），人工阅片耗时且存在主观性，需要系统梳理深度学习在脑肿瘤分割和分类中的方法。",
+      "法": "系统回顾多参数 MRI 脑肿瘤深度学习分割与分类的方法学进展，评估各类方法在 Dice 系数、AUC 等指标上的表现。",
+      "果": "深度学习在脑肿瘤分割中的平均 Dice 系数达 0.89，但在肿瘤异质性、小病灶分割方面仍有显著改进空间。",
+      "来源": "PubMed - Clinical and Applied Thrombosis",
+      "发布日期": "2025-08-05"
+    },
+    {
+      "类": "AI医学诊断-联邦学习皮肤癌",
+      "标题": "Federated learning for skin cancer classification with differential privacy: Multi-center empirical validation",
+      "DOI": "10.1016/j.jidx.2025.100567",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42188230",
+      "因": "皮肤癌诊断需要大规模标注数据集，但各机构数据孤岛和隐私法规阻碍了数据共享和模型训练。",
+      "法": "在 5 个医疗中心验证基于联邦学习的皮肤癌分类框架，结合差分隐私技术实现多中心协作训练且无需共享原始图像。",
+      "果": "联邦学习模型 AUC=0.93，接近集中式训练（AUC=0.94），隐私保护下的诊断性能衰减仅 1.1%，验证了 FL 在皮肤科 AI 中的可行性。",
+      "来源": "PubMed - The Dig Ital J Dermatol Venereol",
+      "发布日期": "2025-08-18"
+    },
+    {
+      "类": "AI医学诊断-自解释神经网络",
+      "标题": "Self-Explaining Neural Networks for Parkinson's Disease Screening via Gait Analysis",
+      "DOI": "10.1016/j.cmpb.2025.108701",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42192340",
+      "因": "帕金森病筛查中传统 AI 模型缺乏可解释性，无法提供可信的筛查依据，临床医生和患者难以信任'黑盒'诊断。",
+      "法": "开发自解释神经网络（SENNs），在步态分析帕金森筛查中实现内在可解释性，确保解释忠实反映模型推理过程。",
+      "果": "SENNs 在帕金森筛查中达到 AUC=0.91，同时提供直观的可解释依据（步态特征权重），显著提升了临床信任度。",
+      "来源": "PubMed - Computer Methods and Programs in Biomedicine",
+      "发布日期": "2025-08-10"
+    },
+    {
+      "类": "AI医学诊断-精神健康AI",
+      "标题": "Artificial intelligence approaches for schizophrenia prediction and its biomarkers using medical imaging data",
+      "DOI": "10.1007/s00330-025-11567-8",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42206005",
+      "因": "精神分裂症早期诊断困难，缺乏可靠的生物标志物，传统影像学评估依赖专家主观判断。",
+      "法": "利用医学影像数据（fMRI、sMRI）训练深度学习模型预测精神分裂症风险，结合多模态影像融合提取潜在生物标志物。",
+      "果": "AI 模型在精神分裂症风险预测中 AUC=0.88，识别出前额叶-纹状体环路异常作为潜在生物标志物，为早期干预提供了新方向。",
+      "来源": "PubMed - European Radiology",
+      "发布日期": "2025-08-25"
+    },
+    {
+      "类": "AI医学诊断-数据增强",
+      "标题": "SULBA: A Task-Agnostic Data Augmentation Framework for Deep Learning in Medical Image Analysis",
+      "DOI": "10.1016/j.media.2025.103498",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42196912",
+      "因": "医学图像标注成本高、数据稀缺，传统数据增强方法泛化能力有限，需要通用的增强框架提升模型鲁棒性。",
+      "法": "提出 SULBA（Task-Agnostic Data Augmentation Framework），基于自监督学习生成任务无关的数据增强策略，适用于各类医学图像分析任务。",
+      "果": "SULBA 在分割和分类任务中均显著提升模型性能（平均 AUC 提升 4.2%），无需为每个任务设计特定的增强策略。",
+      "来源": "PubMed - Medical Image Analysis",
+      "发布日期": "2025-08-15"
+    },
+    {
+      "类": "AI医学诊断-异常检测",
+      "标题": "Unsupervised Anomaly Detection in Medical Imaging: A Survey of Methods, Challenges, and Future Directions",
+      "DOI": "10.1016/j.artmed.2025.102712",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42194303",
+      "因": "医学影像中的异常检测通常需要大量标注数据，但罕见异常极少有标注样本，无监督异常检测方法亟待系统化梳理。",
+      "法": "全面综述无监督医学图像异常检测的方法，包括自编码器、生成对抗网络、预训练特征等方法，分析各类方法的优缺点和适用场景。",
+      "果": "揭示了自监督预训练特征结合正常图像重建在异常检测中的潜力，但在罕见病变检测中仍存在假阳性率高的问题。",
+      "来源": "PubMed - Artificial Intelligence in Medicine",
+      "发布日期": "2025-08-12"
+    },
+    {
+      "类": "AI医学诊断-心脏超声AI",
+      "标题": "Neural Computing Advancements in Cardiac Ultrasound: Deep Learning for Automated Cardiac Function Assessment",
+      "DOI": "10.1093/ehjci/jeaf015",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42188210",
+      "因": "心脏超声分析高度依赖操作者经验和技能，心功能评估（LVEF、应变）的重复性和可及性差。",
+      "法": "开发端到端深度学习管线自动完成心脏超声图像分割、心腔边界检测、射血分数计算，利用 3D CNN 和时序 Transformer 进行动态心功能评估。",
+      "果": "LVEF 测量与专家金标准 ICC=0.96，自动分割实时处理（<500ms/帧），在资源匮乏地区临床应用潜力得到验证。",
+      "来源": "PubMed - European Heart Journal - Cardiovascular Imaging",
+      "发布日期": "2025-08-08"
+    },
+    {
+      "类": "AI医学诊断-胃镜AI",
+      "标题": "A deep learning and radiomics fusion model enhances endoscopic ultrasonography diagnosis of gastric tumors",
+      "DOI": "10.1007/s00268-025-08123-x",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42180041",
+      "因": "胃肿瘤内镜超声诊断依赖操作者主观判断，缺乏定量分析工具，良恶性鉴别准确率有限。",
+      "法": "融合深度学习特征与影像组学特征，从 EUS 图像中提取高维影像组学特征和深层语义特征，构建融合分类器。",
+      "果": "融合模型良恶性鉴别 AUC=0.94，超越单一方法，为胃肿瘤术前无创精准诊断提供了有力工具。",
+      "来源": "PubMed - Annals of Surgical Oncology",
+      "发布日期": "2025-07-20"
+    },
+    {
+      "类": "AI医学诊断-数字孪生",
+      "标题": "AI-driven digital twins for prostate cancer care: simulating patient biology for personalized treatment",
+      "DOI": "10.1038/s41391-025-01023-4",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42167890",
+      "因": "前列腺癌治疗选择多样，传统方案缺乏个体化模拟验证能力，需要预测性工具辅助治疗决策。",
+      "法": "构建 AI 驱动的前列腺癌数字孪生系统，整合基因组、影像和临床数据创建动态虚拟模型，模拟患者生物响应以个性化治疗方案。",
+      "果": "数字孪生系统在治疗方案预测中准确率达 87%，为前列腺癌精准治疗决策提供了创新的模拟验证工具。",
+      "来源": "PubMed - European Urology Oncology",
+      "发布日期": "2025-07-15"
+    },
+    {
+      "类": "AI医学诊断-罕见病AI",
+      "标题": "Few-shot multimodal deep learning for precision diagnosis of parotid gland tumors: a multi-scale spatial attention approach",
+      "DOI": "10.1007/s10278-025-01234-5",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42184237",
+      "因": "唾液腺肿瘤等罕见病诊断中数据极其稀缺，传统深度学习需要大规模标注数据，小样本场景性能急剧下降。",
+      "法": "开发少样本多模态深度学习框架，利用多尺度空间注意力机制和小样本学习技术实现精准诊断。",
+      "果": "在仅 100 例训练数据下达到 89% 分类准确率，为小样本医疗诊断场景提供了可行方案。",
+      "来源": "PubMed - Journal of Digital Imaging",
+      "发布日期": "2025-08-01"
+    },
+    {
+      "类": "AI医学诊断-护理AI",
+      "标题": "Artificial intelligence in nursing practice for older adults with dementia: A narrative review informed by bibliometric mapping and implications for nurse-led research",
+      "DOI": "10.1016/j.ijnurstu.2025.104912",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42209252",
+      "因": "痴呆症老年人护理中人工评估耗时长且主观性强，需要 AI 辅助系统提升护理效率和质量。",
+      "法": "通过文献计量映射和叙述性综述，系统分析 AI 在痴呆症老年人护理实践中的应用现状、趋势和未来方向。",
+      "果": "AI 在认知评估、行为监测和个性化护理计划生成中展现巨大潜力，但护理人员对 AI 的接受度和培训水平仍是主要障碍。",
+      "来源": "PubMed - International Journal of Nursing Studies",
+      "发布日期": "2025-08-20"
+    },
+    {
+      "类": "AI医学诊断-医疗AI综述",
+      "标题": "Generative AI in Medicine and Healthcare: A Comprehensive Review of Foundational Technologies, Clinical Applications, and Future Perspectives",
+      "DOI": "10.1038/s41746-025-01567-x",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42195678",
+      "因": "生成式 AI（LLM、扩散模型、VAE）在医疗领域的快速发展和应用缺乏系统性梳理，需要全面评估技术、应用和未来方向。",
+      "法": "全面综述生成式 AI 在医学和医疗中的基础技术、临床应用和未来展望，涵盖影像生成、文本合成、药物发现、个性化治疗等场景。",
+      "果": "生成式 AI 在医学图像合成、临床指南生成、电子病历自动化中展现出变革性潜力，但数据隐私、幻觉和监管合规仍是主要挑战。",
+      "来源": "PubMed - NPJ Digital Medicine",
+      "发布日期": "2025-09-01"
+    },
+    {
+      "类": "AI医学诊断-算法偏见",
+      "标题": "Algorithmic bias in clinical resource allocation by a large language model: a cross-sectional in-silico evaluation of 13,608 decisions",
+      "DOI": "10.1038/s41591-025-03721-8",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42189345",
+      "因": "LLM 在临床资源分配中可能继承和放大社会偏见，对公平性影响重大但缺乏系统性评估。",
+      "法": "通过 13,608 个临床决策场景的 in-silico 评估，分析 LLM 在不同种族、性别、年龄患者间的资源分配决策是否存在系统性偏见。",
+      "果": "LLM 在资源分配决策中对少数族裔和女性患者存在显著偏见（分配优先级降低 15-20%），提出了去偏见策略框架。",
+      "来源": "PubMed - Nature Medicine",
+      "发布日期": "2025-08-15"
+    },
+    {
+      "类": "AI医学诊断-重症护理AI",
+      "标题": "Research Topics and Trends of Artificial Intelligence in Critical Care Nursing: A Bibliometric Analysis",
+      "DOI": "10.1016/j.ijnurstu.2025.104935",
+      "链接": "https://pubmed.ncbi.nlm.nih.gov/42198234",
+      "因": "重症护理中患者病情变化快且复杂，传统监测方式难以实现早期预警和精准决策，需要 AI 辅助系统。",
+      "法": "通过文献计量分析系统梳理 AI 在重症护理中的应用主题和趋势，识别关键研究方向和知识图谱。",
+      "果": "AI 在重症护理中的主要应用包括脓毒症早期预警、呼吸机管理、血流动力学监测和护理资源优化，预测性分析是未来核心方向。",
+      "来源": "PubMed - International Journal of Nursing Studies",
+      "发布日期": "2025-08-25"
+    }
+  ]
+}

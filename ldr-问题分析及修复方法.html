@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LDR (Local Deep Research) 运行问题分析及修复方法</title>
+<style>
+  :root {
+    --bg: #0f172a; --card: #1e293b; --border: #334155;
+    --fg: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8;
+    --critical: #f87171; --high: #fb923c; --medium: #facc15; --low: #4ade80;
+    --code-bg: #0d1117;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; }
+  .header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 50%, #1a1a2e 100%);
+    border-bottom: 2px solid var(--accent); padding: 40px 20px; text-align: center;
+  }
+  .header h1 { font-size: 1.8em; margin-bottom: 8px; color: #fff; }
+  .header .meta { color: var(--muted); font-size: 0.9em; }
+  .header .summary {
+    max-width: 880px; margin: 20px auto 0; padding: 16px 24px;
+    background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 8px; text-align: left; font-size: 0.93em;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.78em; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+  .badge-critical { background: rgba(248,113,113,0.2); color: var(--critical); border: 1px solid var(--critical); }
+  .badge-high { background: rgba(251,146,60,0.2); color: var(--high); border: 1px solid var(--high); }
+  .badge-medium { background: rgba(250,204,21,0.2); color: var(--medium); border: 1px solid var(--medium); }
+  .badge-low { background: rgba(74,222,128,0.2); color: var(--low); border: 1px solid var(--low); }
+  .issue { background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin: 20px 0; overflow: hidden; }
+  .issue-header { padding: 18px 24px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border); }
+  .issue-header .num { background: var(--accent); color: #000; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9em; flex-shrink: 0; }
+  .issue-header h2 { font-size: 1.1em; flex: 1; }
+  .issue-body { padding: 0 24px 24px; }
+  .issue-body h3 { font-size: 0.95em; color: var(--accent); margin: 18px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+  .issue-body p, .issue-body li { font-size: 0.92em; }
+  .issue-body ul { padding-left: 20px; margin: 6px 0; }
+  .issue-body li { margin: 4px 0; }
+  pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 14px 18px; margin: 10px 0; overflow-x: auto; font-size: 0.85em; line-height: 1.5; font-family: 'Cascadia Code','Fira Code','Consolas', monospace; }
+  .error-log { background: #1a0a0a; border: 1px solid rgba(248,113,113,0.3); border-radius: 6px; padding: 14px 18px; margin: 10px 0; font-size: 0.82em; overflow-x: auto; max-height: 250px; overflow-y: auto; font-family: monospace; color: #f87171; }
+  .fix-box { background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.25); border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+  .fix-box h4 { color: var(--low); font-size: 0.9em; margin-bottom: 8px; }
+  .warn-box { background: rgba(250,204,21,0.06); border: 1px solid rgba(250,204,21,0.25); border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+  .warn-box h4 { color: var(--medium); font-size: 0.9em; margin-bottom: 8px; }
+  .info-box { background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.25); border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+  .info-box h4 { color: var(--accent); font-size: 0.9em; margin-bottom: 8px; }
+  .evidence { background: rgba(56,189,248,0.04); border-left: 3px solid var(--accent); padding: 12px 18px; margin: 10px 0; font-size: 0.9em; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+  th { background: rgba(56,189,248,0.1); padding: 10px 14px; text-align: left; border: 1px solid var(--border); }
+  td { padding: 10px 14px; border: 1px solid var(--border); }
+  tr:hover td { background: rgba(56,189,248,0.03); }
+  .tag-ok { color: var(--low); font-weight: 700; }
+  .tag-blocked { color: var(--critical); font-weight: 700; }
+  .footer { text-align: center; padding: 30px; color: var(--muted); font-size: 0.85em; border-top: 1px solid var(--border); margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>LDR (Local Deep Research) 运行问题分析报告</h1>
+  <div class="meta">
+    服务器: 10.10.20.21 &nbsp;|&nbsp; 部署: tmux + conda &nbsp;|&nbsp; Python 3.12.13 &nbsp;|&nbsp; SearXNG 2025.8.3 &nbsp;|&nbsp; 分析时间: 2026-06-10
+  </div>
+  <div class="summary">
+    <strong>通过实时监听一次搜索任务（查询: 量化交易相关），确认了 <span style="color:#f87171">8 个</span> 运行时问题。</strong><br>
+    搜索链路完全断裂：<strong>(1)</strong> SearXNG 的 categories=["general"] 触发被防火墙阻断的后端 → 搜索 0 结果；<strong>(2)</strong> Wikipedia fallback 也被阻断；<strong>(3)</strong> Playwright Chromium 未安装 → 网页内容抓取全部失败；<strong>(4)</strong> SQLCipher 缺失 → 每秒数百条错误日志刷屏。<br>
+    本次搜索最终<strong>未获取任何有效外部来源</strong>，报告完全依赖 LLM 幻觉。
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ==================== Issue 1: SearXNG categories ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <div class="num">1</div>
+      <h2>SearXNG categories=["general"] 触发被阻断的后端引擎</h2>
+      <span class="badge badge-high">High</span>
+    </div>
+    <div class="issue-body">
+      <h3>实时监听日志证据</h3>
+      <div class="error-log">14:41:13.336 | INFO  | searxng:_get_previews:444 - Getting SearXNG previews for query: algorithmic trading technology
+14:41:13.353 | INFO  | searxng:_get_search_results:281 - Sending request to SearXNG instance at http://10.10.20.21:16464
+14:41:13.385 | INFO  | searxng:_get_search_results:314 - Found 1 search result elements
+14:41:13.388 | WARNING| searxng:_get_search_results:390 - SearXNG backend engine failed or rate-limited: arxiv
+14:41:13.388 | WARNING| searxng:_get_search_results:404 - SearXNG returned no valid results for query: algorithmic trading technology
+14:41:13.455 | MILESTONE | research_service - Result from web_search: No results found for 'algorithmic trading technology'</div>
+
+      <h3>根因</h3>
+      <div class="evidence">
+        <p><strong>已实测验证：</strong>LDR 默认 <code>categories=["general"]</code>，SearXNG 的 general 分类触发 Google/DuckDuckGo 后端（被防火墙阻断）。
+        而 arxiv/pubmed 属于 <code>science</code> 分类，LDR 根本没请求这个分类。</p>
+        <table>
+          <tr style="background:rgba(248,113,113,0.08)"><td><code>categories=general</code> (LDR默认)</td><td>→ Google/DuckDuckGo → <strong class="tag-blocked">BLOCKED → 0 结果</strong></td></tr>
+          <tr style="background:rgba(74,222,128,0.08)"><td><code>categories=science</code></td><td>→ arxiv/pubmed → <strong class="tag-ok">20 结果</strong></td></tr>
+        </table>
+      </div>
+
+      <h3>涉及文件</h3>
+      <ul>
+        <li><code>src/local_deep_research/defaults/default_settings.json</code> 第 2725 行: <code>"value": ["general"]</code></li>
+        <li><code>src/local_deep_research/web_search_engines/engines/search_engine_searxng.py</code> 第 163 行: <code>or ["general"]</code></li>
+      </ul>
+
+      <h3>修复</h3>
+      <div class="fix-box">
+        <h4>方法 1: Web UI 设置（不改代码，最简单）</h4>
+        <pre>http://10.10.20.21:5000/settings
+→ 搜索 SearXNG → Categories
+→ 将 ["general"] 改为 ["science", "general"]</pre>
+        <h4>方法 2: 改配置文件（永久生效）</h4>
+        <pre># 服务器上编辑:
+vi /kanas/datav/lmet/projects/local-deep-research/src/local_deep_research/defaults/default_settings.json
+# 第 2725 行，将:
+"value": ["general"]
+# 改为:
+"value": ["science", "general"]</pre>
+        <h4>方法 3: 改源码兜底值</h4>
+        <pre># search_engine_searxng.py 第 163 行
+self.categories = self._normalize_list(categories) or ["science", "general"]</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Issue 2: Playwright Chromium missing ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <div class="num">2</div>
+      <h2>Playwright Chromium 浏览器未安装 — 内容抓取全部失败</h2>
+      <span class="badge badge-critical">Critical &mdash; 新发现</span>
+    </div>
+    <div class="issue-body">
+      <h3>实时监听日志证据</h3>
+      <div class="error-log">14:42:37.982 | INFO  | playwright_html - Auto: no/short content for https://www.bridgewater.com/..., falling back to JS rendering
+14:42:39.157 | ERROR | playwright_html:_fetch_with_playwright:271 - Playwright error fetching https://www.bridgewater.com/...
+playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at
+  /home/zengxinghang/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell
+┌──────────────────────────────────────────────────────────────┐
+│ Looks like Playwright was just installed or updated.         │
+│ Please run the following command to download new browsers:   │
+│                                                              │
+│     playwright install                                       │
+└──────────────────────────────────────────────────────────────┘</div>
+
+      <h3>根因</h3>
+      <ul>
+        <li>Playwright Python 包已安装，但 <strong>Chromium 浏览器二进制文件未下载</strong></li>
+        <li>路径 <code>~/.cache/ms-playwright/chromium_headless_shell-1217/</code> 不存在</li>
+        <li>推测是 Playwright 更新后未运行 <code>playwright install</code></li>
+        <li>当前有 18 个僵尸 Playwright 进程来自旧版本，新版本从未成功启动过</li>
+      </ul>
+
+      <h3>影响</h3>
+      <p>所有需要 JS 渲染的网页内容抓取全部失败。LDR 内容抓取链路：HTTP fetch → 失败 → Playwright fallback → 也失败 → 无内容。</p>
+
+      <h3>为什么需要 Playwright？</h3>
+      <div class="info-box">
+        <h4>LDR 内容抓取两阶段机制</h4>
+        <p><strong>阶段 1：HTTP 直接抓取</strong>（用 requests/trafilatura）— 速度快，但遇到 CAPTCHA、JS 渲染页面、付费墙就失败。</p>
+        <p><strong>阶段 2：Playwright 兜底</strong>（用无头 Chromium 浏览器）— 像真人一样打开网页，等 JS 执行完再提取内容。可以绕过大部分 CAPTCHA 和 JS 渲染问题。</p>
+        <p>当前 Chromium 未安装，阶段 2 完全不可用，遇到反爬的网站就彻底抓不到内容。</p>
+      </div>
+
+      <h3>为什么 <code>playwright install chromium</code> 不成功？</h3>
+      <div class="warn-box">
+        <h4>Playwright 1.59.0 的 Chromium 下载源均不可用</h4>
+        <ul>
+          <li><strong>微软官方 CDN</strong>（playwright.azureedge.net）→ 重定向到 playwright.download.prss.microsoft.com → <strong>400 Bad Request</strong></li>
+          <li><strong>中国镜像</strong>（registry.npmmirror.com）→ <strong>404 NOT_FOUND</strong>（v1217 版本尚未同步）</li>
+          <li><strong>Playwright 进程卡死</strong>：反复重试下载，导致 SSH 连接超时</li>
+        </ul>
+      </div>
+
+      <h3>修复方案</h3>
+      <div class="fix-box">
+        <h4>方案 A：从 Google 官方源手动下载（已验证可用，推荐）</h4>
+        <pre># 1. 清理旧版僵尸进程
+pkill -f 'playwright/driver/package/cli.js run-driver'
+
+# 2. 创建目标目录
+mkdir -p ~/.cache/ms-playwright/chromium-1217
+cd ~/.cache/ms-playwright/chromium-1217
+
+# 3. 从 Google Chrome for Testing 下载（服务器可访问此源，已验证 HTTP 200）
+curl -L --max-time 600 -o /tmp/chrome-linux64.zip \
+  'https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.15/linux64/chrome-linux64.zip'
+
+# 4. 解压
+unzip -o /tmp/chrome-linux64.zip
+chmod +x chrome-linux64/chrome
+
+# 5. 安装 headless shell（Playwright 实际调用的是这个）
+mkdir -p ~/.cache/ms-playwright/chromium_headless_shell-1217
+cd ~/.cache/ms-playwright/chromium_headless_shell-1217
+curl -L --max-time 300 -o /tmp/chrome-headless-shell.zip \
+  'https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.15/linux64/chrome-headless-shell-linux64.zip'
+unzip -o /tmp/chrome-headless-shell.zip
+chmod +x chrome-headless-shell-linux64/chrome-headless-shell
+
+# 6. 验证
+ls -la ~/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell</pre>
+        <p><strong>注意</strong>：Google 源下载速度约 29KB/s（170MB 约需 100 分钟），下载已在后台运行中。</p>
+      </div>
+      <div class="fix-box">
+        <h4>方案 B：降级 Playwright 到镜像源有同步的版本</h4>
+        <pre>conda activate ldr
+pip install playwright==1.52.0   # 降级到有镜像的旧版本
+PLAYWRIGHT_DOWNLOAD_HOST=https://registry.npmmirror.com/-/binary/playwright playwright install chromium</pre>
+      </div>
+      <div class="fix-box">
+        <h4>方案 C：用系统包安装 Chromium（需 sudo 权限）</h4>
+        <pre>sudo apt-get install -y chromium-browser
+# 然后设置环境变量让 Playwright 使用系统 Chromium:
+export PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Issue 3: SQLCipher ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <div class="num">3</div>
+      <h2>SQLCipher 缺失 — 海量错误日志刷屏</h2>
+      <span class="badge badge-critical">Critical</span>
+    </div>
+    <div class="issue-body">
+      <div class="error-log">14:41:58.363: ERROR CORE sqlite3Codec: identified deferred error condition: 0
+14:41:58.363: ERROR CORE sqlcipher_codec_ctx_set_error 1
+... (每次数据库操作都触发，持续刷屏，淹没其他日志)</div>
+      <h3>修复</h3>
+      <div class="fix-box">
+        <pre>sudo apt-get install libsqlcipher-dev
+conda activate ldr
+pip install pysqlcipher3-binary
+python -c "import sqlcipher3; print('OK')"</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Issue 4: Content fetch failures ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <div class="num">4</div>
+      <h2>网页内容抓取大面积失败 — CAPTCHA/401/404</h2>
+      <span class="badge badge-high">High &mdash; 新发现</span>
+    </div>
+    <div class="issue-body">
+      <h3>实时监听日志证据</h3>
+      <table>
+        <thead><tr><th>目标网站</th><th>HTTP 状态</th><th>原因</th><th>Playwright 兜底</th></tr></thead>
+        <tbody>
+          <tr><td>kaggle.com</td><td class="tag-blocked">CAPTCHA</td><td>"Checking your browser - reCAPTCHA"</td><td>失败(未安装)</td></tr>
+          <tr><td>marketwatch.com</td><td class="tag-blocked">401</td><td>需登录/付费墙</td><td>失败(未安装)</td></tr>
+          <tr><td>bridgewater.com</td><td class="tag-blocked">404</td><td>URL 不存在</td><td>失败(未安装)</td></tr>
+          <tr><td>investopedia.com</td><td style="color:var(--muted)">可能正常</td><td>可抓取</td><td>—</td></tr>
+          <tr><td>cmegroup.com</td><td style="color:var(--muted)">可能正常</td><td>可抓取</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h3>分析</h3>
+      <p>LDR 的内容抓取工具（content_fetcher）试图抓取搜索结果链接的全文，但：</p>
+      <ul>
+        <li>很多金融网站有 <strong>CAPTCHA/付费墙</strong> 防护，HTTP 直接抓取失败</li>
+        <li>Playwright 兜底（JS 渲染绕过部分防护）也因 Chromium 未安装而失败</li>
+        <li>导致大量<strong>无效的抓取尝试</strong>，浪费时间</li>
+      </ul>
+
+      <h3>修复</h3>
+      <div class="fix-box">
+        <h4>安装 Playwright Chromium 后（问题 #2 修复），JS 渲染可以绕过部分 CAPTCHA</h4>
+        <pre># 修复问题 #2 后 Playwright 可用
+# 对于付费墙网站（marketwatch 等），目前无法绕过，属于正常限制</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Issue 5: Wikipedia blocked ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <div class="num">5</div>
+      <h2>Wikipedia 直接搜索也被防火墙阻断</h2>
+      <span class="badge badge-medium">Medium</span>
+    </div>
+    <div class="issue-body">
+      <div class="error-log">14:44:07.248 | INFO | search_engine_factory - Creating wikipedia with filtered parameters
+14:44:07.249 | INFO | search_engine_wikipedia - Getting Wikipedia page previews for query: quantitative finance
+14:44:07.261 | INFO | rate_limiting.tracker - No rate limit data for WikipediaSearchEngine
+(然后超时/连接重置)</div>
+      <p>MetaSearchEngine 不仅在 SearXNG 失败时 fallback 到 Wikipedia，还会直接将 Wikipedia 作为搜索引擎调用，但 wikipedia.org 被防火墙阻断。</p>
+      <div class="fix-box">
+        <pre># 建议联系网络管理员将 wikipedia.org 加入白名单
+# 或在 LDR 设置中禁用 Wikipedia 引擎（优先使用 SearXNG science 分类）</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Issue 6: Rate limiting warning ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <div class="num">6</div>
+      <h2>Rate limiting 配置问题 — 无用户上下文</h2>
+      <span class="badge badge-medium">Medium &mdash; 新发现</span>
+    </div>
+    <div class="issue-body">
+      <div class="error-log">14:42:36.049 | WARNING | rate_limiting.tracker:get_wait_time:252 - No user context available for rate limiting on html_download_www.bridgewater.com but programmatic_mode=False. Disabling rate limiting. This may indicate a configuration issue.</div>
+      <p>每个内容下载请求都触发此警告，rate limiting 被自动禁用。可能导致请求过于频繁触发目标网站的限流。</p>
+      <div class="fix-box">
+        <pre># 检查 LDR 的 rate limiting 配置
+# 可能需要在 research context 中传递 user context
+# 文件: src/local_deep_research/web_search_engines/rate_limiting/tracker.py 第 252 行</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Issue 7: Playwright zombie processes ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <div class="num">7</div>
+      <h2>Playwright 僵尸进程堆积（18个，~1.4GB）</h2>
+      <span class="badge badge-medium">Medium</span>
+    </div>
+    <div class="issue-body">
+      <p>旧版 Playwright 的 18 个驱动进程（Jun 08/09）仍在运行，但新版本 Chromium 未安装。清理后运行 <code>playwright install</code> 即可。</p>
+      <div class="fix-box"><pre>pkill -f 'playwright/driver/package/cli.js run-driver'
+playwright install chromium</pre></div>
+    </div>
+  </div>
+
+  <!-- ==================== Issue 8: requests ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <div class="num">8</div>
+      <h2>requests / urllib3 版本冲突</h2>
+      <span class="badge badge-low">Low</span>
+    </div>
+    <div class="issue-body">
+      <div class="fix-box"><pre>conda activate ldr && pip install --upgrade requests</pre></div>
+    </div>
+  </div>
+
+  <!-- ==================== Search timeline ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <span style="font-size:1.4em">&#128338;</span>
+      <h2>本次搜索完整时间线（14:41:13 - 14:44:40）</h2>
+    </div>
+    <div class="issue-body">
+      <table>
+        <thead><tr><th>时间</th><th>事件</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>14:41:13</td><td>LDR 创建 SearXNG 引擎，搜索 "algorithmic trading technology"</td><td class="tag-blocked">0 结果</td></tr>
+          <tr><td>14:41:13</td><td>同时搜索 "quantitative investment technology platform"</td><td class="tag-blocked">0 结果</td></tr>
+          <tr><td>14:41:13</td><td>SearXNG 后端 arxiv 报告失败（general 分类无可用后端）</td><td class="tag-blocked">失败</td></tr>
+          <tr><td>14:41:33</td><td>第 2 轮搜索（3个并行查询）</td><td class="tag-blocked">全部 0</td></tr>
+          <tr><td>14:41:33</td><td>开始抓取 investopedia.com 等网页内容</td><td style="color:var(--muted)">部分成功</td></tr>
+          <tr><td>14:42:36</td><td>抓取 kaggle.com → CAPTCHA</td><td class="tag-blocked">失败</td></tr>
+          <tr><td>14:42:37</td><td>抓取 bridgewater.com → 404 → Playwright fallback → Chromium 未安装</td><td class="tag-blocked">失败</td></tr>
+          <tr><td>14:42:39</td><td>抓取 marketwatch.com → 401 → Playwright fallback → Chromium 未安装</td><td class="tag-blocked">失败</td></tr>
+          <tr><td>14:43:38</td><td>更多并行搜索（全部 SearXNG general → 0）</td><td class="tag-blocked">全部 0</td></tr>
+          <tr><td>14:44:07</td><td>MetaSearchEngine 直接调用 Wikipedia 引擎</td><td class="tag-blocked">超时/阻断</td></tr>
+          <tr><td>14:44:40</td><td>连接清理，搜索结束</td><td style="color:var(--critical)"><strong>无有效来源</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== Fix steps ==================== -->
+  <div class="issue">
+    <div class="issue-header">
+      <span style="font-size:1.4em">&#9889;</span>
+      <h2>修复步骤（按优先级）</h2>
+    </div>
+    <div class="issue-body">
+      <pre># Step 1: 修复 SearXNG 搜索分类（解决核心问题）
+# Web UI: http://10.10.20.21:5000/settings → SearXNG → Categories → ["science", "general"]
+# 或改 default_settings.json 第 2725 行: "value": ["science", "general"]
+
+# Step 2: 清理旧 Playwright + 安装 Chromium
+pkill -f 'playwright/driver/package/cli.js run-driver'
+conda activate ldr
+playwright install chromium
+
+# Step 3: 安装 SQLCipher
+sudo apt-get install libsqlcipher-dev
+pip install pysqlcipher3-binary
+
+# Step 4: 修复 requests
+pip install --upgrade requests
+
+# Step 5: 重启 LDR
+tmux send-keys -t ldr C-c
+# 等待退出后
+ldr-web
+
+# Step 6: 验证
+# 发起一次搜索，检查 tmux 日志:
+# - SearXNG 应返回 science 分类结果
+# - Playwright 应能启动 Chromium
+# - SQLCipher 错误应消失</pre>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  LDR 问题分析报告 &nbsp;|&nbsp; 2026-06-10 &nbsp;|&nbsp; 基于实时搜索监听 &nbsp;|&nbsp; 服务器: 10.10.20.21 &nbsp;|&nbsp; Claude Code
+</div>
+
+</body>
+</html>

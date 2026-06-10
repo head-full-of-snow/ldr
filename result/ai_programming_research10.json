@@ -1,0 +1,1294 @@
+{
+  "findings": [
+    {
+      "content": "Searched with 2 questions, found 25 results.",
+      "documents": [],
+      "phase": "Iteration 1",
+      "question": "AI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network"
+    },
+    {
+      "content": "Searched with 1 questions, found 0 results.",
+      "documents": [],
+      "phase": "Iteration 2",
+      "question": "AI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network"
+    },
+    {
+      "content": "Searched with 1 questions, found 0 results.",
+      "documents": [],
+      "phase": "Iteration 3",
+      "question": "AI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network"
+    },
+    {
+      "content": "The integration of Artificial Intelligence, particularly deep learning and neural networks, has significantly advanced the fields of intelligent error detection, automated bug detection, and software defect prediction. By moving beyond traditional static rule-based methods, these AI-driven approaches offer more efficient and accurate ways to maintain software quality, reliability, and performance [1].\n\n**Autonomous Debugging and Code Remediation**\nRecent developments in autonomous debugging utilize large language models (LLMs) to detect and resolve bugs automatically. For instance, SynergyBug combines BERT and GPT-3 to create an automated system that diagnoses and repairs software bugs across multiple sources, addressing the inefficiencies of manual debugging in complex software structures [1]. This approach represents a shift towards intelligent error detection that not only identifies issues but also suggests or implements remediation [1].\n\n**Software Defect Prediction using Neural Networks**\nSoftware defect prediction (SDP) has evolved from relying on traditional metrics (like code complexity) to leveraging deep learning models that extract semantic and structural features from source code [7], [9]. Several neural network architectures have been proposed to enhance prediction accuracy:\n\n*   **Graph Neural Networks (GNNs):** GNNs are increasingly used to model software as graphs where nodes represent classes and edges represent dependencies, allowing for the capture of complex relationships between defect patterns and code quality [3], [4]. An integrated GNN model can simultaneously tackle defect prediction and code quality assessment, leveraging the complementary information between these tasks [3]. Furthermore, GNNs can be applied to large-scale labeled graphs, such as those used in programming language processing, to detect defects or malware [23].\n*   **Hybrid Deep Learning Models:** Combining different neural network types often yields superior results. For example, a hybrid model using Convolutional Neural Networks (CNN) and Bidirectional Long Short-Term Memory (Bi-LSTM) networks extracts both local features and sequential semantics from code, addressing the limitations of traditional features [9]. Another approach uses Temporal Convolutional Networks (TCN) optimized by metaheuristic algorithms like Antlion Optimization (ALO) to improve defect detection accuracy [5]. Similarly, Residual/Shuffle (RS) Networks optimized by an upgraded Fish Migration Optimization algorithm have been shown to reduce manual effort while improving prediction accuracy [6].\n*   **Feature Fusion and Selection:** Effective SDP often involves fusing semantic and traditional features. A hybrid deep learning model that integrates these feature types can better identify semantic differences that traditional metrics miss [7]. Additionally, frameworks with improved feature selection and ensemble machine learning techniques have been developed to handle the complexity of datasets, such as those from NASA [10].\n\n**Advanced Optimization and Specific Applications**\nTo further enhance model performance, metaheuristic optimization algorithms are frequently combined with deep learning. Hybrid swarm intelligence algorithms, such as mixing particle swarm and wolf swarm algorithms, are used for hyperparameter optimization to improve the training of defect prediction models [8]. Specific applications include:\n*   **Mobile Applications:** Deep learning models, including CNNs, have been adapted for cross-project and within-project defect prediction in mobile applications, helping to identify defects before release to ensure a positive user experience [11], [12].\n*   **Fine-Grained Prediction:** Moving beyond coarse-grained entities like classes, some models focus on method-call sequences to learn code semantics and syntactic structures between methods, enabling more precise defect prediction [13].\n*   **Hardware and In-Memory Errors:** In the context of in-memory computing for AI accelerators, neural in-memory checksums have been proposed as an error detection and correction technique to mitigate hardware variations and non-idealities that could compromise neural network inference accuracy [16].\n\n**Challenges and Limitations**\nDespite these advancements, challenges remain. Research indicates that there is a performance ceiling for classification models in SDP, influenced by data complexity and the inherent limitations of classifier performance [14]. Additionally, while AI tools like SynergyBug show promise, the field is still maturing, and the integration of these tools into existing development workflows requires robust infrastructure, such as the Persistent Knowledge Monitor (PKM) framework developed in the DECODER project to store and trace software data [2].\n\nIn summary, AI-powered intelligent error detection and software defect prediction rely heavily on advanced neural networks (CNNs, RNNs, GNNs) and hybrid optimization techniques to extract deep semantic and structural features from code. These methods offer significant improvements over traditional techniques by providing automated, proactive, and more accurate identification of software defects [1], [3], [5], [7], [9].",
+      "documents": [
+        {
+          "content": "Title: SynergyBug: A deep learning approach to autonomous debugging and code remediation.\n\nAbstract: Bug detection and resolution are pivotal to maintaining the quality, reliability, and performance of software systems. Manual debugging, along with traditional static rule-based methods, proves inefficient when applied to complex software structures in contemporary times. SynergyBug combines BERT and GPT-3 to autonomously detect and repair bugs across multiple sources. It resolves essential requirements by implementing an automated system that diagnoses and resolves software bugs automaticall...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+          "metadata": {
+            "index": 1,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/40640256/",
+            "title": "SynergyBug: A deep learning approach to autonomous debugging and code remediation."
+          }
+        },
+        {
+          "content": "Title: An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search.\n\nAbstract: This paper aims to introduce the innovative work carried out in the Horizon 2020 DECODER project - acronym for \"DEveloper COmpanion for Documented and annotatEd code Reference\" - (Grant Agreement no. 824231) by linking the fields of natural language processing (NLP) and software engineering. The project as a whole addresses the development of a framework, namely the Persistent Knowledge Monitor (PKM), that acts as a central infrastructure to store, access, and trace all the data, information ...\n\nMetadata: [Journal Article] Open research Europe - 2022",
+          "metadata": {
+            "index": 2,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/38654755/",
+            "title": "An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search."
+          }
+        },
+        {
+          "content": "Title: An integrated graph neural network model for joint software defect prediction and code quality assessment.\n\nAbstract: Current software defect prediction and code quality assessment methods treat these inherently related tasks independently, failing to leverage their complementary information. Existing graph-based approaches lack the ability to jointly model structural dependencies and quality characteristics, limiting their effectiveness in capturing the complex relationships between defect patterns and code quality indicators. This paper proposes a novel integrated model that simultaneously tackles both obj...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+          "metadata": {
+            "index": 3,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/41381815/",
+            "title": "An integrated graph neural network model for joint software defect prediction and code quality assessment."
+          }
+        },
+        {
+          "content": "Title: Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network.\n\nAbstract: The goal of software defect prediction is to make predictions by mining the historical data using models. Current software defect prediction models mainly focus on the code features of software modules. However, they ignore the connection between software modules. This paper proposed a software defect prediction framework based on graph neural network from a complex network perspective. Firstly, we consider the software as a graph, where nodes represent the classes, and edges represent the de...\n\nMetadata: [Journal Article] Entropy (Basel, Switzerland) - 2022",
+          "metadata": {
+            "index": 4,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/37420393/",
+            "title": "Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network."
+          }
+        },
+        {
+          "content": "Title: Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction.\n\nAbstract: The increasing importance of deep learning in software development has greatly improved software quality by enabling the efficient identification of defects, a persistent challenge throughout the software development lifecycle. This study seeks to determine the most effective model for detecting defects in software projects. It introduces an intelligent approach that combines Temporal Convolutional Networks (TCN) with Antlion Optimization (ALO). TCN is employed for defect detection, while ALO...\n\nMetadata: [Journal Article] PloS one - 2025",
+          "metadata": {
+            "index": 5,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/40354496/",
+            "title": "Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction."
+          }
+        },
+        {
+          "content": "Title: Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm.\n\nAbstract: The study introduces a new method for predicting software defects based on Residual/Shuffle (RS) Networks and an enhanced version of Fish Migration Optimization (UFMO). The overall contribution is to improve the accuracy, and reduce the manual effort needed. The originality of this work rests in the synergic use of deep learning and metaheuristics to train the software code for extraction of semantic and structural properties. The model is tested on a variety of open-source projects, yielding...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+          "metadata": {
+            "index": 6,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/40021906/",
+            "title": "Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm."
+          }
+        },
+        {
+          "content": "Title: Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model.\n\nAbstract: Software defect prediction aims to find a reliable method for predicting defects in a particular software project and assisting software engineers in allocating limited resources to release high-quality software products. While most earlier research has concentrated on employing traditional features, current methodologies are increasingly directed toward extracting semantic features from source code. Traditional features often fall short in identifying semantic differences within programs, di...\n\nMetadata: [Journal Article] Scientific reports - 2024",
+          "metadata": {
+            "index": 7,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/38951608/",
+            "title": "Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model."
+          }
+        },
+        {
+          "content": "Title: Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning.\n\nAbstract: In order to improve software quality and testing efficiency, this paper implements the prediction of software defects based on deep learning. According to the respective advantages and disadvantages of the particle swarm algorithm and the wolf swarm algorithm, the two algorithms are mixed to realize the complementary advantages of the algorithms. At the same time, the hybrid algorithm is used in the search of model hyperparameter optimization, the loss function of the model is used as the fit...\n\nMetadata: [Journal Article] Computational intelligence and neuroscience - 2021",
+          "metadata": {
+            "index": 8,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/34992647/",
+            "title": "Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning."
+          }
+        },
+        {
+          "content": "Title: Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM).\n\nAbstract: In recent years, the software industry has invested substantial effort to improve software quality in organizations. Applying proactive software defect prediction will help developers and white box testers to find the defects earlier, and this will reduce the time and effort. Traditional software defect prediction models concentrate on traditional features of source code including code complexity, lines of code, etc. However, these features fail to extract the semantics of source code. In thi...\n\nMetadata: [Journal Article] PeerJ. Computer science - 2021",
+          "metadata": {
+            "index": 9,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/34901421/",
+            "title": "Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM)."
+          }
+        },
+        {
+          "content": "Title: Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning.\n\nAbstract: Effective software defect prediction is a crucial aspect of software quality assurance, enabling the identification of defective modules before the testing phase. This study aims to propose a comprehensive five-stage framework for software defect prediction, addressing the current challenges in the field. The first stage involves selecting a cleaned version of NASA's defect datasets, including CM1, JM1, MC2, MW1, PC1, PC3, and PC4, ensuring the data's integrity. In the second stage, a feature...\n\nMetadata: [Journal Article] PeerJ. Computer science - 2024",
+          "metadata": {
+            "index": 10,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/39669467/",
+            "title": "Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning."
+          }
+        },
+        {
+          "content": "Title: Deep Learning-Based Defect Prediction for Mobile Applications.\n\nAbstract: Smartphones have enabled the widespread use of mobile applications. However, there are unrecognized defects of mobile applications that can affect businesses due to a negative user experience. To avoid this, the defects of applications should be detected and removed before release. This study aims to develop a defect prediction model for mobile applications. We performed cross-project and within-project experiments and also used deep learning algorithms, such as convolutional neural networks ...\n\nMetadata: [Journal Article] Sensors (Basel, Switzerland) - 2022",
+          "metadata": {
+            "index": 11,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/35808230/",
+            "title": "Deep Learning-Based Defect Prediction for Mobile Applications."
+          }
+        },
+        {
+          "content": "Title: Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review.\n\nAbstract: Software defect prediction studies aim to predict defect-prone components before the testing stage of the software development process. The main benefit of these prediction models is that more testing resources can be allocated to fault-prone modules effectively. While a few software defect prediction models have been developed for mobile applications, a systematic overview of these studies is still missing. Therefore, we carried out a Systematic Literature Review (SLR) study to evaluate how ...\n\nMetadata: [Journal Article] Sensors (Basel, Switzerland) - 2022",
+          "metadata": {
+            "index": 12,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/35408166/",
+            "title": "Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review."
+          }
+        },
+        {
+          "content": "Title: Fine-Grained Software Defect Prediction Based on the Method-Call Sequence.\n\nAbstract: Currently, software defect-prediction technology is being extensively researched in the design of metrics. However, the research objects are mainly limited to coarse-grained entities such as classes, files, and packages, and there is a wide range of defects that are difficult to predict in actual situations. To further explore the information between sequences of method calls and to learn the code semantics and syntactic structure between methods, we generated a method-call sequence that reta...\n\nMetadata: [Journal Article] Computational intelligence and neuroscience - 2022",
+          "metadata": {
+            "index": 13,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/35965753/",
+            "title": "Fine-Grained Software Defect Prediction Based on the Method-Call Sequence."
+          }
+        },
+        {
+          "content": "Title: The effect of data complexity on classifier performance.\n\nAbstract: The research area of Software Defect Prediction (SDP) is both extensive and popular, and is often treated as a classification problem. Improvements in classification, pre-processing and tuning techniques, (together with many factors which can influence model performance) have encouraged this trend. However, no matter the effort in these areas, it seems that there is a ceiling in the performance of the classification models used in SDP. In this paper, the issue of classifier performance is ana...\n\nMetadata: [Journal Article] Empirical software engineering - 2025",
+          "metadata": {
+            "index": 14,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/39494321/",
+            "title": "The effect of data complexity on classifier performance."
+          }
+        },
+        {
+          "content": "Title: OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction.\n\nAbstract: Software Failure Prediction (SFP) includes estimating the probability that a software system will fail during its operational period. Its primary goal is to recognize components that are prone to defects or time intervals when failures are more probable, allowing the implementation of preventive measures and thus augmenting overall reliability of software. The study aims to create an advanced hybrid Deep Learning (DL) strategy for SFP. Experiments were conducted using the Software Defect Pred...\n\nMetadata: [Journal Article] Computational biology and chemistry - 2026",
+          "metadata": {
+            "index": 15,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/41936195/",
+            "title": "OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction."
+          }
+        },
+        {
+          "content": "Title: Neural in-memory checksums: an error detection and correction technique for safe in-memory inference.\n\nAbstract: The advent of in-memory computing has introduced a new paradigm of computation, which offers significant improvements in terms of latency and power consumption for emerging embedded AI accelerators. Nevertheless, the effect of the hardware variations and non-idealities of the emerging memory technologies may significantly compromise the accuracy of inferred neural networks and result in malfunctions in safety-critical applications. This article addresses the issue from three different perspec...\n\nMetadata: [Journal Article] Philosophical transactions. Series A, Mathematical, physical, and engineering sciences - 2025",
+          "metadata": {
+            "index": 16,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/39815981/",
+            "title": "Neural in-memory checksums: an error detection and correction technique for safe in-memory inference."
+          }
+        },
+        {
+          "content": "Title: Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy.\n\nAbstract: Present knowledge of patient setup and alignment errors in image guided radiation therapy (IGRT) relies on voluntary reporting, which is thought to underestimate error frequencies. A manual retrospective patient-setup misalignment error search is infeasible owing to the bulk of cases to be reviewed. We applied a deep learning-based misalignment error detection algorithm (EDA) to perform a fully automated retrospective error search of clinical IGRT databases and determine an absolute gross pat...\n\nMetadata: [Journal Article] International journal of radiation oncology, biology, physics - 2024",
+          "metadata": {
+            "index": 17,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/38485098/",
+            "title": "Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy."
+          }
+        },
+        {
+          "content": "Title: Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy.\n\nAbstract: In patient-specific quality assurance (QA) for static beam intensity-modulated radiation therapy (IMRT), machine-learning-based dose analysis methods have been developed to identify the cause of an error as an alternative to gamma analysis. Although these new methods have revealed that the cause of the error can be identified by analyzing the dose distribution obtained from the two-dimensional detector, they have not been extended to the analysis of volumetric-modulated arc therapy (VMAT) QA....\n\nMetadata: [Journal Article] Medical physics - 2021",
+          "metadata": {
+            "index": 18,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/34101848/",
+            "title": "Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy."
+          }
+        },
+        {
+          "content": "Title: Error detection and classification in patient-specific IMRT QA with dual neural networks.\n\nAbstract: Despite being the standard metric in patient-specific quality assurance (QA) for intensity-modulated radiotherapy (IMRT), gamma analysis has two shortcomings: (a) it lacks sensitivity to small but clinically relevant errors (b) it does not provide efficient means to classify the error sources. The purpose of this work is to propose a dual neural network method to achieve simultaneous error detection and classification in patient-specific IMRT QA.\n\nPURPOSE: Despite being the standard metric in...\n\nMetadata: [Journal Article] Medical physics - 2020",
+          "metadata": {
+            "index": 19,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/33460182/",
+            "title": "Error detection and classification in patient-specific IMRT QA with dual neural networks."
+          }
+        },
+        {
+          "content": "Title: Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry.\n\nAbstract: Dose distributions calculated with electronic portal imaging device (EPID)-based in vivo dosimetry (EIVD) differ from planned dose distributions due to generic and plan-specific deviations. Generic deviations are characteristic to a class of plans. Examples include limitations in EIVD dose reconstruction, inaccuracies in treatment planning system (TPS) calculations and systematic machine deviations. Plan-specific deviations have an unpredictable character. Examples include discrepancies betwe...\n\nMetadata: [Journal Article] Medical physics - 2024",
+          "metadata": {
+            "index": 20,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/38112213/",
+            "title": "Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry."
+          }
+        },
+        {
+          "content": "Title: AI-powered predictive framework for crack detection in steel-copper laser welding.\n\nAbstract: Laser welding of dissimilar materials, such as steel and copper, is highly susceptible to crack formation, which compromises joint integrity and service life. Traditional inspection techniques are slow, labor-intensive, and error-prone, underscoring the need for intelligent defect-prediction systems. This study utilizes a publicly available dataset of 360 weld cross-sections, generated using a definitive screening design (DSD) that encompasses six key process parameters: laser power, welding ...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+          "metadata": {
+            "index": 21,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/41291029/",
+            "title": "AI-powered predictive framework for crack detection in steel-copper laser welding."
+          }
+        },
+        {
+          "content": "Title: A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor.\n\nAbstract: Real-time and automatic detection of chickens (e.g., laying hens and broilers) is the cornerstone of precision poultry farming based on image recognition. However, such identification becomes more challenging under cage-free conditions comparing to caged hens. In this study, we developed a deep learning model (YOLOv5x-hens) based on YOLOv5, an advanced convolutional neural network (CNN), to monitor hens’ behaviors in cage-free facilities. More than 1000 images were used to train the model and...\n\nMetadata: [Journal Article] Animals : an open access journal from MDPI - 2022",
+          "metadata": {
+            "index": 22,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/35953972/",
+            "title": "A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor."
+          }
+        },
+        {
+          "content": "Title: DGCNN: A convolutional neural network over large-scale labeled graphs.\n\nAbstract: Exploiting graph-structured data has many real applications in domains including natural language semantics, programming language processing, and malware analysis. A variety of methods has been developed to deal with such data. However, learning graphs of large-scale, varying shapes and sizes is a big challenge for any method. In this paper, we propose a multi-view multi-layer convolutional neural network on labeled directed graphs (DGCNN), in which convolutional filters are designed flexibly...\n\nMetadata: [Journal Article] Neural networks : the official journal of the International Neural Network Society - 2018",
+          "metadata": {
+            "index": 23,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/30458952/",
+            "title": "DGCNN: A convolutional neural network over large-scale labeled graphs."
+          }
+        },
+        {
+          "content": "Title: Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods.\n\nMetadata: [Journal Article] Physics in medicine and biology - 2026",
+          "metadata": {
+            "index": 24,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/41544384/",
+            "title": "Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods."
+          }
+        }
+      ],
+      "phase": "Final synthesis",
+      "question": "AI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network",
+      "search_results": [
+        {
+          "_pmid": "40640256",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Chen H"
+          ],
+          "doi": "10.1038/s41598-025-08226-5",
+          "id": "40640256",
+          "index": "1",
+          "issn": "2045-2322",
+          "journal": "Scientific reports",
+          "journal_ref": "Scientific reports",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/40640256/",
+          "pubdate": "2025 Jul 10",
+          "snippet": "Title: SynergyBug: A deep learning approach to autonomous debugging and code remediation.\n\nAbstract: Bug detection and resolution are pivotal to maintaining the quality, reliability, and performance of software systems. Manual debugging, along with traditional static rule-based methods, proves inefficient when applied to complex software structures in contemporary times. SynergyBug combines BERT and GPT-3 to autonomously detect and repair bugs across multiple sources. It resolves essential requirements by implementing an automated system that diagnoses and resolves software bugs automaticall...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+          "source": "PubMed",
+          "title": "SynergyBug: A deep learning approach to autonomous debugging and code remediation."
+        },
+        {
+          "_pmid": "38654755",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Robledo C",
+            "Sallicati F",
+            "de Chalendar G",
+            "Fernández M",
+            "de Castro P",
+            "Martín E",
+            "Gutiérrez J",
+            "Bouachera Y"
+          ],
+          "doi": "10.12688/openreseurope.14507.2",
+          "id": "38654755",
+          "index": "2",
+          "issn": "2732-5121",
+          "journal": "Open research Europe",
+          "journal_ref": "Open research Europe",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/38654755/",
+          "pubdate": "2022",
+          "snippet": "Title: An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search.\n\nAbstract: This paper aims to introduce the innovative work carried out in the Horizon 2020 DECODER project - acronym for \"DEveloper COmpanion for Documented and annotatEd code Reference\" - (Grant Agreement no. 824231) by linking the fields of natural language processing (NLP) and software engineering. The project as a whole addresses the development of a framework, namely the Persistent Knowledge Monitor (PKM), that acts as a central infrastructure to store, access, and trace all the data, information ...\n\nMetadata: [Journal Article] Open research Europe - 2022",
+          "source": "PubMed",
+          "title": "An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search."
+        },
+        {
+          "_pmid": "41381815",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Dai P",
+            "Zhu H",
+            "Wu J",
+            "He H"
+          ],
+          "doi": "10.1038/s41598-025-31209-5",
+          "id": "41381815",
+          "index": "3",
+          "issn": "2045-2322",
+          "journal": "Scientific reports",
+          "journal_ref": "Scientific reports",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41381815/",
+          "pubdate": "2025 Dec 11",
+          "snippet": "Title: An integrated graph neural network model for joint software defect prediction and code quality assessment.\n\nAbstract: Current software defect prediction and code quality assessment methods treat these inherently related tasks independently, failing to leverage their complementary information. Existing graph-based approaches lack the ability to jointly model structural dependencies and quality characteristics, limiting their effectiveness in capturing the complex relationships between defect patterns and code quality indicators. This paper proposes a novel integrated model that simultaneously tackles both obj...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+          "source": "PubMed",
+          "title": "An integrated graph neural network model for joint software defect prediction and code quality assessment."
+        },
+        {
+          "_pmid": "37420393",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Cui M",
+            "Long S",
+            "Jiang Y",
+            "Na X"
+          ],
+          "doi": "10.3390/e24101373",
+          "id": "37420393",
+          "index": "4",
+          "issn": "1099-4300",
+          "journal": "Entropy (Basel, Switzerland)",
+          "journal_ref": "Entropy (Basel, Switzerland)",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/37420393/",
+          "pubdate": "2022 Sep 27",
+          "snippet": "Title: Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network.\n\nAbstract: The goal of software defect prediction is to make predictions by mining the historical data using models. Current software defect prediction models mainly focus on the code features of software modules. However, they ignore the connection between software modules. This paper proposed a software defect prediction framework based on graph neural network from a complex network perspective. Firstly, we consider the software as a graph, where nodes represent the classes, and edges represent the de...\n\nMetadata: [Journal Article] Entropy (Basel, Switzerland) - 2022",
+          "source": "PubMed",
+          "title": "Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network."
+        },
+        {
+          "_pmid": "40354496",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Abdelaziz A",
+            "Mahmoud AN",
+            "Santos V",
+            "Freire MM"
+          ],
+          "doi": "10.1371/journal.pone.0319562",
+          "id": "40354496",
+          "index": "5",
+          "issn": "1932-6203",
+          "journal": "PloS one",
+          "journal_ref": "PloS one",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/40354496/",
+          "pubdate": "2025",
+          "snippet": "Title: Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction.\n\nAbstract: The increasing importance of deep learning in software development has greatly improved software quality by enabling the efficient identification of defects, a persistent challenge throughout the software development lifecycle. This study seeks to determine the most effective model for detecting defects in software projects. It introduces an intelligent approach that combines Temporal Convolutional Networks (TCN) with Antlion Optimization (ALO). TCN is employed for defect detection, while ALO...\n\nMetadata: [Journal Article] PloS one - 2025",
+          "source": "PubMed",
+          "title": "Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction."
+        },
+        {
+          "_pmid": "40021906",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Liu Z",
+            "Su T",
+            "Zakharov MA",
+            "Wei G",
+            "Lee S"
+          ],
+          "doi": "10.1038/s41598-025-91784-5",
+          "id": "40021906",
+          "index": "6",
+          "issn": "2045-2322",
+          "journal": "Scientific reports",
+          "journal_ref": "Scientific reports",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/40021906/",
+          "pubdate": "2025 Feb 28",
+          "snippet": "Title: Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm.\n\nAbstract: The study introduces a new method for predicting software defects based on Residual/Shuffle (RS) Networks and an enhanced version of Fish Migration Optimization (UFMO). The overall contribution is to improve the accuracy, and reduce the manual effort needed. The originality of this work rests in the synergic use of deep learning and metaheuristics to train the software code for extraction of semantic and structural properties. The model is tested on a variety of open-source projects, yielding...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+          "source": "PubMed",
+          "title": "Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm."
+        },
+        {
+          "_pmid": "38951608",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Abdu A",
+            "Zhai Z",
+            "Abdo HA",
+            "Algabri R",
+            "Al-Masni MA",
+            "Muhammad MS",
+            "Gu YH"
+          ],
+          "doi": "10.1038/s41598-024-65639-4",
+          "id": "38951608",
+          "index": "7",
+          "issn": "2045-2322",
+          "journal": "Scientific reports",
+          "journal_ref": "Scientific reports",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/38951608/",
+          "pubdate": "2024 Jul 1",
+          "snippet": "Title: Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model.\n\nAbstract: Software defect prediction aims to find a reliable method for predicting defects in a particular software project and assisting software engineers in allocating limited resources to release high-quality software products. While most earlier research has concentrated on employing traditional features, current methodologies are increasingly directed toward extracting semantic features from source code. Traditional features often fall short in identifying semantic differences within programs, di...\n\nMetadata: [Journal Article] Scientific reports - 2024",
+          "source": "PubMed",
+          "title": "Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model."
+        },
+        {
+          "_pmid": "34992647",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Li Z",
+            "Li T",
+            "Wu Y",
+            "Yang L",
+            "Miao H",
+            "Wang D"
+          ],
+          "doi": "10.1155/2021/4997459",
+          "id": "34992647",
+          "index": "8",
+          "issn": "1687-5265",
+          "journal": "Computational intelligence and neuroscience",
+          "journal_ref": "Computational intelligence and neuroscience",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/34992647/",
+          "pubdate": "2021",
+          "snippet": "Title: Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning.\n\nAbstract: In order to improve software quality and testing efficiency, this paper implements the prediction of software defects based on deep learning. According to the respective advantages and disadvantages of the particle swarm algorithm and the wolf swarm algorithm, the two algorithms are mixed to realize the complementary advantages of the algorithms. At the same time, the hybrid algorithm is used in the search of model hyperparameter optimization, the loss function of the model is used as the fit...\n\nMetadata: [Journal Article] Computational intelligence and neuroscience - 2021",
+          "source": "PubMed",
+          "title": "Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning."
+        },
+        {
+          "_pmid": "34901421",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Farid AB",
+            "Fathy EM",
+            "Sharaf Eldin A",
+            "Abd-Elmegid LA"
+          ],
+          "doi": "10.7717/peerj-cs.739",
+          "id": "34901421",
+          "index": "9",
+          "issn": "2376-5992",
+          "journal": "PeerJ. Computer science",
+          "journal_ref": "PeerJ. Computer science",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/34901421/",
+          "pubdate": "2021",
+          "snippet": "Title: Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM).\n\nAbstract: In recent years, the software industry has invested substantial effort to improve software quality in organizations. Applying proactive software defect prediction will help developers and white box testers to find the defects earlier, and this will reduce the time and effort. Traditional software defect prediction models concentrate on traditional features of source code including code complexity, lines of code, etc. However, these features fail to extract the semantics of source code. In thi...\n\nMetadata: [Journal Article] PeerJ. Computer science - 2021",
+          "source": "PubMed",
+          "title": "Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM)."
+        },
+        {
+          "_pmid": "39669467",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Ali M",
+            "Mazhar T",
+            "Al-Rasheed A",
+            "Shahzad T",
+            "Yasin Ghadi Y",
+            "Amir Khan M"
+          ],
+          "doi": "10.7717/peerj-cs.1860",
+          "id": "39669467",
+          "index": "10",
+          "issn": "2376-5992",
+          "journal": "PeerJ. Computer science",
+          "journal_ref": "PeerJ. Computer science",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/39669467/",
+          "pubdate": "2024",
+          "snippet": "Title: Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning.\n\nAbstract: Effective software defect prediction is a crucial aspect of software quality assurance, enabling the identification of defective modules before the testing phase. This study aims to propose a comprehensive five-stage framework for software defect prediction, addressing the current challenges in the field. The first stage involves selecting a cleaned version of NASA's defect datasets, including CM1, JM1, MC2, MW1, PC1, PC3, and PC4, ensuring the data's integrity. In the second stage, a feature...\n\nMetadata: [Journal Article] PeerJ. Computer science - 2024",
+          "source": "PubMed",
+          "title": "Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning."
+        },
+        {
+          "_pmid": "35808230",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Jorayeva M",
+            "Akbulut A",
+            "Catal C",
+            "Mishra A"
+          ],
+          "doi": "10.3390/s22134734",
+          "id": "35808230",
+          "index": "11",
+          "issn": "1424-8220",
+          "journal": "Sensors (Basel, Switzerland)",
+          "journal_ref": "Sensors (Basel, Switzerland)",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/35808230/",
+          "pubdate": "2022 Jun 23",
+          "snippet": "Title: Deep Learning-Based Defect Prediction for Mobile Applications.\n\nAbstract: Smartphones have enabled the widespread use of mobile applications. However, there are unrecognized defects of mobile applications that can affect businesses due to a negative user experience. To avoid this, the defects of applications should be detected and removed before release. This study aims to develop a defect prediction model for mobile applications. We performed cross-project and within-project experiments and also used deep learning algorithms, such as convolutional neural networks ...\n\nMetadata: [Journal Article] Sensors (Basel, Switzerland) - 2022",
+          "source": "PubMed",
+          "title": "Deep Learning-Based Defect Prediction for Mobile Applications."
+        },
+        {
+          "_pmid": "35408166",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Jorayeva M",
+            "Akbulut A",
+            "Catal C",
+            "Mishra A"
+          ],
+          "doi": "10.3390/s22072551",
+          "id": "35408166",
+          "index": "12",
+          "issn": "1424-8220",
+          "journal": "Sensors (Basel, Switzerland)",
+          "journal_ref": "Sensors (Basel, Switzerland)",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/35408166/",
+          "pubdate": "2022 Mar 26",
+          "snippet": "Title: Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review.\n\nAbstract: Software defect prediction studies aim to predict defect-prone components before the testing stage of the software development process. The main benefit of these prediction models is that more testing resources can be allocated to fault-prone modules effectively. While a few software defect prediction models have been developed for mobile applications, a systematic overview of these studies is still missing. Therefore, we carried out a Systematic Literature Review (SLR) study to evaluate how ...\n\nMetadata: [Journal Article] Sensors (Basel, Switzerland) - 2022",
+          "source": "PubMed",
+          "title": "Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review."
+        },
+        {
+          "_pmid": "35965753",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Yang F",
+            "Huang Y",
+            "Xu H",
+            "Xiao P",
+            "Zheng W"
+          ],
+          "doi": "10.1155/2022/4311548",
+          "id": "35965753",
+          "index": "13",
+          "issn": "1687-5265",
+          "journal": "Computational intelligence and neuroscience",
+          "journal_ref": "Computational intelligence and neuroscience",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/35965753/",
+          "pubdate": "2022",
+          "snippet": "Title: Fine-Grained Software Defect Prediction Based on the Method-Call Sequence.\n\nAbstract: Currently, software defect-prediction technology is being extensively researched in the design of metrics. However, the research objects are mainly limited to coarse-grained entities such as classes, files, and packages, and there is a wide range of defects that are difficult to predict in actual situations. To further explore the information between sequences of method calls and to learn the code semantics and syntactic structure between methods, we generated a method-call sequence that reta...\n\nMetadata: [Journal Article] Computational intelligence and neuroscience - 2022",
+          "source": "PubMed",
+          "title": "Fine-Grained Software Defect Prediction Based on the Method-Call Sequence."
+        },
+        {
+          "_pmid": "39494321",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Eberlein J",
+            "Rodriguez D",
+            "Harrison R"
+          ],
+          "doi": "10.1007/s10664-024-10554-5",
+          "id": "39494321",
+          "index": "14",
+          "issn": "1382-3256",
+          "journal": "Empirical software engineering",
+          "journal_ref": "Empirical software engineering",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/39494321/",
+          "pubdate": "2025",
+          "snippet": "Title: The effect of data complexity on classifier performance.\n\nAbstract: The research area of Software Defect Prediction (SDP) is both extensive and popular, and is often treated as a classification problem. Improvements in classification, pre-processing and tuning techniques, (together with many factors which can influence model performance) have encouraged this trend. However, no matter the effort in these areas, it seems that there is a ceiling in the performance of the classification models used in SDP. In this paper, the issue of classifier performance is ana...\n\nMetadata: [Journal Article] Empirical software engineering - 2025",
+          "source": "PubMed",
+          "title": "The effect of data complexity on classifier performance."
+        },
+        {
+          "_pmid": "41936195",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Singh V",
+            "Sharma S",
+            "Singh A",
+            "Bhardwaj A"
+          ],
+          "doi": "10.1016/j.compbiolchem.2026.109043",
+          "id": "41936195",
+          "index": "15",
+          "issn": "1476-9271",
+          "journal": "Computational biology and chemistry",
+          "journal_ref": "Computational biology and chemistry",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41936195/",
+          "pubdate": "2026 Aug",
+          "snippet": "Title: OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction.\n\nAbstract: Software Failure Prediction (SFP) includes estimating the probability that a software system will fail during its operational period. Its primary goal is to recognize components that are prone to defects or time intervals when failures are more probable, allowing the implementation of preventive measures and thus augmenting overall reliability of software. The study aims to create an advanced hybrid Deep Learning (DL) strategy for SFP. Experiments were conducted using the Software Defect Pred...\n\nMetadata: [Journal Article] Computational biology and chemistry - 2026",
+          "source": "PubMed",
+          "title": "OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction."
+        },
+        {
+          "_pmid": "39815981",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Parrini L",
+            "Soliman T",
+            "Hettwer B",
+            "De La Parra C",
+            "Borrmann JM",
+            "Singh S",
+            "Bende A",
+            "Rana V",
+            "Merchant F",
+            "Wehn N"
+          ],
+          "doi": "10.1098/rsta.2023.0399",
+          "id": "39815981",
+          "index": "16",
+          "issn": "1364-503X",
+          "journal": "Philosophical transactions. Series A, Mathematical, physical, and engineering sciences",
+          "journal_ref": "Philosophical transactions. Series A, Mathematical, physical, and engineering sciences",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/39815981/",
+          "pubdate": "2025 Jan",
+          "snippet": "Title: Neural in-memory checksums: an error detection and correction technique for safe in-memory inference.\n\nAbstract: The advent of in-memory computing has introduced a new paradigm of computation, which offers significant improvements in terms of latency and power consumption for emerging embedded AI accelerators. Nevertheless, the effect of the hardware variations and non-idealities of the emerging memory technologies may significantly compromise the accuracy of inferred neural networks and result in malfunctions in safety-critical applications. This article addresses the issue from three different perspec...\n\nMetadata: [Journal Article] Philosophical transactions. Series A, Mathematical, physical, and engineering sciences - 2025",
+          "source": "PubMed",
+          "title": "Neural in-memory checksums: an error detection and correction technique for safe in-memory inference."
+        },
+        {
+          "_pmid": "38485098",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Luximon DC",
+            "Neylon J",
+            "Ritter T",
+            "Agazaryan N",
+            "Hegde JV",
+            "Steinberg ML",
+            "Low DA",
+            "Lamb JM"
+          ],
+          "doi": "10.1016/j.ijrobp.2024.02.065",
+          "id": "38485098",
+          "index": "17",
+          "issn": "0360-3016",
+          "journal": "International journal of radiation oncology, biology, physics",
+          "journal_ref": "International journal of radiation oncology, biology, physics",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/38485098/",
+          "pubdate": "2024 Sep 1",
+          "snippet": "Title: Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy.\n\nAbstract: Present knowledge of patient setup and alignment errors in image guided radiation therapy (IGRT) relies on voluntary reporting, which is thought to underestimate error frequencies. A manual retrospective patient-setup misalignment error search is infeasible owing to the bulk of cases to be reviewed. We applied a deep learning-based misalignment error detection algorithm (EDA) to perform a fully automated retrospective error search of clinical IGRT databases and determine an absolute gross pat...\n\nMetadata: [Journal Article] International journal of radiation oncology, biology, physics - 2024",
+          "source": "PubMed",
+          "title": "Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy."
+        },
+        {
+          "_pmid": "34101848",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Kimura Y",
+            "Kadoya N",
+            "Oku Y",
+            "Kajikawa T",
+            "Tomori S",
+            "Jingu K"
+          ],
+          "doi": "10.1002/mp.15031",
+          "id": "34101848",
+          "index": "18",
+          "issn": "0094-2405",
+          "journal": "Medical physics",
+          "journal_ref": "Medical physics",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/34101848/",
+          "pubdate": "2021 Sep",
+          "snippet": "Title: Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy.\n\nAbstract: In patient-specific quality assurance (QA) for static beam intensity-modulated radiation therapy (IMRT), machine-learning-based dose analysis methods have been developed to identify the cause of an error as an alternative to gamma analysis. Although these new methods have revealed that the cause of the error can be identified by analyzing the dose distribution obtained from the two-dimensional detector, they have not been extended to the analysis of volumetric-modulated arc therapy (VMAT) QA....\n\nMetadata: [Journal Article] Medical physics - 2021",
+          "source": "PubMed",
+          "title": "Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy."
+        },
+        {
+          "_pmid": "33460182",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Potter NJ",
+            "Mund K",
+            "Andreozzi JM",
+            "Li JG",
+            "Liu C",
+            "Yan G"
+          ],
+          "doi": "10.1002/mp.14416",
+          "id": "33460182",
+          "index": "19",
+          "issn": "0094-2405",
+          "journal": "Medical physics",
+          "journal_ref": "Medical physics",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/33460182/",
+          "pubdate": "2020 Oct",
+          "snippet": "Title: Error detection and classification in patient-specific IMRT QA with dual neural networks.\n\nAbstract: Despite being the standard metric in patient-specific quality assurance (QA) for intensity-modulated radiotherapy (IMRT), gamma analysis has two shortcomings: (a) it lacks sensitivity to small but clinically relevant errors (b) it does not provide efficient means to classify the error sources. The purpose of this work is to propose a dual neural network method to achieve simultaneous error detection and classification in patient-specific IMRT QA.\n\nPURPOSE: Despite being the standard metric in...\n\nMetadata: [Journal Article] Medical physics - 2020",
+          "source": "PubMed",
+          "title": "Error detection and classification in patient-specific IMRT QA with dual neural networks."
+        },
+        {
+          "_pmid": "38112213",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Olaciregui-Ruiz I",
+            "Simões R",
+            "Jan-Jakob S"
+          ],
+          "doi": "10.1002/mp.16895",
+          "id": "38112213",
+          "index": "20",
+          "issn": "0094-2405",
+          "journal": "Medical physics",
+          "journal_ref": "Medical physics",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/38112213/",
+          "pubdate": "2024 Feb",
+          "snippet": "Title: Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry.\n\nAbstract: Dose distributions calculated with electronic portal imaging device (EPID)-based in vivo dosimetry (EIVD) differ from planned dose distributions due to generic and plan-specific deviations. Generic deviations are characteristic to a class of plans. Examples include limitations in EIVD dose reconstruction, inaccuracies in treatment planning system (TPS) calculations and systematic machine deviations. Plan-specific deviations have an unpredictable character. Examples include discrepancies betwe...\n\nMetadata: [Journal Article] Medical physics - 2024",
+          "source": "PubMed",
+          "title": "Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry."
+        },
+        {
+          "_pmid": "41291029",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Nagendra J",
+            "Prashanth KS",
+            "Veerabhadrappa K",
+            "Bopanna KD",
+            "Vinutha M",
+            "Naresh E",
+            "Bandhu D"
+          ],
+          "doi": "10.1038/s41598-025-29977-1",
+          "id": "41291029",
+          "index": "21",
+          "issn": "2045-2322",
+          "journal": "Scientific reports",
+          "journal_ref": "Scientific reports",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41291029/",
+          "pubdate": "2025 Nov 25",
+          "snippet": "Title: AI-powered predictive framework for crack detection in steel-copper laser welding.\n\nAbstract: Laser welding of dissimilar materials, such as steel and copper, is highly susceptible to crack formation, which compromises joint integrity and service life. Traditional inspection techniques are slow, labor-intensive, and error-prone, underscoring the need for intelligent defect-prediction systems. This study utilizes a publicly available dataset of 360 weld cross-sections, generated using a definitive screening design (DSD) that encompasses six key process parameters: laser power, welding ...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+          "source": "PubMed",
+          "title": "AI-powered predictive framework for crack detection in steel-copper laser welding."
+        },
+        {
+          "_pmid": "35953972",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Yang X",
+            "Chai L",
+            "Bist RB",
+            "Subedi S",
+            "Wu Z"
+          ],
+          "doi": "10.3390/ani12151983",
+          "id": "35953972",
+          "index": "22",
+          "issn": "2076-2615",
+          "journal": "Animals : an open access journal from MDPI",
+          "journal_ref": "Animals : an open access journal from MDPI",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/35953972/",
+          "pubdate": "2022 Aug 5",
+          "snippet": "Title: A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor.\n\nAbstract: Real-time and automatic detection of chickens (e.g., laying hens and broilers) is the cornerstone of precision poultry farming based on image recognition. However, such identification becomes more challenging under cage-free conditions comparing to caged hens. In this study, we developed a deep learning model (YOLOv5x-hens) based on YOLOv5, an advanced convolutional neural network (CNN), to monitor hens’ behaviors in cage-free facilities. More than 1000 images were used to train the model and...\n\nMetadata: [Journal Article] Animals : an open access journal from MDPI - 2022",
+          "source": "PubMed",
+          "title": "A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor."
+        },
+        {
+          "_pmid": "30458952",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Phan AV",
+            "Nguyen ML",
+            "Nguyen YLH",
+            "Bui LT"
+          ],
+          "doi": "10.1016/j.neunet.2018.09.001",
+          "id": "30458952",
+          "index": "23",
+          "issn": "0893-6080",
+          "journal": "Neural networks : the official journal of the International Neural Network Society",
+          "journal_ref": "Neural networks : the official journal of the International Neural Network Society",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/30458952/",
+          "pubdate": "2018 Dec",
+          "snippet": "Title: DGCNN: A convolutional neural network over large-scale labeled graphs.\n\nAbstract: Exploiting graph-structured data has many real applications in domains including natural language semantics, programming language processing, and malware analysis. A variety of methods has been developed to deal with such data. However, learning graphs of large-scale, varying shapes and sizes is a big challenge for any method. In this paper, we propose a multi-view multi-layer convolutional neural network on labeled directed graphs (DGCNN), in which convolutional filters are designed flexibly...\n\nMetadata: [Journal Article] Neural networks : the official journal of the International Neural Network Society - 2018",
+          "source": "PubMed",
+          "title": "DGCNN: A convolutional neural network over large-scale labeled graphs."
+        },
+        {
+          "_pmid": "41544384",
+          "_search_strategy": "rare_topic",
+          "authors": [
+            "Evgeneia AE",
+            "Alafogiannis P",
+            "Dikaios N",
+            "Pantelis E",
+            "Papagiannis P",
+            "Peppa V"
+          ],
+          "doi": "10.1088/1361-6560/ae399f",
+          "id": "41544384",
+          "index": "24",
+          "issn": "0031-9155",
+          "journal": "Physics in medicine and biology",
+          "journal_ref": "Physics in medicine and biology",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41544384/",
+          "pubdate": "2026 Jan 30",
+          "snippet": "Title: Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods.\n\nMetadata: [Journal Article] Physics in medicine and biology - 2026",
+          "source": "PubMed",
+          "title": "Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods."
+        }
+      ]
+    }
+  ],
+  "formatted_findings": "The integration of Artificial Intelligence, particularly deep learning and neural networks, has significantly advanced the fields of intelligent error detection, automated bug detection, and software defect prediction. By moving beyond traditional static rule-based methods, these AI-driven approaches offer more efficient and accurate ways to maintain software quality, reliability, and performance [1].\n\n**Autonomous Debugging and Code Remediation**\nRecent developments in autonomous debugging utilize large language models (LLMs) to detect and resolve bugs automatically. For instance, SynergyBug combines BERT and GPT-3 to create an automated system that diagnoses and repairs software bugs across multiple sources, addressing the inefficiencies of manual debugging in complex software structures [1]. This approach represents a shift towards intelligent error detection that not only identifies issues but also suggests or implements remediation [1].\n\n**Software Defect Prediction using Neural Networks**\nSoftware defect prediction (SDP) has evolved from relying on traditional metrics (like code complexity) to leveraging deep learning models that extract semantic and structural features from source code [7], [9]. Several neural network architectures have been proposed to enhance prediction accuracy:\n\n*   **Graph Neural Networks (GNNs):** GNNs are increasingly used to model software as graphs where nodes represent classes and edges represent dependencies, allowing for the capture of complex relationships between defect patterns and code quality [3], [4]. An integrated GNN model can simultaneously tackle defect prediction and code quality assessment, leveraging the complementary information between these tasks [3]. Furthermore, GNNs can be applied to large-scale labeled graphs, such as those used in programming language processing, to detect defects or malware [23].\n*   **Hybrid Deep Learning Models:** Combining different neural network types often yields superior results. For example, a hybrid model using Convolutional Neural Networks (CNN) and Bidirectional Long Short-Term Memory (Bi-LSTM) networks extracts both local features and sequential semantics from code, addressing the limitations of traditional features [9]. Another approach uses Temporal Convolutional Networks (TCN) optimized by metaheuristic algorithms like Antlion Optimization (ALO) to improve defect detection accuracy [5]. Similarly, Residual/Shuffle (RS) Networks optimized by an upgraded Fish Migration Optimization algorithm have been shown to reduce manual effort while improving prediction accuracy [6].\n*   **Feature Fusion and Selection:** Effective SDP often involves fusing semantic and traditional features. A hybrid deep learning model that integrates these feature types can better identify semantic differences that traditional metrics miss [7]. Additionally, frameworks with improved feature selection and ensemble machine learning techniques have been developed to handle the complexity of datasets, such as those from NASA [10].\n\n**Advanced Optimization and Specific Applications**\nTo further enhance model performance, metaheuristic optimization algorithms are frequently combined with deep learning. Hybrid swarm intelligence algorithms, such as mixing particle swarm and wolf swarm algorithms, are used for hyperparameter optimization to improve the training of defect prediction models [8]. Specific applications include:\n*   **Mobile Applications:** Deep learning models, including CNNs, have been adapted for cross-project and within-project defect prediction in mobile applications, helping to identify defects before release to ensure a positive user experience [11], [12].\n*   **Fine-Grained Prediction:** Moving beyond coarse-grained entities like classes, some models focus on method-call sequences to learn code semantics and syntactic structures between methods, enabling more precise defect prediction [13].\n*   **Hardware and In-Memory Errors:** In the context of in-memory computing for AI accelerators, neural in-memory checksums have been proposed as an error detection and correction technique to mitigate hardware variations and non-idealities that could compromise neural network inference accuracy [16].\n\n**Challenges and Limitations**\nDespite these advancements, challenges remain. Research indicates that there is a performance ceiling for classification models in SDP, influenced by data complexity and the inherent limitations of classifier performance [14]. Additionally, while AI tools like SynergyBug show promise, the field is still maturing, and the integration of these tools into existing development workflows requires robust infrastructure, such as the Persistent Knowledge Monitor (PKM) framework developed in the DECODER project to store and trace software data [2].\n\nIn summary, AI-powered intelligent error detection and software defect prediction rely heavily on advanced neural networks (CNNs, RNNs, GNNs) and hybrid optimization techniques to extract deep semantic and structural features from code. These methods offer significant improvements over traditional techniques by providing automated, proactive, and more accurate identification of software defects [1], [3], [5], [7], [9].\n\n[1] SynergyBug: A deep learning approach to autonomous debugging and code remediation. (source nr: 1)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40640256\n\n[2] An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search. (source nr: 2)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38654755\n\n[3] An integrated graph neural network model for joint software defect prediction and code quality assessment. (source nr: 3)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41381815\n\n[4] Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network. (source nr: 4)\n   URL: https://pubmed.ncbi.nlm.nih.gov/37420393\n\n[5] Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction. (source nr: 5)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40354496\n\n[6] Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm. (source nr: 6)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40021906\n\n[7] Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model. (source nr: 7)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38951608\n\n[8] Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning. (source nr: 8)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34992647\n\n[9] Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM). (source nr: 9)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34901421\n\n[10] Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning. (source nr: 10)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39669467\n\n[11] Deep Learning-Based Defect Prediction for Mobile Applications. (source nr: 11)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35808230\n\n[12] Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review. (source nr: 12)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35408166\n\n[13] Fine-Grained Software Defect Prediction Based on the Method-Call Sequence. (source nr: 13)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35965753\n\n[14] The effect of data complexity on classifier performance. (source nr: 14)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39494321\n\n[15] OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction. (source nr: 15)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41936195\n\n[16] Neural in-memory checksums: an error detection and correction technique for safe in-memory inference. (source nr: 16)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39815981\n\n[17] Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy. (source nr: 17)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38485098\n\n[18] Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy. (source nr: 18)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34101848\n\n[19] Error detection and classification in patient-specific IMRT QA with dual neural networks. (source nr: 19)\n   URL: https://pubmed.ncbi.nlm.nih.gov/33460182\n\n[20] Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry. (source nr: 20)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38112213\n\n[21] AI-powered predictive framework for crack detection in steel-copper laser welding. (source nr: 21)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41291029\n\n[22] A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor. (source nr: 22)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35953972\n\n[23] DGCNN: A convolutional neural network over large-scale labeled graphs. (source nr: 23)\n   URL: https://pubmed.ncbi.nlm.nih.gov/30458952\n\n[24] Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods. (source nr: 24)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41544384\n\n\n\n\n## SEARCH QUESTIONS BY ITERATION\n\n\n #### Iteration 1:\n1. AI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network\n2. What are the latest advancements in 2025-2026 in using neural networks for automated bug detection, intelligent error detection, and software defect prediction?\n\n #### Iteration 2:\n1. Given the 2025-2026 emergence of hybrid models like OpEffiRes Net and SynergyBug, what are the specific limitations and failure modes of current neural network-based autonomous debugging and defect prediction systems when applied to large-scale, proprietary, or legacy codebases compared to open-source datasets, and how do they handle the \"semantic gap\" in real-time exception handling?\n\n #### Iteration 3:\n1. Given the 2025-2026 deployment of hybrid models like OpEffiRes Net and SynergyBug, what is the empirical impact of domain shift and proprietary code obfuscation on the generalization accuracy of neural network-based autonomous debugging systems in enterprise environments, and how do these models specifically resolve the \"semantic gap\" when handling cross-language exception propagation in legacy monoliths compared to open-source microservices?\n\n\n\n## DETAILED FINDINGS\n\n\n### Iteration 1\n\n\n### SEARCH QUESTION:\nAI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network\n\n\n\nSearched with 2 questions, found 25 results.\n\n________________________________________________________________________________\n\n\n### Iteration 2\n\n\n### SEARCH QUESTION:\nAI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network\n\n\n\nSearched with 1 questions, found 0 results.\n\n________________________________________________________________________________\n\n\n### Iteration 3\n\n\n### SEARCH QUESTION:\nAI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network\n\n\n\nSearched with 1 questions, found 0 results.\n\n________________________________________________________________________________\n\n\n### Final synthesis\n\n\n### SEARCH QUESTION:\nAI debugging intelligent error detection exception handling automated bug detection software defect prediction neural network\n\n\n\nThe integration of Artificial Intelligence, particularly deep learning and neural networks, has significantly advanced the fields of intelligent error detection, automated bug detection, and software defect prediction. By moving beyond traditional static rule-based methods, these AI-driven approaches offer more efficient and accurate ways to maintain software quality, reliability, and performance [1].\n\n**Autonomous Debugging and Code Remediation**\nRecent developments in autonomous debugging utilize large language models (LLMs) to detect and resolve bugs automatically. For instance, SynergyBug combines BERT and GPT-3 to create an automated system that diagnoses and repairs software bugs across multiple sources, addressing the inefficiencies of manual debugging in complex software structures [1]. This approach represents a shift towards intelligent error detection that not only identifies issues but also suggests or implements remediation [1].\n\n**Software Defect Prediction using Neural Networks**\nSoftware defect prediction (SDP) has evolved from relying on traditional metrics (like code complexity) to leveraging deep learning models that extract semantic and structural features from source code [7], [9]. Several neural network architectures have been proposed to enhance prediction accuracy:\n\n*   **Graph Neural Networks (GNNs):** GNNs are increasingly used to model software as graphs where nodes represent classes and edges represent dependencies, allowing for the capture of complex relationships between defect patterns and code quality [3], [4]. An integrated GNN model can simultaneously tackle defect prediction and code quality assessment, leveraging the complementary information between these tasks [3]. Furthermore, GNNs can be applied to large-scale labeled graphs, such as those used in programming language processing, to detect defects or malware [23].\n*   **Hybrid Deep Learning Models:** Combining different neural network types often yields superior results. For example, a hybrid model using Convolutional Neural Networks (CNN) and Bidirectional Long Short-Term Memory (Bi-LSTM) networks extracts both local features and sequential semantics from code, addressing the limitations of traditional features [9]. Another approach uses Temporal Convolutional Networks (TCN) optimized by metaheuristic algorithms like Antlion Optimization (ALO) to improve defect detection accuracy [5]. Similarly, Residual/Shuffle (RS) Networks optimized by an upgraded Fish Migration Optimization algorithm have been shown to reduce manual effort while improving prediction accuracy [6].\n*   **Feature Fusion and Selection:** Effective SDP often involves fusing semantic and traditional features. A hybrid deep learning model that integrates these feature types can better identify semantic differences that traditional metrics miss [7]. Additionally, frameworks with improved feature selection and ensemble machine learning techniques have been developed to handle the complexity of datasets, such as those from NASA [10].\n\n**Advanced Optimization and Specific Applications**\nTo further enhance model performance, metaheuristic optimization algorithms are frequently combined with deep learning. Hybrid swarm intelligence algorithms, such as mixing particle swarm and wolf swarm algorithms, are used for hyperparameter optimization to improve the training of defect prediction models [8]. Specific applications include:\n*   **Mobile Applications:** Deep learning models, including CNNs, have been adapted for cross-project and within-project defect prediction in mobile applications, helping to identify defects before release to ensure a positive user experience [11], [12].\n*   **Fine-Grained Prediction:** Moving beyond coarse-grained entities like classes, some models focus on method-call sequences to learn code semantics and syntactic structures between methods, enabling more precise defect prediction [13].\n*   **Hardware and In-Memory Errors:** In the context of in-memory computing for AI accelerators, neural in-memory checksums have been proposed as an error detection and correction technique to mitigate hardware variations and non-idealities that could compromise neural network inference accuracy [16].\n\n**Challenges and Limitations**\nDespite these advancements, challenges remain. Research indicates that there is a performance ceiling for classification models in SDP, influenced by data complexity and the inherent limitations of classifier performance [14]. Additionally, while AI tools like SynergyBug show promise, the field is still maturing, and the integration of these tools into existing development workflows requires robust infrastructure, such as the Persistent Knowledge Monitor (PKM) framework developed in the DECODER project to store and trace software data [2].\n\nIn summary, AI-powered intelligent error detection and software defect prediction rely heavily on advanced neural networks (CNNs, RNNs, GNNs) and hybrid optimization techniques to extract deep semantic and structural features from code. These methods offer significant improvements over traditional techniques by providing automated, proactive, and more accurate identification of software defects [1], [3], [5], [7], [9].\n\n### SOURCES USED IN THIS SECTION:\n[1] SynergyBug: A deep learning approach to autonomous debugging and code remediation. (source nr: 1)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40640256\n\n[2] An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search. (source nr: 2)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38654755\n\n[3] An integrated graph neural network model for joint software defect prediction and code quality assessment. (source nr: 3)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41381815\n\n[4] Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network. (source nr: 4)\n   URL: https://pubmed.ncbi.nlm.nih.gov/37420393\n\n[5] Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction. (source nr: 5)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40354496\n\n[6] Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm. (source nr: 6)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40021906\n\n[7] Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model. (source nr: 7)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38951608\n\n[8] Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning. (source nr: 8)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34992647\n\n[9] Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM). (source nr: 9)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34901421\n\n[10] Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning. (source nr: 10)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39669467\n\n[11] Deep Learning-Based Defect Prediction for Mobile Applications. (source nr: 11)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35808230\n\n[12] Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review. (source nr: 12)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35408166\n\n[13] Fine-Grained Software Defect Prediction Based on the Method-Call Sequence. (source nr: 13)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35965753\n\n[14] The effect of data complexity on classifier performance. (source nr: 14)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39494321\n\n[15] OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction. (source nr: 15)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41936195\n\n[16] Neural in-memory checksums: an error detection and correction technique for safe in-memory inference. (source nr: 16)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39815981\n\n[17] Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy. (source nr: 17)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38485098\n\n[18] Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy. (source nr: 18)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34101848\n\n[19] Error detection and classification in patient-specific IMRT QA with dual neural networks. (source nr: 19)\n   URL: https://pubmed.ncbi.nlm.nih.gov/33460182\n\n[20] Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry. (source nr: 20)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38112213\n\n[21] AI-powered predictive framework for crack detection in steel-copper laser welding. (source nr: 21)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41291029\n\n[22] A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor. (source nr: 22)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35953972\n\n[23] DGCNN: A convolutional neural network over large-scale labeled graphs. (source nr: 23)\n   URL: https://pubmed.ncbi.nlm.nih.gov/30458952\n\n[24] Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods. (source nr: 24)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41544384\n\n\n\n\n________________________________________________________________________________\n\n## ALL SOURCES:\n[1] SynergyBug: A deep learning approach to autonomous debugging and code remediation. (source nr: 1)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40640256\n\n[2] An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search. (source nr: 2)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38654755\n\n[3] An integrated graph neural network model for joint software defect prediction and code quality assessment. (source nr: 3)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41381815\n\n[4] Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network. (source nr: 4)\n   URL: https://pubmed.ncbi.nlm.nih.gov/37420393\n\n[5] Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction. (source nr: 5)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40354496\n\n[6] Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm. (source nr: 6)\n   URL: https://pubmed.ncbi.nlm.nih.gov/40021906\n\n[7] Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model. (source nr: 7)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38951608\n\n[8] Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning. (source nr: 8)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34992647\n\n[9] Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM). (source nr: 9)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34901421\n\n[10] Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning. (source nr: 10)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39669467\n\n[11] Deep Learning-Based Defect Prediction for Mobile Applications. (source nr: 11)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35808230\n\n[12] Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review. (source nr: 12)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35408166\n\n[13] Fine-Grained Software Defect Prediction Based on the Method-Call Sequence. (source nr: 13)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35965753\n\n[14] The effect of data complexity on classifier performance. (source nr: 14)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39494321\n\n[15] OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction. (source nr: 15)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41936195\n\n[16] Neural in-memory checksums: an error detection and correction technique for safe in-memory inference. (source nr: 16)\n   URL: https://pubmed.ncbi.nlm.nih.gov/39815981\n\n[17] Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy. (source nr: 17)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38485098\n\n[18] Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy. (source nr: 18)\n   URL: https://pubmed.ncbi.nlm.nih.gov/34101848\n\n[19] Error detection and classification in patient-specific IMRT QA with dual neural networks. (source nr: 19)\n   URL: https://pubmed.ncbi.nlm.nih.gov/33460182\n\n[20] Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry. (source nr: 20)\n   URL: https://pubmed.ncbi.nlm.nih.gov/38112213\n\n[21] AI-powered predictive framework for crack detection in steel-copper laser welding. (source nr: 21)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41291029\n\n[22] A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor. (source nr: 22)\n   URL: https://pubmed.ncbi.nlm.nih.gov/35953972\n\n[23] DGCNN: A convolutional neural network over large-scale labeled graphs. (source nr: 23)\n   URL: https://pubmed.ncbi.nlm.nih.gov/30458952\n\n[24] Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods. (source nr: 24)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41544384\n\n\n",
+  "iterations": 3,
+  "questions": {},
+  "research_id": "231e7a9a-d41d-4fb9-acea-1008f9fd2882",
+  "sources": [
+    {
+      "_pmid": "40640256",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Chen H"
+      ],
+      "doi": "10.1038/s41598-025-08226-5",
+      "id": "40640256",
+      "index": "1",
+      "issn": "2045-2322",
+      "journal": "Scientific reports",
+      "journal_ref": "Scientific reports",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/40640256/",
+      "pubdate": "2025 Jul 10",
+      "snippet": "Title: SynergyBug: A deep learning approach to autonomous debugging and code remediation.\n\nAbstract: Bug detection and resolution are pivotal to maintaining the quality, reliability, and performance of software systems. Manual debugging, along with traditional static rule-based methods, proves inefficient when applied to complex software structures in contemporary times. SynergyBug combines BERT and GPT-3 to autonomously detect and repair bugs across multiple sources. It resolves essential requirements by implementing an automated system that diagnoses and resolves software bugs automaticall...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+      "source": "PubMed",
+      "title": "SynergyBug: A deep learning approach to autonomous debugging and code remediation."
+    },
+    {
+      "_pmid": "38654755",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Robledo C",
+        "Sallicati F",
+        "de Chalendar G",
+        "Fernández M",
+        "de Castro P",
+        "Martín E",
+        "Gutiérrez J",
+        "Bouachera Y"
+      ],
+      "doi": "10.12688/openreseurope.14507.2",
+      "id": "38654755",
+      "index": "2",
+      "issn": "2732-5121",
+      "journal": "Open research Europe",
+      "journal_ref": "Open research Europe",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/38654755/",
+      "pubdate": "2022",
+      "snippet": "Title: An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search.\n\nAbstract: This paper aims to introduce the innovative work carried out in the Horizon 2020 DECODER project - acronym for \"DEveloper COmpanion for Documented and annotatEd code Reference\" - (Grant Agreement no. 824231) by linking the fields of natural language processing (NLP) and software engineering. The project as a whole addresses the development of a framework, namely the Persistent Knowledge Monitor (PKM), that acts as a central infrastructure to store, access, and trace all the data, information ...\n\nMetadata: [Journal Article] Open research Europe - 2022",
+      "source": "PubMed",
+      "title": "An open-source natural language processing toolkit to support software development: addressing automatic bug detection, code summarisation and code search."
+    },
+    {
+      "_pmid": "41381815",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Dai P",
+        "Zhu H",
+        "Wu J",
+        "He H"
+      ],
+      "doi": "10.1038/s41598-025-31209-5",
+      "id": "41381815",
+      "index": "3",
+      "issn": "2045-2322",
+      "journal": "Scientific reports",
+      "journal_ref": "Scientific reports",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/41381815/",
+      "pubdate": "2025 Dec 11",
+      "snippet": "Title: An integrated graph neural network model for joint software defect prediction and code quality assessment.\n\nAbstract: Current software defect prediction and code quality assessment methods treat these inherently related tasks independently, failing to leverage their complementary information. Existing graph-based approaches lack the ability to jointly model structural dependencies and quality characteristics, limiting their effectiveness in capturing the complex relationships between defect patterns and code quality indicators. This paper proposes a novel integrated model that simultaneously tackles both obj...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+      "source": "PubMed",
+      "title": "An integrated graph neural network model for joint software defect prediction and code quality assessment."
+    },
+    {
+      "_pmid": "37420393",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Cui M",
+        "Long S",
+        "Jiang Y",
+        "Na X"
+      ],
+      "doi": "10.3390/e24101373",
+      "id": "37420393",
+      "index": "4",
+      "issn": "1099-4300",
+      "journal": "Entropy (Basel, Switzerland)",
+      "journal_ref": "Entropy (Basel, Switzerland)",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/37420393/",
+      "pubdate": "2022 Sep 27",
+      "snippet": "Title: Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network.\n\nAbstract: The goal of software defect prediction is to make predictions by mining the historical data using models. Current software defect prediction models mainly focus on the code features of software modules. However, they ignore the connection between software modules. This paper proposed a software defect prediction framework based on graph neural network from a complex network perspective. Firstly, we consider the software as a graph, where nodes represent the classes, and edges represent the de...\n\nMetadata: [Journal Article] Entropy (Basel, Switzerland) - 2022",
+      "source": "PubMed",
+      "title": "Research of Software Defect Prediction Model Based on Complex Network and Graph Neural Network."
+    },
+    {
+      "_pmid": "40354496",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Abdelaziz A",
+        "Mahmoud AN",
+        "Santos V",
+        "Freire MM"
+      ],
+      "doi": "10.1371/journal.pone.0319562",
+      "id": "40354496",
+      "index": "5",
+      "issn": "1932-6203",
+      "journal": "PloS one",
+      "journal_ref": "PloS one",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/40354496/",
+      "pubdate": "2025",
+      "snippet": "Title: Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction.\n\nAbstract: The increasing importance of deep learning in software development has greatly improved software quality by enabling the efficient identification of defects, a persistent challenge throughout the software development lifecycle. This study seeks to determine the most effective model for detecting defects in software projects. It introduces an intelligent approach that combines Temporal Convolutional Networks (TCN) with Antlion Optimization (ALO). TCN is employed for defect detection, while ALO...\n\nMetadata: [Journal Article] PloS one - 2025",
+      "source": "PubMed",
+      "title": "Integrating temporal convolutional networks with metaheuristic optimization for accurate software defect prediction."
+    },
+    {
+      "_pmid": "40021906",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Liu Z",
+        "Su T",
+        "Zakharov MA",
+        "Wei G",
+        "Lee S"
+      ],
+      "doi": "10.1038/s41598-025-91784-5",
+      "id": "40021906",
+      "index": "6",
+      "issn": "2045-2322",
+      "journal": "Scientific reports",
+      "journal_ref": "Scientific reports",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/40021906/",
+      "pubdate": "2025 Feb 28",
+      "snippet": "Title: Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm.\n\nAbstract: The study introduces a new method for predicting software defects based on Residual/Shuffle (RS) Networks and an enhanced version of Fish Migration Optimization (UFMO). The overall contribution is to improve the accuracy, and reduce the manual effort needed. The originality of this work rests in the synergic use of deep learning and metaheuristics to train the software code for extraction of semantic and structural properties. The model is tested on a variety of open-source projects, yielding...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+      "source": "PubMed",
+      "title": "Software defect prediction based on residual/shuffle network optimized by upgraded fish migration optimization algorithm."
+    },
+    {
+      "_pmid": "38951608",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Abdu A",
+        "Zhai Z",
+        "Abdo HA",
+        "Algabri R",
+        "Al-Masni MA",
+        "Muhammad MS",
+        "Gu YH"
+      ],
+      "doi": "10.1038/s41598-024-65639-4",
+      "id": "38951608",
+      "index": "7",
+      "issn": "2045-2322",
+      "journal": "Scientific reports",
+      "journal_ref": "Scientific reports",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/38951608/",
+      "pubdate": "2024 Jul 1",
+      "snippet": "Title: Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model.\n\nAbstract: Software defect prediction aims to find a reliable method for predicting defects in a particular software project and assisting software engineers in allocating limited resources to release high-quality software products. While most earlier research has concentrated on employing traditional features, current methodologies are increasingly directed toward extracting semantic features from source code. Traditional features often fall short in identifying semantic differences within programs, di...\n\nMetadata: [Journal Article] Scientific reports - 2024",
+      "source": "PubMed",
+      "title": "Semantic and traditional feature fusion for software defect prediction using hybrid deep learning model."
+    },
+    {
+      "_pmid": "34992647",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Li Z",
+        "Li T",
+        "Wu Y",
+        "Yang L",
+        "Miao H",
+        "Wang D"
+      ],
+      "doi": "10.1155/2021/4997459",
+      "id": "34992647",
+      "index": "8",
+      "issn": "1687-5265",
+      "journal": "Computational intelligence and neuroscience",
+      "journal_ref": "Computational intelligence and neuroscience",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/34992647/",
+      "pubdate": "2021",
+      "snippet": "Title: Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning.\n\nAbstract: In order to improve software quality and testing efficiency, this paper implements the prediction of software defects based on deep learning. According to the respective advantages and disadvantages of the particle swarm algorithm and the wolf swarm algorithm, the two algorithms are mixed to realize the complementary advantages of the algorithms. At the same time, the hybrid algorithm is used in the search of model hyperparameter optimization, the loss function of the model is used as the fit...\n\nMetadata: [Journal Article] Computational intelligence and neuroscience - 2021",
+      "source": "PubMed",
+      "title": "Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning."
+    },
+    {
+      "_pmid": "34901421",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Farid AB",
+        "Fathy EM",
+        "Sharaf Eldin A",
+        "Abd-Elmegid LA"
+      ],
+      "doi": "10.7717/peerj-cs.739",
+      "id": "34901421",
+      "index": "9",
+      "issn": "2376-5992",
+      "journal": "PeerJ. Computer science",
+      "journal_ref": "PeerJ. Computer science",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/34901421/",
+      "pubdate": "2021",
+      "snippet": "Title: Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM).\n\nAbstract: In recent years, the software industry has invested substantial effort to improve software quality in organizations. Applying proactive software defect prediction will help developers and white box testers to find the defects earlier, and this will reduce the time and effort. Traditional software defect prediction models concentrate on traditional features of source code including code complexity, lines of code, etc. However, these features fail to extract the semantics of source code. In thi...\n\nMetadata: [Journal Article] PeerJ. Computer science - 2021",
+      "source": "PubMed",
+      "title": "Software defect prediction using hybrid model (CBIL) of convolutional neural network (CNN) and bidirectional long short-term memory (Bi-LSTM)."
+    },
+    {
+      "_pmid": "39669467",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Ali M",
+        "Mazhar T",
+        "Al-Rasheed A",
+        "Shahzad T",
+        "Yasin Ghadi Y",
+        "Amir Khan M"
+      ],
+      "doi": "10.7717/peerj-cs.1860",
+      "id": "39669467",
+      "index": "10",
+      "issn": "2376-5992",
+      "journal": "PeerJ. Computer science",
+      "journal_ref": "PeerJ. Computer science",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/39669467/",
+      "pubdate": "2024",
+      "snippet": "Title: Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning.\n\nAbstract: Effective software defect prediction is a crucial aspect of software quality assurance, enabling the identification of defective modules before the testing phase. This study aims to propose a comprehensive five-stage framework for software defect prediction, addressing the current challenges in the field. The first stage involves selecting a cleaned version of NASA's defect datasets, including CM1, JM1, MC2, MW1, PC1, PC3, and PC4, ensuring the data's integrity. In the second stage, a feature...\n\nMetadata: [Journal Article] PeerJ. Computer science - 2024",
+      "source": "PubMed",
+      "title": "Enhancing software defect prediction: a framework with improved feature selection and ensemble machine learning."
+    },
+    {
+      "_pmid": "35808230",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Jorayeva M",
+        "Akbulut A",
+        "Catal C",
+        "Mishra A"
+      ],
+      "doi": "10.3390/s22134734",
+      "id": "35808230",
+      "index": "11",
+      "issn": "1424-8220",
+      "journal": "Sensors (Basel, Switzerland)",
+      "journal_ref": "Sensors (Basel, Switzerland)",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/35808230/",
+      "pubdate": "2022 Jun 23",
+      "snippet": "Title: Deep Learning-Based Defect Prediction for Mobile Applications.\n\nAbstract: Smartphones have enabled the widespread use of mobile applications. However, there are unrecognized defects of mobile applications that can affect businesses due to a negative user experience. To avoid this, the defects of applications should be detected and removed before release. This study aims to develop a defect prediction model for mobile applications. We performed cross-project and within-project experiments and also used deep learning algorithms, such as convolutional neural networks ...\n\nMetadata: [Journal Article] Sensors (Basel, Switzerland) - 2022",
+      "source": "PubMed",
+      "title": "Deep Learning-Based Defect Prediction for Mobile Applications."
+    },
+    {
+      "_pmid": "35408166",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Jorayeva M",
+        "Akbulut A",
+        "Catal C",
+        "Mishra A"
+      ],
+      "doi": "10.3390/s22072551",
+      "id": "35408166",
+      "index": "12",
+      "issn": "1424-8220",
+      "journal": "Sensors (Basel, Switzerland)",
+      "journal_ref": "Sensors (Basel, Switzerland)",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/35408166/",
+      "pubdate": "2022 Mar 26",
+      "snippet": "Title: Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review.\n\nAbstract: Software defect prediction studies aim to predict defect-prone components before the testing stage of the software development process. The main benefit of these prediction models is that more testing resources can be allocated to fault-prone modules effectively. While a few software defect prediction models have been developed for mobile applications, a systematic overview of these studies is still missing. Therefore, we carried out a Systematic Literature Review (SLR) study to evaluate how ...\n\nMetadata: [Journal Article] Sensors (Basel, Switzerland) - 2022",
+      "source": "PubMed",
+      "title": "Machine Learning-Based Software Defect Prediction for Mobile Applications: A Systematic Literature Review."
+    },
+    {
+      "_pmid": "35965753",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Yang F",
+        "Huang Y",
+        "Xu H",
+        "Xiao P",
+        "Zheng W"
+      ],
+      "doi": "10.1155/2022/4311548",
+      "id": "35965753",
+      "index": "13",
+      "issn": "1687-5265",
+      "journal": "Computational intelligence and neuroscience",
+      "journal_ref": "Computational intelligence and neuroscience",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/35965753/",
+      "pubdate": "2022",
+      "snippet": "Title: Fine-Grained Software Defect Prediction Based on the Method-Call Sequence.\n\nAbstract: Currently, software defect-prediction technology is being extensively researched in the design of metrics. However, the research objects are mainly limited to coarse-grained entities such as classes, files, and packages, and there is a wide range of defects that are difficult to predict in actual situations. To further explore the information between sequences of method calls and to learn the code semantics and syntactic structure between methods, we generated a method-call sequence that reta...\n\nMetadata: [Journal Article] Computational intelligence and neuroscience - 2022",
+      "source": "PubMed",
+      "title": "Fine-Grained Software Defect Prediction Based on the Method-Call Sequence."
+    },
+    {
+      "_pmid": "39494321",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Eberlein J",
+        "Rodriguez D",
+        "Harrison R"
+      ],
+      "doi": "10.1007/s10664-024-10554-5",
+      "id": "39494321",
+      "index": "14",
+      "issn": "1382-3256",
+      "journal": "Empirical software engineering",
+      "journal_ref": "Empirical software engineering",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/39494321/",
+      "pubdate": "2025",
+      "snippet": "Title: The effect of data complexity on classifier performance.\n\nAbstract: The research area of Software Defect Prediction (SDP) is both extensive and popular, and is often treated as a classification problem. Improvements in classification, pre-processing and tuning techniques, (together with many factors which can influence model performance) have encouraged this trend. However, no matter the effort in these areas, it seems that there is a ceiling in the performance of the classification models used in SDP. In this paper, the issue of classifier performance is ana...\n\nMetadata: [Journal Article] Empirical software engineering - 2025",
+      "source": "PubMed",
+      "title": "The effect of data complexity on classifier performance."
+    },
+    {
+      "_pmid": "41936195",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Singh V",
+        "Sharma S",
+        "Singh A",
+        "Bhardwaj A"
+      ],
+      "doi": "10.1016/j.compbiolchem.2026.109043",
+      "id": "41936195",
+      "index": "15",
+      "issn": "1476-9271",
+      "journal": "Computational biology and chemistry",
+      "journal_ref": "Computational biology and chemistry",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/41936195/",
+      "pubdate": "2026 Aug",
+      "snippet": "Title: OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction.\n\nAbstract: Software Failure Prediction (SFP) includes estimating the probability that a software system will fail during its operational period. Its primary goal is to recognize components that are prone to defects or time intervals when failures are more probable, allowing the implementation of preventive measures and thus augmenting overall reliability of software. The study aims to create an advanced hybrid Deep Learning (DL) strategy for SFP. Experiments were conducted using the Software Defect Pred...\n\nMetadata: [Journal Article] Computational biology and chemistry - 2026",
+      "source": "PubMed",
+      "title": "OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and correlation based feature selection for software failure prediction."
+    },
+    {
+      "_pmid": "39815981",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Parrini L",
+        "Soliman T",
+        "Hettwer B",
+        "De La Parra C",
+        "Borrmann JM",
+        "Singh S",
+        "Bende A",
+        "Rana V",
+        "Merchant F",
+        "Wehn N"
+      ],
+      "doi": "10.1098/rsta.2023.0399",
+      "id": "39815981",
+      "index": "16",
+      "issn": "1364-503X",
+      "journal": "Philosophical transactions. Series A, Mathematical, physical, and engineering sciences",
+      "journal_ref": "Philosophical transactions. Series A, Mathematical, physical, and engineering sciences",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/39815981/",
+      "pubdate": "2025 Jan",
+      "snippet": "Title: Neural in-memory checksums: an error detection and correction technique for safe in-memory inference.\n\nAbstract: The advent of in-memory computing has introduced a new paradigm of computation, which offers significant improvements in terms of latency and power consumption for emerging embedded AI accelerators. Nevertheless, the effect of the hardware variations and non-idealities of the emerging memory technologies may significantly compromise the accuracy of inferred neural networks and result in malfunctions in safety-critical applications. This article addresses the issue from three different perspec...\n\nMetadata: [Journal Article] Philosophical transactions. Series A, Mathematical, physical, and engineering sciences - 2025",
+      "source": "PubMed",
+      "title": "Neural in-memory checksums: an error detection and correction technique for safe in-memory inference."
+    },
+    {
+      "_pmid": "38485098",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Luximon DC",
+        "Neylon J",
+        "Ritter T",
+        "Agazaryan N",
+        "Hegde JV",
+        "Steinberg ML",
+        "Low DA",
+        "Lamb JM"
+      ],
+      "doi": "10.1016/j.ijrobp.2024.02.065",
+      "id": "38485098",
+      "index": "17",
+      "issn": "0360-3016",
+      "journal": "International journal of radiation oncology, biology, physics",
+      "journal_ref": "International journal of radiation oncology, biology, physics",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/38485098/",
+      "pubdate": "2024 Sep 1",
+      "snippet": "Title: Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy.\n\nAbstract: Present knowledge of patient setup and alignment errors in image guided radiation therapy (IGRT) relies on voluntary reporting, which is thought to underestimate error frequencies. A manual retrospective patient-setup misalignment error search is infeasible owing to the bulk of cases to be reviewed. We applied a deep learning-based misalignment error detection algorithm (EDA) to perform a fully automated retrospective error search of clinical IGRT databases and determine an absolute gross pat...\n\nMetadata: [Journal Article] International journal of radiation oncology, biology, physics - 2024",
+      "source": "PubMed",
+      "title": "Results of an Artificial Intelligence-Based Image Review System to Detect Patient Misalignment Errors in a Multi-institutional Database of Cone Beam Computed Tomography-Guided Radiation Therapy."
+    },
+    {
+      "_pmid": "34101848",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Kimura Y",
+        "Kadoya N",
+        "Oku Y",
+        "Kajikawa T",
+        "Tomori S",
+        "Jingu K"
+      ],
+      "doi": "10.1002/mp.15031",
+      "id": "34101848",
+      "index": "18",
+      "issn": "0094-2405",
+      "journal": "Medical physics",
+      "journal_ref": "Medical physics",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/34101848/",
+      "pubdate": "2021 Sep",
+      "snippet": "Title: Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy.\n\nAbstract: In patient-specific quality assurance (QA) for static beam intensity-modulated radiation therapy (IMRT), machine-learning-based dose analysis methods have been developed to identify the cause of an error as an alternative to gamma analysis. Although these new methods have revealed that the cause of the error can be identified by analyzing the dose distribution obtained from the two-dimensional detector, they have not been extended to the analysis of volumetric-modulated arc therapy (VMAT) QA....\n\nMetadata: [Journal Article] Medical physics - 2021",
+      "source": "PubMed",
+      "title": "Error detection model developed using a multi-task convolutional neural network in patient-specific quality assurance for volumetric-modulated arc therapy."
+    },
+    {
+      "_pmid": "33460182",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Potter NJ",
+        "Mund K",
+        "Andreozzi JM",
+        "Li JG",
+        "Liu C",
+        "Yan G"
+      ],
+      "doi": "10.1002/mp.14416",
+      "id": "33460182",
+      "index": "19",
+      "issn": "0094-2405",
+      "journal": "Medical physics",
+      "journal_ref": "Medical physics",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/33460182/",
+      "pubdate": "2020 Oct",
+      "snippet": "Title: Error detection and classification in patient-specific IMRT QA with dual neural networks.\n\nAbstract: Despite being the standard metric in patient-specific quality assurance (QA) for intensity-modulated radiotherapy (IMRT), gamma analysis has two shortcomings: (a) it lacks sensitivity to small but clinically relevant errors (b) it does not provide efficient means to classify the error sources. The purpose of this work is to propose a dual neural network method to achieve simultaneous error detection and classification in patient-specific IMRT QA.\n\nPURPOSE: Despite being the standard metric in...\n\nMetadata: [Journal Article] Medical physics - 2020",
+      "source": "PubMed",
+      "title": "Error detection and classification in patient-specific IMRT QA with dual neural networks."
+    },
+    {
+      "_pmid": "38112213",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Olaciregui-Ruiz I",
+        "Simões R",
+        "Jan-Jakob S"
+      ],
+      "doi": "10.1002/mp.16895",
+      "id": "38112213",
+      "index": "20",
+      "issn": "0094-2405",
+      "journal": "Medical physics",
+      "journal_ref": "Medical physics",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/38112213/",
+      "pubdate": "2024 Feb",
+      "snippet": "Title: Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry.\n\nAbstract: Dose distributions calculated with electronic portal imaging device (EPID)-based in vivo dosimetry (EIVD) differ from planned dose distributions due to generic and plan-specific deviations. Generic deviations are characteristic to a class of plans. Examples include limitations in EIVD dose reconstruction, inaccuracies in treatment planning system (TPS) calculations and systematic machine deviations. Plan-specific deviations have an unpredictable character. Examples include discrepancies betwe...\n\nMetadata: [Journal Article] Medical physics - 2024",
+      "source": "PubMed",
+      "title": "Deep learning-based tools to distinguish plan-specific from generic deviations in EPID-based in vivo dosimetry."
+    },
+    {
+      "_pmid": "41291029",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Nagendra J",
+        "Prashanth KS",
+        "Veerabhadrappa K",
+        "Bopanna KD",
+        "Vinutha M",
+        "Naresh E",
+        "Bandhu D"
+      ],
+      "doi": "10.1038/s41598-025-29977-1",
+      "id": "41291029",
+      "index": "21",
+      "issn": "2045-2322",
+      "journal": "Scientific reports",
+      "journal_ref": "Scientific reports",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/41291029/",
+      "pubdate": "2025 Nov 25",
+      "snippet": "Title: AI-powered predictive framework for crack detection in steel-copper laser welding.\n\nAbstract: Laser welding of dissimilar materials, such as steel and copper, is highly susceptible to crack formation, which compromises joint integrity and service life. Traditional inspection techniques are slow, labor-intensive, and error-prone, underscoring the need for intelligent defect-prediction systems. This study utilizes a publicly available dataset of 360 weld cross-sections, generated using a definitive screening design (DSD) that encompasses six key process parameters: laser power, welding ...\n\nMetadata: [Journal Article] Scientific reports - 2025",
+      "source": "PubMed",
+      "title": "AI-powered predictive framework for crack detection in steel-copper laser welding."
+    },
+    {
+      "_pmid": "35953972",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Yang X",
+        "Chai L",
+        "Bist RB",
+        "Subedi S",
+        "Wu Z"
+      ],
+      "doi": "10.3390/ani12151983",
+      "id": "35953972",
+      "index": "22",
+      "issn": "2076-2615",
+      "journal": "Animals : an open access journal from MDPI",
+      "journal_ref": "Animals : an open access journal from MDPI",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/35953972/",
+      "pubdate": "2022 Aug 5",
+      "snippet": "Title: A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor.\n\nAbstract: Real-time and automatic detection of chickens (e.g., laying hens and broilers) is the cornerstone of precision poultry farming based on image recognition. However, such identification becomes more challenging under cage-free conditions comparing to caged hens. In this study, we developed a deep learning model (YOLOv5x-hens) based on YOLOv5, an advanced convolutional neural network (CNN), to monitor hens’ behaviors in cage-free facilities. More than 1000 images were used to train the model and...\n\nMetadata: [Journal Article] Animals : an open access journal from MDPI - 2022",
+      "source": "PubMed",
+      "title": "A Deep Learning Model for Detecting Cage-Free Hens on the Litter Floor."
+    },
+    {
+      "_pmid": "30458952",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Phan AV",
+        "Nguyen ML",
+        "Nguyen YLH",
+        "Bui LT"
+      ],
+      "doi": "10.1016/j.neunet.2018.09.001",
+      "id": "30458952",
+      "index": "23",
+      "issn": "0893-6080",
+      "journal": "Neural networks : the official journal of the International Neural Network Society",
+      "journal_ref": "Neural networks : the official journal of the International Neural Network Society",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/30458952/",
+      "pubdate": "2018 Dec",
+      "snippet": "Title: DGCNN: A convolutional neural network over large-scale labeled graphs.\n\nAbstract: Exploiting graph-structured data has many real applications in domains including natural language semantics, programming language processing, and malware analysis. A variety of methods has been developed to deal with such data. However, learning graphs of large-scale, varying shapes and sizes is a big challenge for any method. In this paper, we propose a multi-view multi-layer convolutional neural network on labeled directed graphs (DGCNN), in which convolutional filters are designed flexibly...\n\nMetadata: [Journal Article] Neural networks : the official journal of the International Neural Network Society - 2018",
+      "source": "PubMed",
+      "title": "DGCNN: A convolutional neural network over large-scale labeled graphs."
+    },
+    {
+      "_pmid": "41544384",
+      "_search_strategy": "rare_topic",
+      "authors": [
+        "Evgeneia AE",
+        "Alafogiannis P",
+        "Dikaios N",
+        "Pantelis E",
+        "Papagiannis P",
+        "Peppa V"
+      ],
+      "doi": "10.1088/1361-6560/ae399f",
+      "id": "41544384",
+      "index": "24",
+      "issn": "0031-9155",
+      "journal": "Physics in medicine and biology",
+      "journal_ref": "Physics in medicine and biology",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/41544384/",
+      "pubdate": "2026 Jan 30",
+      "snippet": "Title: Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods.\n\nMetadata: [Journal Article] Physics in medicine and biology - 2026",
+      "source": "PubMed",
+      "title": "Institution-specific pre-treatment quality assurance control and specification limits: a tool to implement a new formalism and criteria optimization using statistical process control and heuristic methods."
+    }
+  ],
+  "summary": "The integration of Artificial Intelligence, particularly deep learning and neural networks, has significantly advanced the fields of intelligent error detection, automated bug detection, and software defect prediction. By moving beyond traditional static rule-based methods, these AI-driven approaches offer more efficient and accurate ways to maintain software quality, reliability, and performance [1].\n\n**Autonomous Debugging and Code Remediation**\nRecent developments in autonomous debugging utilize large language models (LLMs) to detect and resolve bugs automatically. For instance, SynergyBug combines BERT and GPT-3 to create an automated system that diagnoses and repairs software bugs across multiple sources, addressing the inefficiencies of manual debugging in complex software structures [1]. This approach represents a shift towards intelligent error detection that not only identifies issues but also suggests or implements remediation [1].\n\n**Software Defect Prediction using Neural Networks**\nSoftware defect prediction (SDP) has evolved from relying on traditional metrics (like code complexity) to leveraging deep learning models that extract semantic and structural features from source code [7], [9]. Several neural network architectures have been proposed to enhance prediction accuracy:\n\n*   **Graph Neural Networks (GNNs):** GNNs are increasingly used to model software as graphs where nodes represent classes and edges represent dependencies, allowing for the capture of complex relationships between defect patterns and code quality [3], [4]. An integrated GNN model can simultaneously tackle defect prediction and code quality assessment, leveraging the complementary information between these tasks [3]. Furthermore, GNNs can be applied to large-scale labeled graphs, such as those used in programming language processing, to detect defects or malware [23].\n*   **Hybrid Deep Learning Models:** Combining different neural network types often yields superior results. For example, a hybrid model using Convolutional Neural Networks (CNN) and Bidirectional Long Short-Term Memory (Bi-LSTM) networks extracts both local features and sequential semantics from code, addressing the limitations of traditional features [9]. Another approach uses Temporal Convolutional Networks (TCN) optimized by metaheuristic algorithms like Antlion Optimization (ALO) to improve defect detection accuracy [5]. Similarly, Residual/Shuffle (RS) Networks optimized by an upgraded Fish Migration Optimization algorithm have been shown to reduce manual effort while improving prediction accuracy [6].\n*   **Feature Fusion and Selection:** Effective SDP often involves fusing semantic and traditional features. A hybrid deep learning model that integrates these feature types can better identify semantic differences that traditional metrics miss [7]. Additionally, frameworks with improved feature selection and ensemble machine learning techniques have been developed to handle the complexity of datasets, such as those from NASA [10].\n\n**Advanced Optimization and Specific Applications**\nTo further enhance model performance, metaheuristic optimization algorithms are frequently combined with deep learning. Hybrid swarm intelligence algorithms, such as mixing particle swarm and wolf swarm algorithms, are used for hyperparameter optimization to improve the training of defect prediction models [8]. Specific applications include:\n*   **Mobile Applications:** Deep learning models, including CNNs, have been adapted for cross-project and within-project defect prediction in mobile applications, helping to identify defects before release to ensure a positive user experience [11], [12].\n*   **Fine-Grained Prediction:** Moving beyond coarse-grained entities like classes, some models focus on method-call sequences to learn code semantics and syntactic structures between methods, enabling more precise defect prediction [13].\n*   **Hardware and In-Memory Errors:** In the context of in-memory computing for AI accelerators, neural in-memory checksums have been proposed as an error detection and correction technique to mitigate hardware variations and non-idealities that could compromise neural network inference accuracy [16].\n\n**Challenges and Limitations**\nDespite these advancements, challenges remain. Research indicates that there is a performance ceiling for classification models in SDP, influenced by data complexity and the inherent limitations of classifier performance [14]. Additionally, while AI tools like SynergyBug show promise, the field is still maturing, and the integration of these tools into existing development workflows requires robust infrastructure, such as the Persistent Knowledge Monitor (PKM) framework developed in the DECODER project to store and trace software data [2].\n\nIn summary, AI-powered intelligent error detection and software defect prediction rely heavily on advanced neural networks (CNNs, RNNs, GNNs) and hybrid optimization techniques to extract deep semantic and structural features from code. These methods offer significant improvements over traditional techniques by providing automated, proactive, and more accurate identification of software defects [1], [3], [5], [7], [9]."
+}

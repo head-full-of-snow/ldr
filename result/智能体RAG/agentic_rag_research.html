@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于智能体的RAG最新科研成果汇总</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .header .date {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+        .summary {
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .summary h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .stat-item {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            flex: 1;
+            min-width: 200px;
+        }
+        .stat-item .number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .stat-item .label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .trends {
+            padding: 30px 40px;
+            background: white;
+        }
+        .trends h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        .trend-list {
+            list-style: none;
+        }
+        .trend-list li {
+            padding: 12px 15px;
+            margin: 10px 0;
+            background: #e8f4f8;
+            border-radius: 8px;
+            border-left: 3px solid #3498db;
+        }
+        .trend-list li strong {
+            color: #2c3e50;
+        }
+        .papers {
+            padding: 30px 40px;
+        }
+        .papers h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        .paper-card {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+        .paper-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .paper-card .paper-type {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+        .paper-card .paper-type.papers-type {
+            background: #27ae60;
+        }
+        .paper-card .paper-type.tool-type {
+            background: #e67e22;
+        }
+        .paper-card h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin: 10px 0;
+        }
+        .paper-card h3 a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        .paper-card h3 a:hover {
+            color: #3498db;
+        }
+        .paper-card .meta {
+            color: #666;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        .paper-card .meta span {
+            margin-right: 15px;
+        }
+        .paper-card .abstract {
+            color: #444;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        .paper-card .innovation {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #9b59b6;
+            margin-top: 15px;
+        }
+        .paper-card .innovation strong {
+            color: #9b59b6;
+        }
+        .paper-card .links {
+            margin-top: 15px;
+        }
+        .paper-card .links a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .paper-card .links a:hover {
+            text-decoration: underline;
+        }
+        .value-badge {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-left: 10px;
+        }
+        .value-badge.high {
+            background: #e74c3c;
+        }
+        .value-badge.medium {
+            background: #f39c12;
+        }
+        .value-badge.low {
+            background: #95a5a6;
+        }
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .stats { flex-direction: column; }
+            .container { margin: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>基于智能体的RAG最新科研成果</h1>
+            <div class="subtitle">Agentic RAG / Multi-Agent RAG Research Collection</div>
+            <div class="date">收集日期：2026年5月21日 | 覆盖时间：2026年5月18日-5月21日</div>
+        </div>
+
+        <div class="summary">
+            <h2>📊 统计概览</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="number">16</div>
+                    <div class="label">学术论文</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">4</div>
+                    <div class="label">开源框架/工具</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">20</div>
+                    <div class="label">总成果数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">6</div>
+                    <div class="label">高价值成果</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trends">
+            <h2>🔥 关键趋势</h2>
+            <ul class="trend-list">
+                <li><strong>多智能体协作成为主流：</strong>SEMA-RAG、MASS-RAG、MA-IDS等框架均表明，多智能体分工协作（解释、探索、裁决）在复杂RAG任务中显著优于单智能体方法。</li>
+                <li><strong>效率优化是核心挑战：</strong>LatentRAG将推理延迟降低90%，AutoSearch通过RL实现自适应搜索深度，表明agentic RAG的延迟问题是当前最活跃的研究方向。</li>
+                <li><strong>领域垂直化加速：</strong>FinAgent-RAG（金融）、SEMA-RAG（医疗）、BLAgent（软件工程）等表明agentic RAG正在快速渗透到各个垂直领域。</li>
+                <li><strong>安全与鲁棒性受到重视：</strong>Architecture Matters论文首次系统比较不同RAG架构在知识库中毒攻击下的表现，Securing the Agent解决企业多租户数据隔离问题。</li>
+                <li><strong>基准测试需求迫切：</strong>MTR-Suite、MINTEval、EnterpriseRAG-Bench表明领域需要更专业的agentic RAG评估框架。</li>
+            </ul>
+        </div>
+
+        <div class="papers">
+            <h2>📚 科研成果列表</h2>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge high">高价值</span>
+                <h3>1. BLAgent: Agentic RAG for File-Level Bug Localization</h3>
+                <div class="meta">
+                    <span>📅 2026-05-18</span>
+                    <span>🆔 arXiv: 2605.17965</span>
+                    <span>👥 Md Afif Al Mamun, Gias Uddin</span>
+                </div>
+                <div class="abstract">
+                    提出BLAgent，一种用于文件级bug定位的新型agentic RAG框架，整合三个关键创新：(i) 代码结构感知仓库编码与路径增强AST分块；(ii) 双视角查询转换捕获结构和行为信号；(iii) 两阶段智能体重排序结合符号检查与证据推理。在SWE-bench Lite上，开源模型达到78% Top-1准确率，闭源模型达到86%，且比最强基线便宜18倍。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>将agentic RAG首次应用于软件工程领域的bug定位问题，提出代码结构感知的仓库编码方法和双视角查询转换机制，实现低成本高效率的bug定位。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.17965" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge high">高价值</span>
+                <h3>2. SEMA-RAG: A Self-Evolving Multi-Agent Retrieval-Augmented Generation Framework for Medical Reasoning</h3>
+                <div class="meta">
+                    <span>📅 2026-05-16</span>
+                    <span>🆔 arXiv: 2605.17101</span>
+                    <span>👥 Yongfeng Huang, Ruiying Chen, James Cheng</span>
+                </div>
+                <div class="abstract">
+                    提出SEMA-RAG，一种用于医疗推理的自我进化多智能体RAG框架。将三个专业智能体分配到不同角色：Interpreter Agent（临床模式解释）、Explorer Agent（充分性驱动的自我进化检索）、Arbiter Agent（证据裁决和答案选择）。在五个基准和五个LLM后端上，SEMA-RAG平均超越最强基线+6.46个准确率点。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>首创自我进化的多智能体RAG架构，通过Explorer Agent实现充分性驱动的自适应检索，提出证据裁决机制，在医疗推理领域表现优异。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.17101" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge high">高价值</span>
+                <h3>3. MTR-Suite: A Framework for Evaluating and Synthesizing Conversational Retrieval Benchmarks</h3>
+                <div class="meta">
+                    <span>📅 2026-05-20</span>
+                    <span>🆔 arXiv: 2605.20729</span>
+                    <span>👥 Junhao Ruan et al.</span>
+                </div>
+                <div class="abstract">
+                    提出MTR-Suite，一个用于审查、综合和基准测试对话检索的统一框架。包含三个核心组件：(1) MTR-Eval，基于LLM的审计器量化先前基准的对齐差距；(2) MTR-Pipeline，一种多智能体系统，使用贪婪遍历聚类以1/400的人类成本生成高保真对话；(3) MTR-Bench，一个严格的一般领域基准。已被ACL 2026主会接收。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>提出对话检索基准的多智能体自动生成方法，成本仅为人类的1/400，解决基准测试构建成本高昂的问题。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.20729" target="_blank">arXiv链接</a>
+                    <a href="https://github.com/rangehow/mtr-suite" target="_blank">GitHub代码</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge high">高价值</span>
+                <h3>4. LatentRAG: Latent Reasoning and Retrieval for Efficient Agentic RAG</h3>
+                <div class="meta">
+                    <span>📅 2026-05-07</span>
+                    <span>🆔 arXiv: 2605.06285</span>
+                    <span>👥 Yijia Zheng, Marcel Worring</span>
+                </div>
+                <div class="abstract">
+                    提出LatentRAG，将推理和检索从离散语言空间转移到连续潜在空间。LLM直接从隐藏状态中一次性生成潜在token作为思维和子查询，而非token-by-token生成自然语言思维。在七个基准数据集上实现与显式agentic RAG方法相当的性能，同时将推理延迟降低约90%。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>革命性地从潜在空间进行推理和检索，避免token级生成的延迟瓶颈，实现90%的延迟降低，是agentic RAG效率优化的突破性进展。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.06285" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge high">高价值</span>
+                <h3>5. EngiAI: A Multi-Agent Framework and Benchmark Suite for LLM-Driven Engineering Design</h3>
+                <div class="meta">
+                    <span>📅 2026-05-19</span>
+                    <span>🆔 arXiv: 2605.19743</span>
+                    <span>👥 Gioele Molinari et al.</span>
+                </div>
+                <div class="abstract">
+                    提出EngiAI，一个基于LangGraph的多智能体系统（MAS）参考实现，通过监督者架构协调七个专业化智能体，统一拓扑优化、文档检索、HPC作业编排和3D打印控制。提出三维度评估基准：工作流基准、RAG基准和HPC基准。专有模型在Beams2D上达到96-97%的任务完成率。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>将多智能体RAG应用于工程设计领域，提出统一的工作流-RAG-HPC三维评估基准，展示agentic RAG在科学计算中的潜力。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.19743" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge high">高价值</span>
+                <h3>6. Architecture Matters: Comparing RAG Systems under Knowledge Base Poisoning</h3>
+                <div class="meta">
+                    <span>📅 2026-05-07</span>
+                    <span>🆔 arXiv: 2605.05632</span>
+                    <span>👥 Samuel Korn</span>
+                </div>
+                <div class="abstract">
+                    在受控的单文档（N=1）中毒环境下，评估四种RAG架构（vanilla RAG、agentic RAG、MADAM-RAG和Recursive Language Models）。发现架构对抗扰韧性差异显著：在CorruptRAG-AK攻击下，攻击成功率从81.9%（vanilla）到24.4%（RLM），跨度近58个百分点。提出七类行为分类法捕捉矛盾检测、犹豫和失败模式。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>首次系统比较不同RAG架构在知识库中毒攻击下的鲁棒性，揭示agentic RAG相比传统RAG具有更强的抗攻击能力，为安全RAG设计提供指导。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.05632" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>7. MINTEval: Evaluating Memory under Multi-Target Interference in Long-Horizon Agent Systems</h3>
+                <div class="meta">
+                    <span>📅 2026-05-18</span>
+                    <span>🆔 arXiv: 2605.18565</span>
+                    <span>👥 Hyunji Lee et al.</span>
+                </div>
+                <div class="abstract">
+                    提出MINTEval（长周期多目标干扰记忆评估）基准，包含15.6k问答对，上下文平均138.8k token，最长1.8M token。评估7种代表性系统（包括vanilla长上下文LLM、RAG和记忆增强智能体框架），发现所有系统平均准确率仅27.9%，检索和记忆构建是主要瓶颈。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>提出长周期多目标干扰下的记忆评估基准，揭示当前RAG和记忆增强智能体在复杂场景下的性能瓶颈。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.18565" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>8. Agentic Retrieval-Augmented Generation for Financial Document Question Answering</h3>
+                <div class="meta">
+                    <span>📅 2026-05-06</span>
+                    <span>🆔 arXiv: 2605.05409</span>
+                    <span>👥 Yang Shu, Yingmin Liu, Zequn Xie</span>
+                </div>
+                <div class="abstract">
+                    提出FinAgent-RAG，一种agentic RAG框架，编排迭代检索-推理循环和自我验证。三个领域特定创新：(1) 对比金融检索器，通过困难负样本挖掘训练；(2) 思维编程推理模块，生成可执行Python代码进行精确算术运算；(3) 自适应策略路由器，根据问题复杂度动态分配计算资源，在FinQA上降低API成本41.3%。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>针对金融领域提出agentic RAG解决方案，结合思维编程推理和自适应策略路由器，显著降低API成本同时保持高精度。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.05409" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>9. Securing the Agent: Vendor-Neutral, Multitenant Enterprise Retrieval and Tool Use</h3>
+                <div class="meta">
+                    <span>📅 2026-05-06</span>
+                    <span>🆔 arXiv: 2605.05287</span>
+                    <span>👥 Francisco Javier Arceo, Varsha Prasad Narsing</span>
+                </div>
+                <div class="abstract">
+                    解决企业RAG系统中多租户数据隔离问题。提出分层隔离架构，结合策略感知摄入、检索时门控和共享推理，通过服务器端智能体编排强制执行。在OGX（开源实现）中验证，ABAC门控消除跨租户数据泄露，同时引入可忽略的开销。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>针对企业多租户场景提出安全的agentic RAG架构，通过ABAC访问控制实现零数据泄露，为Enterprise RAG部署提供安全方案。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.05287" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>10. Experience-RAG Skill: An Agent-Oriented Pluggable Experience-RAG Skill</h3>
+                <div class="meta">
+                    <span>📅 2026-05-05</span>
+                    <span>🆔 arXiv: 2605.03989</span>
+                    <span>👥 Dutao Zhang, Tian Liao</span>
+                </div>
+                <div class="abstract">
+                    提出Experience-RAG Skill，一种面向智能体的可插入检索编排层，位于智能体和检索器池之间。该技能分析当前场景，查询经验记忆，选择合适的检索策略，并返回结构化证据。在BeIR/nq、BeIR/hotpotqa和BeIR/scifact上实现nDCG@10为0.8924，优于固定单检索器基线。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>提出可插入的经验RAG技能层，使智能体能够根据场景自适应选择检索策略，实现检索编排的模块化。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.03989" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>11. EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge</h3>
+                <div class="meta">
+                    <span>📅 2026-05-05</span>
+                    <span>🆔 arXiv: 2605.05253</span>
+                    <span>👥 Yuhong Sun et al.</span>
+                </div>
+                <div class="abstract">
+                    发布EnterpriseRAG-Bench，一个包含约50万文档的企业内部知识基准，覆盖九种企业源类型（Slack、Gmail、Linear、Google Drive、HubSpot、Fireflies、GitHub、Jira和Confluence），以及500个问题，覆盖十个类别。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>发布首个覆盖9种企业源类型的综合基准，为面向企业内部知识的RAG系统评估提供标准数据集。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2605.05253" target="_blank">arXiv链接</a>
+                    <a href="https://github.com/onyx-dot-app/EnterpriseRAG-Bench" target="_blank">GitHub代码</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>12. AutoSearch: Adaptive Search Depth for Efficient Agentic RAG via Reinforcement Learning</h3>
+                <div class="meta">
+                    <span>📅 2026-04-19</span>
+                    <span>🆔 arXiv: 2604.17337</span>
+                    <span>👥 Jingbo Sun et al.</span>
+                </div>
+                <div class="abstract">
+                    提出AutoSearch，一种通过强化学习评估每次搜索步骤的RL框架。通过自我回答机制，自动识别最小充分搜索深度，奖励高效搜索并惩罚过度搜索。在多个基准上实现最优的准确率-效率权衡。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>利用强化学习实现自适应搜索深度，通过自我回答机制自动平衡搜索效率与准确率，避免过度搜索。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2604.17337" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>13. MASS-RAG: Multi-Agent Synthesis Retrieval-Augmented Generation</h3>
+                <div class="meta">
+                    <span>📅 2026-04-20</span>
+                    <span>🆔 arXiv: 2604.18509</span>
+                    <span>👥 Xingchen Xiao et al.</span>
+                </div>
+                <div class="abstract">
+                    提出MASS-RAG，一种多智能体综合方法，将证据处理结构化为多个角色专业化智能体。对证据摘要、证据提取和推理应用不同的智能体，通过专用综合阶段结合其输出生成最终答案。在四个基准上始终优于强RAG基线。已获ACL 2026 Findings接收。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>将证据处理细分为多个专业化智能体任务，通过专用综合阶段整合多智能体输出，提升RAG生成质量。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2604.18509" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>14. NaviRAG: Towards Active Knowledge Navigation for Retrieval-Augmented Generation</h3>
+                <div class="meta">
+                    <span>📅 2026-05-17更新</span>
+                    <span>🆔 arXiv: 2604.12766</span>
+                    <span>👥 Jihao Dai et al.</span>
+                </div>
+                <div class="abstract">
+                    提出NaviRAG，从被动片段检索转向主动知识导航。将知识文档组织为层次结构，LLM智能体主动导航记录，迭代识别信息缺口并从最合适的粒度级别检索相关内容。在长文档QA基准上持续优于传统RAG基线。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>从被动检索转向主动知识导航，智能体在文档层次结构中自主导航，动态识别信息缺口并选择最佳检索粒度。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2604.12766" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge low">参考价值</span>
+                <h3>15. WikiSeeker: Rethinking the Role of Vision-Language Models in Knowledge-Based Visual Question Answering</h3>
+                <div class="meta">
+                    <span>📅 2026-04-07</span>
+                    <span>🆔 arXiv: 2604.05818</span>
+                    <span>👥 Yingjian Zhu et al.</span>
+                </div>
+                <div class="abstract">
+                    提出WikiSeeker，一种多模态RAG框架，重新定义VLM的角色。分配VLM两个专业化智能体：Refiner（根据输入图像重写文本查询）和Inspector（将可靠检索上下文路由到另一个LLM）。在EVQA、InfoSeek和M2KR上达到最先进的性能。已获ACL 2026 Findings接收。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>重新定义VLM在多模态RAG中的角色，通过Refiner和Inspector两个专业化智能体实现解耦生成策略。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2604.05818" target="_blank">arXiv链接</a>
+                    <a href="https://github.com/zhuyjan/WikiSeeker" target="_blank">GitHub代码</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type papers-type">学术论文</span>
+                <span class="value-badge low">参考价值</span>
+                <h3>16. MA-IDS: Multi-Agent RAG Framework for IoT Network Intrusion Detection with an Experience Library</h3>
+                <div class="meta">
+                    <span>📅 2026-04-07</span>
+                    <span>🆔 arXiv: 2604.05458</span>
+                    <span>👥 Md Shamimul Islam, Luis G. Jaimes, Ayesha S. Dina</span>
+                </div>
+                <div class="abstract">
+                    提出MA-IDS，一种将LLM与RAG结合的推理驱动入侵检测系统。通过FAISS向量数据库协作两个专业化智能体：流量分类智能体和错误分析智能体，构建持久化的自我构建经验库。在NF-BoT-IoT和NF-ToN-IoT上分别达到89.75%和85.22%的Macro F1分数。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>将多智能体RAG应用于IoT网络安全领域，通过经验库实现持续学习的入侵检测系统。
+                </div>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2604.05458" target="_blank">arXiv链接</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type tool-type">开源框架</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>17. LangChain v1.3.0+ Agent 架构更新</h3>
+                <div class="meta">
+                    <span>📅 2026年持续更新</span>
+                    <span>🔧 LangChain AI 官方</span>
+                </div>
+                <div class="abstract">
+                    引入create_agent架构的可扩展骨干——Agent中间件管道，允许在不修改核心图的情况下注入重试逻辑、PII脱敏、人机协同审批、上下文摘要等横切关注点。v1.3.0为Agent的stream_events引入了version="v3"支持。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>提出Agent中间件管道架构，实现横切关注点的模块化注入，使Agent开发更加灵活和可维护。
+                </div>
+                <div class="links">
+                    <a href="https://github.com/langchain-ai/langchain" target="_blank">GitHub仓库</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type tool-type">开源框架</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>18. MTR-Suite（多智能体对话检索基准生成框架）</h3>
+                <div class="meta">
+                    <span>📅 2026-05-20</span>
+                    <span>🔧 rangehow/mtr-suite</span>
+                </div>
+                <div class="abstract">
+                    多智能体系统使用贪婪遍历聚类生成高保真对话，成本仅为人类的1/400。提供审计、综合和基准测试检索的完整框架。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>开源多智能体对话基准生成工具，大幅降低基准构建成本，推动RAG评估研究发展。
+                </div>
+                <div class="links">
+                    <a href="https://github.com/rangehow/mtr-suite" target="_blank">GitHub代码</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type tool-type">开源框架</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>19. EnterpriseRAG-Bench（企业知识库基准）</h3>
+                <div class="meta">
+                    <span>📅 2026-05-05</span>
+                    <span>🔧 onyx-dot-app/EnterpriseRAG-Bench</span>
+                </div>
+                <div class="abstract">
+                    合成企业语料库及其生成框架和排行榜，覆盖9种企业源类型，用于评估面向企业内部知识RAG的智能体系统。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>开源企业知识库基准数据集和生成工具，为企业RAG系统评估提供标准化平台。
+                </div>
+                <div class="links">
+                    <a href="https://github.com/onyx-dot-app/EnterpriseRAG-Bench" target="_blank">GitHub代码</a>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-type tool-type">开源框架</span>
+                <span class="value-badge medium">中价值</span>
+                <h3>20. WikiSeeker（多模态视觉问答RAG框架）</h3>
+                <div class="meta">
+                    <span>📅 2026-04-07</span>
+                    <span>🔧 zhuyjan/WikiSeeker</span>
+                </div>
+                <div class="abstract">
+                    多模态检索器结合VLM Refiner和Inspector智能体，实现解耦生成策略。在EVQA、InfoSeek和M2KR上达到最先进的性能。
+                </div>
+                <div class="innovation">
+                    <strong>💡 创新点总结：</strong>开源多模态RAG框架，展示VLM智能体在视觉问答中的强大能力。
+                </div>
+                <div class="links">
+                    <a href="https://github.com/zhuyjan/WikiSeeker" target="_blank">GitHub代码</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>基于智能体的RAG科研成果汇总 | 生成日期：2026年5月21日</p>
+            <p>共收集20项科研成果（16篇学术论文 + 4项开源框架/工具）</p>
+        </div>
+    </div>
+</body>
+</html>

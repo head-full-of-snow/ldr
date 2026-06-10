@@ -1,0 +1,108 @@
+# Generated from template settings_template.yml
+# Port: 16464, Host: 0.0.0.0
+# Random secret key generated automatically
+
+general:
+  debug: false
+  instance_name: SimpleXNG
+redis:
+  url: false
+search:
+  autocomplete: duckduckgo
+  formats: [html, json]
+  safe_search: 0
+server:
+  bind_address: 0.0.0.0
+  image_proxy: false
+  limiter: false
+  port: 16464
+  public_instance: false
+  secret_key: 731dad12465bb3df36b12372af8fb077
+outgoing:
+  request_timeout: 50.0
+  max_request_timeout: 150.0
+  useragent_suffix: ""
+  enable_http2: true
+  pool_connections: 100
+  pool_maxsize: 20
+ui:
+  static_use_hash: false
+use_default_settings: false
+doi_resolvers:
+  oadoi.org: 'https://oadoi.org/'
+  doi.org: 'https://doi.org/'
+  sci-hub.se: 'https://sci-hub.se/'
+  sci-hub.st: 'https://sci-hub.st/'
+  sci-hub.ru: 'https://sci-hub.ru/'
+
+default_doi_resolver: "oadoi.org"
+# 新增：禁用 wikidata 引擎
+engines:
+  # --- General Web Search ---
+  # - name: duckduckgo
+  #   engine: duckduckgo
+  #   shortcut: ddg
+  #   timeout: 8.0
+  #   disabled: true
+
+  # - name: bing
+  #   engine: bing
+  #   shortcut: bi
+  #   timeout: 10.0
+  #   disabled: false
+
+  # - name: google
+  #   engine: google
+  #   shortcut: go
+  #   timeout: 8.0
+  #   disabled: false
+
+  # - name: brave
+  #   engine: brave
+  #   shortcut: br
+  #   timeout: 6.0
+  #   disabled: false
+
+  # - name: startpage
+  #   engine: startpage
+  #   shortcut: sp
+  #   timeout: 6.0
+  #   disabled: false
+
+  # --- Research & Academic ---
+  - name: arxiv
+    engine: arxiv
+    shortcut: arx
+    timeout: 6.0
+    disabled: false
+
+  - name: pubmed
+    engine: pubmed
+    shortcut: pub
+    timeout: 6.0
+    disabled: false
+
+  - name: semantic scholar
+    engine: semantic_scholar
+    shortcut: se
+    timeout: 6.0
+    disabled: false
+
+  - name: google scholar
+    engine: google_scholar
+    shortcut: gos
+    timeout: 8.0
+    disabled: false
+
+  - name: crossref
+    engine: crossref
+    shortcut: cr
+    timeout: 15.0
+    disabled: true
+
+  # - name: springer nature
+  #   engine: springer
+  #   api_key: 'unset'
+  #   shortcut: springer
+  #   timeout: 15.0
+  #   disabled: true

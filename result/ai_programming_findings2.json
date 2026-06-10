@@ -1,0 +1,254 @@
+{
+  "findings": [
+    {
+      "content": "Searched with 2 questions, found 0 results.",
+      "documents": [],
+      "phase": "Iteration 1",
+      "question": "AI programming code generation large language model software engineering autonomous coding agent"
+    },
+    {
+      "content": "Searched with 1 questions, found 50 results.",
+      "documents": [],
+      "phase": "Iteration 2",
+      "question": "AI programming code generation large language model software engineering autonomous coding agent"
+    },
+    {
+      "content": "Searched with 1 questions, found 0 results.",
+      "documents": [],
+      "phase": "Iteration 3",
+      "question": "AI programming code generation large language model software engineering autonomous coding agent"
+    },
+    {
+      "content": "The integration of Large Language Models (LLMs) into software engineering has transformed the landscape of autonomous coding agents, shifting the focus from pure code generation to complex workflow management, safety assurance, and revised effort estimation. Recent research from 2026 highlights both the transformative potential and the significant challenges associated with these technologies.\n\n**Safety and Ethical Risks in Autonomous Generation**\nWhile LLMs accelerate development, they introduce substantial ethical and safety risks. Research indicates that under malicious prompts, there is a 78.67% probability of harmful code generation [1]. To mitigate this, new frameworks like CodeSafetyBench have been developed, comprising 1,050 harmful request cases across critical sectors such as healthcare, law, and education [1]. This benchmark employs a triadic response structure—analyzing harmful outputs, refusals, and educational feedback—to train models via supervised fine-tuning, aiming to improve ethical safety in AI-generated code [1].\n\n**Integration into CI/CD Pipelines**\nIn the context of Continuous Integration and Continuous Deployment (CI/CD), AI-augmented reliability is becoming essential. Although AI tools speed up code generation, static pipelines have emerged as the primary bottleneck to delivery velocity [2]. Teams face significant friction due to flaky tests and pipeline noise, with reported failure rates ranging from 11% to 27% for test flakiness and 5% to 16% for noise-induced build failures [2]. These issues force engineering teams to spend more time investigating false failures than building features. Consequently, new frameworks for predictive, adaptive, and self-correcting pipelines are being proposed to address these persistent challenges as systems scale [2].\n\n**Redefining Software Effort Estimation**\nThe adoption of LLMs as software development assistants challenges traditional software effort estimation models. Historically, development costs were driven by human labor, approximated through proxies like code size or functional complexity [3]. However, in LLM-assisted workflows, effort is shifting toward interaction, prompt engineering, and verification, rather than manual coding and refactoring [3]. This necessitates a new conceptual framework for estimating software effort that accounts for the changing nature of human-AI collaboration [3].\n\n**Accessibility and Cost-Effectiveness**\nLLMs are also proving effective in specialized, low-cost applications. A comparative evaluation of seven AI models (five free and two paid) demonstrated their capacity to generate functional software for designing low-cost, personalized assistive products [4]. The study aimed to determine which models are most effective, accessible, and consistent in supporting such design tasks, highlighting the potential for AI to democratize software development in niche sectors like assistive technologies [4].\n\nIn summary, while LLMs offer significant advantages in code generation and accessibility, they require robust safety benchmarks, adaptive CI/CD strategies, and new estimation methodologies to address the associated risks and operational bottlenecks [1][2][3][4].",
+      "documents": [
+        {
+          "content": "Title: CodeSafetyBench evaluating and improving ethical safety in large language model code generation.\n\nAbstract: As large language models transform software development, they introduce significant ethical and safety risks, with research revealing a 78.67% probability of harmful code generation under malicious prompts. To address this, we developed CodeSafetyBench, a benchmark comprising 1,050 harmful request cases across healthcare, law, and education. Our approach employs a triadic response structure-consisting of harmful outputs, refusals, and educational feedback-to train models via supervised fine-t...\n\nMetadata: [Journal Article] iScience - 2026",
+          "metadata": {
+            "index": 1,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/41869560/",
+            "title": "CodeSafetyBench evaluating and improving ethical safety in large language model code generation."
+          }
+        },
+        {
+          "content": "Title: AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines.\n\nAbstract: Modern CI/CD pipelines face a critical challenge. While AI tools accelerate code generation, static pipelines have become the primary bottleneck to delivery velocity. Flaky tests and pipeline noise create a persistent challenge, with reported failure rates ranging from 11 to 27 percent for test flakiness and 5-16 percent for noise-induced build failures. This forces teams to spend more time investigating false failures than building features. As systems scale across regions and dependencies, ...\n\nMetadata: [Journal Article] Frontiers in artificial intelligence - 2026",
+          "metadata": {
+            "index": 2,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/41994557/",
+            "title": "AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines."
+          }
+        },
+        {
+          "content": "Title: Toward LLM-aware software effort estimation: a conceptual framework.\n\nAbstract: Software effort estimation has traditionally been grounded in the assumption that development cost is primarily driven by human labor, approximated through proxies such as code size, functional complexity, or perceived task difficulty. The increasing adoption of large language models (LLMs) as software development assistants challenges this assumption by automating substantial portions of reasoning, coding, and refactoring. In LLM-assisted workflows, effort increasingly shifts toward interact...\n\nMetadata: [Journal Article] Frontiers in artificial intelligence - 2026",
+          "metadata": {
+            "index": 3,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/41948696/",
+            "title": "Toward LLM-aware software effort estimation: a conceptual framework."
+          }
+        },
+        {
+          "content": "Title: Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation.\n\nAbstract: This study investigates the capacity of 7 artificial intelligence (AI) models, 5 free and 2 paid, to generate functional software for designing low-cost, personalized assistive products.\n\nBACKGROUND: This study investigates the capacity of 7 artificial intelligence (AI) models, 5 free and 2 paid, to generate functional software for designing low-cost, personalized assistive products.\n\nOBJECTIVE: The objective was to determine which models are most effective, accessible, and consistent in supp...\n\nMetadata: [Journal Article] JMIR rehabilitation and assistive technologies - 2026",
+          "metadata": {
+            "index": 4,
+            "source": "https://pubmed.ncbi.nlm.nih.gov/41875212/",
+            "title": "Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation."
+          }
+        }
+      ],
+      "phase": "Final synthesis",
+      "question": "AI programming code generation large language model software engineering autonomous coding agent",
+      "search_results": [
+        {
+          "_pmid": "41869560",
+          "_search_strategy": "no_time_filter",
+          "authors": [
+            "He J",
+            "Qin S",
+            "Zou H",
+            "Jing F",
+            "Liu W",
+            "Li C",
+            "Wang Q",
+            "Hu Z",
+            "Song K",
+            "Xu Z",
+            "Luo Q",
+            "Cheng Y",
+            "Cheng R",
+            "Zhang H",
+            "Cheng W"
+          ],
+          "doi": "10.1016/j.isci.2026.115073",
+          "id": "41869560",
+          "index": "1",
+          "issn": "2589-0042",
+          "journal": "iScience",
+          "journal_ref": "iScience",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41869560/",
+          "pubdate": "2026 Apr 17",
+          "snippet": "Title: CodeSafetyBench evaluating and improving ethical safety in large language model code generation.\n\nAbstract: As large language models transform software development, they introduce significant ethical and safety risks, with research revealing a 78.67% probability of harmful code generation under malicious prompts. To address this, we developed CodeSafetyBench, a benchmark comprising 1,050 harmful request cases across healthcare, law, and education. Our approach employs a triadic response structure-consisting of harmful outputs, refusals, and educational feedback-to train models via supervised fine-t...\n\nMetadata: [Journal Article] iScience - 2026",
+          "source": "PubMed",
+          "title": "CodeSafetyBench evaluating and improving ethical safety in large language model code generation."
+        },
+        {
+          "_pmid": "41994557",
+          "_search_strategy": "no_time_filter",
+          "authors": [
+            "Dhawan R",
+            "Dhawan M"
+          ],
+          "doi": "10.3389/frai.2026.1776546",
+          "id": "41994557",
+          "index": "2",
+          "issn": "2624-8212",
+          "journal": "Frontiers in artificial intelligence",
+          "journal_ref": "Frontiers in artificial intelligence",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41994557/",
+          "pubdate": "2026",
+          "snippet": "Title: AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines.\n\nAbstract: Modern CI/CD pipelines face a critical challenge. While AI tools accelerate code generation, static pipelines have become the primary bottleneck to delivery velocity. Flaky tests and pipeline noise create a persistent challenge, with reported failure rates ranging from 11 to 27 percent for test flakiness and 5-16 percent for noise-induced build failures. This forces teams to spend more time investigating false failures than building features. As systems scale across regions and dependencies, ...\n\nMetadata: [Journal Article] Frontiers in artificial intelligence - 2026",
+          "source": "PubMed",
+          "title": "AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines."
+        },
+        {
+          "_pmid": "41948696",
+          "_search_strategy": "no_time_filter",
+          "authors": [
+            "Alaswad F",
+            "Poovammal E",
+            "Aljaddouh B"
+          ],
+          "doi": "10.3389/frai.2026.1772418",
+          "id": "41948696",
+          "index": "3",
+          "issn": "2624-8212",
+          "journal": "Frontiers in artificial intelligence",
+          "journal_ref": "Frontiers in artificial intelligence",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41948696/",
+          "pubdate": "2026",
+          "snippet": "Title: Toward LLM-aware software effort estimation: a conceptual framework.\n\nAbstract: Software effort estimation has traditionally been grounded in the assumption that development cost is primarily driven by human labor, approximated through proxies such as code size, functional complexity, or perceived task difficulty. The increasing adoption of large language models (LLMs) as software development assistants challenges this assumption by automating substantial portions of reasoning, coding, and refactoring. In LLM-assisted workflows, effort increasingly shifts toward interact...\n\nMetadata: [Journal Article] Frontiers in artificial intelligence - 2026",
+          "source": "PubMed",
+          "title": "Toward LLM-aware software effort estimation: a conceptual framework."
+        },
+        {
+          "_pmid": "41875212",
+          "_search_strategy": "no_time_filter",
+          "authors": [
+            "Bañuls-Lapuerta FA",
+            "Marti-Miralles V",
+            "Gónzalez-García RJ",
+            "Martínez-Rico G"
+          ],
+          "doi": "10.2196/86786",
+          "id": "41875212",
+          "index": "4",
+          "issn": "2369-2529",
+          "journal": "JMIR rehabilitation and assistive technologies",
+          "journal_ref": "JMIR rehabilitation and assistive technologies",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41875212/",
+          "pubdate": "2026 Mar 24",
+          "snippet": "Title: Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation.\n\nAbstract: This study investigates the capacity of 7 artificial intelligence (AI) models, 5 free and 2 paid, to generate functional software for designing low-cost, personalized assistive products.\n\nBACKGROUND: This study investigates the capacity of 7 artificial intelligence (AI) models, 5 free and 2 paid, to generate functional software for designing low-cost, personalized assistive products.\n\nOBJECTIVE: The objective was to determine which models are most effective, accessible, and consistent in supp...\n\nMetadata: [Journal Article] JMIR rehabilitation and assistive technologies - 2026",
+          "source": "PubMed",
+          "title": "Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation."
+        }
+      ]
+    }
+  ],
+  "formatted_findings": "The integration of Large Language Models (LLMs) into software engineering has transformed the landscape of autonomous coding agents, shifting the focus from pure code generation to complex workflow management, safety assurance, and revised effort estimation. Recent research from 2026 highlights both the transformative potential and the significant challenges associated with these technologies.\n\n**Safety and Ethical Risks in Autonomous Generation**\nWhile LLMs accelerate development, they introduce substantial ethical and safety risks. Research indicates that under malicious prompts, there is a 78.67% probability of harmful code generation [1]. To mitigate this, new frameworks like CodeSafetyBench have been developed, comprising 1,050 harmful request cases across critical sectors such as healthcare, law, and education [1]. This benchmark employs a triadic response structure—analyzing harmful outputs, refusals, and educational feedback—to train models via supervised fine-tuning, aiming to improve ethical safety in AI-generated code [1].\n\n**Integration into CI/CD Pipelines**\nIn the context of Continuous Integration and Continuous Deployment (CI/CD), AI-augmented reliability is becoming essential. Although AI tools speed up code generation, static pipelines have emerged as the primary bottleneck to delivery velocity [2]. Teams face significant friction due to flaky tests and pipeline noise, with reported failure rates ranging from 11% to 27% for test flakiness and 5% to 16% for noise-induced build failures [2]. These issues force engineering teams to spend more time investigating false failures than building features. Consequently, new frameworks for predictive, adaptive, and self-correcting pipelines are being proposed to address these persistent challenges as systems scale [2].\n\n**Redefining Software Effort Estimation**\nThe adoption of LLMs as software development assistants challenges traditional software effort estimation models. Historically, development costs were driven by human labor, approximated through proxies like code size or functional complexity [3]. However, in LLM-assisted workflows, effort is shifting toward interaction, prompt engineering, and verification, rather than manual coding and refactoring [3]. This necessitates a new conceptual framework for estimating software effort that accounts for the changing nature of human-AI collaboration [3].\n\n**Accessibility and Cost-Effectiveness**\nLLMs are also proving effective in specialized, low-cost applications. A comparative evaluation of seven AI models (five free and two paid) demonstrated their capacity to generate functional software for designing low-cost, personalized assistive products [4]. The study aimed to determine which models are most effective, accessible, and consistent in supporting such design tasks, highlighting the potential for AI to democratize software development in niche sectors like assistive technologies [4].\n\nIn summary, while LLMs offer significant advantages in code generation and accessibility, they require robust safety benchmarks, adaptive CI/CD strategies, and new estimation methodologies to address the associated risks and operational bottlenecks [1][2][3][4].\n\n[1] CodeSafetyBench evaluating and improving ethical safety in large language model code generation. (source nr: 1)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41869560\n\n[2] AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines. (source nr: 2)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41994557\n\n[3] Toward LLM-aware software effort estimation: a conceptual framework. (source nr: 3)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41948696\n\n[4] Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation. (source nr: 4)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41875212\n\n\n\n\n## SEARCH QUESTIONS BY ITERATION\n\n\n #### Iteration 1:\n1. AI programming code generation large language model software engineering autonomous coding agent\n2. What are the leading autonomous AI coding agents for software engineering in 2026 and how do they compare to previous LLM-based code generation models?\n\n #### Iteration 2:\n1. Given that the current date is May 2026, what specific empirical benchmarks or industry-standard metrics demonstrate whether autonomous AI coding agents have achieved sufficient reliability and safety to replace human developers in critical infrastructure or regulated software engineering contexts, compared to the hype cycles of 2023-2025?\n\n #### Iteration 3:\n1. Given the emergence of 'LLM-aware' effort estimation frameworks in 2026 that shift labor costs from coding to interaction, what are the specific, empirically validated productivity multipliers and error-rate thresholds for autonomous coding agents in complex, legacy-monorepo software engineering contexts compared to the isolated code-snippet generation benchmarks prevalent in 2023-2025?\n\n\n\n## DETAILED FINDINGS\n\n\n### Iteration 1\n\n\n### SEARCH QUESTION:\nAI programming code generation large language model software engineering autonomous coding agent\n\n\n\nSearched with 2 questions, found 0 results.\n\n________________________________________________________________________________\n\n\n### Iteration 2\n\n\n### SEARCH QUESTION:\nAI programming code generation large language model software engineering autonomous coding agent\n\n\n\nSearched with 1 questions, found 50 results.\n\n________________________________________________________________________________\n\n\n### Iteration 3\n\n\n### SEARCH QUESTION:\nAI programming code generation large language model software engineering autonomous coding agent\n\n\n\nSearched with 1 questions, found 0 results.\n\n________________________________________________________________________________\n\n\n### Final synthesis\n\n\n### SEARCH QUESTION:\nAI programming code generation large language model software engineering autonomous coding agent\n\n\n\nThe integration of Large Language Models (LLMs) into software engineering has transformed the landscape of autonomous coding agents, shifting the focus from pure code generation to complex workflow management, safety assurance, and revised effort estimation. Recent research from 2026 highlights both the transformative potential and the significant challenges associated with these technologies.\n\n**Safety and Ethical Risks in Autonomous Generation**\nWhile LLMs accelerate development, they introduce substantial ethical and safety risks. Research indicates that under malicious prompts, there is a 78.67% probability of harmful code generation [1]. To mitigate this, new frameworks like CodeSafetyBench have been developed, comprising 1,050 harmful request cases across critical sectors such as healthcare, law, and education [1]. This benchmark employs a triadic response structure—analyzing harmful outputs, refusals, and educational feedback—to train models via supervised fine-tuning, aiming to improve ethical safety in AI-generated code [1].\n\n**Integration into CI/CD Pipelines**\nIn the context of Continuous Integration and Continuous Deployment (CI/CD), AI-augmented reliability is becoming essential. Although AI tools speed up code generation, static pipelines have emerged as the primary bottleneck to delivery velocity [2]. Teams face significant friction due to flaky tests and pipeline noise, with reported failure rates ranging from 11% to 27% for test flakiness and 5% to 16% for noise-induced build failures [2]. These issues force engineering teams to spend more time investigating false failures than building features. Consequently, new frameworks for predictive, adaptive, and self-correcting pipelines are being proposed to address these persistent challenges as systems scale [2].\n\n**Redefining Software Effort Estimation**\nThe adoption of LLMs as software development assistants challenges traditional software effort estimation models. Historically, development costs were driven by human labor, approximated through proxies like code size or functional complexity [3]. However, in LLM-assisted workflows, effort is shifting toward interaction, prompt engineering, and verification, rather than manual coding and refactoring [3]. This necessitates a new conceptual framework for estimating software effort that accounts for the changing nature of human-AI collaboration [3].\n\n**Accessibility and Cost-Effectiveness**\nLLMs are also proving effective in specialized, low-cost applications. A comparative evaluation of seven AI models (five free and two paid) demonstrated their capacity to generate functional software for designing low-cost, personalized assistive products [4]. The study aimed to determine which models are most effective, accessible, and consistent in supporting such design tasks, highlighting the potential for AI to democratize software development in niche sectors like assistive technologies [4].\n\nIn summary, while LLMs offer significant advantages in code generation and accessibility, they require robust safety benchmarks, adaptive CI/CD strategies, and new estimation methodologies to address the associated risks and operational bottlenecks [1][2][3][4].\n\n### SOURCES USED IN THIS SECTION:\n[1] CodeSafetyBench evaluating and improving ethical safety in large language model code generation. (source nr: 1)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41869560\n\n[2] AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines. (source nr: 2)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41994557\n\n[3] Toward LLM-aware software effort estimation: a conceptual framework. (source nr: 3)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41948696\n\n[4] Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation. (source nr: 4)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41875212\n\n\n\n\n________________________________________________________________________________\n\n## ALL SOURCES:\n[1] CodeSafetyBench evaluating and improving ethical safety in large language model code generation. (source nr: 1)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41869560\n\n[2] AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines. (source nr: 2)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41994557\n\n[3] Toward LLM-aware software effort estimation: a conceptual framework. (source nr: 3)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41948696\n\n[4] Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation. (source nr: 4)\n   URL: https://pubmed.ncbi.nlm.nih.gov/41875212\n\n\n",
+  "iterations": 3,
+  "questions": {},
+  "research_id": "2ed1cb31-3a7b-4b0f-8744-a7d75d84f012",
+  "sources": [
+    {
+      "_pmid": "41869560",
+      "_search_strategy": "no_time_filter",
+      "authors": [
+        "He J",
+        "Qin S",
+        "Zou H",
+        "Jing F",
+        "Liu W",
+        "Li C",
+        "Wang Q",
+        "Hu Z",
+        "Song K",
+        "Xu Z",
+        "Luo Q",
+        "Cheng Y",
+        "Cheng R",
+        "Zhang H",
+        "Cheng W"
+      ],
+      "doi": "10.1016/j.isci.2026.115073",
+      "id": "41869560",
+      "index": "1",
+      "issn": "2589-0042",
+      "journal": "iScience",
+      "journal_ref": "iScience",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/41869560/",
+      "pubdate": "2026 Apr 17",
+      "snippet": "Title: CodeSafetyBench evaluating and improving ethical safety in large language model code generation.\n\nAbstract: As large language models transform software development, they introduce significant ethical and safety risks, with research revealing a 78.67% probability of harmful code generation under malicious prompts. To address this, we developed CodeSafetyBench, a benchmark comprising 1,050 harmful request cases across healthcare, law, and education. Our approach employs a triadic response structure-consisting of harmful outputs, refusals, and educational feedback-to train models via supervised fine-t...\n\nMetadata: [Journal Article] iScience - 2026",
+      "source": "PubMed",
+      "title": "CodeSafetyBench evaluating and improving ethical safety in large language model code generation."
+    },
+    {
+      "_pmid": "41994557",
+      "_search_strategy": "no_time_filter",
+      "authors": [
+        "Dhawan R",
+        "Dhawan M"
+      ],
+      "doi": "10.3389/frai.2026.1776546",
+      "id": "41994557",
+      "index": "2",
+      "issn": "2624-8212",
+      "journal": "Frontiers in artificial intelligence",
+      "journal_ref": "Frontiers in artificial intelligence",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/41994557/",
+      "pubdate": "2026",
+      "snippet": "Title: AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines.\n\nAbstract: Modern CI/CD pipelines face a critical challenge. While AI tools accelerate code generation, static pipelines have become the primary bottleneck to delivery velocity. Flaky tests and pipeline noise create a persistent challenge, with reported failure rates ranging from 11 to 27 percent for test flakiness and 5-16 percent for noise-induced build failures. This forces teams to spend more time investigating false failures than building features. As systems scale across regions and dependencies, ...\n\nMetadata: [Journal Article] Frontiers in artificial intelligence - 2026",
+      "source": "PubMed",
+      "title": "AI-augmented reliability in CI/CD: a framework for predictive, adaptive, and self-correcting pipelines."
+    },
+    {
+      "_pmid": "41948696",
+      "_search_strategy": "no_time_filter",
+      "authors": [
+        "Alaswad F",
+        "Poovammal E",
+        "Aljaddouh B"
+      ],
+      "doi": "10.3389/frai.2026.1772418",
+      "id": "41948696",
+      "index": "3",
+      "issn": "2624-8212",
+      "journal": "Frontiers in artificial intelligence",
+      "journal_ref": "Frontiers in artificial intelligence",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/41948696/",
+      "pubdate": "2026",
+      "snippet": "Title: Toward LLM-aware software effort estimation: a conceptual framework.\n\nAbstract: Software effort estimation has traditionally been grounded in the assumption that development cost is primarily driven by human labor, approximated through proxies such as code size, functional complexity, or perceived task difficulty. The increasing adoption of large language models (LLMs) as software development assistants challenges this assumption by automating substantial portions of reasoning, coding, and refactoring. In LLM-assisted workflows, effort increasingly shifts toward interact...\n\nMetadata: [Journal Article] Frontiers in artificial intelligence - 2026",
+      "source": "PubMed",
+      "title": "Toward LLM-aware software effort estimation: a conceptual framework."
+    },
+    {
+      "_pmid": "41875212",
+      "_search_strategy": "no_time_filter",
+      "authors": [
+        "Bañuls-Lapuerta FA",
+        "Marti-Miralles V",
+        "Gónzalez-García RJ",
+        "Martínez-Rico G"
+      ],
+      "doi": "10.2196/86786",
+      "id": "41875212",
+      "index": "4",
+      "issn": "2369-2529",
+      "journal": "JMIR rehabilitation and assistive technologies",
+      "journal_ref": "JMIR rehabilitation and assistive technologies",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/41875212/",
+      "pubdate": "2026 Mar 24",
+      "snippet": "Title: Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation.\n\nAbstract: This study investigates the capacity of 7 artificial intelligence (AI) models, 5 free and 2 paid, to generate functional software for designing low-cost, personalized assistive products.\n\nBACKGROUND: This study investigates the capacity of 7 artificial intelligence (AI) models, 5 free and 2 paid, to generate functional software for designing low-cost, personalized assistive products.\n\nOBJECTIVE: The objective was to determine which models are most effective, accessible, and consistent in supp...\n\nMetadata: [Journal Article] JMIR rehabilitation and assistive technologies - 2026",
+      "source": "PubMed",
+      "title": "Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation."
+    }
+  ],
+  "summary": "The integration of Large Language Models (LLMs) into software engineering has transformed the landscape of autonomous coding agents, shifting the focus from pure code generation to complex workflow management, safety assurance, and revised effort estimation. Recent research from 2026 highlights both the transformative potential and the significant challenges associated with these technologies.\n\n**Safety and Ethical Risks in Autonomous Generation**\nWhile LLMs accelerate development, they introduce substantial ethical and safety risks. Research indicates that under malicious prompts, there is a 78.67% probability of harmful code generation [1]. To mitigate this, new frameworks like CodeSafetyBench have been developed, comprising 1,050 harmful request cases across critical sectors such as healthcare, law, and education [1]. This benchmark employs a triadic response structure—analyzing harmful outputs, refusals, and educational feedback—to train models via supervised fine-tuning, aiming to improve ethical safety in AI-generated code [1].\n\n**Integration into CI/CD Pipelines**\nIn the context of Continuous Integration and Continuous Deployment (CI/CD), AI-augmented reliability is becoming essential. Although AI tools speed up code generation, static pipelines have emerged as the primary bottleneck to delivery velocity [2]. Teams face significant friction due to flaky tests and pipeline noise, with reported failure rates ranging from 11% to 27% for test flakiness and 5% to 16% for noise-induced build failures [2]. These issues force engineering teams to spend more time investigating false failures than building features. Consequently, new frameworks for predictive, adaptive, and self-correcting pipelines are being proposed to address these persistent challenges as systems scale [2].\n\n**Redefining Software Effort Estimation**\nThe adoption of LLMs as software development assistants challenges traditional software effort estimation models. Historically, development costs were driven by human labor, approximated through proxies like code size or functional complexity [3]. However, in LLM-assisted workflows, effort is shifting toward interaction, prompt engineering, and verification, rather than manual coding and refactoring [3]. This necessitates a new conceptual framework for estimating software effort that accounts for the changing nature of human-AI collaboration [3].\n\n**Accessibility and Cost-Effectiveness**\nLLMs are also proving effective in specialized, low-cost applications. A comparative evaluation of seven AI models (five free and two paid) demonstrated their capacity to generate functional software for designing low-cost, personalized assistive products [4]. The study aimed to determine which models are most effective, accessible, and consistent in supporting such design tasks, highlighting the potential for AI to democratize software development in niche sectors like assistive technologies [4].\n\nIn summary, while LLMs offer significant advantages in code generation and accessibility, they require robust safety benchmarks, adaptive CI/CD strategies, and new estimation methodologies to address the associated risks and operational bottlenecks [1][2][3][4]."
+}

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Deep Research - API 调用方案测试报告</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-bright: #f0f6fc;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --green: #3fb950;
+            --green-bg: rgba(63,185,80,0.15);
+            --red: #f85149;
+            --red-bg: rgba(248,81,73,0.15);
+            --yellow: #d29922;
+            --yellow-bg: rgba(210,153,34,0.15);
+            --purple: #bc8cff;
+            --code-bg: #1c2128;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--text-bright);
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+        }
+        h2 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border);
+        }
+        h3 {
+            font-size: 1.1rem;
+            color: var(--text-bright);
+            margin: 1.5rem 0 0.8rem;
+        }
+        h4 {
+            font-size: 1rem;
+            color: var(--purple);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .stat-card .label { color: var(--text-muted); font-size: 0.85rem; }
+        .stat-card .value { color: var(--text-bright); font-size: 1.5rem; font-weight: 700; margin-top: 0.3rem; }
+        .stat-card .value.pass { color: var(--green); }
+        .stat-card .value.fail { color: var(--red); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 0.7rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th { color: var(--accent); font-weight: 600; background: var(--code-bg); }
+
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .badge-pass { background: var(--green-bg); color: var(--green); }
+        .badge-fail { background: var(--red-bg); color: var(--red); }
+        .badge-warn { background: var(--yellow-bg); color: var(--yellow); }
+        .badge-info { background: rgba(88,166,255,0.15); color: var(--accent); }
+
+        pre {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            overflow-x: auto;
+            font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin: 0.8rem 0;
+            color: var(--text);
+        }
+        code {
+            font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.88rem;
+            background: var(--code-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+        }
+        .comment { color: #6a9955; }
+        .string { color: #ce9178; }
+        .keyword { color: #569cd6; }
+        .func { color: #dcdcaa; }
+
+        .info-box {
+            background: rgba(88,166,255,0.08);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+        .warn-box {
+            background: var(--yellow-bg);
+            border-left: 3px solid var(--yellow);
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+        .success-box {
+            background: var(--green-bg);
+            border-left: 3px solid var(--green);
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+
+        .env-table td:first-child { white-space: nowrap; font-weight: 600; color: var(--accent); }
+        .method-tag {
+            display: inline-block;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+        .method-get { background: rgba(63,185,80,0.2); color: var(--green); }
+        .method-post { background: rgba(88,166,255,0.2); color: var(--accent); }
+
+        .flow-diagram {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.88rem;
+            white-space: pre;
+            overflow-x: auto;
+            color: var(--text);
+        }
+        .toc { margin: 1.5rem 0; }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        .toc a:hover { text-decoration: underline; }
+        .toc a::before { content: "# "; color: var(--text-muted); }
+
+        .section-num { color: var(--accent); }
+        p { margin: 0.5rem 0; }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            pre { font-size: 0.78rem; padding: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<h1>Local Deep Research API 调用方案测试报告</h1>
+<p class="subtitle">测试日期：2026-05-13 &nbsp;|&nbsp; 版本：v1.6.9 &nbsp;|&nbsp; 服务器：10.10.20.21:5000</p>
+
+<!-- ===================== 测试结果总览 ===================== -->
+<h2><span class="section-num">1</span> 测试结果总览</h2>
+
+<div class="summary-grid">
+    <div class="stat-card">
+        <div class="label">REST API v1 (quick_summary)</div>
+        <div class="value pass">PASS</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">Web API (start_research)</div>
+        <div class="value pass">PASS</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">Python quick_summary</div>
+        <div class="value pass">PASS</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">Python generate_report</div>
+        <div class="value fail">TIMEOUT</div>
+    </div>
+</div>
+
+<div class="card">
+    <h4>当前服务器配置</h4>
+    <table>
+        <tr><th>配置项</th><th>值</th></tr>
+        <tr><td>LLM Provider</td><td><code>OPENAI_ENDPOINT</code></td></tr>
+        <tr><td>LLM Model</td><td><code>MiniMax-M2.7</code></td></tr>
+        <tr><td>API Endpoint</td><td><code>https://api.minimaxi.com/v1</code></td></tr>
+        <tr><td>Search Tool</td><td><code>searxng</code> (auto)</td></tr>
+        <tr><td>App Version</td><td><code>1.6.9</code></td></tr>
+    </table>
+</div>
+
+<!-- ===================== 测试1：REST API v1 ===================== -->
+<h2><span class="section-num">2</span> 方案一：REST API v1 直接调用</h2>
+
+<div class="success-box">
+    <strong>测试结论：</strong>REST API v1 的 <code>/api/v1/quick_summary</code> 端点可直接通过 curl 调用，<strong>无需 CSRF token</strong>，仅需登录 session cookie。返回完整研究结果，包含摘要、来源、迭代详情。
+</div>
+
+<h3>2.1 环境信息</h3>
+
+<table>
+    <tr><th>端点</th><th>认证方式</th><th>CSRF</th><th>说明</th></tr>
+    <tr><td><code>/api/v1/health</code></td><td>无需认证</td><td>不需要</td><td>健康检查</td></tr>
+    <tr><td><code>/api/v1/quick_summary</code></td><td>Session Cookie</td><td>不需要</td><td>简易研究</td></tr>
+    <tr><td><code>/api/v1/generate_report</code></td><td>Session Cookie</td><td>不需要</td><td>完整报告</td></tr>
+    <tr><td><code>/api/v1/analyze_documents</code></td><td>Session Cookie</td><td>不需要</td><td>文档分析</td></tr>
+</table>
+
+<h3>2.2 完整调用流程</h3>
+
+<h4>Step 1：登录获取 Session Cookie</h4>
+<pre><span class="comment"># 获取登录页面和 CSRF token（用于表单登录）</span>
+curl -s -c cookie.txt http://10.10.20.21:5000/auth/login \
+  | python3 -c "import sys,re; \
+    m=re.search(r'name=\"csrf_token\" value=\"([^\"]+)\"', sys.stdin.read()); \
+    print(m.group(1))" &gt; csrf.txt
+
+<span class="comment"># 提交登录</span>
+curl -s -b cookie.txt -c cookie.txt \
+  -X POST http://10.10.20.21:5000/auth/login \
+  -d "username=zxh&password=@zxh19859769907&csrf_token=$(cat csrf.txt)"
+<span class="comment"># 返回 302 重定向表示登录成功</span></pre>
+
+<h4>Step 2：简易研究（Quick Summary）</h4>
+<pre><span class="comment"># 调用 quick_summary - 同步返回完整结果</span>
+curl -s -b cookie.txt \
+  -X POST http://10.10.20.21:5000/api/v1/quick_summary \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "你想研究的问题",
+    "iterations": 2,
+    "temperature": 0.7
+  }'</pre>
+
+<div class="info-box">
+    <strong>实测返回字段：</strong>
+    <code>research_id</code>（研究ID）, <code>summary</code>（摘要文本）, <code>findings</code>（分阶段发现）, <code>sources</code>（来源列表）, <code>iterations</code>（迭代次数）, <code>formatted_findings</code>（格式化全文）
+</div>
+
+<h4>Step 3：完整报告（Generate Report）</h4>
+<pre><span class="comment"># 调用 generate_report - 生成 Markdown 格式报告</span>
+curl -s -b cookie.txt \
+  -X POST http://10.10.20.21:5000/api/v1/generate_report \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "你想研究的主题",
+    "output_file": "/path/to/report.md",
+    "searches_per_section": 2,
+    "temperature": 0.5
+  }'</pre>
+
+<h4>Step 4：健康检查（无需登录）</h4>
+<pre>curl -s http://10.10.20.21:5000/api/v1/health
+<span class="comment"># 返回: {"status":"ok","message":"API is running","timestamp":...}</span></pre>
+
+<h3>2.3 实测数据</h3>
+<div class="card">
+    <table>
+        <tr><th>测试项</th><th>查询</th><th>结果</th><th>耗时</th><th>返回</th></tr>
+        <tr>
+            <td>health</td>
+            <td>-</td>
+            <td><span class="badge badge-pass">PASS</span></td>
+            <td>&lt;1s</td>
+            <td><code>{"status":"ok"}</code></td>
+        </tr>
+        <tr>
+            <td>quick_summary</td>
+            <td>"what is quantum computing"</td>
+            <td><span class="badge badge-pass">PASS</span></td>
+            <td>~30s</td>
+            <td>完整摘要 + 10个来源</td>
+        </tr>
+        <tr>
+            <td>generate_report</td>
+            <td>-</td>
+            <td><span class="badge badge-warn">未单独测试</span></td>
+            <td>-</td>
+            <td>与 Python 方式共用同一后端</td>
+        </tr>
+    </table>
+    <p style="margin-top:1rem;color:var(--text-muted);font-size:0.85rem;">
+        quick_summary 返回的摘要示例：<br>
+        <em>"Quantum computing is a computational paradigm that exploits quantum-mechanical phenomena such as superposition, entanglement, and interference..."</em>
+    </p>
+</div>
+
+<!-- ===================== 测试2：Web API ===================== -->
+<h2><span class="section-num">3</span> 方案二：Web UI API（异步研究）</h2>
+
+<div class="success-box">
+    <strong>测试结论：</strong>Web API 的 <code>/api/start_research</code> 可启动异步研究任务，<strong>需要 CSRF token</strong>。研究在后台执行，可通过轮询获取状态和报告。
+</div>
+
+<h3>3.1 完整调用流程</h3>
+<pre><span class="comment"># Step 1: 登录（同上）</span>
+
+<span class="comment"># Step 2: 获取 CSRF Token</span>
+curl -s -b cookie.txt http://10.10.20.21:5000/auth/csrf-token
+<span class="comment"># 返回: {"csrf_token":"ImQ1ZGNhMWFj..."}</span>
+
+<span class="comment"># Step 3: 启动研究</span>
+curl -s -b cookie.txt \
+  -X POST http://10.10.20.21:5000/api/start_research \
+  -H "Content-Type: application/json" \
+  -H "X-CSRFToken: &lt;上面获取的csrf_token&gt;" \
+  -d '{"query": "研究问题", "research_mode": "quick"}'
+<span class="comment"># 返回: {"research_id": "uuid", "status": "success"}</span>
+
+<span class="comment"># Step 4: 查询研究状态</span>
+curl -s -b cookie.txt http://10.10.20.21:5000/api/research/&lt;research_id&gt;/status
+
+<span class="comment"># Step 5: 获取研究报告</span>
+curl -s -b cookie.txt http://10.10.20.21:5000/api/report/&lt;research_id&gt;</pre>
+
+<h3>3.2 实测数据</h3>
+<div class="card">
+    <table>
+        <tr><th>测试项</th><th>查询</th><th>结果</th><th>研究ID</th></tr>
+        <tr>
+            <td>start_research</td>
+            <td>"Web API测试：用一句话说明深度学习"</td>
+            <td><span class="badge badge-pass">PASS</span></td>
+            <td><code>3404f592-...</code></td>
+        </tr>
+        <tr>
+            <td>status (轮询)</td>
+            <td>-</td>
+            <td><span class="badge badge-pass">PASS</span></td>
+            <td>completed, 4 iterations</td>
+        </tr>
+        <tr>
+            <td>report</td>
+            <td>-</td>
+            <td><span class="badge badge-pass">PASS</span></td>
+            <td>Markdown 报告</td>
+        </tr>
+    </table>
+</div>
+
+<!-- ===================== 测试3：Python 直接调用 ===================== -->
+<h2><span class="section-num">4</span> 方案三：Python 直接调用（无需 Web 服务）</h2>
+
+<div class="success-box">
+    <strong>测试结论：</strong>通过 SSH 连接到服务器，在 conda 环境中直接 import 调用 <code>quick_summary</code> 成功。该方案<strong>不依赖 5000 端口 Web 服务</strong>，但需要服务器 Python 环境。<code>generate_report</code> 因耗时较长超时，但函数签名和初始化均正常。
+</div>
+
+<h3>4.1 执行流程</h3>
+<div class="flow-diagram">
+quick_summary("查询内容")
+  │
+  ├─ ① @no_db_settings 装饰器 → 禁用数据库设置读取
+  │
+  ├─ ② create_settings_snapshot() → 构建 in-memory 配置
+  │     ├─ JSON 默认文件 (defaults/default_settings.json)
+  │     └─ 环境变量覆盖 (LDR_* 前缀)
+  │
+  ├─ ③ _init_search_system()
+  │     ├─ get_llm()     → 创建 LangChain LLM 实例
+  │     ├─ get_search()  → 创建搜索引擎实例
+  │     └─ AdvancedSearchSystem → 研究引擎
+  │
+  ├─ ④ system.analyze_topic(query) → 执行研究
+  │
+  └─ ⑤ 返回 {"summary", "findings", "sources", ...}
+</div>
+
+<h3>4.2 设置读取优先级</h3>
+<table>
+    <tr><th>优先级</th><th>来源</th><th>说明</th></tr>
+    <tr><td>1 (最高)</td><td><strong>函数参数</strong></td><td><code>provider=</code>, <code>api_key=</code>, <code>settings_override={}</code></td></tr>
+    <tr><td>2</td><td><strong>环境变量</strong></td><td><code>LDR_LLM_MODEL</code>, <code>LDR_LLM_PROVIDER</code> 等</td></tr>
+    <tr><td>3</td><td><strong>JSON 默认文件</strong></td><td><code>defaults/default_settings.json</code></td></tr>
+    <tr><td style="text-decoration:line-through">4</td><td style="text-decoration:line-through;color:var(--text-muted)">数据库</td><td style="color:var(--text-muted)">被 @no_db_settings 禁用</td></tr>
+</table>
+
+<h3>4.3 使用示例</h3>
+
+<h4>简易研究 (quick_summary)</h4>
+<pre><span class="keyword">from</span> local_deep_research.api <span class="keyword">import</span> quick_summary
+
+<span class="comment"># 方式 A：通过函数参数指定</span>
+result = quick_summary(
+    <span class="string">"量子计算的最新进展"</span>,
+    provider=<span class="string">"openai_endpoint"</span>,
+    api_key=<span class="string">"sk-cp-xxx..."</span>,
+    settings_override={
+        <span class="string">"llm.model"</span>: <span class="string">"MiniMax-M2.7"</span>,
+        <span class="string">"llm.openai_endpoint.url"</span>: <span class="string">"https://api.minimaxi.com/v1"</span>
+    }
+)
+<span class="func">print</span>(result[<span class="string">"summary"</span>])
+<span class="func">print</span>(<span class="func">len</span>(result[<span class="string">"sources"</span>]), <span class="string">"个来源"</span>)</pre>
+
+<h4>完整报告 (generate_report)</h4>
+<pre><span class="keyword">from</span> local_deep_research.api <span class="keyword">import</span> generate_report
+
+report = generate_report(
+    <span class="string">"人工智能在医疗领域的应用综述"</span>,
+    provider=<span class="string">"openai_endpoint"</span>,
+    api_key=<span class="string">"sk-cp-xxx..."</span>,
+    settings_override={
+        <span class="string">"llm.model"</span>: <span class="string">"MiniMax-M2.7"</span>,
+        <span class="string">"llm.openai_endpoint.url"</span>: <span class="string">"https://api.minimaxi.com/v1"</span>,
+        <span class="string">"search.iterations"</span>: 3,
+        <span class="string">"search.questions_per_iteration"</span>: 5
+    },
+    output_file=<span class="string">"/tmp/report.md"</span>   <span class="comment"># 可选：保存到文件</span>
+)
+<span class="func">print</span>(report[<span class="string">"content"</span>])  <span class="comment"># Markdown 格式的完整报告</span></pre>
+
+<h4>环境变量方式（无需传参）</h4>
+<pre><span class="comment"># 在运行 Python 之前设置环境变量</span>
+<span class="keyword">export</span> LDR_LLM_PROVIDER=openai_endpoint
+<span class="keyword">export</span> LDR_LLM_MODEL=MiniMax-M2.7
+<span class="keyword">export</span> LDR_LLM_OPENAI_ENDPOINT_API_KEY=sk-cp-xxx...
+<span class="keyword">export</span> LDR_LLM_OPENAI_ENDPOINT_URL=https://api.minimaxi.com/v1
+
+<span class="comment"># 然后直接调用（无需额外参数）</span>
+python -c <span class="string">"from local_deep_research.api import quick_summary; \
+  r = quick_summary('量子计算'); print(r['summary'])"</span></pre>
+
+<h3>4.4 实测数据</h3>
+<div class="card">
+    <table>
+        <tr><th>测试项</th><th>查询</th><th>结果</th><th>research_id</th><th>详情</th></tr>
+        <tr>
+            <td>import 模块</td>
+            <td>-</td>
+            <td><span class="badge badge-pass">PASS</span></td>
+            <td>-</td>
+            <td>conda ldr 环境正常</td>
+        </tr>
+        <tr>
+            <td>quick_summary</td>
+            <td>"Python API测试：用一句话说明量子计算"</td>
+            <td><span class="badge badge-pass">PASS</span></td>
+            <td><code>70a0876e-...</code></td>
+            <td>返回摘要 + 4条 findings</td>
+        </tr>
+        <tr>
+            <td>generate_report</td>
+            <td>"用一段话总结AI最新进展"</td>
+            <td><span class="badge badge-warn">TIMEOUT</span></td>
+            <td>-</td>
+            <td>执行超过5分钟（函数正常启动）</td>
+        </tr>
+    </table>
+    <p style="margin-top:1rem;font-size:0.9rem;">
+        quick_summary 返回摘要：<br>
+        <em>"量子计算是一种利用量子比特（qubit）的叠加、纠缠等量子力学效应，以并行方式处理信息并在特定问题上实现指数级加速的计算范式。"</em>
+    </p>
+</div>
+
+<!-- ===================== API v1 参数参考 ===================== -->
+<h2><span class="section-num">5</span> API 参数参考</h2>
+
+<h3>5.1 quick_summary 参数</h3>
+<div class="card">
+    <table>
+        <tr><th>参数</th><th>类型</th><th>默认值</th><th>说明</th></tr>
+        <tr><td><code>query</code></td><td>str</td><td><em>必填</em></td><td>研究问题</td></tr>
+        <tr><td><code>iterations</code></td><td>int</td><td>1</td><td>搜索迭代轮数</td></tr>
+        <tr><td><code>temperature</code></td><td>float</td><td>0.7</td><td>LLM 采样温度</td></tr>
+        <tr><td><code>search_tool</code></td><td>str</td><td>"auto"</td><td>搜索引擎选择</td></tr>
+        <tr><td><code>model_name</code></td><td>str</td><td>-</td><td>覆盖默认模型</td></tr>
+    </table>
+</div>
+
+<h3>5.2 generate_report 参数</h3>
+<div class="card">
+    <table>
+        <tr><th>参数</th><th>类型</th><th>默认值</th><th>说明</th></tr>
+        <tr><td><code>query</code></td><td>str</td><td><em>必填</em></td><td>报告主题</td></tr>
+        <tr><td><code>output_file</code></td><td>str</td><td>None</td><td>报告保存路径</td></tr>
+        <tr><td><code>searches_per_section</code></td><td>int</td><td>2</td><td>每个章节的搜索次数</td></tr>
+        <tr><td><code>temperature</code></td><td>float</td><td>0.5</td><td>LLM 采样温度</td></tr>
+        <tr><td><code>model_name</code></td><td>str</td><td>-</td><td>覆盖默认模型</td></tr>
+    </table>
+</div>
+
+<h3>5.3 Python quick_summary 参数</h3>
+<div class="card">
+    <table>
+        <tr><th>参数</th><th>类型</th><th>说明</th></tr>
+        <tr><td><code>query</code></td><td>str</td><td>研究问题（必填）</td></tr>
+        <tr><td><code>provider</code></td><td>str</td><td>LLM 提供商：openai_endpoint, openai, anthropic, ollama 等</td></tr>
+        <tr><td><code>api_key</code></td><td>str</td><td>API Key</td></tr>
+        <tr><td><code>temperature</code></td><td>float</td><td>采样温度</td></tr>
+        <tr><td><code>max_search_results</code></td><td>int</td><td>最大搜索结果数</td></tr>
+        <tr><td><code>settings_override</code></td><td>dict</td><td>部分设置覆盖，如 <code>{"llm.model": "xxx"}</code></td></tr>
+        <tr><td><code>settings</code></td><td>dict</td><td>完整基础设置替换</td></tr>
+        <tr><td><code>research_id</code></td><td>str</td><td>自定义研究 ID（默认自动生成 UUID）</td></tr>
+    </table>
+</div>
+
+<!-- ===================== 方案对比 ===================== -->
+<h2><span class="section-num">6</span> 三种方案对比</h2>
+
+<table>
+    <tr>
+        <th>对比维度</th>
+        <th>REST API v1</th>
+        <th>Web API</th>
+        <th>Python 直接调用</th>
+    </tr>
+    <tr>
+        <td>需要 Web 服务</td>
+        <td>是 (5000端口)</td>
+        <td>是 (5000端口)</td>
+        <td><strong>否</strong></td>
+    </tr>
+    <tr>
+        <td>认证</td>
+        <td>Cookie (登录)</td>
+        <td>Cookie + CSRF</td>
+        <td>不需要</td>
+    </tr>
+    <tr>
+        <td>执行方式</td>
+        <td>同步返回</td>
+        <td>异步（需轮询）</td>
+        <td>同步返回</td>
+    </tr>
+    <tr>
+        <td>结果存储</td>
+        <td>不存历史</td>
+        <td>存入用户数据库</td>
+        <td>不存历史</td>
+    </tr>
+    <tr>
+        <td>调用复杂度</td>
+        <td>低 (curl)</td>
+        <td>中 (CSRF处理)</td>
+        <td>低 (import 调用)</td>
+    </tr>
+    <tr>
+        <td>适用场景</td>
+        <td>脚本自动化、CI/CD</td>
+        <td>需要历史记录和进度追踪</td>
+        <td>服务器端批处理、深度定制</td>
+    </tr>
+    <tr>
+        <td>测试状态</td>
+        <td><span class="badge badge-pass">PASS</span></td>
+        <td><span class="badge badge-pass">PASS</span></td>
+        <td><span class="badge badge-pass">PASS</span> (quick_summary)</td>
+    </tr>
+</table>
+
+<!-- ===================== 环境变量速查 ===================== -->
+<h2><span class="section-num">7</span> 环境变量速查表</h2>
+
+<div class="info-box">
+    环境变量命名规则：<code>LDR_</code> 前缀 + 设置键的 <code>.</code> 替换为 <code>_</code> + 全大写<br>
+    例：<code>llm.openai_endpoint.url</code> → <code>LDR_LLM_OPENAI_ENDPOINT_URL</code>
+</div>
+
+<table class="env-table">
+    <tr><th>环境变量</th><th>说明</th><th>当前值</th></tr>
+    <tr><td><code>LDR_LLM_PROVIDER</code></td><td>LLM 提供商</td><td>openai_endpoint</td></tr>
+    <tr><td><code>LDR_LLM_MODEL</code></td><td>模型名称（必填）</td><td>MiniMax-M2.7</td></tr>
+    <tr><td><code>LDR_LLM_TEMPERATURE</code></td><td>采样温度</td><td>0.7</td></tr>
+    <tr><td><code>LDR_LLM_MAX_TOKENS</code></td><td>最大输出 tokens</td><td>30000</td></tr>
+    <tr><td><code>LDR_LLM_OPENAI_ENDPOINT_URL</code></td><td>OpenAI 兼容端点</td><td>https://api.minimaxi.com/v1</td></tr>
+    <tr><td><code>LDR_LLM_OPENAI_ENDPOINT_API_KEY</code></td><td>端点 API Key</td><td>sk-cp-...</td></tr>
+    <tr><td><code>LDR_SEARCH_TOOL</code></td><td>搜索引擎</td><td>searxng / auto</td></tr>
+    <tr><td><code>LDR_SEARCH_ITERATIONS</code></td><td>搜索迭代数</td><td>1</td></tr>
+    <tr><td><code>LDR_SEARCH_MAX_RESULTS</code></td><td>最大搜索结果</td><td>10</td></tr>
+</table>
+
+<!-- ===================== 注意事项 ===================== -->
+<h2><span class="section-num">8</span> 注意事项与常见问题</h2>
+
+<div class="warn-box">
+    <strong>1. 必须配置模型</strong><br>
+    Python 直接调用时，<code>llm.model</code> 默认为空字符串，不配置会抛出 <code>ValueError: LLM model not configured</code>。<br>
+    解决：通过 <code>settings_override={"llm.model": "MiniMax-M2.7"}</code> 或设置环境变量 <code>LDR_LLM_MODEL</code>。
+</div>
+
+<div class="warn-box">
+    <strong>2. 搜索引擎依赖</strong><br>
+    默认搜索引擎为 <code>searxng</code>，需要运行 SearXNG 实例。如果搜索服务不可用，研究仍能运行但搜索结果为空。<br>
+    可通过 <code>settings_override={"search.tool": "wikipedia"}</code> 切换到 Wikipedia 搜索（无需额外服务）。
+</div>
+
+<div class="warn-box">
+    <strong>3. generate_report 耗时较长</strong><br>
+    完整报告生成涉及多轮搜索和综合，通常需要数分钟。建议在异步任务或 tmux 会话中运行。
+</div>
+
+<div class="info-box">
+    <strong>4. 服务器操作路径</strong><br>
+    项目路径：<code>/kanas/datav/lmet/projects/local-deep-research</code><br>
+    Conda 环境：<code>conda activate ldr</code><br>
+    SSH 连接：<code>ssh zengxinghang@10.10.20.21</code>
+</div>
+
+<!-- ===================== 快速使用命令 ===================== -->
+<h2><span class="section-num">9</span> 快速使用命令</h2>
+
+<h3>9.1 一行命令：简易研究（通过 REST API）</h3>
+<pre><span class="comment"># 先登录，再调用</span>
+curl -s -c /tmp/ldr.txt http://10.10.20.21:5000/auth/login | python3 -c "import sys,re;print(re.search(r'csrf_token\" value=\"([^\"]+)',sys.stdin.read()).group(1))" > /tmp/csrf.txt
+curl -s -b /tmp/ldr.txt -c /tmp/ldr.txt -X POST http://10.10.20.21:5000/auth/login -d "username=zxh&password=@zxh19859769907&csrf_token=$(cat /tmp/csrf.txt)" > /dev/null
+curl -s -b /tmp/ldr.txt -X POST http://10.10.20.21:5000/api/v1/quick_summary -H "Content-Type: application/json" -d '{"query":"你的问题","iterations":1}' | python3 -m json.tool</pre>
+
+<h3>9.2 SSH + Python：服务器端直接调用</h3>
+<pre><span class="comment"># SSH 登录服务器后执行</span>
+ssh zengxinghang@10.10.20.21
+conda activate ldr
+cd /kanas/datav/lmet/projects/local-deep-research
+
+python3 -c "
+from local_deep_research.api import quick_summary
+r = quick_summary(
+    '你的研究问题',
+    provider='openai_endpoint',
+    api_key='sk-cp-xxx...',
+    settings_override={'llm.model': 'MiniMax-M2.7', 'llm.openai_endpoint.url': 'https://api.minimaxi.com/v1'}
+)
+print(r['summary'])
+"</pre>
+
+<h3>9.3 Python 脚本：完整研究并保存报告</h3>
+<pre><span class="keyword">import</span> json
+<span class="keyword">from</span> local_deep_research.api <span class="keyword">import</span> quick_summary, generate_report
+
+<span class="comment"># 配置</span>
+CONFIG = {
+    <span class="string">"provider"</span>: <span class="string">"openai_endpoint"</span>,
+    <span class="string">"api_key"</span>: <span class="string">"sk-cp-GcVnQghbFoX36MYgx-mlE7-HA08JzvvnD6fh0f8iKTUKLDa5wq10ybwR3mKBoGT1ULTuBEaoMc1g1u9CH7zMexXk-vWzyKy30nWpoQGg-WmboBwRjMZ6m3U"</span>,
+    <span class="string">"settings_override"</span>: {
+        <span class="string">"llm.model"</span>: <span class="string">"MiniMax-M2.7"</span>,
+        <span class="string">"llm.openai_endpoint.url"</span>: <span class="string">"https://api.minimaxi.com/v1"</span>,
+    }
+}
+
+<span class="comment"># 简易研究</span>
+result = quick_summary(<span class="string">"大语言模型的对齐技术"</span>, **CONFIG)
+<span class="keyword">with</span> <span class="func">open</span>(<span class="string">"result.json"</span>, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:
+    json.dump(result, f, ensure_ascii=<span class="keyword">False</span>, indent=2)
+<span class="func">print</span>(<span class="string">"摘要:"</span>, result[<span class="string">"summary"</span>])
+
+<span class="comment"># 完整报告（耗时较长）</span>
+<span class="comment"># report = generate_report("大语言模型的对齐技术", output_file="report.md", **CONFIG)</span></pre>
+
+<!-- ===================== 历史记录查询 ===================== -->
+<h2><span class="section-num">10</span> 辅助 API：查询历史与设置</h2>
+
+<pre><span class="comment"># 查询研究历史</span>
+curl -s -b cookie.txt http://10.10.20.21:5000/api/history | python3 -m json.tool
+
+<span class="comment"># 查询某条研究的详情</span>
+curl -s -b cookie.txt http://10.10.20.21:5000/api/research/&lt;research_id&gt;
+
+<span class="comment"># 查询所有设置</span>
+curl -s -b cookie.txt http://10.10.20.21:5000/settings/api | python3 -m json.tool
+
+<span class="comment"># 查询特定设置</span>
+curl -s -b cookie.txt http://10.10.20.21:5000/settings/api/llm.model
+curl -s -b cookie.txt http://10.10.20.21:5000/settings/api/llm.provider
+
+<span class="comment"># 获取公共配置（无需登录）</span>
+curl -s http://10.10.20.21:5000/research/api/config</pre>
+
+<p style="margin-top:3rem; text-align:center; color:var(--text-muted); font-size:0.85rem;">
+    — 测试报告结束 —
+</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>SimpleXNG 使用指南</title>
+<style>
+body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; max-width: 960px; margin: 40px auto; padding: 0 24px; line-height: 1.8; color: #222; background: #f9f9f9; }
+h1 { color: #1a1a2e; border-bottom: 3px solid #e94560; padding-bottom: 12px; }
+h2 { color: #16213e; margin-top: 36px; border-left: 4px solid #e94560; padding-left: 12px; }
+h3 { color: #0f3460; margin-top: 24px; }
+pre { background: #1e1e2e; color: #cdd6f4; padding: 14px 18px; border-radius: 8px; overflow-x: auto; font-size: 0.85em; }
+code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; font-family: 'Fira Code', 'Consolas', monospace; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+th, td { padding: 10px 14px; border: 1px solid #ddd; text-align: left; }
+th { background: #16213e; color: #fff; }
+tr:nth-child(even) { background: #f5f5f5; }
+.tag { display: inline-block; font-size: 0.75em; padding: 2px 10px; border-radius: 10px; margin-right: 6px; font-weight: 600; }
+.tag-ok { background: #e8f8e8; color: #27ae60; }
+.tag-warn { background: #fef5e7; color: #d68910; }
+.tag-err { background: #ffeae6; color: #c0392b; }
+.tag-info { background: #e8f0fe; color: #2980b9; }
+.cmd { background: #1e1e2e; color: #a6e3a1; padding: 10px 16px; border-radius: 6px; font-family: 'Fira Code', 'Consolas', monospace; font-size: 0.85em; margin: 8px 0; }
+.issue-box { background: #fff; border-radius: 8px; padding: 16px 20px; margin: 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+ul, ol { padding-left: 20px; }
+</style>
+</head>
+<body>
+
+<h1>🔬 SimpleXNG 使用指南</h1>
+<p>基于 SearXNG 2025.8.3 的一键本地元搜索引擎 | 服务器: 10.10.20.21 | 端口: 16464</p>
+
+<!-- ============================================================ -->
+<h2>目录</h2>
+<ol>
+  <li>基本使用</li>
+  <li>搜索语法</li>
+  <li>搜索引擎配置说明</li>
+  <li>与原生 SearXNG 的区别</li>
+  <li>常见问题与故障排查</li>
+  <li>高级配置参考</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>一、基本使用</h2>
+
+<h3>1.1 启动服务</h3>
+<div class="cmd">simplexng</div>
+<p>默认监听 <code>0.0.0.0:16464</code>，浏览器访问 <code>http://&lt;服务器IP&gt;:16464/</code> 即可。</p>
+
+<h3>1.2 CLI 参数</h3>
+<table>
+  <tr><th>参数</th><th>默认值</th><th>说明</th></tr>
+  <tr><td><code>-p, --port</code></td><td>从配置读取</td><td>指定端口</td></tr>
+  <tr><td><code>-H, --host</code></td><td>从配置读取</td><td>绑定地址（0.0.0.0 允许外部访问）</td></tr>
+  <tr><td><code>--open</code></td><td>-</td><td>自动打开浏览器</td></tr>
+  <tr><td><code>--flask</code></td><td>-</td><td>用 Flask 开发服务器（调试用）</td></tr>
+  <tr><td><code>--settings</code></td><td>-</td><td>指定自定义配置文件路径</td></tr>
+  <tr><td><code>-v, --verbose</code></td><td>-</td><td>详细日志输出</td></tr>
+</table>
+
+<div class="cmd"># 常用变体
+simplexng --port 8080 -H 127.0.0.1    # 仅本地访问
+simplexng --open                       # 启动 + 打开浏览器
+simplexng -p 6464 -H 0.0.0.0          # 外网可访问</div>
+
+<h3>1.3 配置文件位置</h3>
+<pre>~/.config/simplexng/simplexng_settings.yml</pre>
+
+<!-- ============================================================ -->
+<h2>二、搜索语法</h2>
+
+<h3>2.1 引擎快捷指令（Bang）</h3>
+<p>在搜索关键词前加上 <code>!引擎名</code> 可直接指定搜索引擎：</p>
+<table>
+  <tr><th>快捷指令</th><th>引擎</th><th>示例</th></tr>
+  <tr><td><code>!go</code></td><td>Google</td><td><code>!go 芒果种植</code></td></tr>
+  <tr><td><code>!br</code></td><td>Brave</td><td><code>!br machine learning</code></td></tr>
+  <tr><td><code>!bi</code></td><td>Bing</td><td><code>!bi news today</code></td></tr>
+  <tr><td><code>!sp</code></td><td>Startpage</td><td><code>!sp privacy</code></td></tr>
+  <tr><td><code>!arx</code></td><td>arxiv</td><td><code>!arx quantum computing</code></td></tr>
+  <tr><td><code>!pub</code></td><td>PubMed</td><td><code>!pub crispr</code></td></tr>
+  <tr><td><code>!se</code></td><td>Semantic Scholar</td><td><code>!se deep learning</code></td></tr>
+  <tr><td><code>!gos</code></td><td>Google Scholar</td><td><code>!gos climate change</code></td></tr>
+</table>
+
+<h3>2.2 多引擎搜索</h3>
+<pre>!arx+pub crispr gene editing     # 同时在 arxiv 和 PubMed 搜索
+!go+br 今日热点                  # 同时在 Google 和 Brave 搜索</pre>
+
+<h3>2.3 排除引擎</h3>
+<pre>python -!google                   # 搜索 python，排除 Google 结果</pre>
+
+<h3>2.4 类别筛选</h3>
+<p>网页端可通过顶部标签页切换类别，URL 参数方式：</p>
+<pre>http://&lt;host&gt;:16464/search?q=quantum&categories=science
+http://&lt;host&gt;:16464/search?q=cat&categories=images,videos</pre>
+
+<h3>2.5 API 调用（JSON 格式）</h3>
+<pre>curl 'http://&lt;host&gt;:16464/search?q=test&format=json'</pre>
+<p>注意：需要配置中 <code>formats</code> 包含 <code>json</code>，且 <code>public_instance: true</code> 才允许远程 API 调用。</p>
+
+<!-- ============================================================ -->
+<h2>三、搜索引擎配置说明</h2>
+
+<h3>3.1 当前已配置引擎</h3>
+<table>
+  <tr><th>类别</th><th>引擎</th><th>状态</th><th>说明</th></tr>
+  <tr>
+    <td rowspan="4">通用搜索</td>
+    <td>Google</td>
+    <td><span class="tag tag-ok">启用</span></td>
+    <td>最全面的通用搜索引擎</td>
+  </tr>
+  <tr><td>Brave</td><td><span class="tag tag-ok">启用</span></td><td>隐私友好，速度较快</td></tr>
+  <tr><td>Bing</td><td><span class="tag tag-ok">启用</span></td><td>微软搜索引擎，中文支持好</td></tr>
+  <tr><td>Startpage</td><td><span class="tag tag-ok">启用</span></td><td>匿名调用 Google 结果</td></tr>
+  <tr>
+    <td rowspan="4">科研学术</td>
+    <td>arXiv</td><td><span class="tag tag-ok">启用</span></td><td>预印本论文（物理、数学、CS）</td></tr>
+    <tr><td>PubMed</td><td><span class="tag tag-ok">启用</span></td><td>生物医学文献</td></tr>
+    <tr><td>Semantic Scholar</td><td><span class="tag tag-ok">启用</span></td><td>AI 学术搜索</td></tr>
+    <tr><td>Google Scholar</td><td><span class="tag tag-ok">启用</span></td><td>综合学术搜索</td></tr>
+</table>
+
+<h3>3.2 关于 DuckDuckGo</h3>
+<div class="issue-box">
+  <span class="tag tag-warn">已禁用</span>
+  <strong>原因：</strong> 该服务器 IP 被 DuckDuckGo 屏蔽，请求始终超时。
+  <pre>curl https://html.duckduckgo.com/ → FAIL (ConnectTimeout)</pre>
+  如需要在其他网络环境使用，在配置中将 <code>duckduckgo</code> 的 <code>disabled: true</code> 改为 <code>false</code>。
+</div>
+
+<h3>3.3 配置文件的 use_default_settings</h3>
+<p>当前配置为 <code>use_default_settings: false</code>，意为只加载配置文件中显式列出的引擎。</p>
+<p>若改为 <code>true</code>，SearXNG 内置的 100+ 引擎（Wikipedia、GitHub、StackExchange 等）将全部生效。适合需要更多引擎但不想逐一配置的场景。</p>
+
+<!-- ============================================================ -->
+<h2>四、与原生 SearXNG 的区别</h2>
+
+<table>
+  <tr><th>维度</th><th>SimpleXNG</th><th>SearXNG</th></tr>
+  <tr>
+    <td><strong>定位</strong></td>
+    <td>"一键本地运行 SearXNG"</td>
+    <td>完整生产级元搜索引擎</td>
+  </tr>
+  <tr>
+    <td><strong>安装方式</strong></td>
+    <td><code>pip install simplexng</code><br>一行命令即可</td>
+    <td>Docker / make install / 源码部署</td>
+  </tr>
+  <tr>
+    <td><strong>配置管理</strong></td>
+    <td>自动生成 + 模板合并<br>无需手动配置</td>
+    <td>手动编辑 settings.yml<br>需自行生成 secret_key</td>
+  </tr>
+  <tr>
+    <td><strong>依赖</strong></td>
+    <td>零外部依赖<br>无需 Redis / nginx</td>
+    <td>需要 Redis（限流/缓存）<br>需要 nginx（反向代理）</td>
+  </tr>
+  <tr>
+    <td><strong>服务器</strong></td>
+    <td>内嵌 waitress</td>
+    <td>uwsgi / gunicorn / waitress</td>
+  </tr>
+  <tr>
+    <td><strong>适用场景</strong></td>
+    <td>个人本地搜索、开发测试<br>快速搭建内部搜索</td>
+    <td>生产环境、公网实例<br>多用户、高并发</td>
+  </tr>
+  <tr>
+    <td><strong>安全性</strong></td>
+    <td>默认不启用限流<br>适合内网/信任环境</td>
+    <td>内置限流、bot 检测<br>适合暴露到公网</td>
+  </tr>
+  <tr>
+    <td><strong>本质</strong></td>
+    <td colspan="2" style="text-align:center;">SimpleXNG 完整打包了 SearXNG 的源码（vendored），<br>启动时直接调用 <code>searx.webapp.application</code>，<br><strong>搜索内核完全一致</strong>。</td>
+  </tr>
+</table>
+
+<!-- ============================================================ -->
+<h2>五、常见问题与故障排查</h2>
+
+<h3>5.1 引擎超时 / 无法连接</h3>
+<div class="issue-box">
+  <span class="tag tag-err">常见</span>
+  <pre>ERROR: engine timeout
+ERROR: HTTP requests timeout (ConnectTimeout)
+WARNING: Task queue depth is 1</pre>
+  <p><strong>原因：</strong> 搜索引擎（如 DuckDuckGo）从某些网络环境（尤其是中国服务器）无法直接访问，或响应缓慢导致超时。</p>
+  <p><strong>解决方案：</strong></p>
+  <ul>
+    <li>禁用不可达的引擎（<code>disabled: true</code>），启用替代引擎（Google、Brave）</li>
+    <li>适当增加 <code>timeout</code> 值（已设为 6-10 秒）</li>
+    <li>使用 <code>!引擎名</code> 语法手动选择可达的引擎</li>
+    <li>如需要访问被屏蔽的引擎，可配置代理：</li>
+  </ul>
+  <pre>outgoing:
+  proxies:
+    all://:
+      - http://your-proxy:8080</pre>
+</div>
+
+<h3>5.2 Bing 重定向错误</h3>
+<div class="issue-box">
+  <span class="tag tag-warn">已知</span>
+  <pre>count_error: 1 redirects, maximum: 0</pre>
+  <p><strong>原因：</strong> Bing 检测到非浏览器请求后重定向到 <code>cn.bing.com</code>，但 Bing 引擎的 <code>soft_max_redirects</code> 为 0，不允许重定向。</p>
+  <p><strong>影响：</strong> 部分请求可能无结果，但通常第一次请求能正常返回数据。不影响其他引擎。</p>
+  <p><strong>解决方案：</strong> 使用 Google 或 Brave 作为替代通用引擎。</p>
+</div>
+
+<h3>5.3 端口被占用</h3>
+<div class="issue-box">
+  <span class="tag tag-err">启动失败</span>
+  <pre>OSError: [Errno 98] Address already in use</pre>
+  <p><strong>原因：</strong> 上次启动的进程未正常退出。</p>
+  <p><strong>解决：</strong></p>
+  <div class="cmd">pkill -f waitress    # 杀掉旧进程
+simplexng            # 重新启动</div>
+</div>
+
+<h3>5.4 Cookie 验证错误</h3>
+<div class="issue-box">
+  <span class="tag tag-fix">已修复</span>
+  <pre>ValidationException: Invalid value: "zh-CN"</pre>
+  <p><strong>原因：</strong> 浏览器存储了旧版本的 <code>locale=zh-CN</code> Cookie，当前语言列表中不存在该值。</p>
+  <p><strong>修复：</strong> 已修改 <code>preferences.py</code>，无效 Cookie 值会被静默忽略，保留默认值。或清除浏览器 Cookie 后重新访问。</p>
+</div>
+
+<h3>5.5 配置文件缺失 <code>limiter.toml</code></h3>
+<div class="issue-box">
+  <span class="tag tag-info">无关紧要</span>
+  <pre>WARNING: missing config file: .../limiter.toml</pre>
+  <p>限流配置文件仅公网实例需要。内网/个人使用完全不影响功能。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>六、高级配置参考</h2>
+
+<h3>6.1 网络与超时设置</h3>
+<p>在配置文件的 <code>server:</code> 之后添加：</p>
+<pre>outgoing:
+  request_timeout: 5.0          # 单次请求超时（秒），引擎可覆盖
+  max_request_timeout: 15.0     # 最大允许超时
+  useragent_suffix: ""          # User-Agent 后缀
+  enable_http2: true            # 启用 HTTP/2
+  pool_connections: 100         # 连接池连接数
+  pool_maxsize: 20              # 连接池最大复用数
+  # proxies:                     # 代理配置
+  #   all://:
+  #     - http://proxy:8080</pre>
+
+<h3>6.2 限流配置（公网实例）</h3>
+<p>创建 <code>~/.config/simplexng/limiter.toml</code>：</p>
+<pre>[botdetection.ip_limit]
+link_token = false         # 是否需要链接令牌
+
+[botdetection.ip_lists]
+pass_secret = false
+pass = []
+block = []</pre>
+<p>并设置 <code>server.limiter: true</code>、<code>redis.url: "redis://localhost:6379/0"</code>。</p>
+
+<h3>6.3 自定义外观</h3>
+<pre>general:
+  instance_name: "我的搜索"    # 页面标题
+  debug: false                  # 调试模式
+
+ui:
+  static_use_hash: false        # 静态资源缓存
+  default_theme: simple         # 主题
+  default_locale: zh-Hans-CN    # 默认语言</pre>
+
+<h3>6.4 添加新引擎</h3>
+<p>在 <code>engines:</code> 列表中添加：</p>
+<pre>  - name: wikipedia
+    engine: wikipedia
+    shortcut: wp
+    timeout: 3.0
+    disabled: false</pre>
+<p>可用引擎列表：<code>~/.local/share/uv/tools/simplexng/lib/python3.12/site-packages/simplexng/_vendor/searx/engines/</code></p>
+
+<h3>6.5 还原补丁（如需升级）</h3>
+<p>如果升级 SimpleXNG 版本，已修改的源码文件会被 uv 覆盖，需要重新应用补丁：</p>
+<ul>
+  <li><code>simplexng.py</code> — CLI 默认值从配置文件读取</li>
+  <li><code>preferences.py</code> — Cookie 验证异常降级</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>附录：错误日志分析</h2>
+
+<p>你的日志中出现以下错误，均已归档至此文档：</p>
+<table>
+  <tr><th>错误信息</th><th>严重程度</th><th>原因</th><th>处理方式</th></tr>
+  <tr>
+    <td><code>count_error: 1 redirects, maximum: 0</code></td>
+    <td><span class="tag tag-warn">低</span></td>
+    <td>Bing 检测到自动请求，触发重定向</td>
+    <td>已添加 Google/Brave 替代</td>
+  </tr>
+  <tr>
+    <td><code>ConnectTimeout: html.duckduckgo.com</code></td>
+    <td><span class="tag tag-info">已解决</span></td>
+    <td>服务器 IP 被 DuckDuckGo 屏蔽</td>
+    <td>已禁用 DuckDuckGo</td>
+  </tr>
+  <tr>
+    <td><code>Task queue depth is 1/2</code></td>
+    <td><span class="tag tag-info">正常</span></td>
+    <td>慢引擎导致请求队列堆积</td>
+    <td>降低超时时间，禁用慢引擎</td>
+  </tr>
+  <tr>
+    <td><code>add_unresponsive_engine after close</code></td>
+    <td><span class="tag tag-info">正常</span></td>
+    <td>引擎超时后标记为无响应</td>
+    <td>无需处理</td>
+  </tr>
+  <tr>
+    <td><code>missing config file: limiter.toml</code></td>
+    <td><span class="tag tag-info">无害</span></td>
+    <td>限流配置非必需</td>
+    <td>忽略</td>
+  </tr>
+</table>
+
+<p style="text-align: center; color: #888; margin-top: 48px; font-size: 0.9em;">
+  — 文档由 Claude Code 生成于 2026-06-07 —
+</p>
+
+</body>
+</html>

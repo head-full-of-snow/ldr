@@ -1,0 +1,850 @@
+{
+  "metadata": {
+    "title": "智能体记忆（Agent Memory）科研成果数据",
+    "collection_date": "2026-05-21",
+    "total_items": 33,
+    "categories": {
+      "academic_papers": 22,
+      "surveys_benchmarks": 5,
+      "industrial_products_frameworks": 4
+    },
+    "data_format_version": "1.0"
+  },
+  "summary": {
+    "key_trends": [
+      {
+        "trend": "层次化架构成为主流",
+        "description": "H-MEM、HiMem、HiGMem、MemoryOS、HyperMem等大量工作表明，多层次（短期/中期/长期）层次化存储是解决长周期记忆的核心方向。",
+        "evidence_papers": ["H-MEM", "HiMem", "HiGMem", "MemoryOS", "HyperMem"]
+      },
+      {
+        "trend": "图结构超越向量检索",
+        "description": "GAM、Synapse、AriGraph、HyperMem等证明，图结构（普通图→超图）在捕捉复杂关联方面显著优于纯向量检索。",
+        "evidence_papers": ["GAM", "SYNAPSE", "AriGraph", "HyperMem", "SGMem"]
+      },
+      {
+        "trend": "从静态记忆到动态自我进化",
+        "description": "ParamMem、Evo-Memory、GAM(DeepResearch)等工作表明，记忆不再是被动存储，而是支持智能体持续自我进化的核心能力。",
+        "evidence_papers": ["ParamMem", "Evo-Memory", "GAM-DeepResearch", "Experience Compression Spectrum"]
+      },
+      {
+        "trend": "多智能体记忆共享",
+        "description": "G-Memory等研究开启了多智能体间记忆共享与协作的新方向，团队记忆管理成为新热点。",
+        "evidence_papers": ["G-Memory", "Cost and Accuracy of Graph Memory", "Trainable Graph Memory"]
+      },
+      {
+        "trend": "标准化基准形成",
+        "description": "LoCoMo、MemoryAgentBench、Evo-Memory三大基准已形成行业共识。",
+        "evidence_papers": ["MemoryAgentBench", "Evo-Memory", "Mem0 Benchmark Results"]
+      },
+      {
+        "trend": "工业落地加速",
+        "description": "AWS AgentCore、Mem0、Letta等产品和服务推动记忆技术从研究走向生产。",
+        "evidence_papers": ["AWS AgentCore", "Mem0", "Letta"]
+      },
+      {
+        "trend": "认知科学启发",
+        "description": "从AI meets Brain到Experience Compression Spectrum，生物启发的记忆架构设计成为重要方向。",
+        "evidence_papers": ["AI Meets Brain", "Experience Compression Spectrum", "SYNAPSE"]
+      }
+    ]
+  },
+  "research_items": [
+    {
+      "id": 1,
+      "type": "academic_paper",
+      "title_zh": "MEM1: 学习协同记忆与推理以实现高效长周期智能体",
+      "title_en": "MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-Horizon Agents",
+      "arxiv_id": "2506.15841",
+      "status": "ICLR 2026 Poster",
+      "authors": ["Zhou Zhou", "Qucong Qu"],
+      "domain": "记忆架构",
+      "value_level": "high",
+      "abstract_zh": "端到端强化学习框架，使智能体在长周期多轮任务中以恒定内存运行。LLM推理生成的记忆整合所有先前上下文，实现近恒定上下文窗口。无需手动设计记忆管理机制。",
+      "innovations": [
+        "推理驱动的记忆整合实现恒定内存",
+        "RL训练使智能体自主学会何时写入、如何压缩记忆",
+        "无需手动设计记忆管理机制"
+      ],
+      "key_results": {
+        "memory_usage": "constant/context-independent",
+        "comparison": "显著优于传统RAG和记忆增强基线"
+      },
+      "why_high_value": "通过RL让智能体自主学习记忆管理，解决长周期任务中上下文窗口无限增长的痛点。",
+      "link": "https://arxiv.org/abs/2506.15841"
+    },
+    {
+      "id": 2,
+      "type": "academic_paper",
+      "title_zh": "Mem0: 构建可扩展的长期记忆生产就绪AI智能体",
+      "title_en": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+      "arxiv_id": "2504.19413",
+      "status": "ECAI 2025",
+      "authors": ["Prateek Chhikara", "Dev Khant", "Suren Aryan", "Timnit Singh", "Deepak Yadav"],
+      "domain": "记忆架构",
+      "value_level": "high",
+      "abstract_zh": "可扩展的记忆中心化架构，通过动态提取、整合和检索持续对话中的关键信息。三层记忆范围架构（用户/会话/智能体），混合存储（向量搜索+图数据库）。",
+      "innovations": [
+        "三层记忆范围架构（用户/会话/智能体）",
+        "混合存储结合向量搜索与图数据库",
+        "自动去重和增量更新机制"
+      ],
+      "key_results": {
+        "LoCoMo": "91.6",
+        "LongMemEval": "93.4",
+        "BEAM_1M": "64.1",
+        "BEAM_10M": "48.6",
+        "avg_memory_tokens_per_entry": "~7000"
+      },
+      "why_high_value": "首个生产就绪的记忆中心架构，已在工业界大规模部署，基准测试表现优异。",
+      "link": "https://arxiv.org/abs/2504.19413"
+    },
+    {
+      "id": 3,
+      "type": "academic_paper",
+      "title_zh": "A-MEM: 面向LLM智能体的代理记忆",
+      "title_en": "A-MEM: Agentic Memory for LLM Agents",
+      "arxiv_id": "2502.12110",
+      "status": "NeurIPS 2025 Poster",
+      "authors": ["Wujiang Xu"],
+      "domain": "记忆架构",
+      "value_level": "high",
+      "abstract_zh": "受Zettelkasten（卡片盒笔记法）启发，构建结构化、不断演化的记忆图谱，智能体驱动的主动记忆管理，而非被动存储。",
+      "innovations": [
+        "受卡片盒笔记法启发构建结构化记忆图谱",
+        "智能体驱动主动记忆管理",
+        "动态图谱结构支持高效检索"
+      ],
+      "key_results": {
+        "comparison": "在长周期对话和推理任务上超越现有记忆增强方法"
+      },
+      "why_high_value": "卡片盒笔记法与AI记忆的创新结合，主动记忆管理范式具有广泛适用性。",
+      "link": "https://arxiv.org/abs/2502.12110",
+      "code": "https://github.com/WujiangXu/A-mem"
+    },
+    {
+      "id": 4,
+      "type": "academic_paper",
+      "title_zh": "MemoryOS: AI智能体的记忆操作系统",
+      "title_en": "MemoryOS: Memory Operating System of AI Agent",
+      "arxiv_id": "2506.06326",
+      "status": "EMNLP 2025 Oral (长文)",
+      "authors": ["BAI-LAB"],
+      "domain": "记忆架构",
+      "value_level": "high",
+      "abstract_zh": "受操作系统内存管理原则启发，设计三层层次化存储架构（短期记忆、中期记忆、长期个人记忆）和四个核心功能模块（存储、更新、检索、优化）。",
+      "innovations": [
+        "层次化存储：STM/MTM/LTM三级",
+        "动态更新与淘汰机制",
+        "类似OS的内存管理思想"
+      ],
+      "key_results": {
+        "benchmark": "LoCoMo",
+        "result": "超越多种现有记忆管理方法"
+      },
+      "why_high_value": "首次将操作系统的内存管理思想系统引入AI智能体记忆设计。",
+      "link": "https://aclanthology.org/2025.emnlp-main.1318/",
+      "code": "https://github.com/BAI-LAB/MemoryOS"
+    },
+    {
+      "id": 5,
+      "type": "academic_paper",
+      "title_zh": "HyperMem: 面向长对话的超图记忆",
+      "title_en": "HyperMem: Hypergraph Memory for Long-Term Conversations",
+      "arxiv_id": "2604.08256",
+      "status": "ACL 2026",
+      "authors": ["J Yue", "C Hu", "J Sheng", "Z Zhou", "W Zhang", "T Liu", "L Guo", "Y Deng (EverMind)"],
+      "domain": "记忆架构",
+      "value_level": "high",
+      "abstract_zh": "开创性的超图记忆架构，通过超边显式建模高阶关联（多个元素之间的联合依赖），解决传统RAG或普通图记忆将相关信息拆分过碎的问题。",
+      "innovations": [
+        "三层超图记忆架构",
+        "超边建模高维关联（3+个元素间）",
+        "有效保留信息间的复杂关系"
+      ],
+      "key_results": {
+        "result": "在长对话任务上显著优于图记忆和向量检索基线"
+      },
+      "why_high_value": "超图是图记忆的理论和实践升级，解决信息碎片化问题的关键创新。",
+      "link": "https://arxiv.org/abs/2604.08256"
+    },
+    {
+      "id": 6,
+      "type": "academic_paper",
+      "title_zh": "SYNAPSE: 通过扩散激活赋予LLM智能体情景-语义记忆",
+      "title_en": "SYNAPSE: Empowering LLM Agents with Episodic-Semantic Memory via Spreading Activation",
+      "arxiv_id": "2601.02744",
+      "status": "2026-01",
+      "authors": ["Jiang", "Chen"],
+      "domain": "记忆架构",
+      "value_level": "medium",
+      "abstract_zh": "统一的记忆架构，超越传统的场景/语义记忆分类。通过扩散激活机制在知识图谱引导的RAG框架中协同利用场景记忆和语义记忆。",
+      "innovations": [
+        "知识图谱引导的RAG同时利用场景和语义记忆",
+        "扩散激活机制实现记忆间关联检索",
+        "统一图结构建模两类记忆"
+      ],
+      "key_results": {
+        "result": "在长周期任务上实现场景和语义记忆的协同增强"
+      },
+      "why_medium_value": "统一建模情景和语义记忆，受生物神经系统启发的扩散激活机制。",
+      "link": "https://arxiv.org/abs/2601.02744"
+    },
+    {
+      "id": 7,
+      "type": "academic_paper",
+      "title_zh": "H-MEM: 面向高效长周期推理的层次化记忆",
+      "title_en": "H-MEM: Hierarchical Memory for High-Efficiency Long-Term Reasoning in LLM Agents",
+      "status": "EACL 2026",
+      "authors": ["Haoran Sun", "Shaoning Zeng", "Bob Zhang"],
+      "domain": "记忆架构",
+      "value_level": "medium",
+      "abstract_zh": "层次化记忆架构，根据记忆的重要程度将记忆组织为多级结构，采用基于索引的路由机制平衡表示容量和检索效率。",
+      "innovations": [
+        "多级层次化记忆组织",
+        "基于索引的路由实现高效检索",
+        "平衡表示能力和计算效率"
+      ],
+      "key_results": {
+        "benchmarks": "5个长周期基准",
+        "result": "均优于五种基线方法"
+      },
+      "why_medium_value": "层次化索引路由机制兼顾效率与精度，适合大规模部署。",
+      "link": "https://aclanthology.org/2026.eacl-long.15/"
+    },
+    {
+      "id": 8,
+      "type": "academic_paper",
+      "title_zh": "HiMem: 面向LLM长周期智能体的层次化长期记忆",
+      "title_en": "HiMem: Hierarchical Long-Term Memory for LLM Long-Horizon Agents",
+      "arxiv_id": "2601.06377",
+      "status": "2026-01",
+      "authors": ["jojopdq"],
+      "domain": "记忆架构",
+      "value_level": "medium",
+      "abstract_zh": "受认知理论启发，专为长周期对话设计的层次化长期记忆框架。采用片段记忆和笔记记忆两层结构，混合检索与尽力检索策略。",
+      "innovations": [
+        "Episode Memory + Note Memory两层层次结构",
+        "混合检索与尽力检索策略平衡精度和效率",
+        "冲突感知的记忆更新"
+      ],
+      "key_results": {
+        "result": "在长周期对话基准上实现显著的推理能力提升"
+      },
+      "why_medium_value": "双层层次结构与冲突感知更新机制，设计简洁有效。",
+      "link": "https://arxiv.org/abs/2601.06377",
+      "code": "https://github.com/jojopdq/HiMem"
+    },
+    {
+      "id": 9,
+      "type": "academic_paper",
+      "title_zh": "HiGMem: 层次化且LLM引导的长期对话智能体记忆系统",
+      "title_en": "HiGMem: A Hierarchical and LLM-Guided Memory System for Long-Term Conversational Agents",
+      "arxiv_id": "2604.18349",
+      "status": "2026-04",
+      "authors": ["Shuqi Cao", "Jingyi He", "Fei Tan"],
+      "domain": "记忆架构",
+      "value_level": "medium",
+      "abstract_zh": "将长对话组织为轮次、事件和可选画像三个层次，LLM增量式引导记忆构建，结构化事件建模。",
+      "innovations": [
+        "层次化记忆：轮次→事件→画像三层结构",
+        "LLM增量式引导记忆构建",
+        "结构化事件建模"
+      ],
+      "key_results": {
+        "result": "在长周期对话任务上展示优越的记忆恢复和推理能力"
+      },
+      "why_medium_value": "LLM增量引导和结构化事件建模，兼顾自动化和可控性。",
+      "link": "https://arxiv.org/abs/2604.18349",
+      "code": "https://github.com/ZeroLoss-Lab/HiGMem"
+    },
+    {
+      "id": 10,
+      "type": "academic_paper",
+      "title_zh": "AriGraph: 学习带情景记忆的知识图谱世界模型",
+      "title_en": "AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents",
+      "arxiv_id": "2407.04363",
+      "status": "IJCAI 2025",
+      "authors": ["Petr Anokhin", "Nikita Semenov", "Arty Y"],
+      "domain": "记忆架构",
+      "value_level": "medium",
+      "abstract_zh": "智能体在探索过程中构建和更新记忆图谱，整合语义记忆和场景记忆，作为世界模型支持智能体的推理和规划。",
+      "innovations": [
+        "语义和场景记忆统一在知识图谱中",
+        "图谱作为世界模型支持推理和规划",
+        "在线构建和更新"
+      ],
+      "key_results": {
+        "result": "在需要长周期记忆的任务上显著优于单一记忆类型基线"
+      },
+      "why_medium_value": "将记忆图谱作为世界模型，统一支持记忆和规划。",
+      "link": "https://www.ijcai.org/proceedings/2025/2"
+    },
+    {
+      "id": 11,
+      "type": "academic_paper",
+      "title_zh": "经验压缩谱：统一LLM智能体中的记忆、技能和规则",
+      "title_en": "Experience Compression Spectrum: Unifying Memory, Skills, and Rules in LLM Agents",
+      "arxiv_id": "2604.15877",
+      "status": "2026-04",
+      "authors": ["Lewis Liu"],
+      "domain": "记忆压缩",
+      "value_level": "high",
+      "abstract_zh": "统一框架将记忆、技能和规则定位为同一压缩轴上的不同点。利用互补学习系统（CLS）理论，将场景记忆向上压缩为新皮层知识，实现子线性可扩展的知识复用。",
+      "innovations": [
+        "统一框架：记忆→技能→规则的压缩谱",
+        "生物启发的向上压缩理论",
+        "实现子线性可扩展的知识复用"
+      ],
+      "key_results": {
+        "result": "在多个场景中验证了压缩效率，展示从原始经验到压缩表示的平滑过渡"
+      },
+      "why_high_value": "从理论上统一记忆、技能和规则的概念，为智能体持续学习提供统一框架。",
+      "link": "https://arxiv.org/abs/2604.15877"
+    },
+    {
+      "id": 12,
+      "type": "academic_paper",
+      "title_zh": "记忆管理影响研究：经验遵循行为的实证研究",
+      "title_en": "Memory Management Impact Study: Empirical Study of Experience-Following Behavior",
+      "arxiv_id": "2505.16067",
+      "status": "2025-05",
+      "authors": ["多个研究者"],
+      "domain": "记忆压缩",
+      "value_level": "medium",
+      "abstract_zh": "对记忆管理策略（特别是添加和删除操作）如何影响LLM智能体行为和长期性能的实证研究。发现过度的记忆删除会损害智能体的经验遵循能力。",
+      "innovations": [
+        "首次系统研究记忆管理操作对长期表现的影响",
+        "发现记忆删除策略的潜在风险",
+        "提供记忆管理的实证指南"
+      ],
+      "key_results": {
+        "finding": "过度的记忆删除损害经验遵循能力，合理记忆压缩提升长期表现"
+      },
+      "why_medium_value": "为记忆管理系统的设计提供重要的实证依据。",
+      "link": "https://arxiv.org/abs/2505.16067"
+    },
+    {
+      "id": 13,
+      "type": "academic_paper",
+      "title_zh": "检索增强LLM智能体：从经验中学习并学习如何学习",
+      "title_en": "Retrieval-Augmented LLM Agents: Learning to Learn from Experience",
+      "arxiv_id": "2603.18272",
+      "status": "2026-03",
+      "authors": ["多个研究者"],
+      "domain": "记忆检索",
+      "value_level": "medium",
+      "abstract_zh": "研究如何训练检索增强型LLM智能体能够从经验中学习并学习，将检索增强与经验重用（ExpRAG）相结合。",
+      "innovations": [
+        "训练型检索增强智能体",
+        "结合经验重用进行元学习",
+        "实现学会如何学习的能力"
+      ],
+      "key_results": {
+        "result": "在跨任务学习中显著提升检索相关性的命中率"
+      },
+      "why_medium_value": "元学习与RAG的结合，为智能体持续学习提供新范式。",
+      "link": "https://arxiv.org/abs/2603.18272"
+    },
+    {
+      "id": 14,
+      "type": "academic_paper",
+      "title_zh": "SGMem: 面向长期对话智能体的句子图记忆",
+      "title_en": "SGMem: Sentence Graph Memory for Long-Term Conversational Agents",
+      "arxiv_id": "2509.21212",
+      "status": "2025-09",
+      "authors": ["Yaxiong Wu"],
+      "domain": "记忆检索",
+      "value_level": "medium",
+      "abstract_zh": "将对话表示为分块单位内的句子级图，捕捉句子间的关联。以细粒度方式管理和检索记忆，解决多会话对话中的记忆碎片化问题。",
+      "innovations": [
+        "句子级图表示，细粒度记忆管理",
+        "分块单位内捕捉句子关联",
+        "有效解决记忆碎片化问题"
+      ],
+      "key_results": {
+        "result": "在长对话场景下显著提升信息检索的准确性和召回率"
+      },
+      "why_medium_value": "句子级细粒度图表示解决记忆碎片化的有效方案。",
+      "link": "https://arxiv.org/abs/2509.21212"
+    },
+    {
+      "id": 15,
+      "type": "academic_paper",
+      "title_zh": "RMM: 面向长期个性化对话智能体的反思性记忆管理",
+      "title_en": "RMM: Reflective Memory Management for Long-term Personalized Dialogue Agents",
+      "arxiv_id": "2503.08026",
+      "status": "ACL 2025",
+      "authors": ["谷歌研究员"],
+      "domain": "记忆检索",
+      "value_level": "medium",
+      "abstract_zh": "提出反思性记忆管理机制，整合前瞻性和回顾性反思。前瞻性反思动态总结不同粒度的互动；回顾性反思从过去的对话中提取教训。",
+      "innovations": [
+        "前瞻性+回顾性双重反思机制",
+        "多粒度记忆总结",
+        "个性化对话优化"
+      ],
+      "key_results": {
+        "result": "在个性化对话场景中提升长期记忆的一致性和相关性"
+      },
+      "why_medium_value": "双重反思机制为个性化对话提供了系统的记忆管理方案。",
+      "link": "https://aclanthology.org/2025.acl-long.413/"
+    },
+    {
+      "id": 16,
+      "type": "academic_paper",
+      "title_zh": "G-Memory: 追踪多智能体系统的层次化记忆",
+      "title_en": "G-Memory: Tracing Hierarchical Memory for Multi-Agent Systems",
+      "arxiv_id": "2506.07398",
+      "status": "NeurIPS 2026",
+      "authors": ["Zhang", "Fu"],
+      "domain": "多智能体记忆",
+      "value_level": "high",
+      "abstract_zh": "层次化的代理记忆系统，专为多智能体系统设计。受组织记忆理论启发，管理长周期的MAS交互过程，提升智能体间的知识留存和协作能力。",
+      "innovations": [
+        "组织记忆理论驱动的多智能体记忆",
+        "层次化架构管理团队记忆和个体记忆",
+        "支持持续自进化"
+      ],
+      "key_results": {
+        "result": "在多项多智能体协作任务上显著提升成功率和知识复用效率"
+      },
+      "why_high_value": "首个将组织记忆理论系统化应用于多智能体记忆管理的框架。",
+      "link": "https://arxiv.org/abs/2506.07398",
+      "code": "https://github.com/bingreeky/GMemory"
+    },
+    {
+      "id": 17,
+      "type": "academic_paper",
+      "title_zh": "分布式LLM多智能体系统中长期图记忆的成本与准确性",
+      "title_en": "Cost and Accuracy of Long-Term Graph Memory in Distributed LLM-Based Multi-Agent Systems",
+      "arxiv_id": "2601.07978",
+      "status": "2026-01",
+      "authors": ["Weichen Wan"],
+      "domain": "多智能体记忆",
+      "value_level": "medium",
+      "abstract_zh": "比较mem0（基于向量的记忆框架）和Graphiti（基于图的知识图谱）在分布式多智能体系统中的长期记忆成本与准确性。",
+      "innovations": [
+        "首次系统比较向量记忆与图记忆在分布式MAS中的成本/准确性权衡",
+        "提供可复用的评测框架"
+      ],
+      "key_results": {
+        "finding": "图记忆在准确性上略优但成本更高，向量方法性价比更具优势"
+      },
+      "why_medium_value": "首次系统比较向量vs图记忆，为实际部署提供决策依据。",
+      "link": "https://arxiv.org/abs/2601.07978"
+    },
+    {
+      "id": 18,
+      "type": "academic_paper",
+      "title_zh": "可训练的图记忆 for LLM智能体",
+      "title_en": "Trainable Graph Memory for LLM Agents",
+      "status": "OpenReview",
+      "domain": "多智能体记忆",
+      "value_level": "medium",
+      "abstract_zh": "提出了可训练的图记忆方法，更好地利用先前经验来指导当前决策。通过端到端训练优化图结构的记忆存储和检索。",
+      "innovations": [
+        "可训练/端到端优化的图记忆",
+        "经验到决策的显式连接",
+        "自适应图结构"
+      ],
+      "key_results": {
+        "result": "在推理和规划任务上展现显著性能提升"
+      },
+      "why_medium_value": "可训练图结构将记忆从静态存储变为可优化参数。",
+      "link": "https://openreview.net/forum?id=bvaaydGKYp"
+    },
+    {
+      "id": 19,
+      "type": "academic_paper",
+      "title_zh": "GAM: 面向LLM智能体的层次化图记忆",
+      "title_en": "GAM: Hierarchical Graph Memory for LLM-based Agents",
+      "arxiv_id": "2604.12285",
+      "status": "ICLR 2026 Workshop (MemAgents Oral)",
+      "domain": "多智能体记忆",
+      "value_level": "medium",
+      "abstract_zh": "层次化图记忆方法，将时间、置信度和角色信号整合到自上而下的遍历中，使智能体能够回忆精确的场景细节。",
+      "innovations": [
+        "层次化图结构",
+        "多维度信号整合（时间/置信度/角色）",
+        "自上而下的遍历检索"
+      ],
+      "key_results": {
+        "benchmarks": ["LoCoMo", "LongDialQA"],
+        "result": "始终优于最先进基线"
+      },
+      "why_medium_value": "多维度信号增强的图记忆设计，提升场景细节回忆精度。",
+      "link": "https://openreview.net/forum?id=mmsVZGaYyp"
+    },
+    {
+      "id": 20,
+      "type": "academic_paper",
+      "title_zh": "ParamMem: 用参数化反思记忆增强语言智能体",
+      "title_en": "ParamMem: Augmenting Language Agents with Parametric Reflective Memory",
+      "arxiv_id": "2602.23320",
+      "status": "2026-02",
+      "domain": "自我改进",
+      "value_level": "high",
+      "abstract_zh": "参数化记忆模块，将跨样本反思模式编码到模型参数中，实现多样化的自我反思，解决传统LLM自我反思产生重复输出的问题。",
+      "innovations": [
+        "将反思模式编码为参数（而非基于检索）",
+        "多样化的自我反思生成",
+        "参数化+情景记忆结合"
+      ],
+      "key_results": {
+        "result": "在推理和规划任务上显著减少重复输出，提升反思质量和最终性能"
+      },
+      "why_high_value": "将反思能力参数化，使智能体的自我改进从检索驱动变为学习驱动。",
+      "link": "https://arxiv.org/abs/2602.23320"
+    },
+    {
+      "id": 21,
+      "type": "academic_paper",
+      "title_zh": "Evo-Memory: 基于自进化记忆的LLM智能体测试时学习基准",
+      "title_en": "Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory",
+      "arxiv_id": "2511.20857",
+      "status": "2025-11",
+      "authors": ["Wei et al. (Google DeepMind, UIUC)"],
+      "domain": "自我改进",
+      "value_level": "high",
+      "abstract_zh": "全面的流式基准和框架，评估LLM智能体的自我进化记忆能力。将现有数学、QA、工具使用和交互环境重构为顺序任务流。",
+      "innovations": [
+        "首个系统评估测试时进化能力的基准",
+        "流式任务设计模拟真实场景",
+        "提供基线方法ExpRAG和ReMem框架"
+      ],
+      "key_results": {
+        "finding": "揭示了当前智能体在经验重用方面的主要薄弱环节"
+      },
+      "why_high_value": "Google DeepMind出品，首次系统评估测试时进化能力，确立研究方向。",
+      "link": "https://arxiv.org/abs/2511.20857"
+    },
+    {
+      "id": 22,
+      "type": "academic_paper",
+      "title_zh": "GAM: 通过深度研究实现通用代理记忆",
+      "title_en": "GAM: General Agentic Memory Via Deep Research",
+      "arxiv_id": "2511.18423",
+      "status": "2025-11",
+      "authors": ["B. Y. Yan"],
+      "domain": "自我改进",
+      "value_level": "medium",
+      "abstract_zh": "通过深度研究实现通用代理记忆。用动态深度研究替代静态压缩，实现即时记忆编译，使智能体能够自主搜索和构建所需知识。",
+      "innovations": [
+        "动态即时记忆编译替代静态压缩",
+        "利用深度研究能力构建记忆",
+        "通用性强的记忆框架"
+      ],
+      "key_results": {
+        "result": "在多种记忆依赖型任务中实现显著的任务完成性能提升"
+      },
+      "why_medium_value": "将深度研究能力与记忆构建结合，开创动态记忆编译新方向。",
+      "link": "https://arxiv.org/abs/2511.18423"
+    },
+    {
+      "id": 23,
+      "type": "academic_paper",
+      "title_zh": "CAM: 建构主义视角下的LLM阅读理解代理记忆",
+      "title_en": "CAM: A Constructivist View of Agentic Memory for LLM-Based Reading Comprehension",
+      "arxiv_id": "2510.05520",
+      "status": "NeurIPS 2025",
+      "authors": ["rui9812"],
+      "domain": "自我改进",
+      "value_level": "medium",
+      "abstract_zh": "从建构主义视角提出代理记忆框架，通过构建式学习而非被动存储来管理长文本记忆。",
+      "innovations": [
+        "建构主义记忆观——主动构建而非被动存储",
+        "面向长文档阅读理解的优化",
+        "高效的记忆结构"
+      ],
+      "key_results": {
+        "result": "在长文档问答任务上显著提升理解深度和记忆保持率"
+      },
+      "why_medium_value": "建构主义理论视角新颖，面向长文档场景有明确优势。",
+      "link": "https://arxiv.org/abs/2510.05520",
+      "code": "https://github.com/rui9812/CAM"
+    },
+    {
+      "id": 24,
+      "type": "survey",
+      "title_zh": "AI智能体时代的记忆：综述",
+      "title_en": "Memory in the Age of AI Agents: A Survey",
+      "arxiv_id": "2512.13564",
+      "status": "2025-12",
+      "authors": ["Shichun Liu et al. (47位作者)"],
+      "domain": "综述",
+      "value_level": "high",
+      "abstract_zh": "第一篇关于AI智能体时代记忆的全面综述。提出形式/功能/动态三维分类学，从三个互补视角审视智能体记忆：载体形式（什么承载记忆）、功能（为什么需要记忆）、动态（记忆如何形成、演进和检索）。",
+      "innovations": [
+        "47位作者合作的全面综述",
+        "形式/功能/动态三维分类学",
+        "涵盖从基础理论到实际部署的全景"
+      ],
+      "key_results": {
+        "scope": "从基础理论到实际部署的全景覆盖",
+        "taxonomy": "形式/功能/动态三维分类"
+      },
+      "why_high_value": "47位作者合作的全面综述，是该领域的里程碑式参考文献。",
+      "link": "https://arxiv.org/abs/2512.13564",
+      "code": "https://github.com/Shichun-Liu/Agent-Memory-Paper-List"
+    },
+    {
+      "id": 25,
+      "type": "survey",
+      "title_zh": "LLM智能体记忆机制演进综述：从存储到经验",
+      "title_en": "A Survey on the Evolution of LLM Agent Memory Mechanisms: From Storage to Experience",
+      "arxiv_id": "2605.06716",
+      "status": "2026-05",
+      "domain": "综述",
+      "value_level": "medium",
+      "abstract_zh": "提出LLM智能体记忆机制的演进框架，将发展过程形式化为从存储到经验再到进化的三个阶段。",
+      "innovations": [
+        "三阶段演进模型（存储→经验→进化）",
+        "系统化梳理记忆机制发展脉络",
+        "指出未来研究方向"
+      ],
+      "key_results": {
+        "model": "存储→经验→进化三阶段模型"
+      },
+      "why_medium_value": "提出清晰的演进模型，为领域发展提供时间轴和路线图。",
+      "link": "https://arxiv.org/abs/2605.06716"
+    },
+    {
+      "id": 26,
+      "type": "survey",
+      "title_zh": "自主LLM智能体的记忆：机制、评估与新兴前沿",
+      "title_en": "Memory for Autonomous LLM Agents: Mechanisms, Evaluation, and Emerging Frontiers",
+      "arxiv_id": "2603.07670",
+      "status": "2026-03",
+      "domain": "综述",
+      "value_level": "medium",
+      "abstract_zh": "全面综述了现代LLM驱动代理中的记忆设计与实现，系统地梳理了记忆机制、评估方法和新兴前沿。",
+      "innovations": [
+        "最新综述覆盖2022-2026",
+        "系统评估方法梳理",
+        "新兴前沿展望"
+      ],
+      "key_results": {
+        "coverage": "2022-2026全覆盖"
+      },
+      "why_medium_value": "覆盖最新研究进展，系统梳理评估方法。",
+      "link": "https://arxiv.org/abs/2603.07670"
+    },
+    {
+      "id": 27,
+      "type": "survey",
+      "title_zh": "AI遇见大脑：从认知神经科学到自主代理的记忆系统统一综述",
+      "title_en": "AI Meets Brain: A Unified Survey on Memory Systems from Cognitive Neuroscience to Autonomous Agents",
+      "arxiv_id": "2512.23343",
+      "status": "2025-12",
+      "authors": ["Zekun Wang et al."],
+      "domain": "综述",
+      "value_level": "medium",
+      "abstract_zh": "综合性综述，将认知神经科学的记忆原理与LLM驱动的自主代理架构联系起来。",
+      "innovations": [
+        "认知神经科学与AI的统一视角",
+        "详细分析海马体/新皮层理论对AI记忆架构的启发",
+        "连接生物学与工程学的桥梁"
+      ],
+      "key_results": {
+        "perspective": "从神经元到AI代理的全层次分析"
+      },
+      "why_medium_value": "为生物启发的AI记忆设计提供理论基础。",
+      "link": "https://arxiv.org/abs/2512.23343"
+    },
+    {
+      "id": 28,
+      "type": "academic_paper",
+      "title_zh": "治理LLM智能体中的演进记忆：风险、机制与SSGM框架",
+      "title_en": "Governing Evolving Memory in LLM Agents: Risks, Mechanisms, and SSGM Framework",
+      "arxiv_id": "2603.11768",
+      "status": "2026-03",
+      "domain": "记忆安全",
+      "value_level": "medium",
+      "abstract_zh": "探讨智能体记忆演进过程中的安全风险，提出稳定性与安全治理记忆（SSGM）框架。",
+      "innovations": [
+        "首个关注记忆安全风险的框架",
+        "SSGM治理框架",
+        "记忆结构与推理能力关系的深入分析"
+      ],
+      "key_results": {
+        "framework": "SSGM (Stability and Safety Governance Memory)"
+      },
+      "why_medium_value": "首次系统性关注记忆演进的安全风险，填补安全研究空白。",
+      "link": "https://arxiv.org/abs/2603.11768"
+    },
+    {
+      "id": 29,
+      "type": "academic_paper",
+      "title_zh": "MemoryAgentBench: 通过增量多轮交互评估LLM智能体中的记忆",
+      "title_en": "MemoryAgentBench: Evaluating Memory in LLM Agents via Incremental Multi-Turn Interactions",
+      "arxiv_id": "2507.05257",
+      "status": "ICLR 2026",
+      "domain": "基准测试",
+      "value_level": "medium",
+      "abstract_zh": "专门针对记忆智能体的新基准，评估四项核心能力：准确检索、测试时学习、长程理解和冲突消解。",
+      "innovations": [
+        "四项核心记忆能力评估",
+        "增量分块模拟真实多轮交互",
+        "综合评估框架"
+      ],
+      "key_results": {
+        "capabilities": ["准确检索", "测试时学习", "长程理解", "冲突消解"],
+        "finding": "揭示了当前多种记忆架构在四项能力上的不均衡表现"
+      },
+      "why_medium_value": "ICLR 2026接收，四项核心能力评估为记忆研究提供全面基准。",
+      "link": "https://arxiv.org/abs/2507.05257",
+      "code": "https://github.com/HUST-AI-HYZ/MemoryAgentBench"
+    },
+    {
+      "id": 30,
+      "type": "industrial_product",
+      "title_zh": "Amazon Bedrock AgentCore Memory: 构建上下文感知智能体",
+      "title_en": "Amazon Bedrock AgentCore Memory: Building Context-Aware Agents",
+      "status": "AWS云产品",
+      "organization": "Amazon AWS",
+      "domain": "工业产品",
+      "value_level": "high",
+      "abstract_zh": "完全托管的长期记忆服务，实现AI智能体的短期对话上下文和跨会话长期学习。实施研究支持的长期记忆管道，模拟人类记忆过程。",
+      "innovations": [
+        "完全托管的短期+长期记忆",
+        "可自定义提取和整合算法",
+        "最长365天的事件保留期",
+        "流式通知支持"
+      ],
+      "key_features": [
+        "短期对话上下文",
+        "跨会话长期学习",
+        "人类记忆过程模拟"
+      ],
+      "why_high_value": "AWS首个人工智能记忆云服务，标志记忆技术正式进入主流云服务。",
+      "link": "https://aws.amazon.com/blogs/machine-learning/building-smarter-ai-agents-agentcore-long-term-memory-deep-dive/"
+    },
+    {
+      "id": 31,
+      "type": "open_source_framework",
+      "title_zh": "Mem0: 面向生产就绪AI智能体的可扩展长期记忆",
+      "title_en": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+      "status": "开源框架 + ECAI 2025已发表",
+      "organization": "Mem0 AI",
+      "domain": "工业产品",
+      "value_level": "high",
+      "abstract_zh": "可扩展的记忆中心化架构，三层记忆范围（用户/会话/智能体），混合存储（向量搜索+图数据库）。",
+      "innovations": [
+        "三层记忆范围架构",
+        "混合存储结合向量搜索与图数据库",
+        "自动去重和增量更新"
+      ],
+      "key_results": {
+        "LoCoMo": "91.6",
+        "LongMemEval": "93.4",
+        "avg_memory_tokens": "~7000"
+      },
+      "why_high_value": "最流行的生产就绪记忆框架，已有大规模工业部署。",
+      "link": "https://mem0.ai",
+      "report": "https://mem0.ai/blog/state-of-ai-agent-memory-2026"
+    },
+    {
+      "id": 32,
+      "type": "open_source_framework",
+      "title_zh": "Letta (MemGPT): 记忆作为智能体状态的第一类组件",
+      "title_en": "Letta (MemGPT): Memory as a First-Class Agent State Component",
+      "status": "持续开发",
+      "organization": "Letta Inc.",
+      "domain": "工业产品",
+      "value_level": "high",
+      "abstract_zh": "将记忆作为智能体状态的第一类显式组件，使智能体能够持久化、演进。支持基于操作的记忆管理系统。",
+      "innovations": [
+        "记忆作为状态的一部分",
+        "操作式记忆管理",
+        "生态活跃，与DeepLearning.AI合作课程"
+      ],
+      "key_features": [
+        "记忆即状态",
+        "操作式管理",
+        "活跃生态"
+      ],
+      "why_high_value": "最早将记忆作为一等公民的框架，生态活跃度高。",
+      "link": "https://www.letta.com"
+    },
+    {
+      "id": 33,
+      "type": "industry_report",
+      "title_zh": "2026年AI智能体记忆状态：基准、架构与运营研究增长",
+      "title_en": "State of AI Agent Memory 2026: Benchmarks, Architectures, and the Growing Body of Operational Research",
+      "status": "行业研究报告",
+      "organization": "Mem0",
+      "domain": "行业报告",
+      "value_level": "medium",
+      "abstract_zh": "对2026年AI智能体记忆领域的全面状态评估，对比十种记忆方法和21种集成方案。",
+      "innovations": [
+        "十种记忆方法对比",
+        "21种集成方案评估",
+        "三大基准横向比较"
+      ],
+      "key_findings": [
+        "向量+图谱混合架构成为主流",
+        "工具型记忆操作架构表现优异",
+        "标准化基准逐渐形成"
+      ],
+      "why_medium_value": "全面的行业状态报告，为研究者和开发者提供决策参考。",
+      "link": "https://mem0.ai/blog/state-of-ai-agent-memory-2026"
+    }
+  ],
+  "new_innovation_suggestions": [
+    {
+      "suggestion_id": 1,
+      "title": "超图增强的联邦多智能体记忆共享框架",
+      "based_on": ["HyperMem", "G-Memory", "Experience Compression Spectrum"],
+      "description": "结合HyperMem的超图记忆架构和G-Memory的多智能体协作思想，设计超图增强的联邦多智能体记忆共享框架。多个智能体在本地维护超图记忆，通过联邦学习共享超图嵌入而不共享原始记忆内容，实现隐私保护下的跨智能体知识迁移。",
+      "potential_impact": "解决多智能体系统中的隐私保护和知识共享矛盾，适用于企业协作、医疗联盟等场景。",
+      "feasibility": "中高 - 超图和联邦学习各有成熟基础，融合方向清晰。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 2,
+      "title": "生物启发的双驱动记忆编译系统",
+      "based_on": ["Experience Compression Spectrum", "ParamMem", "SYNAPSE"],
+      "description": "基于互补学习系统（CLS）理论，设计双向记忆编译系统：向下编译将海马体式详细记忆转化为新皮层式抽象知识（Experience Compression），向上编译将参数化反思模式解码为可操作的情景提示（ParamMem）。结合扩散激活实现跨层级记忆检索。",
+      "potential_impact": "实现双向知识转化，兼顾记忆精度和泛化能力，为通用智能体提供生物合理记忆架构。",
+      "feasibility": "中 - 理论深度大，需要精确建模双向转化机制。",
+      "novelty_level": "很高"
+    },
+    {
+      "suggestion_id": 3,
+      "title": "记忆即工具：可组合记忆操作原语框架",
+      "based_on": ["MemoryOS", "RMM", "Evo-Memory"],
+      "description": "受MemoryOS操作系统启发，设计一组记忆操作原语（read/write/evict/merge/split/reflect），类似GPU CUDA的cuMem内存管理接口。智能体像编程一样组合这些原语构建定制记忆流，Evo-Memory提供测试时进化能力自动优化原语组合策略。",
+      "potential_impact": "将记忆管理从黑盒变为可编程接口，极大提升灵活性和可调试性。",
+      "feasibility": "高 - 概念清晰，有操作系统和GPU内存管理的成熟先例。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 4,
+      "title": "多模态记忆编码与跨模态检索框架",
+      "based_on": ["A-MEM", "SGMem", "GAM-DeepResearch"],
+      "description": "将A-MEM的知识图谱结构和SGMem的细粒度表示扩展到多模态空间。文本、图像、音频分别编码为模态特定节点，通过跨模态注意力边连接。GAM的深度研究能力用于跨模态记忆构建——当某模态信息不足时，主动搜索互补模态的记忆条目。",
+      "potential_impact": "突破当前以文本为主的记忆框架限制，支持真实的 multimodal agent 场景。",
+      "feasibility": "中 - 多模态编码已有基础，跨模态记忆检索是创新点。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 5,
+      "title": "面向安全隐私的差分隐私记忆框架",
+      "based_on": ["Governing Evolving Memory (SSGM)", "A-MEM", "Mem0"],
+      "description": "结合SSGM的安全治理框架和A-MEM的动态图谱结构，设计支持差分隐私的记忆系统。在记忆写入时注入噪声、在检索时进行隐私预算追踪，实现可证明的隐私保护。Mem0的自动去重机制用于减少噪声累积。",
+      "potential_impact": "为医疗、金融等强监管领域的智能体记忆提供可证明的隐私保障。",
+      "feasibility": "中 - 差分隐私与图结构的结合存在理论挑战。",
+      "novelty_level": "很高"
+    },
+    {
+      "suggestion_id": 6,
+      "title": "基于认知量表的可信记忆评估体系",
+      "based_on": ["MemoryAgentBench", "Evo-Memory", "Memory in the Age of AI Agents (Survey)"],
+      "description": "基于四项基准（MemoryAgentBench、Evo-Memory、LoCoMo、LongMemEval）和三维分类学（形式/功能/动态），设计类似智商测试的Agent Memory Quotient (AMQ)评估体系。包含情景记忆量表、语义记忆量表、工作记忆量表、记忆增强量表和安全治理量表。",
+      "potential_impact": "为智能体记忆能力提供标准化、可比对的量化评分，推动领域研究可比性。",
+      "feasibility": "中高 - 需要整合多个现有基准的设计思路。",
+      "novelty_level": "中高"
+    }
+  ]
+}

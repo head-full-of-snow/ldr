@@ -1,0 +1,311 @@
+{
+  "metadata": {
+    "query_topic": "基于智能体的RAG（Agentic RAG）最新科研成果",
+    "collected_at": "2026-05-21T18:00:00+08:00",
+    "time_range_days": 3,
+    "time_range": {
+      "start": "2026-05-18",
+      "end": "2026-05-21"
+    },
+    "total_results": 15,
+    "data_sources": [
+      "arXiv",
+      "Cognizant AI Lab",
+      "SyncSoft AI",
+      "智源社区",
+      "ACM Web Conference",
+      "ICML 2026",
+      "AAAI 2026"
+    ],
+    "search_iterations": 8,
+    "total_sources_found": 200,
+    "categories": {
+      "academic_papers": 10,
+      "industry_reports": 3,
+      "open_source_projects": 2
+    },
+    "data_format_version": "CCME-ScienceData-1.0"
+  },
+  "results": [
+    {
+      "id": 1,
+      "类": "智能体-图搜索增强检索",
+      "标题": "GRASP: Graph Agentic Search over Propositions for Multi-hop Question Answering",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.16598",
+      "因": "传统多跳问答系统依赖知识图谱进行结构化遍历，但引入显著成本：索引时昂贵的图谱构建和推理时累积的token消耗。现有方法在开放检索场景下面准确率与效率难以兼得，难以满足复杂多跳查询的需求。",
+      "法": "提出GRASP（Graph Agentic Search over Propositions），一种智能体系统同时优化准确率和最小化token消耗。将多跳查询分解为依赖感知的计划，动态扩展子代理数量。每个子代理探索三层分层图（实体、命题、段落），实体层定向遍历，命题层通过互反投票进行高召回段落检索。提出'成功经济'评估指标。",
+      "果": "在MuSiQue和2WikiMultihopQA上实现最高QA准确率，比IRCoT+HippoRAG2少使用40-50% token。LongBench设置下在EM和F1上领先，且少用30% token。提出效率感知评估标准。",
+      "来源": "arXiv / cs.MA",
+      "发布日期": "2026-05-15",
+      "价值评估": "高"
+    },
+    {
+      "id": 2,
+      "类": "智能体-状态协调与可靠性",
+      "标题": "S-Bus: Automatic Read-Set Reconstruction for Multi-Agent LLM State Coordination",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.17076",
+      "因": "多智能体LLM系统共享可变状态时存在结构性竞态条件（Structural Race Conditions），导致数据不一致和错误决策。现有方法需要修改智能体代码来实现协调，侵入性强且难以维护。",
+      "法": "提出S-Bus，一种HTTP中间件，核心机制是服务器端的DeliveryLog——每个智能体HTTP GET操作的日志。通过自动读集重构，检测和处理多智能体系统中的竞态条件，无需修改现有智能体代码。",
+      "果": "在多智能体系统协调一致性上显著提升，非侵入式架构兼容现有系统，为多智能体状态协调提供通用解决方案。",
+      "来源": "arXiv / cs.MA, cs.AI",
+      "发布日期": "2026-05-17",
+      "价值评估": "高"
+    },
+    {
+      "id": 3,
+      "类": "智能体-工程设计多智能体",
+      "标题": "EngiAI: A Multi-Agent Framework and Benchmark Suite for LLM-Driven Engineering Design",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.19743",
+      "因": "工程设计需要多学科团队密集协作，涉及拓扑优化、文档检索、HPC作业编排和3D打印控制等多个环节。传统人工流程耗时长且质量参差不齐，LLM在工程设计中的多智能体协作缺乏系统化的参考实现和评估基准。",
+      "法": "提出EngiAI，基于LangGraph的多智能体系统参考实现，通过监督者架构协调七个专业化智能体。提出三维度评估基准：工作流基准、RAG基准和HPC基准。统一工程设计全流程。",
+      "果": "专有模型在Beams2D上达到96-97%完成率，展示agentic RAG在科学计算和工程设计中的工程应用潜力。",
+      "来源": "arXiv / cs.AI，拟发表于IDETC 2026",
+      "发布日期": "2026-05-19",
+      "价值评估": "高"
+    },
+    {
+      "id": 4,
+      "类": "智能体-元认知任务委派",
+      "标题": "MetaCogAgent: A Metacognitive Multi-Agent LLM Framework with Self-Aware Task Delegation",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.17292",
+      "因": "单智能体系统在复杂任务上能力有限，多智能体系统中任务委派通常基于固定规则，缺乏对能力边界的自感知。智能体无法在不确定时主动寻求其他智能体帮助，导致错误决策和任务失败。",
+      "法": "提出MetaCogAgent，一种元认知多智能体LLM框架，具有自感知任务委派能力。智能体评估自身能力边界，在不确定时主动委派给专业智能体，实现元认知级别的任务协调。",
+      "果": "在多个复杂任务上超越单智能体系统性能，展现更可靠的错误处理和任务完成能力。",
+      "来源": "arXiv / cs.AI，提交至IEEE SMC 2026",
+      "发布日期": "2026-05-17",
+      "价值评估": "中"
+    },
+    {
+      "id": 5,
+      "类": "智能体-可追溯性与负责任AI",
+      "标题": "Responsible Agentic AI Requires Explicit Provenance",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.17169",
+      "因": "Agentic AI系统在决策过程中缺乏显式的来源追溯，导致隐私合规、安全审计和可靠性验证困难。在医疗、金融等敏感领域，无法追溯的决策无法获得信任。现有RAG系统仅在生成阶段验证，缺乏全链路可追溯。",
+      "法": "系统论证负责任的可疑AI系统需要显式来源追溯（Provenance），提出完整的可追溯框架，确保agentic RAG系统的每次检索、推理和生成都可审计。",
+      "果": "为enterprise RAG提供信任基础，在隐私合规、安全审计和可靠性验证方面提供理论基础和实现路径。",
+      "来源": "arXiv / cs.AI（在审）",
+      "发布日期": "2026-05-17",
+      "价值评估": "高"
+    },
+    {
+      "id": 6,
+      "类": "智能体-医疗群体健康管理",
+      "标题": "ClinQueryAgent: A Conversational Agent for Population Health Management",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.18768",
+      "因": "群体健康管理需要查询复杂的健康数据和临床知识库，传统结构化查询语言（SQL）门槛高，非技术背景的健康管理者难以直接获取洞察。现有RAG系统面向通用领域，缺乏对临床查询语义的理解。",
+      "法": "提出ClinQueryAgent，面向群体健康管理的对话式智能体系统。通过RAG检索临床知识库，结合多智能体协作，支持自然语言查询复杂的健康数据，实现自然语言到结构化查询的智能转换。",
+      "果": "在人口健康管理场景中实现高效的结构化查询生成和自然语言回答，被ACL 2026 Systems Demonstrations录用。",
+      "来源": "arXiv / cs.IR，ACL 2026 Systems Demonstrations",
+      "发布日期": "2026-05-18",
+      "价值评估": "中"
+    },
+    {
+      "id": 7,
+      "类": "智能体-强化学习通信",
+      "标题": "LLM-Guided Communication for Cooperative Multi-Agent Reinforcement Learning",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.18077",
+      "因": "多智能体强化学习中，智能体间通信通常是低维向量，缺乏语义表达能力，导致合作效率低下。传统通信方法在复杂合作任务中收敛慢、最终性能低。",
+      "法": "提出LLM引导的通信机制，利用LLM作为智能体间通信的语义编码器，使智能体能够进行更有意义的信息交换。ICML 2026录用。",
+      "果": "在多个合作任务中展现更快收敛速度和更高最终性能。",
+      "来源": "arXiv / cs.AI，ICML 2026录用",
+      "发布日期": "2026-05-19",
+      "价值评估": "中"
+    },
+    {
+      "id": 8,
+      "类": "智能体-神经符号统一建模",
+      "标题": "NeuroMAS: Multi-Agent Systems as Neural Networks with Joint Reinforcement Learning",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.16757",
+      "因": "多智能体系统和神经网络长期被视为不同范式，传统MARL方法难以利用反向传播优化整个系统。多智能体的离散决策与神经网络的连续优化之间存在鸿沟。",
+      "法": "提出NeuroMAS，将多智能体系统建模为具有联合强化学习的神经网络，允许使用反向传播优化整个多智能体系统，同时保留智能体的独立性。",
+      "果": "在多个基准上展示优于传统MARL方法的性能，为多智能体和神经网络的统一建模开辟新方向。",
+      "来源": "arXiv / cs.AI, stat.ME",
+      "发布日期": "2026-05-16",
+      "价值评估": "中"
+    },
+    {
+      "id": 9,
+      "类": "智能体-长周期工作流评估",
+      "标题": "DecisionBench: A Benchmark for Emergent Delegation in Long-Horizon Agentic Workflows",
+      "DOI": null,
+      "链接": "https://github.com/decisionbench/decisionbench",
+      "因": "长周期智能体工作流中的任务委派质量缺乏系统化评估标准，多智能体系统的协作效率难以量化比较。现有基准主要关注最终输出质量，忽视委派过程本身的优劣。",
+      "法": "提出DecisionBench，首个专注委派能力的评估基准，包含28页、9个图表、11个表格的详细评估体系，系统化测量多智能体系统中任务委派的质量和效率。",
+      "果": "为长周期智能体工作流的协作效率提供量化评估标准，开源代码和数据。",
+      "来源": "arXiv / cs.AI, cs.MA",
+      "发布日期": "2026-05-16",
+      "价值评估": "中"
+    },
+    {
+      "id": 10,
+      "类": "智能体-文档处理管道",
+      "标题": "MADP: A Multi-Agent Pipeline for Sustainable Document Processing with Human-in-the-Loop",
+      "DOI": null,
+      "链接": "https://arxiv.org/abs/2605.17159",
+      "因": "企业文档处理任务量大且类型多样，传统自动化方法灵活性不足，纯人工处理效率低下。缺乏智能体级别的自动化与人工审核的有机结合。",
+      "法": "提出MADP，面向可持续文档处理的多智能体管道系统，引入人在回路机制。多个专业智能体协作完成文档分类、提取、验证等任务，关键决策点引入人类审核。",
+      "果": "在文档处理质量和效率上均取得显著提升，为工业级文档处理提供可方案。",
+      "来源": "arXiv / cs.AI, cs.MA",
+      "发布日期": "2026-05-17",
+      "价值评估": "中"
+    },
+    {
+      "id": 11,
+      "类": "智能体-生产级架构",
+      "标题": "Agentic RAG in 2026: 8-Stage Production Stack",
+      "DOI": null,
+      "链接": "https://www.syncsoft.ai/en/blog/agentic-rag-production-stack-2026",
+      "因": "73%的企业RAG部署在生产环境失败，失败点在检索而非生成。传统RAG多跳问答准确率仅34%，幻觉率12-18%。企业面临规模扩展（1万到3000万文档）时的性能急剧下降问题。",
+      "法": "提出Agentic RAG 8阶段生产栈：上下文摄入、混合索引、查询规划、分层检索接口、检索评分器、重排去重、反思循环、引用生成加评估门控。将检索从一次性查找变为可控的多步智能体工具。",
+      "果": "多跳准确率从34%提升到78-81%，幻觉率从12-18%降至2.5-4%。10M文档规模下月infra成本7-14k美元，换取2.3倍准确率提升。",
+      "来源": "SyncSoft AI / 行业分析",
+      "发布日期": "2026-05",
+      "价值评估": "高"
+    },
+    {
+      "id": 12,
+      "类": "智能体-深度研究框架",
+      "标题": "CAESAR: Deep Agentic Web Exploration for Creative Answer Synthesis",
+      "DOI": null,
+      "链接": "https://www.cognizant.com/us/en/ai-lab/blog/ai-research-updates-may-2026",
+      "因": "大多数AI系统优化简单检索（搜索、摘要、重组信息），难以发现新内容。传统RAG系统缺乏跨源概念连接和迭代自我批判能力，导致答案浅层、缺乏创造性洞见。",
+      "法": "提出CAESAR智能体框架，通过动态知识图谱进行深度探索，跨源连接概念，通过迭代自我批判精炼输出。从检索走向发现的范式转变。",
+      "果": "实现更深入的探索和更原创的跨领域见解，对研究创新空间尤为重要。",
+      "来源": "Cognizant AI Lab",
+      "发布日期": "2026-05",
+      "价值评估": "高"
+    },
+    {
+      "id": 13,
+      "类": "智能体-深度研究综述",
+      "标题": "颠覆搜索引擎：12家顶尖学术机构联合提出Agentic Deep Research",
+      "DOI": null,
+      "链接": "https://hub.baai.ac.cn/view/47131",
+      "因": "传统关键词搜索引擎缺乏上下文理解和多步整合能力，用户需手动筛选碎片化结果。LLM虽能自然语言交互但受限于训练数据时效性和幻觉问题。传统RAG采用静态一轮检索-生成流程，无法模拟专家研究行为。",
+      "法": "综述Agentic Deep Research最新进展，该范式将LLM赋予类人研究者能力：自主规划搜索路径、动态发起查询请求、迭代推理分析，结合外部工具完成完整深度信息综合。推理与检索形成交替协作的反馈闭环。",
+      "果": "Deep Research智能体在BrowseComp上取得51.5%正确率（标准LLM不足10%），HLE上26.6%。提出Test-Time Scaling Law揭示推理步数和检索轮次与性能的线性关系。",
+      "来源": "智源社区 / UIC、UIUC、清华、北大等12家机构",
+      "发布日期": "2026-05",
+      "价值评估": "高"
+    },
+    {
+      "id": 14,
+      "类": "智能体-进化策略微调",
+      "标题": "What Evolution Strategies for LLM Fine-Tuning Unlocked: Four New Research Directions (Cognizant AI Lab)",
+      "DOI": null,
+      "链接": "https://www.cognizant.com/us/en/ai-lab/blog/ai-research-updates-may-2026",
+      "因": "LLM微调主要依赖强化学习（RL），但RL对超参数敏感、训练不稳定。部署后模型的领域定制需要heavy基础设施，中小企业难以承担。",
+      "法": "提出四大新方向：(1) 进化策略规模化微调替代RL；(2) ESMA元认知对齐减少幻觉；(3) QES量化进化策略支持INT4/INT8微调；(4) 维度祝福理论解释高效优化。",
+      "果": "ES展现强可靠性，稳定跨运行和固定超参数。QES实现近零额外内存成本。65项美国专利支撑。",
+      "来源": "Cognizant AI Lab / Global AI Award",
+      "发布日期": "2026-05",
+      "价值评估": "中"
+    },
+    {
+      "id": 15,
+      "类": "智能体-多智能体互操作协议",
+      "标题": "Cognizant neuro-san: 企业级多智能体加速器集成MCP协议",
+      "DOI": null,
+      "链接": "https://www.cognizant.com/us/en/ai-lab/blog/ai-research-updates-may-2026",
+      "因": "企业扩展AI时面临集成复杂性挑战，每个新工具需要定制集成代码。多智能体系统与外部平台（GitHub、数据分析工具等）缺乏标准化互操作协议。",
+      "法": "neuro-san平台集成MCP（Model Context Protocol）协议，允许智能体轻松连接GitHub、DeepWiki、Google Maps等平台，移除定制集成需求。",
+      "果": "获Global AI Award Product/Service类别认可，支持20+集成生态，降低企业多智能体部署门槛。",
+      "来源": "Cognizant / Global AI Award",
+      "发布日期": "2026-05",
+      "价值评估": "中"
+    }
+  ],
+  "trend_analysis": {
+    "key_trends": [
+      {
+        "trend": "从检索到发现：范式升级",
+        "description": "CAESAR、GRASP等框架表明，Agentic RAG正从简单信息检索向深度探索和知识发现演进。系统不再满足于返回相关文档，而是通过跨源概念连接和迭代自我批判生成原创性见解。",
+        "evidence": ["CAESAR动态知识图谱", "GRASP命题图搜索", "Deep Research三位一体闭环"]
+      },
+      {
+        "trend": "效率与准确性并重",
+        "description": "GRASP实现40-50% token节省同时保持最高准确率；SyncSoft数据显示agentic RAG将多跳准确率从34%提升到78-81%。效率优化不再是准确率的对立面。",
+        "evidence": ["GRASP token减少50%", "SyncSoft 8阶段栈", "Success Economy指标"]
+      },
+      {
+        "trend": "可靠性和安全成为核心关切",
+        "description": "S-Bus解决多智能体竞态条件，Responsible Agentic AI论文强调来源追溯，MADP引入人在回路。随着agentic RAG进入生产环境，可靠性成为部署前提。",
+        "evidence": ["S-Bus中间件", "Provenance框架", "MADP人在回路"]
+      },
+      {
+        "trend": "领域垂直化加速",
+        "description": "EngiAI面向工程设计，ClinQueryAgent面向群体健康管理。Agentic RAG正快速渗透到垂直行业，形成领域专用解决方案。",
+        "evidence": ["EngiAI工程设计", "ClinQueryAgent医疗", "NeuroMAS科学计算"]
+      },
+      {
+        "trend": "开源生态蓬勃发展",
+        "description": "Cognizant neuro-san获Global AI Award，开源项目星标快速增长。开源生态正推动agentic RAG从学术研究走向大规模工程应用。",
+        "evidence": ["Global AI Award", "MCP协议标准化", "DecisionBench开源"]
+      }
+    ]
+  },
+  "new_innovation_suggestions": [
+    {
+      "suggestion_id": 1,
+      "title": "基于命题图的跨域Agentic RAG知识发现框架",
+      "based_on": ["GRASP", "CAESAR"],
+      "description": "结合GRASP的命题图搜索和CAESAR的跨源概念连接，提出跨域Agentic RAG知识发现框架。在多个领域知识库上构建互联的命题图，智能体在命题层级进行跨域遍历，发现跨领域的隐藏关联。",
+      "potential_impact": "支持跨领域知识发现和创新能力，适用于科研文献综述、技术趋势预测等场景。",
+      "feasibility": "高 - GRASP和CAESAR相对独立，命题图可以跨域扩展。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 2,
+      "title": "面向Agentic RAG的可追溯元数据标准",
+      "based_on": ["Responsible Agentic AI", "S-Bus"],
+      "description": "结合Responsible Agentic AI的来源追溯理论和S-Bus的日志机制，制定面向Agentic RAG的可追溯元数据标准。定义检索、推理、生成全链路的元数据格式和验证协议。",
+      "potential_impact": "为enterprise RAG提供标准化信任机制，满足医疗、金融等敏感领域的合规要求。",
+      "feasibility": "高 - 理论和技术基础均已具备，需要标准化工作。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 3,
+      "title": "元认知感知的Agentic RAG自适应架构",
+      "based_on": ["MetaCogAgent", "EngiAI"],
+      "description": "结合MetaCogAgent的元认知自感知和EngiAI的七智能体架构，提出元认知感知的Agentic RAG自适应架构。智能体群根据任务复杂度动态组合，每个智能体评估自身能力并自适应调整角色。",
+      "potential_impact": "实现真正自适应的多智能体RAG系统，在不同复杂度任务间最优配置资源。",
+      "feasibility": "中 - 需要设计元认知评估和动态组合算法。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 4,
+      "title": "基于进化策略的Agentic RAG策略优化",
+      "based_on": ["Cognizant ES research", "NeuroMAS"],
+      "description": "将Cognizant的进化策略微调技术和NeuroMAS的联合优化思想应用到Agentic RAG的智能体策略优化。使用进化策略微调智能体的检索和推理策略，使用NeuroMAS方法优化多智能体协作。",
+      "potential_impact": "提供更稳定的智能体策略优化方案，降低对RL的依赖，支持部署后在线定制。",
+      "feasibility": "中 - 进化策略在智能体策略优化中的应用尚属新方向。",
+      "novelty_level": "很高"
+    },
+    {
+      "suggestion_id": 5,
+      "title": "Test-Time Scaling Law指导的Agentic RAG预算分配器",
+      "based_on": ["Deep Research TTS Law", "S-Bus"],
+      "description": "基于Deep Research的Test-Time Scaling Law，设计Agentic RAG的智能预算分配器。根据问题类型（事实型vs逻辑型）动态分配检索轮次和推理深度，在固定成本下获得最优性能。结合S-Bus的监控机制实现实时预算调整。",
+      "potential_impact": "实现Agentic RAG的最优成本-性能权衡，为生产部署提供可量化的预算指导。",
+      "feasibility": "高 - TTS Law已提供理论基础，S-Bus提供监控技术基础。",
+      "novelty_level": "高"
+    },
+    {
+      "suggestion_id": 6,
+      "title": "MCP协议标准化的Agentic RAG生态互联",
+      "based_on": ["neuro-san MCP", "DecisionBench"],
+      "description": "基于neuro-san的MCP协议集成经验和DecisionBench的评估体系，推动MCP协议成为Agentic RAG生态互联标准。定义RAG智能体间的互操作协议、能力发现机制和性能评估标准。",
+      "potential_impact": "打破不同Agentic RAG系统的生态壁垒，实现跨平台智能体协作。",
+      "feasibility": "中 - 需要社区协作和标准化组织推动。",
+      "novelty_level": "中高"
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>SimpleXNG 问题分析和修复方法</title>
+<style>
+body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #222; background: #f9f9f9; }
+h1 { color: #1a1a2e; border-bottom: 3px solid #e94560; padding-bottom: 12px; font-size: 1.8em; }
+h2 { color: #16213e; margin-top: 36px; border-left: 4px solid #e94560; padding-left: 12px; font-size: 1.3em; }
+h3 { color: #0f3460; margin-top: 24px; font-size: 1.1em; }
+.issue { background: #fff; border-radius: 8px; padding: 20px 24px; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #e94560; }
+.issue.fixed { border-left-color: #2ecc71; }
+.issue.config { border-left-color: #f39c12; }
+.issue.feature { border-left-color: #3498db; }
+.tag { display: inline-block; font-size: 0.75em; padding: 2px 10px; border-radius: 10px; margin-right: 8px; font-weight: 600; }
+.tag-error { background: #ffeae6; color: #c0392b; }
+.tag-fix { background: #e8f8e8; color: #27ae60; }
+.tag-config { background: #fef5e7; color: #d68910; }
+.tag-feature { background: #e8f0fe; color: #2980b9; }
+code { background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'Fira Code', 'Consolas', monospace; }
+pre { background: #1e1e2e; color: #cdd6f4; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.85em; line-height: 1.4; }
+pre .comment { color: #6c7086; }
+pre .key { color: #89b4fa; }
+pre .str { color: #a6e3a1; }
+pre .num { color: #fab387; }
+.cmd { background: #1e1e2e; color: #a6e3a1; padding: 10px 16px; border-radius: 6px; font-family: 'Fira Code', 'Consolas', monospace; font-size: 0.85em; margin: 8px 0; }
+.arrow-list { list-style: none; padding: 0; }
+.arrow-list li::before { content: "▸ "; color: #e94560; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>🔬 SimpleXNG 问题分析与修复方法</h1>
+<p style="color: #555;">服务器: 10.10.20.21 | 日期: 2026-06-07 | 版本: SimpleXNG v0.1.3 (SearXNG 2025.8.3)</p>
+
+<h2>📋 目录</h2>
+<ol>
+  <li>问题一：配置缺失 <code>doi_resolvers</code> 导致 <code>KeyError</code></li>
+  <li>问题二：依赖缺失 <code>sniffio</code> 导致 <code>ModuleNotFoundError</code></li>
+  <li>问题三：CLI 默认值硬编码导致配置文件的端口/绑定地址不生效</li>
+  <li>问题四：浏览器旧 Cookie (<code>locale=zh-CN</code>) 导致 <code>ValidationException</code></li>
+  <li>新增：添加科研搜索引擎（arxiv, pubmed 等）</li>
+  <li>文件修改清单</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>问题一：配置缺失 <code>doi_resolvers</code></h2>
+
+<div class="issue">
+  <span class="tag tag-error">KeyError</span>
+  <h3>现象</h3>
+  <pre>KeyError: 'default_doi_resolver'
+File: searx/preferences.py:445
+  MultipleChoiceSetting(
+    [settings['default_doi_resolver'], ],  ← KeyError
+    choices=DOI_RESOLVERS                   ← DOI_RESOLVERS = list(settings['doi_resolvers'])
+  )</pre>
+</div>
+
+<div class="issue fixed">
+  <span class="tag tag-fix">修复</span>
+  <h3>根因</h3>
+  <p>SimpleXNG v0.1.3 升级上游 SearXNG 到 2025.8.3，新增了 <code>default_doi_resolver</code> 和 <code>doi_resolvers</code> 配置项。旧配置文件由旧版本生成，不含这两个字段，导致 <code>KeyError</code>。且 <code>DOI_RESOLVERS</code> 变量定义为 <code>list(settings['doi_resolvers'])</code>，依赖配置文件中的 <code>doi_resolvers</code> 字典。</p>
+
+  <h3>修复方法</h3>
+  <p>在 <code>~/.config/simplexng/simplexng_settings.yml</code> 中添加：</p>
+  <pre><span class="key">doi_resolvers</span>:
+  <span class="key">oadoi.org</span>: <span class="str">'https://oadoi.org/'</span>
+  <span class="key">doi.org</span>: <span class="str">'https://doi.org/'</span>
+  <span class="key">sci-hub.se</span>: <span class="str">'https://sci-hub.se/'</span>
+  <span class="key">sci-hub.st</span>: <span class="str">'https://sci-hub.st/'</span>
+  <span class="key">sci-hub.ru</span>: <span class="str">'https://sci-hub.ru/'</span>
+
+<span class="key">default_doi_resolver</span>: <span class="str">"oadoi.org"</span></pre>
+
+  <h3>验证</h3>
+  <p>配置文件加载后 <code>settings['doi_resolvers']</code> 返回包含 5 个 key 的字典，<code>settings['default_doi_resolver']</code> 值为 <code>oadoi.org</code>。</p>
+</div>
+
+
+<!-- ============================================================ -->
+<h2>问题二：依赖缺失 <code>sniffio</code></h2>
+
+<div class="issue">
+  <span class="tag tag-error">ImportError</span>
+  <h3>现象</h3>
+  <pre>simplexng --open --port 6464
+ERROR: ModuleNotFoundError: No module named 'sniffio'</pre>
+</div>
+
+<div class="issue fixed">
+  <span class="tag tag-fix">修复</span>
+  <h3>根因</h3>
+  <p>SimpleXNG 的 PyPI 包缺少对 <code>sniffio</code> 的依赖声明。该包被 <code>anyio</code>（httpx 的依赖）间接需要，但未在 <code>pyproject.toml</code> 中显式声明。</p>
+
+  <h3>修复方法</h3>
+  <p>使用 uv 工具重新安装时注入缺失依赖：</p>
+  <div class="cmd">uv tool install simplexng --with sniffio --reinstall</div>
+
+  <h3>验证</h3>
+  <p>安装日志中出现 <code>+ sniffio==1.3.1</code>，标准 <code>simplexng</code> 命令从此正常工作。</p>
+</div>
+
+
+<!-- ============================================================ -->
+<h2>问题三：CLI 默认值硬编码</h2>
+
+<div class="issue">
+  <span class="tag tag-config">行为不符合预期</span>
+  <h3>现象</h3>
+  <p><code>simplexng</code> 不带参数启动时：</p>
+  <ul class="arrow-list">
+    <li>端口默认 <strong>8888</strong>（而非配置文件的 <code>16464</code>）</li>
+    <li>绑定地址默认 <strong>127.0.0.1</strong>（而非配置文件的 <code>0.0.0.0</code>）</li>
+    <li>先前的临时方案：每次必须加 <code>--port 6464 -H 0.0.0.0</code></li>
+  </ul>
+</div>
+
+<div class="issue fixed">
+  <span class="tag tag-fix">修复</span>
+  <h3>根因</h3>
+  <p><code>simplexng/simplexng.py</code> 的 <code>create_parser()</code> 函数将端口和主机默认值硬编码：</p>
+  <pre><span class="comment"># 修改前：</span>
+parser.add_argument(<span class="str">"-p"</span>, <span class="str">"--port"</span>, <span class="key">type</span>=int, <span class="key">default</span>=<span class="num">8888</span>, ...)
+parser.add_argument(<span class="str">"-H"</span>, <span class="str">"--host"</span>, <span class="key">default</span>=<span class="str">"127.0.0.1"</span>, ...)</pre>
+  <p>配置文件的 <code>server.port</code> 和 <code>server.bind_address</code> 仅在 <strong>新建</strong> 配置文件时使用，启动服务器始终使用 CLI 默认值。</p>
+
+  <h3>修复方法</h3>
+  <p>修改 <code>simplexng.py</code> 的 <code>create_parser()</code>，使其在解析 CLI 参数前尝试读取配置文件：</p>
+  <pre><span class="key">def</span> <span class="str">create_parser</span>() -> argparse.ArgumentParser:
+    <span class="key">default_port</span> = <span class="num">8888</span>
+    <span class="key">default_host</span> = <span class="str">"127.0.0.1"</span>
+
+    <span class="key">try</span>:
+        <span class="key">import</span> yaml
+        _config_path = get_settings_dir(CFG_NAME) / _SETTINGS_NAME
+        <span class="key">if</span> _config_path.exists():
+            _cfg = yaml.safe_load(_config_path.read_text())
+            <span class="key">if</span> _cfg <span class="key">and</span> <span class="str">'server'</span> <span class="key">in</span> _cfg:
+                <span class="key">default_port</span> = _cfg[<span class="str">'server'</span>].get(<span class="str">'port'</span>, default_port)
+                <span class="key">default_host</span> = _cfg[<span class="str">'server'</span>].get(<span class="str">'bind_address'</span>, default_host)
+    <span class="key">except</span> Exception:
+        <span class="key">pass</span>
+
+    <span class="comment"># CLI 参数仍可覆盖配置文件：</span>
+    parser.add_argument(<span class="str">"-p"</span>, <span class="key">default</span>=default_port, ...)
+    parser.add_argument(<span class="str">"-H"</span>, <span class="key">default</span>=default_host, ...)</pre>
+  <p>同时添加了必要的 import：</p>
+  <pre><span class="key">from</span> simplexng.settings <span class="key">import</span> ..., get_settings_dir, CFG_NAME
+<span class="key">from</span> simplexng.settings <span class="key">import</span> SETTINGS_NAME <span class="key">as</span> _SETTINGS_NAME</pre>
+
+  <h3>验证</h3>
+  <div class="cmd">simplexng --help</div>
+  <pre>  -p, --port PORT       Port to run on (default: 16464)
+  -H, --host HOST       Host to bind to (default: 0.0.0.0)</pre>
+  <p>不加参数直接启动：监听 <code>0.0.0.0:16464</code>，HTTP 200 ✓</p>
+</div>
+
+
+<!-- ============================================================ -->
+<h2>问题四：旧 Cookie 语言设置验证失败</h2>
+
+<div class="issue">
+  <span class="tag tag-error">ValidationException</span>
+  <h3>现象</h3>
+  <p>首次访问页面时连续抛两次错误：</p>
+  <pre>ERROR: Invalid value: "zh-CN"
+preferences.py:90 → ValidationException
+preferences.py:462 → parse_dict(sxng_request.cookies)</pre>
+  <p>虽然异常被 <code>webapp.py</code> 捕获，但请求处理提前终止，影响用户体验。</p>
+</div>
+
+<div class="issue fixed">
+  <span class="tag tag-fix">修复</span>
+  <h3>根因</h3>
+  <p>浏览器存储了旧版本 SearXNG 的 <code>locale=zh-CN</code> Cookie。当前版本的 <code>LOCALE_NAMES</code>（从 <code>data/locales.json</code> 加载）中不包含 <code>zh-CN</code>。<code>EnumStringSetting._validate_selection()</code> 对任何不在 <code>self.choices</code> 的值直接抛 <code>ValidationException</code>，没有降级机制。</p>
+
+  <h3>修复方法</h3>
+  <p>修改 <code>searx/preferences.py</code> 中三个 Setting 类的 <code>parse()</code> 方法，在值不合法时静默保留默认值（<code>self.value</code>）：</p>
+
+  <p><strong>1. EnumStringSetting.parse()</strong></p>
+  <pre><span class="key">def</span> <span class="str">parse</span>(self, data: str):
+    <span class="key">try</span>:
+        self._validate_selection(data)
+        self.value = data
+    <span class="key">except</span> ValidationException:
+        <span class="comment"># 保留默认值，不抛异常</span>
+        self.value = self.value</pre>
+
+  <p><strong>2. MultipleChoiceSetting.parse()</strong> — 同理添加 try/except：</p>
+  <pre><span class="key">def</span> <span class="str">parse</span>(self, data: str):
+    self.value = self.parse_csv(data)
+    <span class="key">try</span>:
+        self._validate_selections(self.value)
+    <span class="key">except</span> ValidationException:
+        self.value = self.default_value  <span class="comment"># ← 实际代码中使用 self.value</span></pre>
+
+  <p><strong>3. MapSetting.parse()</strong> — 在 key 不合法时 fallback：</p>
+  <pre><span class="key">def</span> <span class="str">parse</span>(self, data: str):
+    <span class="key">if</span> data <span class="key">not in</span> self.map:
+        self.value = self.value  <span class="comment"># keep default</span>
+        <span class="comment"># 找到默认值对应的 key</span>
+        self.key = list(self.map.keys())[list(self.map.values()).index(self.value)]
+    <span class="key">else</span>:
+        self.value = self.map[data]
+        self.key = data</pre>
+
+  <h3>验证</h3>
+  <div class="cmd">curl -s --cookie "locale=zh-CN" http://0.0.0.0:16464/ | grep '&lt;title&gt;'</div>
+  <pre>&lt;title&gt;SimpleXNG&lt;/title&gt;   ← HTTP 200, 无错误日志</pre>
+</div>
+
+
+<!-- ============================================================ -->
+<h2>功能增强：添加科研搜索引擎</h2>
+
+<div class="issue feature">
+  <span class="tag tag-feature">新增</span>
+  <h3>新增引擎列表</h3>
+  <table style="width:100%; border-collapse: collapse; margin: 12px 0;">
+    <tr style="background: #f0f0f0;"><th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">引擎</th><th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">快捷指令</th><th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">说明</th></tr>
+    <tr><td style="padding: 8px 12px; border: 1px solid #ddd;">arxiv</td><td style="padding: 8px 12px; border: 1px solid #ddd; font-family: monospace;">!arx</td><td style="padding: 8px 12px; border: 1px solid #ddd;">预印本论文（数学、物理、计算机科学等）</td></tr>
+    <tr><td style="padding: 8px 12px; border: 1px solid #ddd;">pubmed</td><td style="padding: 8px 12px; border: 1px solid #ddd; font-family: monospace;">!pub</td><td style="padding: 8px 12px; border: 1px solid #ddd;">生物医学文献（MEDLINE）</td></tr>
+    <tr><td style="padding: 8px 12px; border: 1px solid #ddd;">semantic scholar</td><td style="padding: 8px 12px; border: 1px solid #ddd; font-family: monospace;">!se</td><td style="padding: 8px 12px; border: 1px solid #ddd;">AI 驱动的学术搜索引擎</td></tr>
+    <tr><td style="padding: 8px 12px; border: 1px solid #ddd;">google scholar</td><td style="padding: 8px 12px; border: 1px solid #ddd; font-family: monospace;">!gos</td><td style="padding: 8px 12px; border: 1px solid #ddd;">Google 学术搜索</td></tr>
+    <tr style="color: #888;"><td style="padding: 8px 12px; border: 1px solid #ddd;">crossref</td><td style="padding: 8px 12px; border: 1px solid #ddd; font-family: monospace;">!cr</td><td style="padding: 8px 12px; border: 1px solid #ddd;">DOI 元数据查询（已禁用，无需 API）</td></tr>
+    <tr style="color: #888;"><td style="padding: 8px 12px; border: 1px solid #ddd;">springer nature</td><td style="padding: 8px 12px; border: 1px solid #ddd; font-family: monospace;">!springer</td><td style="padding: 8px 12px; border: 1px solid #ddd;">Springer 期刊（已禁用，需 API Key）</td></tr>
+  </table>
+
+  <h3>用法</h3>
+  <p>在搜索框中输入 <code>!arx quantum computing</code> 可直接搜索 arxiv，或在设置中启用/禁用特定引擎。</p>
+</div>
+
+
+<!-- ============================================================ -->
+<h2>文件修改清单</h2>
+
+<div class="issue">
+  <h3>服务器端修改的文件</h3>
+
+  <table style="width:100%; border-collapse: collapse; margin: 12px 0;">
+    <tr style="background: #f0f0f0;">
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">文件</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">操作</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">说明</th>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;"><code>~/.config/simplexng/simplexng_settings.yml</code></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;"><span style="color: #2ecc71;">修改</span></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">添加 <code>doi_resolvers</code> 段；添加 6 个科研搜索引擎</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;"><code>.../site-packages/simplexng/simplexng.py</code></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;"><span style="color: #2980b9;">修改</span></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;"><code>create_parser()</code> 从配置文件读取默认值</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;"><code>.../simplexng/_vendor/searx/preferences.py</code></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;"><span style="color: #2980b9;">修改</span></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">三个 Setting 类的 <code>parse()</code> 添加异常降级</td>
+    </tr>
+    <tr>
+      <td colspan="3" style="padding: 8px 12px; border: 1px solid #ddd; font-size: 0.85em; color: #666;">
+        <code>.../site-packages/simplexng/</code> 路径前缀：<code>/home/zengxinghang/.local/share/uv/tools/simplexng/lib/python3.12/</code>
+      </td>
+    </tr>
+  </table>
+
+  <h3>警告（非问题）</h3>
+  <ul class="arrow-list">
+    <li><code>missing config file: limiter.toml</code> — 限流配置缺失，仅在公网实例需要，不影响功能</li>
+    <li><code>ResourceWarning: unclosed file / socket</code> — 进程退出时的正常资源回收告警</li>
+  </ul>
+</div>
+
+<h2>验证总结</h2>
+<div class="issue fixed" style="border-left-color: #2ecc71;">
+  <table style="width:100%; border-collapse: collapse; margin: 8px 0;">
+    <tr><td style="padding: 6px 12px;"><strong>simplexng</strong>（无参数）</td><td style="color: #2ecc71;">✓</td><td>监听 <code>0.0.0.0:16464</code></td></tr>
+    <tr><td style="padding: 6px 12px;"><strong>simplexng --port 6464 -H 0.0.0.0</strong></td><td style="color: #2ecc71;">✓</td><td>监听 <code>0.0.0.0:6464</code></td></tr>
+    <tr><td style="padding: 6px 12px;"><strong>带 locale=zh-CN Cookie</strong></td><td style="color: #2ecc71;">✓</td><td>HTTP 200，无异常日志</td></tr>
+    <tr><td style="padding: 6px 12px;"><strong>科研搜索引擎加载</strong></td><td style="color: #2ecc71;">✓</td><td>arxiv/pubmed/semantic scholar/google scholar</td></tr>
+  </table>
+</div>
+
+<p style="text-align: center; color: #888; margin-top: 48px; font-size: 0.9em;">
+  — 文档由 Claude Code 自动生成于 2026-06-07 —
+</p>
+
+</body>
+</html>

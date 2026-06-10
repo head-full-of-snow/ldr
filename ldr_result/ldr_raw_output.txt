@@ -1,0 +1,29 @@
+[LDR] Research ID: 3373a258
+[LDR] Query: AI medical diagnosis deep learning medical imaging 2025
+[LDR] Mode: quick
+[LDR] Provider: ollama, Model: qwen3.6-35b-a3
+[LDR] Search Engine: arxiv
+[LDR] Strategy: source-based
+[LDR] Iterations: 3
+
+[LDR] Initializing LLM...
+[LDR] LLM initialized: ProcessingLLMWrapper
+[LDR] Initializing search engine...
+[LDR] Search engine 'arxiv' initialized: ArXivSearchEngine
+[LDR] Creating AdvancedSearchSystem...
+[LDR] System ready.
+
+[LDR] ===== Starting research =====
+
+[SETUP] [1%] Using ollama model: qwen3.6-35b-a3
+[SETUP] [1.5%] Using search tool: arxiv
+[INIT] [5%] Initializing source-based research
+[TERMINATION_CHECK] [None%] Checking termination status
+[QUESTION_GENERATION] (iter 1) [10.0%] Generating initial search questions:
+? AI medical diagnosis deep learning medical imaging 2025
+
+[LDR] ===== Research complete =====
+[LDR] Output dir: C:\Users\YZS\AppData\Local\local-deep-research\local-deep-research\research_outputs\research_3373a258
+[LDR] Results saved to: C:\Users\YZS\AppData\Local\local-deep-research\local-deep-research\research_outputs\research_3373a258\raw_results.json
+
+[SUCCESS] Research completed successfully.

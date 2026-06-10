@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于智能体的RAG最新科研成果报告（2026年5月18日-21日）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .header .date-range {
+            font-size: 1em;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .research-item {
+            background: #f8f9fa;
+            border-left: 5px solid #3498db;
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .research-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .research-item.academic {
+            border-left-color: #e74c3c;
+        }
+
+        .research-item.report {
+            border-left-color: #27ae60;
+        }
+
+        .research-item.industry {
+            border-left-color: #f39c12;
+        }
+
+        .research-item.open_source {
+            border-left-color: #9b59b6;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .item-title {
+            font-size: 1.3em;
+            color: #2c3e50;
+            font-weight: bold;
+            flex: 1;
+        }
+
+        .item-type {
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .item-type.academic { background: #e74c3c; }
+        .item-type.report { background: #27ae60; }
+        .item-type.industry { background: #f39c12; }
+        .item-type.open_source { background: #9b59b6; }
+
+        .item-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .item-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .item-abstract {
+            color: #444;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .innovations {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .innovations h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .innovations ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .innovations li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .innovations li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .item-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .item-link:hover {
+            text-decoration: underline;
+        }
+
+        .summary-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .summary-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .trend-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trend-item h3 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 1.5em;
+            color: #34495e;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background: #ecf0f1;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>基于智能体的RAG最新科研成果</h1>
+            <div class="subtitle">Agentic RAG Research Report</div>
+            <div class="date-range">数据收集时间：2026年5月18日 - 2026年5月21日</div>
+        </div>
+
+        <!-- 统计栏 -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">15</div>
+                <div class="stat-label">科研成果总数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">学术论文</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">行业报告</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2</div>
+                <div class="stat-label">开源项目</div>
+            </div>
+        </div>
+
+        <!-- 内容区 -->
+        <div class="content">
+            <!-- 学术论文类别 -->
+            <div class="category-section">
+                <h2 class="category-title">📚 学术论文 (Academic Papers)</h2>
+
+                <!-- 论文1 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">GRASP: 基于命题的图智能搜索用于多跳问答</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-15</span>
+                        <span>🆔 arXiv:2605.16598</span>
+                        <span>👤 Jenkins, Vinayak, Hu</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出GRASP（Graph Agentic Search over Propositions），一种同时优化准确率和最小化token消耗的智能检索系统。不同于传统的知识图谱方法，GRASP将多跳查询分解为依赖感知的计划，动态调整子代理数量。每个子代理通过三层分层图（实体、命题、段落）探索单一跳查询，在实体层进行定向遍历，在命题层通过互反投票进行高召回段落检索。在MuSiQue和2WikiMultihopQA上实现了最高的问答准确率，同时比IRCoT+HippoRAG2少使用40-50%的token。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>提出基于命题的图搜索而非完整知识图谱构建</li>
+                            <li>三层分层图结构（实体-命题-段落）实现精准与召回的平衡</li>
+                            <li>依赖感知的查询分解和动态子代理扩展</li>
+                            <li>提出"成功经济"（success economy）效率评估指标</li>
+                            <li>token消耗减少40-50%同时保持最高准确率</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.16598" class="item-link">🔗 查看论文</a>
+                </div>
+
+                <!-- 论文2 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">S-Bus: 多智能体LLM状态协调的自动读集重构</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-17</span>
+                        <span>🆔 arXiv:2605.17076</span>
+                        <span>👤 Sajjad Khan</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出S-Bus，一种HTTP中间件，核心机制是服务器端的DeliveryLog——记录每个智能体的HTTP GET操作，自动检测和处理多智能体LLM系统中的结构性竞态条件（Structural Race Conditions）。通过自动读集重构，S-Bus确保共享可变状态下的智能体协调一致性，无需修改现有智能体代码。在多个基准测试中显著提升了多智能体系统的一致性和可靠性。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>提出DeliveryLog机制自动追踪智能体HTTP操作</li>
+                            <li>自动检测结构性竞态条件，无需修改智能体代码</li>
+                            <li>非侵入式HTTP中间件架构，兼容现有系统</li>
+                            <li>为多智能体状态协调提供通用解决方案</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.17076" class="item-link">🔗 查看论文</a>
+                </div>
+
+                <!-- 论文3 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">EngiAI: 面向LLM驱动工程设计的多智能体框架与基准套件</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-19</span>
+                        <span>🆔 arXiv:2605.19743</span>
+                        <span>👤 Molinari, Felten, Massoudi, Fuge</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出EngiAI，一个基于LangGraph的多智能体系统参考实现，通过监督者架构协调七个专业化智能体，统一拓扑优化、文档检索、HPC作业编排和3D打印控制。提出三维度评估基准：工作流基准、RAG基准和HPC基准。使用专有模型在Beams2D上达到96-97%完成率，展示了agentic RAG在科学计算和工程设计中的巨大潜力。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>基于LangGraph的七智能体监督者架构</li>
+                            <li>统一工程设计全流程（拓扑优化、检索、HPC、3D打印）</li>
+                            <li>三维度评估基准体系（工作流/RAG/HPC）</li>
+                            <li>展示agentic RAG在科学计算领域的工程应用</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.19743" class="item-link">🔗 查看论文</a>
+                </div>
+
+                <!-- 论文4 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">MetaCogAgent: 具元认知自感知任务委派的多智能体LLM框架</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-17</span>
+                        <span>🆔 arXiv:2605.17292</span>
+                        <span>👤 Wang, Shu</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出MetaCogAgent，一种元认知多智能体LLM框架，具有自感知任务委派能力。智能体能够评估自身能力边界，在不确定时主动委派给其他专业智能体，实现元认知级别的任务协调。在多个复杂任务上展现了超越单智能体系统的性能和更可靠的错误处理。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>引入元认知自感知机制评估任务能力边界</li>
+                            <li>主动任务委派而非盲目尝试</li>
+                            <li>多智能体元认知协调框架</li>
+                            <li>更可靠的错误处理和任务完成</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.17292" class="item-link">🔗 查看论文</a>
+                </div>
+
+                <!-- 论文5 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">Responsible Agentic AI Requires Explicit Provenance</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-17</span>
+                        <span>🆔 arXiv:2605.17169</span>
+                        <span>👤 Hu, Huang, He, Sun, Dong, Huang</span>
+                    </div>
+                    <div class="item-abstract">
+                        系统论证了负责任的可疑AI系统需要显式的来源追溯（Provenance）。提出了一套完整的可追溯框架，确保agentic RAG系统中的每次检索、推理和生成都可审计。在隐私合规、安全审计和可靠性验证方面提供了理论基础和实现路径。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>首次系统论证agentic AI需要显式来源追溯</li>
+                            <li>完整的可追溯框架设计</li>
+                            <li>面向隐私合规和安全审计的实践指导</li>
+                            <li>为enterprise RAG提供信任基础</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.17169" class="item-link">🔗 查看论文</a>
+                </div>
+
+                <!-- 论文6 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">ClinQueryAgent: 面向群体健康管理的对话式智能体</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-18</span>
+                        <span>🆔 arXiv:2605.18768</span>
+                        <span>👤 Boyle, Dranfield, O'Neil, Liakata, Smithard</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出ClinQueryAgent，一个面向群体健康管理的对话式智能体系统。通过RAG检索临床知识库，结合多智能体协作，支持自然语言查询复杂的健康数据。在人口健康管理场景中实现了高效的结构化查询生成和自然语言回答。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>面向群体健康管理的领域专用智能体</li>
+                            <li>自然语言到结构化查询的智能转换</li>
+                            <li>临床知识库的RAG增强</li>
+                            <li>医疗领域多智能体协作应用</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.18768" class="item-link">🔗 查看论文</a>
+                </div>
+
+                <!-- 论文7 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">LLM-Guided Communication for Cooperative Multi-Agent RL</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-19</span>
+                        <span>🆔 arXiv:2605.18077</span>
+                        <span>👤 Bae, Park, Lee, Han (ICML 2026 Accepted)</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出LLM引导的通信机制用于合作式多智能体强化学习。利用LLM作为智能体间通信的语义编码器，使智能体能够进行更有意义的信息交换。在多个合作任务中展现了更快的收敛速度和更高的最终性能。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>LLM作为通信语义编码器</li>
+                            <li>有意义的智能体间信息交换</li>
+                            <li>更快的收敛速度和更高性能</li>
+                            <li>ICML 2026录用</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.18077" class="item-link">🔗 查看论文</a>
+                </div>
+
+                <!-- 论文8 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">NeuroMAS: 联合强化学习的多智能体系统即神经网络</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-16</span>
+                        <span>🆔 arXiv:2605.16757</span>
+                        <span>👤 Lu, Fang, Zhong, Ma</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出NeuroMAS，将多智能体系统建模为具有联合强化学习的神经网络。这种方法允许使用反向传播优化整个多智能体系统，同时保留智能体的独立性。在多个基准上展示了优于传统MARL方法的性能。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>多智能体系统即神经网络的统一建模</li>
+                            <li>联合强化学习优化</li>
+                            <li>保留智能体独立性的端到端训练</li>
+                            <li>超越传统MARL方法性能</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.16757" class="item-link">🔗 查看论文</a>
+                </div>
+
+                <!-- 论文9 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">DecisionBench: 长周期智能体工作流中的涌现委派基准</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-16</span>
+                        <span>🆔 arXiv:2605.19099</span>
+                        <span>👤 Gao, Wang, Yu, Ma, Qu</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出DecisionBench，一个用于评估长周期智能体工作流中涌现委派能力的基准测试。包含28页、9个图表、11个表格的详细评估体系，系统化测量多智能体系统中任务委派的质量和效率。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>首个专注委派能力的评估基准</li>
+                            <li>系统化测量长周期工作流的智能体协作</li>
+                            <li>丰富的评估维度和指标体系</li>
+                            <li>开源代码和数据</li>
+                        </ul>
+                    </div>
+                    <a href="https://github.com/decisionbench/decisionbench" class="item-link">🔗 查看项目</a>
+                </div>
+
+                <!-- 论文10 -->
+                <div class="research-item academic">
+                    <div class="item-header">
+                        <div class="item-title">MADP: 面向可持续文档处理的多智能体管道（含人在回路）</div>
+                        <span class="item-type academic">学术论文</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05-17</span>
+                        <span>🆔 arXiv:2605.17159</span>
+                        <span>👤 Gosmar, Zenezini</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出MADP，一种面向可持续文档处理的多智能体管道系统，引入人在回路（Human-in-the-Loop）机制。多个专业智能体协作完成文档分类、提取、验证等任务，关键决策点引入人类审核。在文档处理质量和效率上均取得显著提升。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>面向文档处理的多智能体管道设计</li>
+                            <li>人在回路的可持续处理机制</li>
+                            <li>专业智能体的任务分解与协作</li>
+                            <li>工业级文档处理应用</li>
+                        </ul>
+                    </div>
+                    <a href="https://arxiv.org/abs/2605.17159" class="item-link">🔗 查看论文</a>
+                </div>
+            </div>
+
+            <!-- 行业报告类别 -->
+            <div class="category-section">
+                <h2 class="category-title">📊 行业报告与分析 (Industry Reports)</h2>
+
+                <!-- 报告1 -->
+                <div class="research-item industry">
+                    <div class="item-header">
+                        <div class="item-title">Agentic RAG 2026: 8阶段生产栈（SyncSoft AI）</div>
+                        <span class="item-type industry">行业报告</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026年</span>
+                        <span>🏢 SyncSoft AI</span>
+                        <span>👤 Vivia Do</span>
+                    </div>
+                    <div class="item-abstract">
+                        提出Agentic RAG的8阶段生产栈蓝图，解决传统RAG在3000万文档规模下的生产失败问题。关键数据：传统RAG多跳问答准确率仅34%，agentic RAG提升至78-81%；73%的生产RAG失败发生在检索环节而非生成环节；幻觉率从12-18%降至2.5-4%。提出了包含上下文摄入、混合索引、查询规划、分层检索接口、检索评分器、重排、反思循环和引用生成的完整架构。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>首个Agentic RAG 8阶段生产架构</li>
+                            <li>系统化的检索失败分析和解决方案</li>
+                            <li>生产级规模和性能的实测数据</li>
+                            <li>明确的成本-效益分析（2倍infra成本换取2.3倍准确率）</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.syncsoft.ai/en/blog/agentic-rag-production-stack-2026" class="item-link">🔗 阅读全文</a>
+                </div>
+
+                <!-- 报告2 -->
+                <div class="research-item industry">
+                    <div class="item-header">
+                        <div class="item-title">Cognizant AI Lab 2026年5月研究更新</div>
+                        <span class="item-type industry">行业报告</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05</span>
+                        <span>🏢 Cognizant AI Lab</span>
+                        <span>👤 Risto Miikkulainen等</span>
+                    </div>
+                    <div class="item-abstract">
+                        Cognizant AI Lab发布了多项重要研究：(1) CAESAR智能体框架，通过动态知识图谱探索实现创造性答案合成，超越简单检索；(2) TerraLingua实验揭示AI智能体生态中涌现的开放-ended行为；(3) 进化策略在LLM微调中的四大新方向；(4) neuro-san平台集成MCP协议支持多智能体无缝集成。Cognizant同时获得3项新美国专利，总专利数达65项。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>CAESAR框架：从检索到发现的范式转变</li>
+                            <li>动态知识图谱驱动的深度探索</li>
+                            <li>AI智能体生态系统的社会行为模拟</li>
+                            <li>进化策略替代RL的LLM微调新方向</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.cognizant.com/us/en/ai-lab/blog/ai-research-updates-may-2026" class="item-link">🔗 阅读全文</a>
+                </div>
+
+                <!-- 报告3 -->
+                <div class="research-item industry">
+                    <div class="item-header">
+                        <div class="item-title">颠覆搜索引擎：12家顶尖机构联合提出Agentic Deep Research</div>
+                        <span class="item-type industry">行业报告</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026年</span>
+                        <span>🏢 智源社区翻译</span>
+                        <span>👤 UIC、UIUC、清华、北大等12家机构</span>
+                    </div>
+                    <div class="item-abstract">
+                        综述了Agentic Deep Research的最新进展，该范式由12家顶尖学术机构联合提出。核心发现：具备推理-检索闭环的Deep Research智能体在BrowseComp上取得51.5%正确率（标准LLM不足10%），验证了"推理驱动检索"对复杂任务的增益效果。提出的Test-Time Scaling Law揭示了推理步数和检索轮次与性能的线性关系。开源项目如DeepResearcher、DeerFlow等星标增长远超传统RAG项目。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>推理-搜索-综合三位一体的闭环能力</li>
+                            <li>Test-Time Scaling Law理论支撑</li>
+                            <li>BrowseComp上5倍于标准LLM的性能提升</li>
+                            <li>蓬勃的开源生态系统</li>
+                        </ul>
+                    </div>
+                    <a href="https://hub.baai.ac.cn/view/47131" class="item-link">🔗 阅读全文</a>
+                </div>
+            </div>
+
+            <!-- 开源项目类别 -->
+            <div class="category-section">
+                <h2 class="category-title">💻 开源项目 (Open Source)</h2>
+
+                <!-- 开源1 -->
+                <div class="research-item open_source">
+                    <div class="item-header">
+                        <div class="item-title">CAESAR: 深度智能体网络探索框架</div>
+                        <span class="item-type open_source">开源项目</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05</span>
+                        <span>🏢 Cognizant AI Lab</span>
+                    </div>
+                    <div class="item-abstract">
+                        CAESAR是一个智能体AI框架，超越简单检索，实现创造性答案合成。通过构建动态知识图谱进行跨源概念连接，通过迭代自我批判精炼输出。支持更深入的探索更原创的跨领域见解，对研究创新空间尤为重要。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>动态知识图谱构建</li>
+                            <li>跨源概念连接</li>
+                            <li>迭代自我批判精炼机制</li>
+                            <li>从检索到发现的范式转变</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 开源2 -->
+                <div class="research-item open_source">
+                    <div class="item-header">
+                        <div class="item-title">Cognizant neuro-san: 企业级多智能体加速器</div>
+                        <span class="item-type open_source">开源项目</span>
+                    </div>
+                    <div class="item-meta">
+                        <span>📅 2026-05</span>
+                        <span>🏢 Cognizant</span>
+                    </div>
+                    <div class="item-abstract">
+                        neuro-san是多智能体加速器平台，新集成MCP（Model Context Protocol）协议，支持智能体与GitHub、DeepWiki、Google Maps等工具的无缝集成。获Global AI Award Product/Service类别奖，被认可其在企业AI可扩展部署方面的创新设计。
+                    </div>
+                    <div class="innovations">
+                        <h4>创新点：</h4>
+                        <ul>
+                            <li>MCP协议集成实现跨工具互操作</li>
+                            <li>Global AI Award获奖设计</li>
+                            <li>企业级多智能体部署平台</li>
+                            <li>支持20+集成生态</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 趋势总结 -->
+        <div class="summary-section">
+            <h2>🔮 关键趋势总结</h2>
+
+            <div class="trend-item">
+                <h3>1. 从检索到发现：范式升级</h3>
+                <p>CAESAR、GRASP等框架表明，Agentic RAG正从简单的信息检索向深度探索和知识发现演进。系统不再满足于返回相关文档，而是通过跨源概念连接和迭代自我批判生成原创性见解。</p>
+            </div>
+
+            <div class="trend-item">
+                <h3>2. 效率与准确性并重</h3>
+                <p>GRASP实现40-50%的token节省同时保持最高准确率；SyncSoft数据显示agentic RAG将多跳准确率从34%提升到78%。效率优化不再是准确率的对立面，而是通过智能调度实现双赢。</p>
+            </div>
+
+            <div class="trend-item">
+                <h3>3. 可靠性和安全成为核心关切</h3>
+                <p>S-Bus解决多智能体竞态条件，Responsible Agentic AI论文强调来源追溯，MADP引入人在回路。随着agentic RAG进入生产环境，可靠性和可追溯性成为部署的关键前提。</p>
+            </div>
+
+            <div class="trend-item">
+                <h3>4. 领域垂直化加速</h3>
+                <p>EngiAI面向工程设计，ClinQueryAgent面向群体健康管理，Cognizant在放射治疗、水管理等领域的实践。Agentic RAG正快速渗透到垂直行业，形成领域专用的解决方案。</p>
+            </div>
+
+            <div class="trend-item">
+                <h3>5. 开源生态蓬勃发展</h3>
+                <p>DeerFlow、DeepResearcher等项目星标快速增长，Cognizant neuro-san获Global AI Award。开源生态正推动agentic RAG从学术研究走向大规模工程应用。</p>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>基于智能体的RAG科研成果报告 | 数据收集时间：2026年5月18日-21日</p>
+            <p>自动生成时间：2026年5月21日</p>
+        </div>
+    </div>
+</body>
+</html>

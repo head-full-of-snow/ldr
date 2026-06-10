@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于AI编程的最新科研成果报告（2026年5月）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .header .date-range {
+            font-size: 1em;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .research-item {
+            background: #f8f9fa;
+            border-left: 5px solid #3498db;
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .research-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .research-item .number {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .research-item h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .research-item .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .research-item .meta span {
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        .research-item .category {
+            background: #28a745 !important;
+            color: white !important;
+        }
+
+        .research-item .summary {
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .research-item .link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .research-item .link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid #e9ecef;
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .research-item .meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>基于AI编程的最新科研成果报告</h1>
+            <div class="subtitle">AI Programming Research Achievements</div>
+            <div class="date-range">收集时间：2026年5月22日 | 共15项科研成果</div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">15</div>
+                <div class="stat-label">科研成果</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">研究类别</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2026</div>
+                <div class="stat-label">发布年份</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2 class="section-title">科研成果列表</h2>
+
+            <div class="research-item">
+                <h3><span class="number">1</span>CodeSafetyBench: Evaluating and Improving Ethical Safety in Large Language Model Code Generation</h3>
+                <div class="meta">
+                    <span class="category">AI编程安全</span>
+                    <span>iScience</span>
+                    <span>2026-04-17</span>
+                    <span>He J, Qin S, Zou H, et al.</span>
+                </div>
+                <div class="summary">
+                    <p>As large language models transform software development, they introduce significant ethical and safety risks, with research revealing a 78.67% probability of harmful code generation under malicious prompts. To address this, the authors developed CodeSafetyBench, a benchmark comprising 1,050 harmful request cases across healthcare, law, and education. Their approach employs a triadic response structure—consisting of harmful outputs, refusals, and educational feedback—to train models via supervised fine-tuning.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/41869560/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">2</span>AI-augmented Reliability in CI/CD: A Framework for Predictive, Adaptive, and Self-Correcting Pipelines</h3>
+                <div class="meta">
+                    <span class="category">AI集成CI/CD</span>
+                    <span>Frontiers in Artificial Intelligence</span>
+                    <span>2026</span>
+                    <span>Dhawan R, Dhawan M</span>
+                </div>
+                <div class="summary">
+                    <p>Modern CI/CD pipelines face a critical challenge. While AI tools accelerate code generation, static pipelines have become the primary bottleneck to delivery velocity. Flaky tests and pipeline noise create a persistent challenge, with reported failure rates ranging from 11 to 27 percent for test flakiness and 5-16 percent for noise-induced build failures. The authors propose a framework for predictive, adaptive, and self-correcting pipelines.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/41994557/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">3</span>Toward LLM-aware Software Effort Estimation: A Conceptual Framework</h3>
+                <div class="meta">
+                    <span class="category">AI编程管理</span>
+                    <span>Frontiers in Artificial Intelligence</span>
+                    <span>2026</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>Software effort estimation has traditionally been grounded in the assumption that development cost is primarily driven by human labor, approximated through proxies such as code size, functional complexity, or perceived task difficulty. The increasing adoption of large language models as software development assistants challenges this assumption by automating substantial portions of reasoning, coding, and refactoring. The authors propose a new conceptual framework for estimating software effort that accounts for the changing nature of human-AI collaboration.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/41948696/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">4</span>Using Natural Language Prompts With AI Models for Low-Cost Assistive Software Design: Exploratory Comparative Evaluation</h3>
+                <div class="meta">
+                    <span class="category">AI辅助设计</span>
+                    <span>JMIR Rehabilitation and Assistive Technologies</span>
+                    <span>2026</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>This study investigates the capacity of 7 artificial intelligence (AI) models, 5 free and 2 paid, to generate functional software for designing low-cost, personalized assistive products. The objective was to determine which models are most effective, accessible, and consistent in supporting such design tasks.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/41875212/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">5</span>SynergyBug: A Deep Learning Approach to Autonomous Debugging and Code Remediation</h3>
+                <div class="meta">
+                    <span class="category">AI自动调试</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>SynergyBug combines BERT and GPT-3 to create an automated system that diagnoses and repairs software bugs across multiple sources, addressing the inefficiencies of manual debugging in complex software structures. This approach represents a shift towards intelligent error detection that not only identifies issues but also suggests or implements remediation.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/40640256/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">6</span>An Integrated Graph Neural Network Model for Joint Software Defect Prediction and Code Quality Assessment</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>An integrated GNN model that simultaneously tackles defect prediction and code quality assessment, leveraging the complementary information between these tasks. GNNs model software as graphs where nodes represent classes and edges represent dependencies, allowing for the capture of complex relationships between defect patterns and code quality.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/41381815/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">7</span>Integrating Temporal Convolutional Networks with Metaheuristic Optimization for Accurate Software Defect Prediction</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>Combines Temporal Convolutional Networks (TCN) optimized by metaheuristic algorithms like Antlion Optimization (ALO) to improve defect detection accuracy. This approach addresses the limitations of traditional features by leveraging deep learning architectures.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/40354496/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">8</span>Semantic and Traditional Feature Fusion for Software Defect Prediction using Hybrid Deep Learning Model</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>A hybrid deep learning model that integrates semantic and traditional features to better identify semantic differences that traditional metrics miss. This feature fusion approach improves defect prediction accuracy by combining the strengths of both feature types.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/38951608/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">9</span>Software Defect Prediction using Hybrid Model (CBIL) of CNN and Bidirectional LSTM</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>A hybrid model using Convolutional Neural Networks (CNN) and Bidirectional Long Short-Term Memory (Bi-LSTM) networks that extracts both local features and sequential semantics from code, addressing the limitations of traditional features in software defect prediction.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/34901421/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">10</span>Enhancing Software Defect Prediction: A Framework with Improved Feature Selection and Ensemble Machine Learning</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>A framework with improved feature selection and ensemble machine learning techniques developed to handle the complexity of software defect prediction, addressing the limitations of individual models and improving overall prediction accuracy.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39669467/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">11</span>Software Defect Prediction Based on Hybrid Swarm Intelligence and Deep Learning</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>Combines hybrid swarm intelligence algorithms with deep learning models to improve software defect prediction accuracy. This approach leverages the optimization capabilities of swarm intelligence with the representational power of deep learning.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/34992647/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">12</span>Software Defect Prediction Based on Complex Network and Graph Neural Network</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>Research on software defect prediction using complex network theory combined with graph neural networks. This approach models software systems as complex networks to capture structural properties that correlate with defect proneness.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/37420393/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">13</span>OpEffiRes Net: Optimization based EfficientNetB0-ResNet50 and Correlation based Feature Selection for Software Failure Prediction</h3>
+                <div class="meta">
+                    <span class="category">AI故障预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>An optimization-based EfficientNetB0-ResNet50 architecture combined with correlation-based feature selection for software failure prediction. This approach uses advanced deep learning architectures optimized for software engineering tasks.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/41936195/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">14</span>Software Defect Prediction Based on Residual/Shuffle Network Optimized by Upgraded Fish Migration Optimization Algorithm</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>Uses Residual/Shuffle (RS) Networks optimized by an upgraded Fish Migration Optimization algorithm to reduce manual effort while improving prediction accuracy in software defect prediction.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/40021906/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+            <div class="research-item">
+                <h3><span class="number">15</span>Fine-Grained Software Defect Prediction Based on the Method-Call Sequence</h3>
+                <div class="meta">
+                    <span class="category">AI缺陷预测</span>
+                    <span>PubMed</span>
+                    <span>Unknown</span>
+                    <span>Unknown</span>
+                </div>
+                <div class="summary">
+                    <p>A fine-grained approach to software defect prediction that analyzes method-call sequences to identify defect-prone patterns. This method-level analysis provides more precise predictions than file-level or class-level analysis.</p>
+                </div>
+                <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/35965753/" target="_blank">查看原文 &rarr;</a>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p>本报告由 Local Deep Research 系统自动生成</p>
+            <p>报告生成时间：2026-05-22</p>
+        </div>
+    </div>
+</body>
+</html>
