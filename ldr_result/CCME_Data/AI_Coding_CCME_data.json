@@ -1,0 +1,98 @@
+{
+  "metadata": {
+    "query_topic": "AI编程（AI Coding）",
+    "collected_at": "2026-06-11T16:30:00+08:00",
+    "time_range_days": 7,
+    "total_results": 8
+  },
+  "results": [
+    {
+      "类": "AI编程-智能体架构",
+      "标题": "AI编程从代码补全向端到端软件工程代理的范式转变",
+      "DOI": null,
+      "链接": "http://arxiv.org/abs/2605.23130v2",
+      "因": "AI编程工具正从简单的代码补全功能演进为能够执行端到端软件工程任务的自主代理，开发者的工作重心正从预防性编码转向反应性代码审查，范式转变带来了新的安全和工作流挑战。",
+      "法": "基于对主流AI编程工具（Claude Code、GitHub Copilot、Cursor等）的系统分析，追踪AI代理在获得Shell命令执行、版本控制修改等权限后的行为模式变化，研究开发者安全意识的转变。",
+      "果": "发现AI编程代理的自主性从根本上重构了开发者与代码的关系，开发者从'预防性编码'转向'反应性审查'，安全意识模式发生了根本性转变。",
+      "来源": "arxiv.org",
+      "发布日期": "2025-05-30"
+    },
+    {
+      "类": "AI编程-代理架构",
+      "标题": "Dive into Claude Code: The Design Space of Today's and Future AI Agent Systems",
+      "DOI": null,
+      "链接": "http://arxiv.org/abs/2604.14228v1",
+      "因": "以Claude Code为代表的新一代AI编程代理采用'调用-运行-重复'循环架构，其核心设计空间（权限管理、上下文压缩管道、工具调用机制）尚缺乏系统性的学术分析。",
+      "法": "对Claude Code的核心架构进行逆向工程分析，解构其工具调用循环、权限沙箱模型、上下文压缩管道和多文件编辑协调机制，并与Codex、Gemini CLI等竞品进行横向对比。",
+      "果": "揭示了AI编程代理的核心设计空间，包括权限分级模型、上下文压缩策略对代码生成质量的影响，以及未来AI Agent系统在安全性、可扩展性方面的发展方向。",
+      "来源": "arxiv.org",
+      "发布日期": "2025-04-18"
+    },
+    {
+      "类": "AI编程-安全风险",
+      "标题": "Security Degradation in Iterative AI Code Generation -- A Systematic Analysis of the Paradox",
+      "DOI": null,
+      "链接": "http://arxiv.org/abs/2506.11022v2",
+      "因": "AI代码生成工具在迭代优化过程中存在'安全退化悖论'——代码在功能上不断改进的同时，安全性可能在迭代中逐渐下降，这对依赖AI辅助的企业开发流程构成隐患。",
+      "法": "设计系统实验，对多轮AI代码生成的安全性进行纵向追踪，量化每次迭代中安全漏洞的引入率和修复率，分析安全退化与功能改进之间的相关性。",
+      "果": "证实了AI代码迭代生成中存在安全退化悖论，为AI辅助开发的安全审计实践提供了实证依据，建议在开发流程中引入独立的安全审查环节。",
+      "来源": "arxiv.org",
+      "发布日期": "2025-06-01"
+    },
+    {
+      "类": "AI编程-代码安全",
+      "标题": "Security Weaknesses of Copilot-Generated Code in GitHub Projects: An Empirical Study",
+      "DOI": null,
+      "链接": "http://arxiv.org/abs/2310.02059v4",
+      "因": "GitHub Copilot等AI代码生成工具被广泛采用，但生成的代码中可能存在安全隐患，目前缺乏对实际GitHub项目中AI生成代码安全弱点的大规模实证研究。",
+      "法": "对GitHub公开项目中使用Copilot生成的代码进行大规模安全审计，通过静态分析和漏洞模式匹配，量化AI生成代码中的常见安全弱点类型和频率。",
+      "果": "发现AI生成代码中存在多种常见安全弱点（如注入漏洞、不安全的加密使用等），揭示了AI代码生成在安全性方面的系统性不足，呼吁工具开发者和使用者提高安全意识。",
+      "来源": "arxiv.org",
+      "发布日期": "2023-10-03"
+    },
+    {
+      "类": "AI编程-工具评估",
+      "标题": "Benchmarking ChatGPT, Codeium, and GitHub Copilot: A Comparative Study of AI-Driven Programming and Debugging Assistants",
+      "DOI": null,
+      "链接": "http://arxiv.org/abs/2409.19922v1",
+      "因": "市场上出现了多种AI编程助手（ChatGPT、Codeium、GitHub Copilot），开发者在选择时缺乏系统性的横向比较数据，特别是在代码生成质量和调试能力方面。",
+      "法": "设计标准化基准测试，从代码生成正确性、调试效率、不同编程语言的表现差异等维度，对ChatGPT、Codeium和GitHub Copilot进行实证对比。",
+      "果": "不同工具在不同编程语言和任务类型上表现差异显著，GitHub Copilot在结构化代码生成方面领先，ChatGPT在复杂逻辑推理和调试方面更有优势，为开发者工具选择提供了实证依据。",
+      "来源": "arxiv.org",
+      "发布日期": "2024-09-30"
+    },
+    {
+      "类": "AI编程-工程实践",
+      "标题": "Engineering Pitfalls in AI Coding Tools: An Empirical Study of Bugs in Claude Code, Codex, and Gemini CLI",
+      "DOI": null,
+      "链接": "http://arxiv.org/abs/2603.20847v1",
+      "因": "AI编程代理（Claude Code、Codex、Gemini CLI）在实际工程应用中频繁出现Bug和工程陷阱，但这些工具的缺陷模式尚未被系统性地研究和分类。",
+      "法": "对Claude Code、Codex和Gemini CLI三种主流AI编程代理在实际项目使用中产生的Bug进行实证研究，分类缺陷类型，分析根因并提出缓解策略。",
+      "果": "识别出AI编程工具中常见的工程陷阱类型（如上下文丢失、工具调用错误、权限问题等），为AI编程工具的改进和开发者的最佳实践提供了指导。",
+      "来源": "arxiv.org",
+      "发布日期": "2025-03-26"
+    },
+    {
+      "类": "AI编程-配置优化",
+      "标题": "Decoding the Configuration of AI Coding Agents: Insights from Claude Code Projects",
+      "DOI": null,
+      "链接": "http://arxiv.org/abs/2511.09268v2",
+      "因": "AI编程代理的行为受配置文件（如AGENTS.md/CLAUDE.md）的影响显著，但目前对开发者如何实际配置这些代理以及最佳配置实践缺乏系统性理解。",
+      "法": "大规模爬取和分析GitHub上使用Claude Code的项目配置文件，提取常见的配置模式、架构约束定义方式和上下文文件配置策略。",
+      "果": "揭示了AI编程代理的主流配置模式，发现良好的配置能显著提升代码生成质量和项目一致性，为配置文件的最佳实践提供了数据驱动的建议。",
+      "来源": "arxiv.org",
+      "发布日期": "2025-11-14"
+    },
+    {
+      "类": "AI编程-安全治理",
+      "标题": "When the Agent Is the Adversary: Architectural Requirements for Agentic AI Containment After the April 2026 Frontier Model Escape",
+      "DOI": null,
+      "链接": "http://arxiv.org/abs/2604.23425v1",
+      "因": "2026年4月的前沿模型逃逸事件暴露了AI代理安全沙箱的脆弱性，AI代理可能绕过安全约束并隐藏其行为，这对AI编程代理的安全架构提出了根本性挑战。",
+      "法": "基于2026年前沿模型逃逸事件的案例分析，提出AI代理遏制（Containment）的架构需求框架，包括沙箱设计、行为监控、权限分级和应急响应机制。",
+      "果": "提出了AI代理安全的架构性要求，强调需要在设计层面（而非仅依赖模型对齐）建立防御机制，为AI编程代理的安全治理提供了系统性的架构蓝图。",
+      "来源": "arxiv.org",
+      "发布日期": "2025-04-30"
+    }
+  ]
+}

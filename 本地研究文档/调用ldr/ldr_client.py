@@ -539,14 +539,14 @@ if __name__ == "__main__":
     session = ldr._ensure_session()
     headers = {"Content-Type": "application/json"}
     base_url = ldr.base_url
-    query = "AI编程"
+    query = "槟榔危害"
     health_result = requests.get("http://10.10.20.21:5000/api/v1/health")
     print("健康检查结果", health_result)
     # result = ldr.research(query, research_level="full",
     #                       output_path="arxiv_search_method_aicode.md", search_tool="arxiv")
     # result = ldr.research(query, research_level="full",
     #                       output_path="auto_search_method_aicode.md", search_tool="auto")
-    result = ldr.research(query, research_level="quick",
-                          output_path="searxng_search_method_aicode.md", search_tool="searxng")
+    result = ldr.research(query, research_level="full",
+                          output_path="searxng_search_method_槟榔危害.md", search_tool="searxng")
     # parallel_scientific,auto,arxiv
     print("研究结果", result)

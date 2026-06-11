@@ -605,7 +605,7 @@
         "step": null,
         "type": "LLM",
         "ui_element": "text",
-        "value": "https://openrouter.ai/api/v1",
+        "value": "http://10.10.20.21:9090/v1",
         "visible": true
     },
     "llm.ollama.api_key": {
@@ -694,7 +694,7 @@
         "step": null,
         "type": "LLM",
         "ui_element": "select",
-        "value": "ollama",
+        "value": "anthropic",
         "visible": true
     },
     "llm.temperature": {
@@ -722,7 +722,21 @@
         "step": null,
         "type": "LLM",
         "ui_element": "password",
-        "value": "",
+        "value": "sk-bh3845zj4e7l9w1sgikgfwjaeqbr1br5uk14yycksupf7xue",
+        "visible": true
+    },
+    "llm.anthropic.base_url": {
+        "category": "llm_general",
+        "description": "Custom base URL for Anthropic-compatible API endpoint. Leave empty to use the official Anthropic API (https://api.anthropic.com/v1). Set this for self-hosted or proxy services that use the Anthropic message format.",
+        "editable": true,
+        "max_value": null,
+        "min_value": null,
+        "name": "Anthropic Base URL",
+        "options": null,
+        "step": null,
+        "type": "LLM",
+        "ui_element": "text",
+        "value": "http://10.10.20.21:9090/v1",
         "visible": true
     },
     "llm.openai.api_key": {
@@ -2720,7 +2734,7 @@
         "step": null,
         "type": "SEARCH",
         "ui_element": "text",
-        "value": "http://localhost:8080",
+        "value": "http://10.10.20.21:16464",
         "visible": true
     },
     "search.engine.web.searxng.default_params.categories": {
@@ -2735,7 +2749,6 @@
         "type": "SEARCH",
         "ui_element": "json",
         "value": [
-            "general",
             "science"
         ],
         "visible": true

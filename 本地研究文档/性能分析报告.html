@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Deep Research 性能分析报告</title>
+<style>
+  :root { --accent: #2563eb; --bg: #fafafa; --card: #fff; --border: #e5e7eb; --text: #1f2937; --muted: #6b7280; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+  h1 { font-size: 2rem; margin-bottom: 8px; }
+  h2 { font-size: 1.4rem; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+  h3 { font-size: 1.1rem; margin: 24px 0 10px; }
+  .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 32px; }
+  p { margin-bottom: 12px; }
+  ul, ol { margin: 8px 0 16px 24px; }
+  li { margin-bottom: 6px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 16px 0; }
+  .card h3 { margin-top: 0; color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 0.92rem; }
+  th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+  th { background: #f3f4f6; font-weight: 600; }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88rem; font-family: "Cascadia Code", Consolas, monospace; }
+  .arch-diagram { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 16px 0; font-family: monospace; font-size: 0.85rem; line-height: 1.5; white-space: pre; overflow-x: auto; }
+  .highlight { background: #dbeafe; padding: 12px 16px; border-left: 4px solid var(--accent); border-radius: 4px; margin: 16px 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px 28px; margin-bottom: 32px; }
+  .toc a { text-decoration: none; color: var(--accent); }
+  .toc li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Local Deep Research 性能分析报告</h1>
+<p class="subtitle">版本 v1.6.9 &nbsp;|&nbsp; 分析日期：2026-05-11 &nbsp;|&nbsp; 项目地址：/kanas/datav/lmet/projects/local-deep-research</p>
+
+<div class="toc">
+  <strong>目录</strong>
+  <ol>
+    <li><a href="#arch">项目整体架构</a></li>
+    <li><a href="#backend">前后端结构</a></li>
+    <li><a href="#innovation">核心创新点</a></li>
+    <li><a href="#perf">性能优化方法</a></li>
+    <li><a href="#security">安全设计</a></li>
+    <li><a href="#summary">总结</a></li>
+  </ol>
+</div>
+
+<!-- ==================== 一、整体架构 ==================== -->
+<h2 id="arch">一、项目整体架构</h2>
+
+<p>Local Deep Research (LDR) 是一个 AI 驱动的深度研究助手，核心能力是将一个复杂问题自动拆解为多轮搜索、分析、综合，最终生成带完整引用的研究报告。系统采用 <strong>策略模式 (Strategy Pattern)</strong> 架构，内置 30+ 研究策略，支持 28 种搜索引擎、10 种 LLM 提供商。</p>
+
+<div class="arch-diagram">用户浏览器 (localhost:5000)
+  │
+  ▼
+Flask 后端 (REST API + WebSocket)
+  ├── 认证模块 (Flask-Login, CSRF, 限流)
+  ├── 研究队列 (QueueProcessorV2, 多用户串行化锁)
+  ├── 策略选择器 (StrategyFactory → 30+ 策略)
+  │     └── 迭代循环: 生成子问题 → 并行搜索 → 分析结果 → 综合报告
+  ├── 引用处理器 (CitationHandler)
+  ├── 跨引擎过滤器 (CrossEngineFilter)
+  │
+  ├──► LLM 提供商 (Ollama / OpenAI / Anthropic / LM Studio / LlamaCpp / ...)
+  ├──► 搜索引擎 (arXiv / PubMed / Wikipedia / SearXNG / Brave / DuckDuckGo / ...)
+  │
+  └── 存储
+        ├── 每用户加密数据库 (SQLCipher AES-256)
+        ├── FAISS 向量索引 (知识库)
+        └── 文件存储 (研究输出 / 文档库)</div>
+
+<h3>研究流程</h3>
+<ol>
+  <li><strong>输入阶段</strong>：用户提交研究问题</li>
+  <li><strong>迭代研究</strong>：LLM 生成子问题 → 多引擎并行搜索 → 结果分析与置信度评估，循环直至信息充足</li>
+  <li><strong>综合阶段</strong>：跨引擎结果去重/排序/LLM 相关性评分 → 引用标注 → 生成结构化报告</li>
+  <li><strong>输出阶段</strong>：Markdown / PDF 报告，支持导出到知识库</li>
+</ol>
+
+<!-- ==================== 二、前后端结构 ==================== -->
+<h2 id="backend">二、前后端结构</h2>
+
+<p><strong>是的，项目有清晰的前后端分离架构。</strong></p>
+
+<h3>后端</h3>
+<p>基于 <strong>Flask + Flask-SocketIO</strong>，提供 REST API 和 WebSocket 实时推送。核心模块：</p>
+<table>
+  <tr><th>模块</th><th>路径</th><th>职责</th></tr>
+  <tr><td>App Factory</td><td><code>web/app_factory.py</code></td><td>应用初始化、中间件注册、蓝图挂载</td></tr>
+  <tr><td>研究队列</td><td><code>web/queue/processor_v2.py</code></td><td>多用户研究任务调度，每用户串行化锁</td></tr>
+  <tr><td>认证系统</td><td><code>web/auth/</code></td><td>用户注册/登录、会话管理、CSRF 防护</td></tr>
+  <tr><td>API 路由</td><td><code>web/routes/</code></td><td>研究、设置、历史、指标等 REST 端点</td></tr>
+  <tr><td>搜索引擎</td><td><code>web_search_engines/</code></td><td>28 种搜索引擎适配器 + 自适应限流</td></tr>
+  <tr><td>LLM 注册表</td><td><code>llm/llm_registry.py</code></td><td>线程安全的 LLM 提供商管理</td></tr>
+  <tr><td>加密数据库</td><td><code>database/encrypted_db.py</code></td><td>每用户 SQLCipher 数据库管理</td></tr>
+</table>
+
+<h3>前端</h3>
+<p>基于 <strong>Vite + 原生 JavaScript</strong> 构建（非 SPA 框架），通过 Flask 模板渲染 + WebSocket 接收实时研究进度。构建产物为 <code>static/dist/</code> 下的 JS/CSS 文件。</p>
+
+<!-- ==================== 三、核心创新点 ==================== -->
+<h2 id="innovation">三、核心创新点</h2>
+
+<div class="card">
+  <h3>3.1 自适应限流器 — 基于强化学习的速率控制</h3>
+  <p><code>AdaptiveRateLimitTracker</code>（位于 <code>web_search_engines/rate_limiting/tracker.py</code>，31KB）是项目中最大的创新之一：</p>
+  <ul>
+    <li><strong>探索-利用机制 (ε-greedy)</strong>：10% 概率尝试更短的等待时间（探索），90% 使用历史学习到的最优值（利用），判断搜索引擎 API 限制是否已放宽</li>
+    <li><strong>指数移动平均</strong>：<code>learning_rate=0.3</code>，使用成功请求的中位等待时间持续更新估计值</li>
+    <li><strong>三种配置画像</strong>：conservative（探索率 5%、学习率 20%）、balanced（默认）、aggressive（探索率 20%、学习率 50%）</li>
+    <li><strong>持久化学习</strong>：将学到的等待时间存入每用户加密数据库，下次启动自动加载，并按 <code>decay_per_day=0.95</code> 衰减旧数据</li>
+    <li><strong>乐观初始化</strong>：未知引擎从 0.1 秒等待开始，避免过度保守</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3.2 30+ 可插拔研究策略</h3>
+  <p>通过策略模式将研究逻辑抽象为 <code>BaseSearchStrategy</code> 基类，实现 30+ 种策略，覆盖不同研究场景：</p>
+  <table>
+    <tr><th>策略</th><th>核心思路</th></tr>
+    <tr><td><code>FocusedIterationStrategy</code></td><td>聚焦迭代，SimpleQA 基准测试 ~95% 准确率</td></tr>
+    <tr><td><code>LangGraphAgentStrategy</code></td><td>LLM 自主决定搜索什么、用哪个引擎、何时综合</td></tr>
+    <tr><td><code>SourceBasedSearchStrategy</code></td><td>基于来源的迭代搜索，默认策略</td></tr>
+    <tr><td><code>DualConfidenceWithRejectionStrategy</code></td><td>双置信度 + 早期拒绝：负面证据超 25% 立即排除</td></tr>
+    <tr><td><code>IterativeReasoningStrategy</code></td><td>维护 <code>KnowledgeState</code> 数据结构，逐步推理</td></tr>
+    <tr><td><code>AdaptiveDecompositionStrategy</code></td><td>自适应问题分解</td></tr>
+    <tr><td><code>RecursiveDecompositionStrategy</code></td><td>递归子问题分解</td></tr>
+    <tr><td><code>ParallelSearchStrategy</code></td><td>最大化并行搜索吞吐量</td></tr>
+    <tr><td><code>IterDRAGStrategy</code></td><td>迭代检索增强生成</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>3.3 两阶段搜索检索</h3>
+  <p><code>BaseSearchEngine</code>（<code>search_engine_base.py</code>）实现两阶段检索：</p>
+  <ol>
+    <li><strong>预览阶段</strong>：批量获取大量结果的摘要信息（标题、片段、URL）</li>
+    <li><strong>全文阶段</strong>：仅对 LLM 判定为相关的结果获取完整内容</li>
+  </ol>
+  <p>LLM 相关性过滤采用批量并行处理（<code>relevance_filter_batch_size=5</code>，最大 10 个并行批次），大幅节省带宽和 Token 消耗。</p>
+</div>
+
+<div class="card">
+  <h3>3.4 跨引擎结果融合</h3>
+  <p><code>CrossEngineFilter</code>（<code>cross_engine_filter.py</code>）将 28 种搜索引擎的结果进行统一处理：</p>
+  <ul>
+    <li>LLM 驱动的相关性评分与重排序</li>
+    <li>跨引擎去重（URL 级别 + 内容级别）</li>
+    <li>可配置最大结果数（默认 100）和 LLM 上下文窗口（最多展示 30 条给 LLM）</li>
+    <li>结果少于 10 条时跳过 LLM 过滤，避免不必要的开销</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3.5 知识闭环系统</h3>
+  <div class="highlight">
+    研究 → 下载来源 → 知识库 → 分块/嵌入 → FAISS 向量索引 → 作为搜索引擎复用
+  </div>
+  <p>每次研究的有价值来源（arXiv 论文、PubMed 文章、网页）可一键下载到加密知识库。LDR 自动提取文本、分块、生成嵌入向量、构建 FAISS 索引。下次研究时可以将自己的文档集合作为搜索引擎，实现知识复利积累。</p>
+</div>
+
+<div class="card">
+  <h3>3.6 自适应候选探索器</h3>
+  <p><code>AdaptiveExplorer</code>（<code>candidate_exploration/adaptive_explorer.py</code>）会学习哪种搜索策略对当前查询类型最有效：</p>
+  <ul>
+    <li>四种初始策略：直接搜索、同义扩展、类别探索、相关术语</li>
+    <li>跟踪每种策略的 <code>attempts</code>、<code>candidates_found</code>、<code>quality_sum</code></li>
+    <li>阈值 5 次搜索后开始自适应，选择每尝试获得最多候选的策略</li>
+  </ul>
+</div>
+
+<!-- ==================== 四、性能优化方法 ==================== -->
+<h2 id="perf">四、性能优化方法</h2>
+
+<div class="card">
+  <h3>4.1 并行搜索 (ThreadPoolExecutor)</h3>
+  <p>每轮迭代生成的所有子问题通过 <code>ThreadPoolExecutor</code> 并行发送到多个搜索引擎。<code>SourceBasedSearchStrategy</code> 中，单轮的所有问题搜索同步并发执行，而非串行等待。</p>
+</div>
+
+<div class="card">
+  <h3>4.2 连接池管理</h3>
+  <p>每用户独立的 SQLAlchemy <code>QueuePool</code>：</p>
+  <ul>
+    <li><code>pool_size=20</code>，<code>max_overflow=40</code>，<code>pool_timeout=10s</code></li>
+    <li>每用户独立数据库引擎，互不干扰</li>
+    <li>SQLCipher 连接使用 WAL 模式优化并发读写</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4.3 资源清理的纵深防御</h3>
+  <p>多层机制确保无资源泄漏：</p>
+  <ul>
+    <li><code>@thread_cleanup</code> 装饰器 — 线程退出时自动清理</li>
+    <li><code>finally</code> 块 — 研究流程异常时兜底释放</li>
+    <li><code>teardown_appcontext</code> — Flask 请求结束时清理</li>
+    <li>定时连接池 dispose（每 30 分钟）— 清理长时间闲置连接</li>
+    <li>登出级联 — 用户登出时立即释放所有资源</li>
+    <li>过期会话清理 — 定期扫描并清理僵尸会话</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4.4 研究队列处理器</h3>
+  <p><code>QueueProcessorV2</code> 管理多用户研究任务的并发：</p>
+  <ul>
+    <li><strong>每用户串行化锁</strong>：<code>_user_critical_locks</code> 确保同一用户不会同时执行多个研究任务</li>
+    <li><strong>指数退避重试</strong>：<code>INITIAL_RESEARCH_LOOKUP_DELAY=0.5s</code>，<code>RETRY_BACKOFF_MULTIPLIER=2</code>，最多重试 3 次</li>
+    <li><strong>启动重试限制</strong>：<code>SPAWN_RETRY_LIMIT=3</code>，超过后放弃排队中的任务</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4.5 WebSocket 实时进度流</h3>
+  <p>通过 Flask-SocketIO 将研究进度实时推送到浏览器（问题生成、搜索引擎调用、结果分析、报告综合），用户无需轮询，减少无效请求。</p>
+</div>
+
+<div class="card">
+  <h3>4.6 LLM 批量并行过滤</h3>
+  <p>搜索结果的相关性评分不是逐条调用 LLM，而是批量处理（默认 5 条一批，最大 10 批并行），将 LLM 调用次数从 N 降低到 N/5。</p>
+</div>
+
+<div class="card">
+  <h3>4.7 文件描述符预算管理</h3>
+  <p>SQLCipher WAL 模式每个连接占用 2 个 FD。系统精确计算稳态（用户数 × 41 FDs）和峰值（用户数 × 121 FDs），确保不超出系统限制。</p>
+</div>
+
+<!-- ==================== 五、安全设计 ==================== -->
+<h2 id="security">五、安全设计</h2>
+
+<div class="card">
+  <h3>5.1 每用户加密数据库</h3>
+  <p>每个用户拥有独立的 SQLCipher 数据库，使用 AES-256 加密。密钥由用户登录密码通过 PBKDF2 派生，配合独立 salt 文件。即使服务器管理员也无法读取用户数据（零知识架构）。</p>
+</div>
+
+<div class="card">
+  <h3>5.2 安全头中间件</h3>
+  <p><code>security_headers.py</code> 注入 CSP、X-Content-Type-Options、X-Frame-Options 等安全响应头。CSP 配置针对 Socket.IO 兼容性保留了 <code>unsafe-inline</code>，但移除了 <code>unsafe-eval</code>。</p>
+</div>
+
+<div class="card">
+  <h3>5.3 多层限流</h3>
+  <table>
+    <tr><th>接口</th><th>限流策略</th></tr>
+    <tr><td>全局默认</td><td>5000 次/小时，50000 次/天</td></tr>
+    <tr><td>登录</td><td>5 次/15 分钟</td></tr>
+    <tr><td>注册</td><td>3 次/小时</td></tr>
+    <tr><td>设置修改</td><td>30 次/分钟</td></tr>
+    <tr><td>搜索引擎</td><td>自适应限流（见 3.1 节）</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>5.4 供应链安全</h3>
+  <p>Docker 镜像使用 Cosign 签名，包含 SLSA 来源证明和 SBOM。代码通过 CodeQL、Semgrep、Bearer、DevSkim、Gitleaks 等 10+ 种安全扫描工具持续审计。</p>
+</div>
+
+<!-- ==================== 六、总结 ==================== -->
+<h2 id="summary">六、总结</h2>
+
+<table>
+  <tr><th>维度</th><th>要点</th><th>关键实现</th></tr>
+  <tr><td>架构</td><td>Flask 后端 + Vite 前端，策略模式可插拔</td><td><code>BaseSearchStrategy</code> + 30+ 实现</td></tr>
+  <tr><td>智能调度</td><td>自适应限流、自适应探索、双置信度决策</td><td><code>AdaptiveRateLimitTracker</code></td></tr>
+  <tr><td>检索效率</td><td>两阶段检索、跨引擎融合、批量并行过滤</td><td><code>BaseSearchEngine</code>, <code>CrossEngineFilter</code></td></tr>
+  <tr><td>并发性能</td><td>ThreadPoolExecutor 并行搜索、QueuePool 连接池</td><td><code>QueueProcessorV2</code></td></tr>
+  <tr><td>资源管理</td><td>纵深防御清理、FD 预算管理、定时 dispose</td><td><code>@thread_cleanup</code> 装饰器</td></tr>
+  <tr><td>安全</td><td>每用户 AES-256 加密数据库、多层限流、CSRF 防护</td><td><code>SQLCipher</code>, <code>encrypted_db.py</code></td></tr>
+  <tr><td>知识积累</td><td>研究 → 下载 → 向量化 → 复用</td><td>FAISS 向量索引 + 文档库</td></tr>
+</table>
+
+</div>
+</body>
+</html>

@@ -215,6 +215,20 @@ class BackupService:
             # Set busy timeout so concurrent writers don't cause instant failure
             cursor.execute("PRAGMA busy_timeout = 10000")
 
+            # Check database integrity before attempting export
+            integrity = cursor.execute(
+                "PRAGMA integrity_check"
+            ).fetchone()
+            if integrity and integrity[0] != "ok":
+                logger.warning(
+                    f"Database integrity check failed for {self.db_path}: "
+                    f"{integrity[0]}"
+                )
+                return BackupResult(
+                    success=False,
+                    error=f"Database integrity check failed: {integrity[0]}",
+                )
+
             try:
                 # Use sqlcipher_export() to create an encrypted backup
                 # VACUUM INTO doesn't preserve encryption in SQLCipher

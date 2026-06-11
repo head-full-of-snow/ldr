@@ -18,8 +18,10 @@ class AnthropicProvider(OpenAICompatibleProvider):
 
     provider_name = "Anthropic"
     api_key_setting = "llm.anthropic.api_key"
-    default_model = ""  # User must explicitly pick a model — no silent fallback
-    default_base_url = "https://api.anthropic.com/v1"
+    default_model = "u2"  # User must explicitly pick a model — no silent fallback
+    default_base_url = "https://maas-api.hivoice.cn/anthropic"
+    # https://maas-api.hivoice.cn/anthropic
+    # https://api.anthropic.com/v1
 
     # Metadata for auto-discovery
     provider_key = "ANTHROPIC"
@@ -50,12 +52,24 @@ class AnthropicProvider(OpenAICompatibleProvider):
             settings_snapshot=settings_snapshot,
         )
 
+        # Check for custom base URL (self-hosted endpoints may not require API key)
+        custom_url = get_setting_from_snapshot(
+            "llm.anthropic.base_url",
+            default=None,
+            settings_snapshot=settings_snapshot,
+        )
+        has_custom_url = custom_url and str(custom_url).strip()
+
         if not api_key:
-            logger.error(f"{cls.provider_name} API key not found in settings")
-            raise ValueError(
-                f"{cls.provider_name} API key not configured. "
-                f"Please set {cls.api_key_setting} in settings."
-            )
+            if has_custom_url:
+                api_key = "dummy-key-for-custom-endpoint"
+            else:
+                logger.error(
+                    f"{cls.provider_name} API key not found in settings")
+                raise ValueError(
+                    f"{cls.provider_name} API key not configured. "
+                    f"Please set {cls.api_key_setting} in settings."
+                )
 
         # Require an explicit model — no silent fallback to a hardcoded default.
         if not model_name or not model_name.strip():
@@ -72,6 +86,10 @@ class AnthropicProvider(OpenAICompatibleProvider):
             "anthropic_api_key": api_key,
             "temperature": temperature,
         }
+
+        # Support custom base URL for self-hosted Anthropic-compatible endpoints
+        if has_custom_url:
+            anthropic_params["anthropic_api_url"] = str(custom_url).strip()
 
         # Add max_tokens if specified in settings
         try:
@@ -100,7 +118,7 @@ class AnthropicProvider(OpenAICompatibleProvider):
             settings_snapshot: Optional settings snapshot to use
 
         Returns:
-            True if API key is configured, False otherwise
+            True if API key is configured or custom base URL is set, False otherwise
         """
         try:
             # Check if API key is configured
@@ -109,6 +127,15 @@ class AnthropicProvider(OpenAICompatibleProvider):
                 default=None,
                 settings_snapshot=settings_snapshot,
             )
-            return bool(api_key and str(api_key).strip())
+            if api_key and str(api_key).strip():
+                return True
+
+            # Also available if a custom base URL is set (self-hosted endpoint)
+            custom_url = get_setting_from_snapshot(
+                "llm.anthropic.base_url",
+                default=None,
+                settings_snapshot=settings_snapshot,
+            )
+            return bool(custom_url and str(custom_url).strip())
         except Exception:
             return False
